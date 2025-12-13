@@ -1,191 +1,166 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SHERIF-SIEGE-AUTO | Premium Upholstery</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            colors: {
-              primary: {
-                DEFAULT: '#D4AF37', // Gold
-                dim: 'rgba(212, 175, 55, 0.1)',
-                dark: '#B8941F',
-                light: '#F3E5AB',
-              },
-              dark: {
-                bg: '#050505',
-                surface: '#0a0a0a',
-                card: '#121212',
-                border: '#222222',
-              }
-            },
-            fontFamily: {
-              sans: ['Montserrat', 'sans-serif'],
-              serif: ['Playfair Display', 'serif'],
-              display: ['Oswald', 'sans-serif'],
-            },
-            animation: {
-              'float': 'float 6s ease-in-out infinite',
-              'scroll': 'scroll 40s linear infinite',
-              'fade-up': 'fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-              'zoom-in': 'zoomIn 0.5s ease-out forwards',
-              'slow-zoom': 'slowZoom 20s linear infinite alternate',
-              'pulse-glow': 'pulseGlow 3s infinite',
-              'gradient-x': 'gradient-x 15s ease infinite',
-            },
-            keyframes: {
-              float: {
-                '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-20px)' },
-              },
-              scroll: {
-                '0%': { transform: 'translateX(0)' },
-                '100%': { transform: 'translateX(-50%)' },
-              },
-              fadeUp: {
-                '0%': { opacity: '0', transform: 'translateY(40px)' },
-                '100%': { opacity: '1', transform: 'translateY(0)' },
-              },
-              zoomIn: {
-                 '0%': { opacity: '0', transform: 'scale(0.95)' },
-                 '100%': { opacity: '1', transform: 'scale(1)' },
-              },
-              slowZoom: {
-                '0%': { transform: 'scale(1)' },
-                '100%': { transform: 'scale(1.15)' },
-              },
-              pulseGlow: {
-                '0%, 100%': { boxShadow: '0 0 20px rgba(212, 175, 55, 0)' },
-                '50%': { boxShadow: '0 0 30px rgba(212, 175, 55, 0.3)' },
-              },
-              'gradient-x': {
-                '0%, 100%': {
-                  'background-size': '200% 200%',
-                  'background-position': 'left center',
-                },
-                '50%': {
-                  'background-size': '200% 200%',
-                  'background-position': 'right center',
-                },
-              },
-            }
-          }
-        }
-      }
-    </script>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHERIF-SIEGE-AUTO - Redirecting...</title>
     <style>
-      /* Luxury Scrollbar */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #050505;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #333;
-        border-radius: 4px;
-        border: 2px solid #050505;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #D4AF37;
-      }
-      
-      body {
-        background-color: #050505;
-        color: #ffffff;
-        overflow-x: hidden;
-      }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-      .glass-nav {
-        background: rgba(5, 5, 5, 0.8);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      }
-      
-      .clip-path-slant {
-        clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
-      }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 3rem;
+            border-radius: 1rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 90%;
+        }
 
-      /* Reveal on Scroll Classes */
-      .reveal {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-      }
-      .reveal.active {
-        opacity: 1;
-        transform: translateY(0);
-      }
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #D4AF37;
+            margin-bottom: 1rem;
+        }
 
-      /* Hover Card Effect */
-      .hover-card-glow {
-        transition: all 0.4s ease;
-      }
-      .hover-card-glow:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 175, 55, 0.5);
-      }
-      
-      .text-glow {
-        text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-      }
+        h1 {
+            color: #2C2C2C;
+            margin-bottom: 1.5rem;
+        }
 
-      .pause {
-        animation-play-state: paused;
-      }
-    </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@18.3.1",
-    "react/jsx-runtime": "https://esm.sh/react@18.3.1/jsx-runtime",
-    "react-dom": "https://esm.sh/react-dom@18.3.1",
-    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
-    "react-router-dom": "https://esm.sh/react-router-dom@6.28.0?external=react,react-dom",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/"
-  }
-}
-</script>
-</head>
-  <body class="antialiased selection:bg-primary selection:text-black">
-    <div id="root"></div>
-    <script>
-      // Simple Scroll Observer
-      document.addEventListener('DOMContentLoaded', () => {
-        const observerOptions = {
-          root: null,
-          rootMargin: '0px',
-          threshold: 0.1
-        };
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #D4AF37;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 2rem auto;
+        }
 
-        const observer = new IntersectionObserver((entries, observer) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('active');
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
             }
-          });
-        }, observerOptions);
 
-        const observeElements = () => {
-           const elements = document.querySelectorAll('.reveal');
-           elements.forEach(el => observer.observe(el));
-        };
+            100% {
+                transform: rotate(360deg);
+            }
+        }
 
-        observeElements();
-        
-        // Re-observe on DOM changes (for React routing)
-        const mutationObserver = new MutationObserver(observeElements);
-        mutationObserver.observe(document.body, { childList: true, subtree: true });
-      });
+        .message {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .manual-choice {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .manual-choice p {
+            color: #666;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .view-options {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .view-btn {
+            flex: 1;
+            padding: 1rem;
+            background: #D4AF37;
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .view-btn:hover {
+            background: #B8941F;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        }
+
+        .view-btn.secondary {
+            background: #2C2C2C;
+        }
+
+        .view-btn.secondary:hover {
+            background: #1a1a1a;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo">SHERIF-SIEGE-AUTO</div>
+        <h1>Welcome!</h1>
+        <div class="spinner"></div>
+        <p class="message" id="message">Detecting your device...</p>
+
+        <div class="manual-choice">
+            <p>Taking too long? Choose manually:</p>
+            <div class="view-options">
+                <a href="phone/index.html" class="view-btn">📱 Mobile</a>
+                <a href="phone/index.html" class="view-btn secondary">💻 Desktop (Responsive)</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Device detection function
+        function isMobileDevice() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            const mobileKeywords = ['android', 'webos', 'iphone', 'ipad', 'ipod', 'blackberry', 'windows phone'];
+
+            // Check user agent
+            const isMobileUA = mobileKeywords.some(keyword => userAgent.includes(keyword));
+
+            // Check screen size (mobile devices typically have width < 768px)
+            const isMobileScreen = window.innerWidth < 768;
+
+            // Check touch capability
+            const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+            return isMobileUA || (isMobileScreen && isTouchDevice);
+        }
+
+        // Auto-redirect based on device
+        window.addEventListener('load', function () {
+            const messageEl = document.getElementById('message');
+            const isMobile = isMobileDevice();
+
+            if (isMobile) {
+                messageEl.textContent = 'Mobile device detected! Loading...';
+                setTimeout(function () {
+                    window.location.href = 'phone/index.html';
+                }, 1000);
+            } else {
+                messageEl.textContent = 'Desktop device detected! Loading responsive version...';
+                setTimeout(function () {
+                    window.location.href = 'phone/index.html';
+                }, 1000);
+            }
+        });
     </script>
-  </body>
+</body>
+
 </html>
