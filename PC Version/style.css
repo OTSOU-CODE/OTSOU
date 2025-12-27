@@ -185,17 +185,37 @@ select {
   font-size: 1rem;
 }
 
+/* Small button variant used for header 'Get Quote' */
+.btn--small {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.9rem;
+  min-height: 36px;
+}
+
+/* Hide the get-quote button by default on smaller screens */
+.get-quote-btn {
+  display: none;
+}
+
 /* Navigation */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
+  /* Slightly more translucent to allow stronger glass effect */
+  background: rgba(255, 255, 255, 0.85);
+  /* Stronger glassmorphism */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  /* Subtle gold-tinted border to match the accent */
+  border-bottom: 1px solid rgba(212, 175, 55, 0.20);
   z-index: 999;
-  transition: var(--transition-normal);
+  /* Enable height & padding transitions for smooth shrink */
+  --navbar-height: 72px;
+  --navbar-height-scrolled: 56px;
+  height: var(--navbar-height);
+  transition: background 220ms ease, padding 220ms ease, box-shadow 220ms ease, transform 220ms ease, height 220ms ease;
 }
 
 [data-theme="dark"] .navbar {
@@ -206,8 +226,45 @@ select {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* Use a CSS variable so shrinking is easy */
   padding: var(--spacing-sm);
+  --navbar-padding: var(--spacing-sm);
+  --navbar-padding-scrolled: 0.5rem;
   max-width: 100%;
+  transition: padding 220ms ease, transform 220ms ease;
+}
+
+/* Slightly scale down branding when navbar is compact */
+.navbar .nav-logo svg,
+.navbar .brand-text {
+  transition: transform 220ms ease, opacity 220ms ease;
+}
+
+.navbar.scrolled .nav-logo svg {
+  transform: scale(0.92);
+}
+
+.navbar.scrolled .brand-text h1 {
+  transform: scale(0.94);
+}
+
+/* Shrink on scroll: reduce padding and add a subtle elevation */
+.navbar.scrolled .nav-container {
+  padding: var(--navbar-padding-scrolled);
+}
+
+.navbar.scrolled {
+  /* Slightly increase background opacity so content below doesn't compete */
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  /* update the effective navbar-height variable so dependent elements (like mobile nav top) follow */
+  --navbar-height: var(--navbar-height-scrolled);
+  height: var(--navbar-height);
+}
+
+/* Dark theme scrolled state */
+[data-theme="dark"] .navbar.scrolled {
+  background: rgba(18, 18, 18, 0.98);
 }
 
 .nav-brand {
@@ -264,7 +321,7 @@ select {
 
 .nav-menu {
   position: fixed;
-  top: 70px;
+  top: var(--navbar-height);
   left: 0;
   right: 0;
   background: var(--background);
@@ -1161,8 +1218,20 @@ select {
 }
 
 @media (min-width: 768px) {
+  /* Desktop: three-column grid for a balanced header */
+  .nav-container {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+
+  .nav-brand {
+    justify-self: start;
+  }
+
   .nav-menu {
-    position: static;
+    position: relative; /* enable underline positioning */
     transform: none;
     opacity: 1;
     visibility: visible;
@@ -1171,19 +1240,74 @@ select {
     padding: 0;
     display: flex;
     gap: var(--spacing-sm);
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+  }
+
+  .nav-actions {
+    justify-self: end;
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
   }
 
   .nav-toggle {
-    display: none;
+    display: none; /* hide hamburger on desktop */
   }
 
   .nav-link {
     padding: var(--spacing-xs) var(--spacing-sm);
     margin-bottom: 0;
+    position: relative;
+    z-index: 2;
+    transition: color 200ms ease, transform 160ms ease;
+  }
+
+  /* Hide mobile overlay hover backgrounds on desktop and prefer underline/dot */
+  .nav-link:hover,
+  .nav-link.active {
+    background: transparent;
+    color: var(--primary);
+  }
+
+  /* The per-link pseudo-element underline (modern, sliding from center) */
+  .nav-link {
+    position: relative;
+    overflow: visible;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -6px;
+      height: 3px;
+      width: calc(100% - 8px);
+      background: linear-gradient(90deg, rgba(212,175,55,1), rgba(212,175,55,0.7));
+      border-radius: 999px;
+      transform: translateX(-50%) scaleX(0);
+      transform-origin: center;
+      transition: transform 260ms cubic-bezier(.22,.9,.3,1), opacity 180ms ease;
+      opacity: 0.98;
+      pointer-events: none;
+    }
+
+    .nav-link:hover::after,
+    .nav-link:focus::after,
+    .nav-link.active::after {
+      transform: translateX(-50%) scaleX(1);
+    }
   }
 
   .hero-title {
     font-size: 3.5rem;
+  }
+
+  /* show the Get Quote button on desktop header */
+  .get-quote-btn {
+    display: inline-flex;
   }
 
   .seat-container {

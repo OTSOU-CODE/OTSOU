@@ -59,6 +59,9 @@ function setupEventListeners() {
     // Scroll events
     window.addEventListener('scroll', handleScroll);
 
+    // Close mobile menu when resizing to desktop to avoid stuck open overlay
+    window.addEventListener('resize', debounce(handleResize, 150));
+
     // Theme toggle
     if (themeToggleBtn) {
         themeToggleBtn.addEventListener('click', toggleTheme);
@@ -66,6 +69,12 @@ function setupEventListeners() {
 
     // Touch events for better mobile interaction
     setupTouchEvents();
+}
+
+function handleResize() {
+    if (window.innerWidth >= 768 && navMenu && navMenu.classList.contains('active')) {
+        closeMobileMenu();
+    }
 }
 
 // Mobile menu functions
@@ -93,13 +102,13 @@ function closeMobileMenu() {
 function handleScroll() {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     const isDarkMode = document.documentElement.getAttribute('data-theme') === 'dark';
-
-    // Navbar background
+    // Navbar shrink-on-scroll toggle (class-based)
     if (navbar) {
-        if (scrollTop > 100) {
-            navbar.style.background = isDarkMode ? 'rgba(26, 26, 26, 0.98)' : 'rgba(255, 255, 255, 0.98)';
+        // Add scrolled class after user scrolls down 50px for a compact header
+        if (scrollTop > 50) {
+            navbar.classList.add('scrolled');
         } else {
-            navbar.style.background = isDarkMode ? 'rgba(26, 26, 26, 0.95)' : 'rgba(255, 255, 255, 0.95)';
+            navbar.classList.remove('scrolled');
         }
     }
 
@@ -699,7 +708,9 @@ function initNewFeatures() {
         const lazyImages = document.querySelectorAll('img[data-src]');
         lazyImages.forEach(img => imageObserver.observe(img));
     }
+
 }
+    
 
 // Utility functions
 function debounce(func, wait) {
@@ -718,6 +729,8 @@ function debounce(func, wait) {
 const optimizedScrollHandler = debounce(handleScroll, 10);
 window.removeEventListener('scroll', handleScroll);
 window.addEventListener('scroll', optimizedScrollHandler);
+// Initialize state immediately
+optimizedScrollHandler();
 
 // Performance monitoring
 if ('performance' in window) {
