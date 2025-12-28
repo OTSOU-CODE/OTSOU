@@ -181,11 +181,26 @@ function toggleTheme() {
     // Update button icon
     const icon = themeToggleBtn.querySelector('i');
 
-    if (newTheme === 'dark') {
-        icon.className = 'fas fa-sun';
-    } else {
-        icon.className = 'fas fa-moon';
+    // If user prefers reduced motion, just swap immediately
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reducedMotion) {
+        icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        themeToggleBtn.classList.remove('rotating');
+        themeToggleBtn.setAttribute('aria-pressed', newTheme === 'dark');
+        return;
     }
+
+    // Add a quick rotation cue, swap icon mid-animation for a smooth feel
+    themeToggleBtn.classList.add('rotating');
+    // swap icon after a short delay to match rotation
+    setTimeout(() => {
+        icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        // cleanup rotation class after animation
+        setTimeout(() => themeToggleBtn.classList.remove('rotating'), 260);
+    }, 120);
+
+    themeToggleBtn.setAttribute('aria-pressed', newTheme === 'dark');
 }
 
 // Load saved theme

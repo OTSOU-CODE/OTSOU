@@ -132,6 +132,45 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Smooth theme transitions */
+@media (prefers-reduced-motion: no-preference) {
+  body,
+  .navbar,
+  .nav-menu,
+  .nav-link,
+  .btn,
+  .hero,
+  .hero-background,
+  .brand-text h1,
+  .brand-text span,
+  .theme-toggle-btn {
+    transition: background-color 280ms ease, color 280ms ease, border-color 280ms ease, box-shadow 280ms ease, fill 280ms ease, transform 280ms ease, opacity 200ms ease;
+  }
+}
+
+/* Theme toggle icon rotation */
+.theme-toggle-btn i {
+  transition: transform 320ms cubic-bezier(.22,.9,.3,1), opacity 180ms ease;
+  display: inline-block;
+}
+
+.theme-toggle-btn.rotating i {
+  transform: rotate(180deg) scale(1.05);
+  opacity: 0.6;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle-btn i,
+  body,
+  .navbar,
+  .nav-menu,
+  .nav-link,
+  .btn {
+    transition: none !important;
+  }
+}
+
 /* Touch-friendly sizing */
 * {
   -webkit-tap-highlight-color: transparent;
@@ -192,10 +231,8 @@ select {
   min-height: 36px;
 }
 
-/* Hide the get-quote button by default on smaller screens */
-.get-quote-btn {
-  display: none;
-}
+/* Get Quote button removed from header */
+
 
 /* Navigation */
 .navbar {
@@ -203,19 +240,38 @@ select {
   top: 0;
   left: 0;
   right: 0;
-  /* Slightly more translucent to allow stronger glass effect */
-  background: rgba(255, 255, 255, 0.85);
-  /* Stronger glassmorphism */
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  /* Subtle gold-tinted border to match the accent */
-  border-bottom: 1px solid rgba(212, 175, 55, 0.20);
+  /* Start as an overlay so the nav visually combines with the hero */
+  background: transparent;
+  border-bottom: none;
   z-index: 999;
   /* Enable height & padding transitions for smooth shrink */
   --navbar-height: 72px;
   --navbar-height-scrolled: 56px;
   height: var(--navbar-height);
-  transition: background 220ms ease, padding 220ms ease, box-shadow 220ms ease, transform 220ms ease, height 220ms ease;
+  transition: background 220ms ease, padding 220ms ease, box-shadow 220ms ease, transform 220ms ease, height 220ms ease, color 220ms ease;
+}
+
+/* When the navbar is at the top (not scrolled) make its elements readable over the hero */
+.navbar:not(.scrolled) .nav-link,
+.navbar:not(.scrolled) .brand-text h1,
+.navbar:not(.scrolled) .brand-text span,
+.navbar:not(.scrolled) .theme-toggle-btn i {
+  color: #ffffff;
+}
+
+/* Apply frosted glass + border only when scrolled (compact state) */
+.navbar.scrolled {
+  /* Slightly more translucent to allow stronger glass effect */
+  background: rgba(255, 255, 255, 0.95);
+  /* Stronger glassmorphism */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  /* Subtle gold-tinted border to match the accent */
+  border-bottom: 1px solid rgba(212, 175, 55, 0.20);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  /* update the effective navbar-height variable so dependent elements (like mobile nav top) follow */
+  --navbar-height: var(--navbar-height-scrolled);
+  height: var(--navbar-height);
 }
 
 [data-theme="dark"] .navbar {
@@ -1224,6 +1280,8 @@ select {
     grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: var(--spacing-md);
+    /* make container positioning context for absolute centering */
+    position: relative;
   }
 
   .nav-brand {
@@ -1231,19 +1289,27 @@ select {
   }
 
   .nav-menu {
-    position: relative; /* enable underline positioning */
-    transform: none;
-    opacity: 1;
-    visibility: visible;
-    background: transparent;
-    border: none;
-    padding: 0;
+    /* absolutely center the menu in header for pixel-perfect centering */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
+    width: 100%;
+    max-width: 740px; /* avoid overlap with brand/actions */
     display: flex;
     gap: var(--spacing-sm);
     align-items: center;
     justify-content: center;
-    justify-self: center;
+    padding: 0;
+    /* ensure desktop nav is visible and interactive */
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto;
+    z-index: 1001;
   }
+
+  /* Get Quote button removed from header */
 
   .nav-actions {
     justify-self: end;
@@ -1305,10 +1371,7 @@ select {
     font-size: 3.5rem;
   }
 
-  /* show the Get Quote button on desktop header */
-  .get-quote-btn {
-    display: inline-flex;
-  }
+  /* Get Quote button removed from header */
 
   .seat-container {
     width: 300px;
