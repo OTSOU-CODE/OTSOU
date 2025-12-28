@@ -30,6 +30,11 @@
   <!-- Navigation -->
   <nav class="navbar" id="navbar">
     <div class="nav-container">
+      <div class="nav-left desktop-only">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#services" class="nav-link">Services</a>
+      </div>
+
       <div class="nav-brand">
         <div class="nav-logo">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -56,15 +61,10 @@
         </div>
       </div>
 
-        <div class="nav-menu" id="nav-menu">
-          <a href="#home" class="nav-link active">Home</a>
-          <a href="#why-choose-us" class="nav-link">About</a>
-          <a href="#services" class="nav-link">Services</a>
-          <a href="gallery.html" class="nav-link">Our Work</a>
-          <a href="category.html" class="nav-link">Category</a>
-          <a href="#contact" class="nav-link">Contact</a>
-          <!-- Get Quote button removed -->
-        </div>
+      <div class="nav-right desktop-only">
+        <a href="gallery.html" class="nav-link">Our Work</a>
+        <a href="category.html" class="nav-link">Category</a>
+        <a href="#contact" class="nav-link">Contact</a>
 
         <div class="nav-actions">
           <button class="theme-toggle-btn" id="theme-toggle" title="Switch Theme">
@@ -76,6 +76,17 @@
             <span class="bar"></span>
           </div>
         </div>
+      </div>
+
+      <!-- Mobile nav (kept for overlay behaviour) -->
+      <div class="nav-menu" id="nav-menu">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#why-choose-us" class="nav-link">About</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="gallery.html" class="nav-link">Our Work</a>
+        <a href="category.html" class="nav-link">Category</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
       </div>
   </nav>
 
@@ -399,6 +410,8 @@
           <div class="link-group">
             <h4>Services</h4>
             <a href="#services">Seat Restoration</a>
+            <a href="#services">Dashboard Repair</a>
+            <a href="#services">Custom Interiors</a>
           </div>
 
           <div class="link-group">
@@ -420,6 +433,24 @@
               <i class="fab fa-youtube"></i> YouTube
             </a>
           </div>
+        </div>
+        
+        <!-- Expanded Footer Sections -->
+        <div class="footer-newsletter">
+            <h4>Newsletter</h4>
+            <p>Subscribe for latest updates and offers.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email">
+                <button type="submit"><i class="fas fa-arrow-right"></i></button>
+            </form>
+        </div>
+        
+        <div class="footer-map">
+            <h4>Find Us</h4>
+            <!-- Static Map Image or Mini Iframe -->
+            <div class="mini-map-container">
+                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13779.0!2d-8.8!3d30.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDMwJzAwLjAiTiA4wrA0OCowMC4wIlc!5e0!3m2!1sen!2sma!4v1620000000000!5m2!1sen!2sma" width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
         </div>
       </div>
 

@@ -30,6 +30,11 @@
   <!-- Navigation -->
   <nav class="navbar" id="navbar">
     <div class="nav-container">
+      <div class="nav-left desktop-only">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#services" class="nav-link">Services</a>
+      </div>
+
       <div class="nav-brand">
         <div class="nav-logo">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -56,15 +61,10 @@
         </div>
       </div>
 
-        <div class="nav-menu" id="nav-menu">
-          <a href="index.html" class="nav-link">Home</a>
-          <a href="index.html#why-choose-us" class="nav-link">About</a>
-          <a href="index.html#services" class="nav-link">Services</a>
-          <a href="gallery.html" class="nav-link active">Our Work</a>
-          <a href="category.html" class="nav-link">Category</a>
-          <a href="index.html#contact" class="nav-link">Contact</a>
-          <!-- Get Quote button removed -->
-        </div>
+      <div class="nav-right desktop-only">
+        <a href="gallery.html" class="nav-link active">Our Work</a>
+        <a href="category.html" class="nav-link">Category</a>
+        <a href="index.html#contact" class="nav-link">Contact</a>
 
         <div class="nav-actions">
           <button class="theme-toggle-btn" id="theme-toggle" title="Switch Theme">
@@ -76,6 +76,15 @@
             <span class="bar"></span>
           </div>
         </div>
+      </div>
+      <!-- Mobile nav (kept for overlay behaviour) -->
+      <div class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#why-choose-us" class="nav-link">About</a>
+        <a href="index.html#services" class="nav-link">Services</a>
+        <a href="gallery.html" class="nav-link active">Our Work</a>
+        <a href="category.html" class="nav-link">Category</a>
+        <a href="index.html#contact" class="nav-link">Contact</a>
       </div>
   </nav>
 
@@ -100,13 +109,8 @@
         </p>
       </div>
 
-      <!-- Gallery Grid -->
-      <div class="gallery-grid" id="gallery-grid">
-        <!-- Gallery items will be loaded here by JavaScript -->
-      </div>
-
-      <!-- Gallery Stats -->
-      <div class="gallery-stats">
+      <!-- Stats Bar (Moved) -->
+      <div class="gallery-stats floating-stats">
         <div class="stat-item">
           <div class="stat-number">150+</div>
           <div class="stat-label">Projects Completed</div>
@@ -117,9 +121,35 @@
         </div>
         <div class="stat-item">
           <div class="stat-number">99%</div>
-          <div class="stat-label">Customer Satisfaction</div>
+          <div class="stat-label">Satisfaction</div>
         </div>
       </div>
+
+      <!-- Before/After Slider Section -->
+      <section class="before-after-section">
+        <h3 class="section-subtitle">Restoration Magic</h3>
+        <div class="before-after-container" id="beforeAfterSlider">
+          <div class="ba-image-wrapper before">
+            <img src="component/Gallery/ba-before.jpg" alt="Before Restoration" class="ba-image">
+            <span class="ba-label">Before</span>
+          </div>
+          <div class="ba-image-wrapper after">
+            <img src="component/Gallery/ba-after.jpg" alt="After Restoration" class="ba-image"> <!-- Placeholder names -->
+            <span class="ba-label">After</span>
+          </div>
+          <div class="ba-handle">
+            <div class="ba-line"></div>
+            <div class="ba-circle"><i class="fas fa-arrows-alt-h"></i></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid" id="gallery-grid">
+        <!-- Gallery items will be loaded here by JavaScript -->
+      </div>
+
+      <!-- Stats moved up -->
     </div>
   </main>
 

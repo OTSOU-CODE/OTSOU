@@ -43,18 +43,20 @@
 }
 
 .gallery-item {
-  background: var(--background);
-  border-radius: var(--radius-lg);
+  background: #ffffff;
+  border-radius: 4px;
   overflow: hidden;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
   transition: var(--transition-normal);
-  border: 1px solid var(--border-light);
+  border: 8px solid #ffffff; /* Polaroid White Border */
   cursor: pointer;
+  position: relative;
 }
 
 .gallery-item:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-xl);
+  transform: scale(1.02) translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  z-index: 5;
 }
 
 .gallery-image {
@@ -117,17 +119,122 @@
   font-size: 0.95rem;
 }
 
-/* Gallery Stats */
+/* Gallery Stats - Floating Bar */
 .gallery-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   gap: var(--spacing-lg);
-  margin-top: var(--spacing-xl);
-  padding: var(--spacing-xl);
+  margin: var(--spacing-xl) auto;
+  padding: 2rem 3rem;
   background: var(--surface);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-light);
+  border-radius: 50px; /* Pill shape container */
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  position: relative;
 }
+
+/* Before/After Slider */
+.before-after-section {
+  margin: 4rem 0;
+  text-align: center;
+}
+
+.section-subtitle {
+  font-family: var(--font-secondary);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--primary);
+}
+
+.before-after-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 500px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  user-select: none;
+}
+
+.ba-image-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.ba-image-wrapper.before {
+  z-index: 1;
+  width: 50%; /* Initial split */
+  border-right: 2px solid white;
+}
+
+.ba-image {
+  width: 100%; /* Will be strictly sized relative to container via JS or object-fit */
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* IMPORTANT: Before image needs to start full width so clipping works properly without squishing */
+  width: 900px; /* Or variable */
+  max-width: none; 
+}
+
+.ba-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 40px;
+  margin-left: -20px;
+  z-index: 10;
+  cursor: ew-resize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ba-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: white;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.ba-circle {
+  width: 40px;
+  height: 40px;
+  background: var(--primary);
+  border: 2px solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.ba-label {
+  position: absolute;
+  top: 20px;
+  padding: 5px 15px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.ba-image-wrapper.before .ba-label { left: 20px; }
+.ba-image-wrapper.after .ba-label { right: 20px; z-index: 2; }
 
 .stat-item {
   text-align: center;

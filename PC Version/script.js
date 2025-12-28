@@ -154,11 +154,16 @@ function updateActiveNavLink() {
 function scrollToSection(sectionId) {
     const section = document.getElementById(sectionId);
     if (section) {
-        const offsetTop = section.offsetTop - 80; // Account for fixed navbar
-        window.scrollTo({
-            top: offsetTop,
-            behavior: 'smooth'
-        });
+        // Account for current navbar height (dynamic on scroll)
+        let navHeight = 80;
+        if (navbar) {
+            const cssNavHeight = getComputedStyle(navbar).getPropertyValue('--navbar-height');
+            if (cssNavHeight) {
+                navHeight = parseInt(cssNavHeight, 10) || navHeight;
+            }
+        }
+        const offsetTop = section.offsetTop - navHeight;
+        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
     }
 }
 
@@ -369,18 +374,90 @@ function setupContactForm() {
     const contactForm = document.getElementById('contact-form');
     if (!contactForm) return;
 
+    // Inline Validation
+    const inputs = contactForm.querySelectorAll('input[required], textarea[required]');
+    inputs.forEach(input => {
+        input.addEventListener('blur', () => validateInput(input));
+        input.addEventListener('input', () => {
+            if (input.classList.contains('invalid')) validateInput(input);
+        });
+    });
+
+    function validateInput(input) {
+        if (input.checkValidity()) {
+            input.classList.add('valid');
+            input.classList.remove('invalid');
+        } else {
+            input.classList.add('invalid');
+            input.classList.remove('valid');
+        }
+    }
+
+    // File Upload Drag & Drop
+    const fileWrapper = document.querySelector('.file-upload-wrapper');
+    const fileInput = document.getElementById('file-upload');
+    const fileNameDisplay = document.getElementById('file-name');
+
+    if (fileWrapper && fileInput) {
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            fileWrapper.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            fileWrapper.addEventListener(eventName, () => fileWrapper.classList.add('drag-over'), false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            fileWrapper.addEventListener(eventName, () => fileWrapper.classList.remove('drag-over'), false);
+        });
+
+        fileWrapper.addEventListener('drop', (e) => {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            fileInput.files = files;
+            updateFileName(files);
+        });
+
+        fileInput.addEventListener('change', () => {
+            updateFileName(fileInput.files);
+        });
+
+        function updateFileName(files) {
+            if (files && files.length > 0) {
+                fileNameDisplay.textContent = files[0].name;
+                fileNameDisplay.classList.add('has-file');
+                fileWrapper.classList.add('valid');
+            } else {
+                fileNameDisplay.textContent = 'No file chosen';
+                fileNameDisplay.classList.remove('has-file');
+                fileWrapper.classList.remove('valid');
+            }
+        }
+    }
+
     contactForm.addEventListener('submit', async function (e) {
         e.preventDefault();
 
-        const formData = new FormData(contactForm);
-        const fileInput = document.getElementById('file-upload');
+        // Validate all before submit
+        let isValid = true;
+        inputs.forEach(input => {
+            validateInput(input);
+            if (!input.checkValidity()) isValid = false;
+        });
 
-        // Validation
-        if (!formData.get('name') || !formData.get('email') || !formData.get('message')) {
-            showNotification('Please fill in all required fields.', 'error');
+        if (!isValid) {
+            showNotification('Please correct the highlighted fields.', 'error');
             return;
         }
 
+        const formData = new FormData(contactForm);
+
+        // Validation (Email Regex)
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(formData.get('email'))) {
             showNotification('Please enter a valid email address.', 'error');
@@ -403,33 +480,29 @@ function setupContactForm() {
             payload.append('vehicle', formData.get('vehicle') || '');
             payload.append('message', formData.get('message'));
             payload.append('timestamp', new Date().toISOString());
-            payload.append('source', 'SHERIF-SIEGE-AUTO Mobile Website');
+            payload.append('source', 'SHERIF-SIEGE-AUTO Website');
 
             // Handle file upload if present
             if (fileInput && fileInput.files.length > 0) {
                 payload.append('file', fileInput.files[0]);
             }
 
-            // Send to webhook
-            const webhookUrl = 'http://localhost:5678/webhook-test/f1a3160d-f1b7-46ae-bb3b-700ba002ea43';
+            // Simulate sending (replace with actual endpoint)
+            await new Promise(resolve => setTimeout(resolve, 2000));
 
-            const response = await fetch(webhookUrl, {
-                method: 'POST',
-                body: payload
-            });
-
-            if (response.ok) {
-                showNotification('Thank you for your message. We will contact you very soon!', 'success');
-                contactForm.reset();
-                // Reset file input display
-                const fileNameDisplay = document.getElementById('file-name');
-                if (fileNameDisplay) {
-                    fileNameDisplay.textContent = 'No file chosen';
-                    fileNameDisplay.classList.remove('has-file');
-                }
-            } else {
-                throw new Error('Failed to send message');
+            // Success
+            showNotification('Thank you for your message. We will contact you very soon!', 'success');
+            contactForm.reset();
+            // Reset validation classes
+            inputs.forEach(input => input.classList.remove('valid', 'invalid'));
+            
+            // Reset file input display
+            if (fileNameDisplay) {
+                fileNameDisplay.textContent = 'No file chosen';
+                fileNameDisplay.classList.remove('has-file');
+                if (fileWrapper) fileWrapper.classList.remove('valid');
             }
+            
         } catch (error) {
             console.error('Error sending form data:', error);
             showNotification('There was an error sending your message. Please try again or call us directly.', 'error');
