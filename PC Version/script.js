@@ -176,7 +176,46 @@ function scrollToTop() {
 }
 
 // Theme toggle functionality
-function toggleTheme() {
+function toggleTheme(event) {
+    // Check if View Transitions are supported
+    if (!document.startViewTransition) {
+        // Fallback for browsers that don't support View Transitions
+        performThemeToggle();
+        return;
+    }
+
+    // Get click coordinates for the ripple effect
+    const x = event ? event.clientX : window.innerWidth / 2;
+    const y = event ? event.clientY : window.innerHeight / 2;
+    const endRadius = Math.hypot(
+        Math.max(x, window.innerWidth - x),
+        Math.max(y, window.innerHeight - y)
+    );
+
+    // Perform the transition
+    const transition = document.startViewTransition(() => {
+        performThemeToggle();
+    });
+
+    // Animate the clip-path
+    transition.ready.then(() => {
+        document.documentElement.animate(
+            {
+                clipPath: [
+                    `circle(0px at ${x}px ${y}px)`,
+                    `circle(${endRadius}px at ${x}px ${y}px)`,
+                ],
+            },
+            {
+                duration: 500,
+                easing: "ease-in-out",
+                pseudoElement: "::view-transition-new(root)",
+            }
+        );
+    });
+}
+
+function performThemeToggle() {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
@@ -185,8 +224,6 @@ function toggleTheme() {
 
     // Update button icon
     const icon = themeToggleBtn.querySelector('i');
-
-    // If user prefers reduced motion, just swap immediately
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (reducedMotion) {
@@ -196,12 +233,10 @@ function toggleTheme() {
         return;
     }
 
-    // Add a quick rotation cue, swap icon mid-animation for a smooth feel
+    // Add a quick rotation cue
     themeToggleBtn.classList.add('rotating');
-    // swap icon after a short delay to match rotation
     setTimeout(() => {
         icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-        // cleanup rotation class after animation
         setTimeout(() => themeToggleBtn.classList.remove('rotating'), 260);
     }, 120);
 
