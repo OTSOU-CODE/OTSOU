@@ -189,8 +189,8 @@ body {
 }
 
 .theme-toggle-btn.rotating i {
-  transform: rotate(180deg) scale(1.05);
-  opacity: 0.6;
+  transform: rotate(360deg) scale(1.1);
+  opacity: 0.8;
 }
 
 /* Respect reduced motion preference */
@@ -313,26 +313,36 @@ select {
 }
 
 .nav-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* Asymmetrical Balance */
   align-items: center;
-  justify-content: space-between;
   /* Use a CSS variable so shrinking is easy */
-  padding: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-lg);
   --navbar-padding: var(--spacing-sm);
   --navbar-padding-scrolled: 0.5rem;
   max-width: 100%;
   transition: padding 220ms ease, transform 220ms ease;
-}
-
-.nav-left, .nav-right {
-  flex: 1;
-  display: flex;
-  align-items: center;
   gap: var(--spacing-md);
 }
 
+.nav-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.nav-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-lg);
+}
+
 .nav-right {
+  display: flex;
+  align-items: center;
   justify-content: flex-end;
+  gap: var(--spacing-sm);
 }
 
 /* Slightly scale down branding when navbar is compact */
@@ -442,37 +452,189 @@ select {
 
 .nav-link {
   display: block;
-  padding: var(--spacing-sm);
+  padding: var(--spacing-xs) var(--spacing-sm);
   color: var(--text-primary);
   text-decoration: none;
-  font-weight: 500;
-  border-radius: var(--radius-sm);
+  font-weight: 600; /* Semi-Bold as requested */
   transition: color var(--transition-normal);
-  margin-bottom: var(--spacing-xs);
   position: relative; /* For underline */
+  font-size: 0.95rem;
 }
 
-/* Growing Gold Underline */
+/* Growing Gold Underline (Hand-stitched thread effect) */
 .nav-link::after {
   content: "";
   position: absolute;
-  bottom: 5px;
+  bottom: 0px;
   left: 50%;
   width: 0;
   height: 2px;
-  background: var(--primary);
-  transition: width 0.3s ease, left 0.3s ease;
+  background: var(--primary); /* Gold */
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 5px rgba(212, 175, 55, 0.5); /* Glow */
 }
 
 .nav-link:hover::after,
 .nav-link.active::after {
-  width: 80%;
-  left: 10%;
+  width: 100%;
+  left: 0;
 }
 
 .nav-link:hover,
 .nav-link.active {
-  background: transparent; /* Removed background */
+  background: transparent;
+  color: var(--primary);
+}
+
+/* ============================
+   Search Bar Styles
+   ============================ */
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-toggle-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-primary); /* Will be white on top */
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: var(--transition-normal);
+  z-index: 2; /* Clickable above input if collapsed */
+}
+
+.navbar:not(.scrolled) .search-toggle-btn {
+  color: #ffffff;
+}
+
+.search-toggle-btn:hover {
+  color: var(--primary);
+  transform: scale(1.1);
+}
+
+.search-expandable {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  opacity: 0;
+  overflow: visible; /* Allow dropsown */
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.search-container.active .search-expandable {
+  width: 280px;
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Hide toggle icon when active? Optional. Keeping it acts as close or submit. */
+/* .search-container.active .search-toggle-btn { opacity: 0; pointer-events: none; } */
+
+#header-search-input {
+  width: 100%;
+  padding: 8px 16px 8px 16px; /* Padding for text */
+  border-radius: 20px;
+  border: 1px solid var(--primary);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--text-primary);
+  outline: none;
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  transition: var(--transition-normal);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.navbar:not(.scrolled) #header-search-input {
+  background: rgba(0, 0, 0, 0.3); /* Darker on hero */
+  color: white;
+  border-color: rgba(212, 175, 55, 0.7);
+}
+.navbar.scrolled #header-search-input {
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--text-primary);
+}
+[data-theme="dark"] #header-search-input {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+#header-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+.navbar.scrolled #header-search-input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+[data-theme="dark"] #header-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Search Dropdown */
+.search-results-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--primary);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  margin-top: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  display: none;
+  flex-direction: column;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.search-results-dropdown.active {
+  display: flex;
+  animation: fadeSlideDown 0.3s ease-out forwards;
+}
+
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.search-result-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--border-light);
+  transition: background 0.2s;
+  font-size: 0.9rem;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item:hover {
+  background: rgba(212, 175, 55, 0.1); /* Gold tint */
+}
+
+.search-result-item i {
   color: var(--primary);
 }
 
@@ -584,7 +746,11 @@ select {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    var(--primary-dark) 100%
+  );
   color: white;
   box-shadow: var(--shadow-md);
   /* Sweep Effect */
@@ -1060,8 +1226,13 @@ select {
     */
     grid-template-areas: "info form";
   }
-  .contact-form-container { grid-area: form; }
-  .contact-info { grid-area: info; align-content: center; } /* Info is shorter, maybe align center */
+  .contact-form-container {
+    grid-area: form;
+  }
+  .contact-info {
+    grid-area: info;
+    align-content: center;
+  } /* Info is shorter, maybe align center */
 }
 
 /* Contact Form */
@@ -1357,62 +1528,63 @@ select {
   }
 
   /* Style Newsletter & Map */
-  .footer-newsletter h4, .footer-map h4 {
+  .footer-newsletter h4,
+  .footer-map h4 {
     font-size: 1rem;
     color: var(--text-primary);
     margin-bottom: 1rem;
     font-family: var(--font-secondary);
   }
-  
+
   .footer-newsletter p {
-      color: var(--text-secondary);
-      font-size: 0.85rem;
-      margin-bottom: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
   }
 
   .newsletter-form {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 2rem;
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
   }
 
   .newsletter-form input {
-      flex: 1;
-      padding: 0.5rem 1rem;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid var(--border-light);
-      border-radius: 50px;
-      color: white;
+    flex: 1;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-light);
+    border-radius: 50px;
+    color: white;
   }
 
   .newsletter-form button {
-      background: var(--primary);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: none;
-      color: white;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
+    background: var(--primary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
   }
-  
+
   .newsletter-form button:hover {
-      transform: translateX(3px);
+    transform: translateX(3px);
   }
 
   .mini-map-container {
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      border: 2px solid var(--border-light);
-      filter: grayscale(100%); /* Monochrome Map */
-      transition: filter 0.3s;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 2px solid var(--border-light);
+    filter: grayscale(100%); /* Monochrome Map */
+    transition: filter 0.3s;
   }
-  
+
   .mini-map-container:hover {
-      filter: grayscale(0%);
+    filter: grayscale(0%);
   }
 
   .footer-bottom {
@@ -1423,9 +1595,9 @@ select {
 }
 
 @media (min-width: 1200px) {
-    .footer-content {
-        grid-template-columns: 1fr 2fr 1fr 1fr; /* Brand | Links | Newsletter | Map */
-    }
+  .footer-content {
+    grid-template-columns: 1fr 2fr 1fr 1fr; /* Brand | Links | Newsletter | Map */
+  }
 }
 
 /* Back to Top Button */
@@ -1497,58 +1669,57 @@ select {
 
 @media (min-width: 768px) {
   /* Desktop: three-column grid for a balanced header */
+  /* Desktop: Asymmetrical Layout (Logo Left, Links Center, Utilities Right) */
   .nav-container {
     display: grid;
-    /* center the brand in the middle column for a symmetrical layout */
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: auto 1fr auto; /* Keep the asymmetrical balance */
     align-items: center;
     gap: var(--spacing-md);
-    /* make container positioning context */
     position: relative;
+    padding: var(--spacing-sm) var(--spacing-xl);
   }
 
-  .nav-brand {
+  /* Reset visibility from mobile styles if needed, though they shouldn't conflict */
+  .nav-left {
+    display: flex; /* Ensure logo is visible */
+    justify-self: start;
+    width: auto;
+  }
+
+  .nav-center {
+    display: flex; /* Ensure links are visible */
     justify-self: center;
   }
 
-  /* Desktop: hide the mobile overlay (we'll show split groups instead) */
+  .nav-right {
+    display: flex; /* Ensure utilities are visible */
+    justify-self: end;
+  }
+  
+  .nav-brand {
+    /* Remove centering override if it existed */
+    justify-self: start;
+  }
+  
+  /* Select specific links inside nav-center */
+  .nav-center .nav-link {
+    margin: 0;
+  }
+
+  /* Hide Mobile Menu Overlay */
   .nav-menu {
     display: none !important;
   }
 
-  /* Desktop-only nav groups */
-  .nav-left {
-    display: none;
-  }
-  .nav-right {
-    display: none;
-  }
-
-  /* Show split nav groups on desktop */
-  .nav-left.desktop-only,
-  .nav-right.desktop-only {
-    display: flex;
-    gap: var(--spacing-md);
-    align-items: center;
-  }
-
-  .nav-left {
-    justify-self: start;
-  }
-  .nav-right {
-    justify-self: end;
-  }
-
   /* Nav link underline (gold, 2px) that grows from center */
-  .nav-left .nav-link,
-  .nav-right .nav-link {
+  /* Nav link underline (gold, 2px) that grows from center */
+  .nav-center .nav-link {
     position: relative;
     padding: 0.5rem 0.65rem;
     margin: 0;
   }
 
-  .nav-left .nav-link::after,
-  .nav-right .nav-link::after {
+  .nav-center .nav-link::after {
     content: "";
     position: absolute;
     left: 50%;
@@ -1562,12 +1733,9 @@ select {
     border-radius: 2px;
   }
 
-  .nav-left .nav-link:hover::after,
-  .nav-right .nav-link:hover::after,
-  .nav-left .nav-link:focus::after,
-  .nav-right .nav-link:focus::after,
-  .nav-left .nav-link.active::after,
-  .nav-right .nav-link.active::after {
+  .nav-center .nav-link:hover::after,
+  .nav-center .nav-link:focus::after,
+  .nav-center .nav-link.active::after {
     transform: translateX(-50%) scaleX(1);
   }
 

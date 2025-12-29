@@ -16,9 +16,9 @@ document.addEventListener('DOMContentLoaded', function () {
     detectComponentImages();
     initCarSeatCarousel();
     setupCarBrands();
-    setupCarBrands();
     setupScrollAnimations();
     setupFileUpload();
+    initHeaderSearch();
 });
 
 // Initialize DOM elements
@@ -1173,5 +1173,144 @@ function initCompatibilityChecker() {
         } else {
             resultDiv.textContent = '';
         }
+    });
+}
+
+// Wrapper function to hold all header search logic
+function initHeaderSearch() {
+    const searchToggle = document.getElementById("search-toggle");
+    const searchContainer = document.querySelector(".search-container");
+    const searchInput = document.getElementById("header-search-input");
+    const searchResults = document.getElementById("header-search-results");
+
+    if (!searchToggle || !searchContainer || !searchInput) return;
+
+    // Toggle Search Bar
+    searchToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isActive = searchContainer.classList.contains("active");
+
+        if (isActive) {
+            // If empty, close it. If has text, maybe submit?
+            // For now, let's toggle visibility.
+            if (searchInput.value.trim() === "") {
+                searchContainer.classList.remove("active");
+            } else {
+                // Perform full search or just close
+                searchContainer.classList.remove("active");
+            }
+        } else {
+            searchContainer.classList.add("active");
+            setTimeout(() => searchInput.focus(), 100);
+        }
+    });
+
+    // Close when clicking outside
+    document.addEventListener("click", (e) => {
+        if (!searchContainer.contains(e.target)) {
+            searchContainer.classList.remove("active");
+            if (searchResults) searchResults.classList.remove("active");
+        }
+    });
+
+    // Data Loading (Reuse logic if possible, or fetch fresh)
+    let vehicleData = [];
+    const csvPath = "../DATA/vehicles.csv";
+
+    fetch(csvPath)
+        .then((response) =>
+            response.ok ? response.text() : Promise.reject("Failed to load")
+        )
+        .then((text) => {
+            const lines = text.split("\n").filter((l) => l.trim());
+            // Skip header if exists
+            const start = lines[0].toLowerCase().includes("brand") ? 1 : 0;
+            vehicleData = lines
+                .slice(start)
+                .map((line) => {
+                    const cols = line.split(",");
+                    if (cols.length >= 2) {
+                        return {
+                            brand: cols[0].trim(),
+                            model: cols[1].trim(),
+                            year: cols[2] ? cols[2].trim() : "",
+                        };
+                    }
+                    return null;
+                })
+                .filter((i) => i);
+        })
+        .catch((err) => console.log("Header search data error:", err));
+
+    // Services Data (Hardcoded for now as it's not in CSV)
+    const servicesData = [
+        { name: "Leather Restoration", type: "service" },
+        { name: "Seat Repair", type: "service" },
+        { name: "Dashboard Restoration", type: "service" },
+        { name: "Custom Stitching", type: "service" },
+        { name: "Headliner Replacement", type: "service" },
+    ];
+
+    // Input Handler
+    searchInput.addEventListener("input", (e) => {
+        const query = e.target.value.toLowerCase().trim();
+
+        if (!searchResults) return;
+
+        if (query.length < 2) {
+            searchResults.classList.remove("active");
+            return;
+        }
+
+        // Filter Vehicles
+        const vehicleMatches = vehicleData
+            .filter(
+                (v) =>
+                    v.brand.toLowerCase().includes(query) ||
+                    v.model.toLowerCase().includes(query)
+            )
+            .slice(0, 3); // Limit to 3
+
+        // Filter Services
+        const serviceMatches = servicesData
+            .filter((s) => s.name.toLowerCase().includes(query))
+            .slice(0, 2);
+
+        // Render
+        if (vehicleMatches.length === 0 && serviceMatches.length === 0) {
+            searchResults.classList.remove("active");
+            return;
+        }
+
+        let html = "";
+
+        if (vehicleMatches.length > 0) {
+            html += `<div style="padding: 8px 12px; font-size: 0.75rem; color: var(--text-secondary); font-weight: 600;">VEHICLES</div>`;
+            vehicleMatches.forEach((v) => {
+                html += `
+                        <div class="search-result-item" onclick="location.href='category.html?search=${encodeURIComponent(
+                            v.brand + " " + v.model
+                        )}'">
+                                <i class="fas fa-car"></i>
+                                <span>${v.brand} ${v.model} ${v.year}</span>
+                        </div>
+                  `;
+            });
+        }
+
+        if (serviceMatches.length > 0) {
+            html += `<div style="padding: 8px 12px; font-size: 0.75rem; color: var(--text-secondary); font-weight: 600; margin-top: 5px;">SERVICES</div>`;
+            serviceMatches.forEach((s) => {
+                html += `
+                        <div class="search-result-item" onclick="location.href='#services'">
+                                <i class="fas fa-tools"></i>
+                                <span>${s.name}</span>
+                        </div>
+                  `;
+            });
+        }
+
+        searchResults.innerHTML = html;
+        searchResults.classList.add("active");
     });
 }
