@@ -667,6 +667,235 @@ function showNotification(message, type = 'info') {
     }, 5000);
 }
 
+// Header Search Functionality
+function initHeaderSearch() {
+    const searchToggle = document.getElementById('search-toggle');
+    const searchContainer = document.querySelector('.search-container');
+    const searchInput = document.getElementById('header-search-input');
+    const searchResults = document.getElementById('header-search-results');
+    
+    if (!searchToggle || !searchContainer || !searchInput) return;
+
+    // Load History
+    const loadHistory = () => {
+        try {
+            return JSON.parse(localStorage.getItem('searchHistory') || '[]');
+        } catch (e) {
+            console.error('Failed to load search history', e);
+            return [];
+        }
+    };
+
+    const saveHistory = (term) => {
+        try {
+            let history = loadHistory();
+            if (!history.includes(term)) {
+                history.unshift(term);
+                if (history.length > 5) history.pop(); // Keep last 5
+                localStorage.setItem('searchHistory', JSON.stringify(history));
+            }
+        } catch (e) {
+            console.error('Failed to save search history', e);
+        }
+    };
+
+    // Data Loading
+    let vehicleData = [];
+    const csvPath = "../DATA/vehicles.csv";
+    
+    // Services Data (Hardcoded for now)
+    const servicesData = [
+        { name: "Leather Restoration", type: "service", url: 'category.html?q=leather' },
+        { name: "Seat Repair", type: "service", url: 'category.html?q=seat' },
+        { name: "Dashboard Restoration", type: "service", url: 'category.html?q=dashboard' },
+        { name: "Custom Stitching", type: "service", url: 'category.html?q=custom' },
+        { name: "Headliner Replacement", type: "service", url: 'category.html?q=roof' },
+        { name: 'Contact Us', type: 'page', url: '#contact' },
+        { name: 'About Us', type: 'page', url: '#why-choose-us' },
+        { name: 'Our Work', type: 'page', url: 'gallery.html' }
+    ];
+
+    fetch(csvPath)
+        .then((response) => response.ok ? response.text() : Promise.reject("Failed to load"))
+        .then((text) => {
+            const lines = text.split("\n").filter((l) => l.trim());
+            const start = lines[0].toLowerCase().includes("brand") ? 1 : 0;
+            vehicleData = lines.slice(start).map((line) => {
+                const cols = line.split(",");
+                if (cols.length >= 2) {
+                    return {
+                        brand: cols[0].trim(),
+                        model: cols[1].trim(),
+                        year: cols[2] ? cols[2].trim() : "",
+                    };
+                }
+                return null;
+            }).filter((i) => i);
+        })
+        .catch((err) => console.log("Header search data error:", err));
+
+    let debounceTimer;
+
+    const renderResults = (vehicleMatches, serviceMatches, isHistory = false) => {
+        if (!searchResults) return;
+        searchResults.innerHTML = '';
+        
+        if (isHistory && vehicleMatches.length > 0) {
+             const historyHeader = document.createElement('div');
+             historyHeader.className = 'search-header';
+             historyHeader.textContent = 'Recent Searches';
+             historyHeader.style.padding = '8px 12px';
+             historyHeader.style.fontSize = '0.8rem';
+             historyHeader.style.color = 'var(--text-secondary)';
+             searchResults.appendChild(historyHeader);
+
+             vehicleMatches.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'search-result-item';
+                div.innerHTML = `<span><i class="fas fa-history" style="margin-right: 8px; opacity: 0.6;"></i>${item}</span>`;
+                div.addEventListener('click', () => {
+                    searchInput.value = item;
+                    performSearch(item);
+                });
+                searchResults.appendChild(div);
+             });
+             searchResults.classList.add('active');
+             searchResults.style.display = 'block';
+             return;
+        }
+
+        if (vehicleMatches.length === 0 && serviceMatches.length === 0) {
+            searchResults.classList.remove('active');
+            searchResults.style.display = 'none';
+            return;
+        }
+
+        let html = "";
+
+        if (vehicleMatches.length > 0) {
+            html += `<div style="padding: 8px 12px; font-size: 0.75rem; color: var(--text-secondary); font-weight: 600;">VEHICLES</div>`;
+            vehicleMatches.forEach((v) => {
+                html += `
+                        <div class="search-result-item" onclick="location.href='category.html?search=${encodeURIComponent(v.brand + " " + v.model)}'">
+                                <i class="fas fa-car"></i>
+                                <span>${v.brand} ${v.model} ${v.year}</span>
+                        </div>
+                  `;
+            });
+        }
+
+        if (serviceMatches.length > 0) {
+            html += `<div style="padding: 8px 12px; font-size: 0.75rem; color: var(--text-secondary); font-weight: 600; margin-top: 5px;">SERVICES & PAGES</div>`;
+            serviceMatches.forEach((s) => {
+                html += `
+                        <div class="search-result-item" onclick="location.href='${s.url}'">
+                                <i class="fas ${s.type === 'page' ? 'fa-link' : 'fa-tools'}"></i>
+                                <span>${s.name}</span>
+                        </div>
+                  `;
+            });
+        }
+
+        searchResults.innerHTML = html;
+        searchResults.classList.add("active");
+        searchResults.style.display = 'block';
+    };
+
+    const performSearch = (query) => {
+        if (!query) {
+            renderResults(loadHistory(), [], true);
+            return;
+        }
+        
+        // Filter Vehicles
+        const vehicleMatches = vehicleData.filter((v) =>
+            v.brand.toLowerCase().includes(query.toLowerCase()) ||
+            v.model.toLowerCase().includes(query.toLowerCase())
+        ).slice(0, 3);
+
+        // Filter Services
+        const serviceMatches = servicesData.filter((s) => 
+            s.name.toLowerCase().includes(query.toLowerCase())
+        ).slice(0, 3);
+        
+        renderResults(vehicleMatches, serviceMatches);
+    };
+
+    // Toggle Search Bar
+    searchToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        searchContainer.classList.toggle('active');
+        if (searchContainer.classList.contains('active')) {
+            setTimeout(() => {
+                searchInput.focus();
+                performSearch(''); // Show history on open
+            }, 100);
+        }
+    });
+        
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+            if (searchContainer.classList.contains('active') && !searchContainer.contains(e.target) && !searchToggle.contains(e.target)) {
+                searchContainer.classList.remove('active');
+                if (searchResults) {
+                    searchResults.classList.remove('active');
+                    searchResults.style.display = 'none';
+                }
+            }
+    });
+    
+    // Input Handler with Debounce
+    searchInput.addEventListener('input', (e) => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+            const val = e.target.value.trim();
+            if (val.length > 0) {
+                saveHistory(val);
+            }
+            performSearch(val);
+        }, 300);
+    });
+
+    searchInput.addEventListener('focus', () => {
+        if (!searchInput.value) performSearch('');
+    });
+
+    // Handle Enter Key
+    searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            const val = searchInput.value.trim();
+            if (val) {
+                saveHistory(val);
+                window.location.href = `category.html?search=${encodeURIComponent(val)}`;
+            }
+        }
+    });
+
+    // Keyboard Shortcuts
+    document.addEventListener('keydown', (e) => {
+        // Press '/' to focus search
+        if (e.key === '/' && document.activeElement !== searchInput && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+            e.preventDefault(); 
+            searchContainer.classList.add('active');
+            setTimeout(() => {
+                searchInput.focus();
+                performSearch('');
+            }, 100);
+        }
+        
+        // Close on Escape
+        if (e.key === 'Escape' && searchContainer.classList.contains('active')) {
+            searchContainer.classList.remove('active');
+            searchInput.blur();
+            if (searchResults) {
+                searchResults.classList.remove('active');
+                searchResults.style.display = 'none';
+            }
+        }
+    });
+}
+
 // Car seat carousel functionality
 let currentSeatIndex = 0;
 let seatImages = [];
@@ -1212,144 +1441,7 @@ function initCompatibilityChecker() {
     });
 }
 
-// Wrapper function to hold all header search logic
-function initHeaderSearch() {
-    const searchToggle = document.getElementById("search-toggle");
-    const searchContainer = document.querySelector(".search-container");
-    const searchInput = document.getElementById("header-search-input");
-    const searchResults = document.getElementById("header-search-results");
 
-    if (!searchToggle || !searchContainer || !searchInput) return;
-
-    // Toggle Search Bar
-    searchToggle.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const isActive = searchContainer.classList.contains("active");
-
-        if (isActive) {
-            // If empty, close it. If has text, maybe submit?
-            // For now, let's toggle visibility.
-            if (searchInput.value.trim() === "") {
-                searchContainer.classList.remove("active");
-            } else {
-                // Perform full search or just close
-                searchContainer.classList.remove("active");
-            }
-        } else {
-            searchContainer.classList.add("active");
-            setTimeout(() => searchInput.focus(), 100);
-        }
-    });
-
-    // Close when clicking outside
-    document.addEventListener("click", (e) => {
-        if (!searchContainer.contains(e.target)) {
-            searchContainer.classList.remove("active");
-            if (searchResults) searchResults.classList.remove("active");
-        }
-    });
-
-    // Data Loading (Reuse logic if possible, or fetch fresh)
-    let vehicleData = [];
-    const csvPath = "../DATA/vehicles.csv";
-
-    fetch(csvPath)
-        .then((response) =>
-            response.ok ? response.text() : Promise.reject("Failed to load")
-        )
-        .then((text) => {
-            const lines = text.split("\n").filter((l) => l.trim());
-            // Skip header if exists
-            const start = lines[0].toLowerCase().includes("brand") ? 1 : 0;
-            vehicleData = lines
-                .slice(start)
-                .map((line) => {
-                    const cols = line.split(",");
-                    if (cols.length >= 2) {
-                        return {
-                            brand: cols[0].trim(),
-                            model: cols[1].trim(),
-                            year: cols[2] ? cols[2].trim() : "",
-                        };
-                    }
-                    return null;
-                })
-                .filter((i) => i);
-        })
-        .catch((err) => console.log("Header search data error:", err));
-
-    // Services Data (Hardcoded for now as it's not in CSV)
-    const servicesData = [
-        { name: "Leather Restoration", type: "service" },
-        { name: "Seat Repair", type: "service" },
-        { name: "Dashboard Restoration", type: "service" },
-        { name: "Custom Stitching", type: "service" },
-        { name: "Headliner Replacement", type: "service" },
-    ];
-
-    // Input Handler
-    searchInput.addEventListener("input", (e) => {
-        const query = e.target.value.toLowerCase().trim();
-
-        if (!searchResults) return;
-
-        if (query.length < 2) {
-            searchResults.classList.remove("active");
-            return;
-        }
-
-        // Filter Vehicles
-        const vehicleMatches = vehicleData
-            .filter(
-                (v) =>
-                    v.brand.toLowerCase().includes(query) ||
-                    v.model.toLowerCase().includes(query)
-            )
-            .slice(0, 3); // Limit to 3
-
-        // Filter Services
-        const serviceMatches = servicesData
-            .filter((s) => s.name.toLowerCase().includes(query))
-            .slice(0, 2);
-
-        // Render
-        if (vehicleMatches.length === 0 && serviceMatches.length === 0) {
-            searchResults.classList.remove("active");
-            return;
-        }
-
-        let html = "";
-
-        if (vehicleMatches.length > 0) {
-            html += `<div style="padding: 8px 12px; font-size: 0.75rem; color: var(--text-secondary); font-weight: 600;">VEHICLES</div>`;
-            vehicleMatches.forEach((v) => {
-                html += `
-                        <div class="search-result-item" onclick="location.href='category.html?search=${encodeURIComponent(
-                            v.brand + " " + v.model
-                        )}'">
-                                <i class="fas fa-car"></i>
-                                <span>${v.brand} ${v.model} ${v.year}</span>
-                        </div>
-                  `;
-            });
-        }
-
-        if (serviceMatches.length > 0) {
-            html += `<div style="padding: 8px 12px; font-size: 0.75rem; color: var(--text-secondary); font-weight: 600; margin-top: 5px;">SERVICES</div>`;
-            serviceMatches.forEach((s) => {
-                html += `
-                        <div class="search-result-item" onclick="location.href='#services'">
-                                <i class="fas fa-tools"></i>
-                                <span>${s.name}</span>
-                        </div>
-                  `;
-            });
-        }
-
-        searchResults.innerHTML = html;
-        searchResults.classList.add("active");
-    });
-}
 
 // Scroll Animation Observer (Added)
 document.addEventListener('DOMContentLoaded', () => {

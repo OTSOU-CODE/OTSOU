@@ -114,10 +114,21 @@ document.addEventListener('DOMContentLoaded', () => {
             allData = parseCSV(csvText);
             console.log(`Loaded ${allData.length} vehicles`);
             initializeFilters(allData);
-            filteredData = allData;
+            
+            // Handle URL Search Params
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchParam = urlParams.get('search') || urlParams.get('q');
+            
+            if (searchParam) {
+                searchInput.value = searchParam;
+                filterData();
+            } else {
+                filteredData = allData;
+                renderGrid();
+                renderPagination();
+            }
+            
             loading.style.display = 'none';
-            renderGrid();
-            renderPagination();
         })
         .catch(error => {
             console.error('Error loading CSV:', error);
