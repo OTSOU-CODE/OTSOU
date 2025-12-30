@@ -3,27 +3,27 @@
 // Gallery data
 const galleryData = [
   {
-    src: "component/Gallery/Black-&-Orange.png",
+    src: "component/Gallery/Black-&-Orange.webp",
     title: "Premium Black & Orange",
     description: "Sporty two-tone upholstery with vibrant orange accents.",
   },
   {
-    src: "component/Gallery/Blue.png",
+    src: "component/Gallery/Blue.webp",
     title: "Elegant Blue Style",
     description: "Sophisticated blue leather design.",
   },
   {
-    src: "component/Gallery/Red.png",
+    src: "component/Gallery/Red.webp",
     title: "Classic Red Design",
     description: "Rich red leather interior with premium stitching.",
   },
   {
-    src: "component/Gallery/Dark-blue-&-white.png",
+    src: "component/Gallery/Dark-blue-&-white.webp",
     title: "Modern Dark Blue & White",
     description: "Bold contrast with exceptional craftsmanship.",
   },
   {
-    src: "component/Gallery/Black-&-Red.png",
+    src: "component/Gallery/Black-&-Red.webp",
     title: "Sporty Black & Red",
     description: "Dynamic black and red leather combination.",
   },

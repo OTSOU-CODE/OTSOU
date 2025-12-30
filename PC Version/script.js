@@ -176,15 +176,15 @@ function scrollToTop() {
 }
 
 // Theme toggle functionality
+// Theme toggle functionality
 function toggleTheme(event) {
     // Check if View Transitions are supported
     if (!document.startViewTransition) {
-        // Fallback for browsers that don't support View Transitions
         performThemeToggle();
         return;
     }
 
-    // Get click coordinates for the ripple effect
+    // Get click coordinates
     const x = event ? event.clientX : window.innerWidth / 2;
     const y = event ? event.clientY : window.innerHeight / 2;
     const endRadius = Math.hypot(
@@ -192,26 +192,62 @@ function toggleTheme(event) {
         Math.max(y, window.innerHeight - y)
     );
 
-    // Perform the transition
+    // Determine current and next theme
+    const root = document.documentElement;
+    const isDark = root.getAttribute('data-theme') === 'dark';
+    
+    // Set a class to handle z-index stacking in CSS
+    // If going Dark -> Light (isDark is true currently), we want the Old view (Dark) on top to shrink
+    if (isDark) {
+        root.classList.add('theme-transition-back');
+    }
+
     const transition = document.startViewTransition(() => {
         performThemeToggle();
     });
 
-    // Animate the clip-path
     transition.ready.then(() => {
-        document.documentElement.animate(
-            {
-                clipPath: [
-                    `circle(0px at ${x}px ${y}px)`,
-                    `circle(${endRadius}px at ${x}px ${y}px)`,
-                ],
-            },
-            {
-                duration: 500,
-                easing: "ease-in-out",
-                pseudoElement: "::view-transition-new(root)",
-            }
-        );
+        // If we were Dark (isDark=true), we are now going to Light.
+        // We want the OLD view (Dark) to shrink from full radius to 0 at the click point.
+        // If we were Light (isDark=false), we are now going to Dark.
+        // We want the NEW view (Dark) to expand from 0 to full radius.
+        
+        if (isDark) {
+            // Dark -> Light: Animate OLD view (Dark) shrinking
+            document.documentElement.animate(
+                {
+                    clipPath: [
+                        `circle(${endRadius}px at ${x}px ${y}px)`,
+                        `circle(0px at ${x}px ${y}px)`,
+                    ],
+                },
+                {
+                    duration: 500,
+                    easing: "ease-in-out",
+                    pseudoElement: "::view-transition-old(root)",
+                }
+            );
+        } else {
+            // Light -> Dark: Animate NEW view (Dark) expanding
+            document.documentElement.animate(
+                {
+                    clipPath: [
+                        `circle(0px at ${x}px ${y}px)`,
+                        `circle(${endRadius}px at ${x}px ${y}px)`,
+                    ],
+                },
+                {
+                    duration: 500,
+                    easing: "ease-in-out",
+                    pseudoElement: "::view-transition-new(root)",
+                }
+            );
+        }
+    });
+
+    // Clean up class after transition
+    transition.finished.then(() => {
+        root.classList.remove('theme-transition-back');
     });
 }
 
@@ -641,11 +677,11 @@ async function detectComponentImages() {
     try {
         // List of known images
         const knownImages = [
-            'component/Gallery/Black-&-Orange.png',
-            'component/Gallery/Black-&-Red.png',
-            'component/Gallery/Blue.png',
-            'component/Gallery/Dark-blue-&-white.png',
-            'component/Gallery/Red.png'
+            'component/Gallery/Black-&-Orange.webp',
+            'component/Gallery/Black-&-Red.webp',
+            'component/Gallery/Blue.webp',
+            'component/Gallery/Dark-blue-&-white.webp',
+            'component/Gallery/Red.webp'
         ];
 
         // Combine known images with detected additional images
@@ -657,11 +693,11 @@ async function detectComponentImages() {
     } catch (error) {
         console.log('Using fallback images');
         return [
-            'component/Gallery/Black-&-Orange.png',
-            'component/Gallery/Black-&-Red.png',
-            'component/Gallery/Blue.png',
-            'component/Gallery/Dark-blue-&-white.png',
-            'component/Gallery/Red.png'
+            'component/Gallery/Black-&-Orange.webp',
+            'component/Gallery/Black-&-Red.webp',
+            'component/Gallery/Blue.webp',
+            'component/Gallery/Dark-blue-&-white.webp',
+            'component/Gallery/Red.webp'
         ];
     }
 }
@@ -885,20 +921,20 @@ function setupCarBrands() {
 
     // List of car brand image filenames from component/Car Brands folder
     const carBrands = [
-        'component/Car Brands/Sans-titre-1.png',
-        'component/Car Brands/Sans-titre-2.png',
-        'component/Car Brands/Sans-titre-3.png',
-        'component/Car Brands/Sans-titre-4.png',
-        'component/Car Brands/Sans-titre-5.png',
-        'component/Car Brands/Sans-titre-6.png',
-        'component/Car Brands/Sans-titre-7.png',
-        'component/Car Brands/Sans-titre-8.png',
-        'component/Car Brands/Sans-titre-9.png',
-        'component/Car Brands/Sans-titre-10.png',
-        'component/Car Brands/Sans-titre-11.png',
-        'component/Car Brands/Sans-titre-12.png',
-        'component/Car Brands/Sans-titre-13.png',
-        'component/Car Brands/Sans-titre-14.png'
+        'component/Car Brands/Sans-titre-1.webp',
+        'component/Car Brands/Sans-titre-2.webp',
+        'component/Car Brands/Sans-titre-3.webp',
+        'component/Car Brands/Sans-titre-4.webp',
+        'component/Car Brands/Sans-titre-5.webp',
+        'component/Car Brands/Sans-titre-6.webp',
+        'component/Car Brands/Sans-titre-7.webp',
+        'component/Car Brands/Sans-titre-8.webp',
+        'component/Car Brands/Sans-titre-9.webp',
+        'component/Car Brands/Sans-titre-10.webp',
+        'component/Car Brands/Sans-titre-11.webp',
+        'component/Car Brands/Sans-titre-12.webp',
+        'component/Car Brands/Sans-titre-13.webp',
+        'component/Car Brands/Sans-titre-14.webp'
     ];
 
     // Create brand items (duplicate for seamless loop)
@@ -908,7 +944,7 @@ function setupCarBrands() {
             item.className = 'car-brand-item';
             const img = document.createElement('img');
             img.src = brand;
-            const altText = brand.split('/').pop().replace('.png', '').replace('Sans-titre-', 'Brand ');
+            const altText = brand.split('/').pop().replace('.webp', '').replace('Sans-titre-', 'Brand ');
             img.alt = altText;
             img.onerror = function () {
                 // Hide broken images
@@ -1314,3 +1350,18 @@ function initHeaderSearch() {
         searchResults.classList.add("active");
     });
 }
+
+// Scroll Animation Observer (Added)
+document.addEventListener('DOMContentLoaded', () => {
+    const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+        scrollObserver.observe(el);
+    });
+});
