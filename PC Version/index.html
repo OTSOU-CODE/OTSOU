@@ -610,6 +610,7 @@
     <footer class="footer">
       <div class="container">
         <div class="footer-content">
+          <!-- Column 1: Brand -->
           <div class="footer-brand">
             <div class="footer-logo">
               <svg
@@ -661,27 +662,46 @@
               </svg>
             </div>
             <div class="footer-text">
-            <h3>Sherif-Auto</h3>
-            <p>Premium Auto Upholstery Services</p>
-          </div>
+              <h3>Sherif-Auto</h3>
+              <p>Premium Auto Upholstery Services. Transforming vehicles with master craftsmanship since 2010.</p>
+            </div>
           </div>
 
-          <div class="footer-links">
+          <!-- Column 2: Quick Links -->
+          <div class="footer-col">
+            <h4 class="footer-col-header">Quick Links</h4>
             <div class="link-group">
+              <a href="#home">Home</a>
               <a href="#services">Services</a>
-              <a href="#why-choose-us">About</a>
-              <a href="gallery.html">Work</a>
+              <a href="#why-choose-us">About Us</a>
+              <a href="gallery.html">Our Work</a>
               <a href="#contact">Contact</a>
             </div>
+          </div>
 
-            <div class="link-group social-group">
+          <!-- Column 3: Services -->
+          <div class="footer-col">
+            <h4 class="footer-col-header">Services</h4>
+            <div class="link-group">
+              <a href="category.html?q=seat">Seat Restoration</a>
+              <a href="category.html?q=custom">Custom Interiors</a>
+              <a href="category.html?q=dashboard">Dashboard Repair</a>
+              <a href="category.html?q=roof">Roof Lining</a>
+              <a href="category.html?q=floor">Carpet Replacement</a>
+            </div>
+          </div>
+
+          <!-- Column 4: Connect -->
+          <div class="footer-col">
+            <h4 class="footer-col-header">Connect</h4>
+            <div class="social-group">
               <a
                 href="https://web.facebook.com/profile.php?id=100065269790075"
                 class="social-link"
                 target="_blank"
                 title="Facebook"
               >
-                <i class="fab fa-facebook"></i>
+                <i class="fab fa-facebook-f"></i>
               </a>
               <a
                 href="https://www.instagram.com/sherif_siege_auto"
@@ -699,7 +719,20 @@
               >
                 <i class="fab fa-youtube"></i>
               </a>
+              <a
+                 href="https://wa.me/212715637340"
+                 class="social-link"
+                 target="_blank"
+                 title="WhatsApp"
+              >
+                 <i class="fab fa-whatsapp"></i>
+              </a>
             </div>
+            
+             <form class="footer-subscribe" onsubmit="event.preventDefault(); alert('Subscribed!');">
+                <input type="email" placeholder="Your Email" required />
+                <button type="submit" aria-label="Subscribe"><i class="fas fa-arrow-right"></i></button>
+             </form>
           </div>
         </div>
 
