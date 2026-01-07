@@ -34,6 +34,52 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="theme-transition.css" />
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoBodyShop",
+      "name": "Sherif-Auto",
+      "image": "https://sherif-auto.com/images/hero-bg.png",
+      "description": "Premium auto upholstery services in Taroudant, Morocco. Specializing in leather seat restoration, custom interiors, and dashboard repairs.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Ait Iazza",
+        "addressLocality": "Taroudant",
+        "addressRegion": "Souss-Massa",
+        "postalCode": "83000",
+        "addressCountry": "MA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 30.4708,
+        "longitude": -8.877
+      },
+      "url": "https://sherif-auto.com",
+      "telephone": "+212715637340",
+      "priceRange": "$$",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Saturday",
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday"
+          ],
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ],
+      "sameAs": [
+        "https://web.facebook.com/profile.php?id=100065269790075",
+        "https://www.instagram.com/sherif_siege_auto",
+        "https://www.youtube.com/@sherifsiegeauto"
+      ]
+    }
+    </script>
   </head>
 
   <body>
@@ -151,7 +197,7 @@
           <a href="#home" class="nav-link active">Home</a>
           <a href="#services" class="nav-link">Services</a>
           <a href="#why-choose-us" class="nav-link">About</a>
-          <a href="category.html" class="nav-link">Category</a>
+          <a href="category.html" class="nav-link">Browse Brands</a>
           <a href="gallery.html" class="nav-link">Our Work</a>
           <a href="#contact" class="nav-link">Contact</a>
         </div>
@@ -196,7 +242,7 @@
           <a href="#home" class="nav-link active">Home</a>
           <a href="#services" class="nav-link">Services</a>
           <a href="#why-choose-us" class="nav-link">About</a>
-          <a href="category.html" class="nav-link">Category</a>
+          <a href="category.html" class="nav-link">Browse Brands</a>
           <a href="gallery.html" class="nav-link">Our Work</a>
           <a href="#contact" class="nav-link">Contact</a>
         </div>
@@ -214,7 +260,7 @@
         <div class="hero-content">
           <div class="hero-text">
             <h1 class="hero-title text-center">
-              <span class="title-line">SHERIF-SIEGE-AUTO</span>
+              <span class="title-line">Sherif-Auto</span>
               <span class="title-line">Auto Upholstery</span>
               <span class="title-accent">Excellence</span>
             </h1>
@@ -241,22 +287,9 @@
           </div>
 
           <div class="hero-visual">
-            <!-- Mobile Car Seat Showcase -->
-            <div class="seat-showcase">
-              <div class="seat-container">
-                <div class="car-seat-wrapper">
-                  <!-- Car seat images will be dynamically loaded here -->
-                </div>
-              </div>
-            </div>
-
-            <!-- Carousel Dots -->
-            <div
-              class="carousel-dots"
-              aria-label="Carousel Navigation"
-              role="tablist"
-            >
-              <!-- Dots will be injected by script.js -->
+            <div class="hero-image-container">
+              <img src="images/hero-bg.png" alt="Premium Auto Upholstery Interior" class="hero-main-image" fetchpriority="high">
+              <div class="hero-glow"></div>
             </div>
 
             <div class="floating-elements">
@@ -275,14 +308,7 @@
       </div>
     </section>
 
-    <!-- Car Brands Section -->
-    <section class="car-brands-section animate-on-scroll">
-      <div class="car-brands-container">
-        <div class="car-brands-track">
-          <!-- Car brand logos will be dynamically loaded -->
-        </div>
-      </div>
-    </section>
+
 
     <!-- Why Choose Us Section -->
     <section id="why-choose-us" class="why-choose-us animate-on-scroll">
@@ -302,7 +328,7 @@
               <i class="fas fa-award"></i>
             </div>
             <h3>
-              <span class="stat-number" data-target="10">0</span> Years
+              <span class="stat-number" data-target="10">10</span>+ Years
               Experience
             </h3>
             <p>
@@ -360,7 +386,7 @@
               <i class="fas fa-heart"></i>
             </div>
             <h3>
-              <span class="stat-number" data-target="98">0</span>% Customer
+              <span class="stat-number" data-target="98">98</span>% Customer
               Satisfaction
             </h3>
             <p>
@@ -385,6 +411,8 @@
 
         <div class="services-grid">
           <div class="service-card animate-on-scroll" data-service="car-seats">
+            <img src="images/service-car.png" alt="Car Restoration" class="service-card-bg" loading="lazy">
+            <div class="service-card-overlay"></div>
             <div class="service-icon">
               <i class="fas fa-car"></i>
             </div>
@@ -408,6 +436,8 @@
           </div>
 
           <div class="service-card animate-on-scroll" data-service="bike-seats">
+            <img src="images/service-bike.png" alt="Bike Restoration" class="service-card-bg" loading="lazy">
+            <div class="service-card-overlay"></div>
             <div class="service-icon">
               <i class="fas fa-motorcycle"></i>
             </div>
@@ -428,6 +458,75 @@
             >
               Get Price
             </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials animate-on-scroll">
+      <div class="container">
+        <div class="section-header animate-on-scroll">
+          <span class="section-tag">Testimonials</span>
+          <h2 class="section-title">Client Stories</h2>
+          <p class="section-description">
+            Hear from our satisfied customers about their experience with Sherif-Auto.
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card animate-on-scroll">
+            <div class="testimonial-content">
+              <i class="fas fa-quote-left quote-icon"></i>
+              <p>"Absolutely amazing work on my BMW seats. The leather quality is top-notch and the stitching is perfect. Highly recommended!"</p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-avatar">
+                <span class="avatar-initial">A</span>
+              </div>
+              <div class="author-info">
+                <h4>Ahmed Benali</h4>
+                <div class="stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card animate-on-scroll">
+            <div class="testimonial-content">
+              <i class="fas fa-quote-left quote-icon"></i>
+              <p>"Transformed the interior of my vintage Mercedes. The attention to detail is incredible. Thank you Sherif-Auto!"</p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-avatar">
+                <span class="avatar-initial">S</span>
+              </div>
+              <div class="author-info">
+                <h4>Sarah K.</h4>
+                <div class="stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card animate-on-scroll">
+            <div class="testimonial-content">
+              <i class="fas fa-quote-left quote-icon"></i>
+              <p>"Fast, professional, and great pricing. Best auto upholstery service in Taroudant."</p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-avatar">
+                <span class="avatar-initial">M</span>
+              </div>
+              <div class="author-info">
+                <h4>Mohamed El Idrissi</h4>
+                <div class="stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -694,6 +793,11 @@
           <!-- Column 4: Connect -->
           <div class="footer-col">
             <h4 class="footer-col-header">Connect</h4>
+            <div class="footer-contact-info" style="margin-bottom: 15px; color: #ccc;">
+               <p style="margin-bottom: 8px;"><i class="fas fa-phone-alt" style="color: var(--primary); width: 20px;"></i> +212 715-637-340</p>
+               <p style="margin-bottom: 8px;"><i class="fas fa-envelope" style="color: var(--primary); width: 20px;"></i> contact@sherif-auto.com</p>
+               <p style="margin-bottom: 15px;"><i class="fas fa-map-marker-alt" style="color: var(--primary); width: 20px;"></i> Taroudant, Morocco</p>
+            </div>
             <div class="social-group">
               <a
                 href="https://web.facebook.com/profile.php?id=100065269790075"

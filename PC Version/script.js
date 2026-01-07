@@ -9,17 +9,35 @@ let themeToggleBtn;
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function () {
+    // Observability: Initialize Error Monitoring (Simulation)
+    initErrorLogging();
+
     initializeElements();
     setupEventListeners();
     initNewFeatures();
     setupContactForm();
     detectComponentImages();
     initCarSeatCarousel();
-    setupCarBrands();
+
     setupScrollAnimations();
     setupFileUpload();
     initHeaderSearch();
 });
+
+// Observability: Centralized Error Logging (Simulation)
+function initErrorLogging() {
+    window.onerror = function (message, source, lineno, colno, error) {
+        console.error('[TopLevelError]', message, source, lineno, colno, error);
+        // In production, send this to Sentry/Datadog:
+        // Sentry.captureException(error);
+    };
+
+    window.addEventListener('unhandledrejection', function (event) {
+        console.error('[UnhandledPromiseRejection]', event.reason);
+        // Sentry.captureException(event.reason);
+    });
+}
+
 
 // Initialize DOM elements
 function initializeElements() {
@@ -535,6 +553,23 @@ function setupContactForm() {
             return;
         }
 
+        // File Validation (Security & Efficiency)
+        if (fileInput && fileInput.files.length > 0) {
+            const file = fileInput.files[0];
+            const maxSize = 5 * 1024 * 1024; // 5MB
+            const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
+
+            if (file.size > maxSize) {
+                showNotification('File is too large. Maximum size is 5MB.', 'error');
+                return;
+            }
+
+            if (!allowedTypes.includes(file.type)) {
+                showNotification('Invalid file type. Please upload JPG, PNG, or WebP.', 'error');
+                return;
+            }
+        }
+
         // Show loading state
         const submitButton = contactForm.querySelector('button[type="submit"]');
         const originalText = submitButton.innerHTML;
@@ -558,7 +593,16 @@ function setupContactForm() {
                 payload.append('file', fileInput.files[0]);
             }
 
-            // Simulate sending (replace with actual endpoint)
+            // --- BACKEND API INTEGRATION NOTES ---
+            // In a real implementation, this fetch call should:
+            // 1. Point to a secure HTTPS endpoint (e.g., https://api.sherif-auto.com/v1/contact)
+            // 2. Include CSRF tokens if using cookie-based auth.
+            // 3. Implement Rate Limiting on the specific IP/User Agent on the server.
+            // 4. Server MUST re-validate file size and type (MIME sniffing) again.
+            // 5. Server should scan files for malware before storage.
+            // 6. Store files in a non-executable directory (e.g., S3 bucket) with generated filenames.
+            
+            // Simulation:
             await new Promise(resolve => setTimeout(resolve, 2000));
 
             // Success
@@ -701,7 +745,7 @@ function initHeaderSearch() {
 
     // Data Loading
     let vehicleData = [];
-    const csvPath = "../DATA/vehicles.csv";
+    const dataPath = "DATA/vehicles.json";
     
     // Services Data (Hardcoded for now)
     const servicesData = [
@@ -715,22 +759,14 @@ function initHeaderSearch() {
         { name: 'Our Work', type: 'page', url: 'gallery.html' }
     ];
 
-    fetch(csvPath)
-        .then((response) => response.ok ? response.text() : Promise.reject("Failed to load"))
-        .then((text) => {
-            const lines = text.split("\n").filter((l) => l.trim());
-            const start = lines[0].toLowerCase().includes("brand") ? 1 : 0;
-            vehicleData = lines.slice(start).map((line) => {
-                const cols = line.split(",");
-                if (cols.length >= 2) {
-                    return {
-                        brand: cols[0].trim(),
-                        model: cols[1].trim(),
-                        year: cols[2] ? cols[2].trim() : "",
-                    };
-                }
-                return null;
-            }).filter((i) => i);
+    fetch(dataPath)
+        .then((response) => response.ok ? response.json() : Promise.reject("Failed to load data"))
+        .then((data) => {
+            // Map JSON data to expected format for search
+            // We limit to top 2000 or similar to avoid massive search overhead in memory if needed, 
+            // but 200k objects might be okay in modern JS engine if we just keep references.
+            // Let's just keep the whole thing but optimize the map.
+            vehicleData = data; 
         })
         .catch((err) => console.log("Header search data error:", err));
 
@@ -778,7 +814,7 @@ function initHeaderSearch() {
                 html += `
                         <div class="search-result-item" onclick="location.href='category.html?search=${encodeURIComponent(v.brand + " " + v.model)}'">
                                 <i class="fas fa-car"></i>
-                                <span>${v.brand} ${v.model} ${v.year}</span>
+                                <span>${v.brand} ${v.model} ${v.yearStart || ""}</span>
                         </div>
                   `;
             });
@@ -1144,53 +1180,7 @@ if ('serviceWorker' in navigator) {
 }
 
 // Car Brands Section Setup
-function setupCarBrands() {
-    const track = document.querySelector('.car-brands-track');
-    if (!track) return;
 
-    // List of car brand image filenames from component/Car Brands folder
-    const carBrands = [
-        'component/Car Brands/Sans-titre-1.webp',
-        'component/Car Brands/Sans-titre-2.webp',
-        'component/Car Brands/Sans-titre-3.webp',
-        'component/Car Brands/Sans-titre-4.webp',
-        'component/Car Brands/Sans-titre-5.webp',
-        'component/Car Brands/Sans-titre-6.webp',
-        'component/Car Brands/Sans-titre-7.webp',
-        'component/Car Brands/Sans-titre-8.webp',
-        'component/Car Brands/Sans-titre-9.webp',
-        'component/Car Brands/Sans-titre-10.webp',
-        'component/Car Brands/Sans-titre-11.webp',
-        'component/Car Brands/Sans-titre-12.webp',
-        'component/Car Brands/Sans-titre-13.webp',
-        'component/Car Brands/Sans-titre-14.webp'
-    ];
-
-    // Create brand items (duplicate for seamless loop)
-    const createBrandItems = (brands) => {
-        return brands.map(brand => {
-            const item = document.createElement('div');
-            item.className = 'car-brand-item';
-            const img = document.createElement('img');
-            img.src = brand;
-            const altText = brand.split('/').pop().replace('.webp', '').replace('Sans-titre-', 'Brand ');
-            img.alt = altText;
-            img.onerror = function () {
-                // Hide broken images
-                this.style.display = 'none';
-            };
-            item.appendChild(img);
-            return item;
-        });
-    };
-
-    // Add brands twice for seamless scrolling
-    const items1 = createBrandItems(carBrands);
-    const items2 = createBrandItems(carBrands);
-
-    items1.forEach(item => track.appendChild(item));
-    items2.forEach(item => track.appendChild(item));
-}
 
 // Export functions for global access
 window.scrollToSection = scrollToSection;
@@ -1347,30 +1337,18 @@ function initCompatibilityChecker() {
     // Since this runs in phone/index.html, and data is in ../DATA/vehicles.csv (which I created in DATA sibling to phone)
     // Actually, I put vehicles.csv in 'DATA' sibling to 'phone'.
     // So if the URL is /phone/index.html, then ../DATA/vehicles.csv is correct.
-    const csvPath = '../DATA/vehicles.csv';
+    // Use absolute path relative to domain root or relative path
+    const dataPath = 'DATA/vehicles.json';
     let vehicleData = [];
 
     // Fetch Data
-    fetch(csvPath)
+    fetch(dataPath)
         .then(res => {
-             if(!res.ok) throw new Error('Failed to load');
-             return res.text();
+             if(!res.ok) throw new Error('Failed to load data');
+             return res.json();
         })
-        .then(text => {
-            // Simple CSV Parser
-            const lines = text.split('\n').filter(l => l.trim());
-            // Skip header if present
-            const startIndex = lines[0].toLowerCase().includes('brand') ? 1 : 0;
-            
-            // Parse into objects
-            vehicleData = lines.slice(startIndex).map(line => {
-                const cols = line.split(',');
-                if (cols.length < 2) return null;
-                return {
-                    brand: cols[0].trim(),
-                    model: cols[1].trim(),
-                };
-            }).filter(item => item !== null);
+        .then(data => {
+            vehicleData = data;
 
             // Populate Brands
             const brands = [...new Set(vehicleData.map(v => v.brand))].sort();
@@ -1384,7 +1362,6 @@ function initCompatibilityChecker() {
         })
         .catch(err => {
             console.error('Error loading vehicle data for checker:', err);
-            // Fallback provided by catch
         });
 
     // On Brand Change

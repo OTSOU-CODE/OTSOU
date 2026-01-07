@@ -1,0 +1,209 @@
+
+/* Testimonials Section */
+.testimonials {
+    padding: var(--spacing-xxl) 0;
+    background: var(--surface);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.testimonial-card {
+    background: var(--background);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.testimonial-content {
+    margin-bottom: var(--spacing-lg);
+}
+
+.quote-icon {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: var(--spacing-sm);
+    opacity: 0.5;
+}
+
+.testimonial-content p {
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border-light);
+}
+
+.author-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.author-info h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+
+.stars {
+    color: #FFD700;
+    font-size: 0.8rem;
+}
+
+/* Service Images Overlay */
+.service-card {
+    position: relative;
+    overflow: hidden;
+    /* ensure z-index context */
+    z-index: 1;
+    color: white !important; /* Force text to white */
+    border: none;
+}
+
+.service-card-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    transition: transform 0.6s ease;
+}
+
+.service-card:hover .service-card-bg {
+    transform: scale(1.1);
+}
+
+.service-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 100%);
+    z-index: -1;
+}
+
+.service-card h3, 
+.service-card p, 
+.service-card li {
+    color: white !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.service-card .service-features li::before {
+    color: var(--primary); /* Keep checkmarks gold */
+}
+
+.service-icon {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Enhanced Buttons */
+.btn-primary {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Contact Upload Button Customization */
+.file-upload-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: color 0.3s;
+}
+
+.file-upload-label i {
+    font-size: 2rem;
+    color: var(--primary);
+}
+
+.file-upload-input:focus + .file-upload-label {
+    outline: 2px solid var(--primary);
+    border-radius: 4px;
+}
+
+/* Footer Refinements */
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.footer-brand {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: var(--spacing-lg);
+}
+
+@media (min-width: 768px) {
+    .footer-brand {
+        grid-column: span 2; /* Take up more space */
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+.footer-col-header {
+    color: var(--primary);
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-md);
+    position: relative;
+    display: inline-block;
+}
+
+.footer-col-header::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 30px;
+    height: 2px;
+    background: var(--primary);
+}
+
+.link-group a {
+    display: block;
+    color: #cccccc;
+    text-decoration: none;
+    margin-bottom: 8px;
+    transition: color 0.3s;
+}
+
+.link-group a:hover {
+    color: var(--primary);
+    transform: translateX(5px);
+    display: block; /* Ensure transform works */
+}

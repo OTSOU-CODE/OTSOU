@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
+  <head>
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -34,7 +34,8 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="theme-transition.css" />
-    <link rel="stylesheet" href="category.css" /> <!-- Page Specific CSS -->
+    <link rel="stylesheet" href="category.css" />
+    <!-- Page Specific CSS -->
   </head>
 
   <body>
@@ -184,7 +185,6 @@
             <i class="fas fa-moon"></i>
           </button>
 
-
           <div class="nav-toggle" id="nav-toggle">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -194,7 +194,7 @@
 
         <!-- Mobile Menu overlay -->
         <div class="nav-menu" id="nav-menu">
-           <a href="index.html#home" class="nav-link">Home</a>
+          <a href="index.html#home" class="nav-link">Home</a>
           <a href="index.html#services" class="nav-link">Services</a>
           <a href="index.html#why-choose-us" class="nav-link">About</a>
           <a href="category.html" class="nav-link active">Category</a>
@@ -206,244 +206,237 @@
 
     <!-- Page Content -->
     <div class="page-header">
-        <div class="container">
-            <div class="header-content">
-                <h1 class="page-title">Vehicle Category</h1>
-                <div class="view-controls">
-                    <button class="view-btn" data-view="grid-3">
-                        <i class="fas fa-th"></i>
-                    </button>
-                    <button class="view-btn active" data-view="grid-4">
-                        <i class="fas fa-th-large"></i>
-                    </button>
-                    <button class="view-btn" data-view="list">
-                        <i class="fas fa-list"></i>
-                    </button>
-                </div>
-            </div>
+      <div class="container">
+        <div class="header-content">
+          <h1 class="page-title">Vehicle Category</h1>
+          <div class="view-controls">
+            <button class="view-btn" data-view="grid-3">
+              <i class="fas fa-th"></i>
+            </button>
+            <button class="view-btn active" data-view="grid-4">
+              <i class="fas fa-th-large"></i>
+            </button>
+            <button class="view-btn" data-view="list">
+              <i class="fas fa-list"></i>
+            </button>
+          </div>
         </div>
+      </div>
     </div>
 
     <div class="container">
-        <div class="content-wrapper">
-            <!-- Filter Sidebar -->
-            <aside class="filter-sidebar">
-                <div class="filter-header">
-                    <h3>Filters</h3>
-                    <a href="#" class="clear-filters">Clear All</a>
-                </div>
+      <div class="content-wrapper">
+        <!-- Filter Sidebar -->
+        <aside class="filter-sidebar">
+          <div class="filter-header">
+            <h3>Filters</h3>
+            <a href="#" class="clear-filters">Clear All</a>
+          </div>
 
-                <!-- Search -->
-                <div class="filter-group">
-                    <h4>Search</h4>
-                    <div class="search-box">
-                        <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Search brand or model...">
-                    </div>
-                </div>
+          <!-- Search -->
+          <div class="filter-group">
+            <h4>Search</h4>
+            <div class="search-box">
+              <i class="fas fa-search"></i>
+              <input type="text" placeholder="Search brand or model..." />
+            </div>
+          </div>
 
-                <!-- Brand Filter -->
-                <div class="filter-group">
-                    <h4>Brand</h4>
-                    <div class="checkbox-group">
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="toyota">
-                            <label for="toyota">Toyota</label>
-                            <span class="count-badge">45</span>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="honda">
-                            <label for="honda">Honda</label>
-                            <span class="count-badge">38</span>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="bmw">
-                            <label for="bmw">BMW</label>
-                            <span class="count-badge">32</span>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="mercedes">
-                            <label for="mercedes">Mercedes</label>
-                            <span class="count-badge">28</span>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="audi">
-                            <label for="audi">Audi</label>
-                            <span class="count-badge">24</span>
-                        </div>
-                    </div>
-                </div>
+          <!-- Brand Filter -->
+          <div class="filter-group">
+            <h4>Brand</h4>
+            <div class="checkbox-group" id="brand-filters">
+              <!-- Dynamically populated -->
+              <div class="skeleton-line short"></div>
+              <div class="skeleton-line short"></div>
+              <div class="skeleton-line short"></div>
+            </div>
+          </div>
 
-                <!-- Year Range -->
-                <div class="filter-group">
-                    <h4>Year Range</h4>
-                    <div class="year-range">
-                        <div class="year-values">
-                            <span id="minYear">2010</span>
-                            <span id="maxYear">2024</span>
-                        </div>
-                        <input type="range" min="2010" max="2024" value="2010" id="yearMin">
-                        <input type="range" min="2010" max="2024" value="2024" id="yearMax">
-                    </div>
-                </div>
 
-                <!-- Type Filter -->
-                <div class="filter-group">
-                    <h4>Type</h4>
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="sedan">
-                        <label for="sedan">Sedan</label>
-                        <span class="count-badge">67</span>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="suv">
-                        <label for="suv">SUV</label>
-                        <span class="count-badge">54</span>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="truck">
-                        <label for="truck">Truck</label>
-                        <span class="count-badge">32</span>
-                    </div>
-                </div>
-            </aside>
 
-            <!-- Main Content -->
-            <main>
-                <!-- Sort & Results -->
-                <div class="results-header">
-                    <div class="results-count">
-                        <strong>167</strong> vehicles found
-                    </div>
-                    <div class="sort-controls">
-                        <select class="sort-select">
-                            <option>Sort by: Relevance</option>
-                            <option>Sort by: Name (A-Z)</option>
-                            <option>Sort by: Name (Z-A)</option>
-                            <option>Sort by: Year (Newest)</option>
-                            <option>Sort by: Year (Oldest)</option>
-                        </select>
-                        <div class="compare-mode">
-                            <input type="checkbox" id="compareMode">
-                            <label for="compareMode">Compare Mode</label>
-                        </div>
-                        <button class="compare-btn">Compare Selected (0)</button>
-                    </div>
-                </div>
+          <!-- Type Filter -->
+          <div class="filter-group">
+            <h4>Type</h4>
+            <div class="checkbox-group" id="type-filters">
+              <!-- Dynamically populated -->
+              <div class="skeleton-line short"></div>
+              <div class="skeleton-line short"></div>
+            </div>
+          </div>
 
-                <!-- Grid View -->
-                <div class="vehicles-grid">
-                    <div class="vehicle-card">
-                        <input type="checkbox" class="compare-checkbox" style="display: none;">
-                        <div class="vehicle-icon"><i class="fas fa-car"></i></div>
-                        <h3>Camry</h3>
-                        <div class="vehicle-brand">Toyota</div>
-                        <div class="vehicle-year">2020-2024</div>
-                        <div class="vehicle-actions">
-                            <button class="btn-view">View Details</button>
-                        </div>
-                    </div>
-                    <!-- Repeat cards... -->
-                    <div class="vehicle-card">
-                        <input type="checkbox" class="compare-checkbox" style="display: none;">
-                        <div class="vehicle-icon"><i class="fas fa-car"></i></div>
-                        <h3>Accord</h3>
-                        <div class="vehicle-brand">Honda</div>
-                        <div class="vehicle-year">2018-2023</div>
-                        <div class="vehicle-actions">
-                            <button class="btn-view">View Details</button>
-                        </div>
-                    </div>
-                    <div class="vehicle-card">
-                        <input type="checkbox" class="compare-checkbox" style="display: none;">
-                        <div class="vehicle-icon"><i class="fas fa-car"></i></div>
-                        <h3>3 Series</h3>
-                        <div class="vehicle-brand">BMW</div>
-                        <div class="vehicle-year">2019-2024</div>
-                        <div class="vehicle-actions">
-                            <button class="btn-view">View Details</button>
-                        </div>
-                    </div>
-                    <div class="vehicle-card">
-                        <input type="checkbox" class="compare-checkbox" style="display: none;">
-                        <div class="vehicle-icon"><i class="fas fa-car"></i></div>
-                        <h3>C-Class</h3>
-                        <div class="vehicle-brand">Mercedes</div>
-                        <div class="vehicle-year">2020-2024</div>
-                        <div class="vehicle-actions">
-                            <button class="btn-view">View Details</button>
-                        </div>
-                    </div>
-                    <div class="vehicle-card">
-                        <input type="checkbox" class="compare-checkbox" style="display: none;">
-                        <div class="vehicle-icon"><i class="fas fa-car"></i></div>
-                        <h3>Civic</h3>
-                        <div class="vehicle-brand">Honda</div>
-                        <div class="vehicle-year">2019-2024</div>
-                        <div class="vehicle-actions">
-                            <button class="btn-view">View Details</button>
-                        </div>
-                    </div>
-                    <div class="vehicle-card">
-                        <input type="checkbox" class="compare-checkbox" style="display: none;">
-                        <div class="vehicle-icon"><i class="fas fa-car"></i></div>
-                        <h3>A4</h3>
-                        <div class="vehicle-brand">Audi</div>
-                        <div class="vehicle-year">2020-2024</div>
-                        <div class="vehicle-actions">
-                            <button class="btn-view">View Details</button>
-                        </div>
-                    </div>
-                    <div class="vehicle-card">
-                        <input type="checkbox" class="compare-checkbox" style="display: none;">
-                        <div class="vehicle-icon"><i class="fas fa-car"></i></div>
-                        <h3>RAV4</h3>
-                        <div class="vehicle-brand">Toyota</div>
-                        <div class="vehicle-year">2019-2024</div>
-                        <div class="vehicle-actions">
-                            <button class="btn-view">View Details</button>
-                        </div>
-                    </div>
-                    <div class="vehicle-card">
-                        <input type="checkbox" class="compare-checkbox" style="display: none;">
-                        <div class="vehicle-icon"><i class="fas fa-car"></i></div>
-                        <h3>X5</h3>
-                        <div class="vehicle-brand">BMW</div>
-                        <div class="vehicle-year">2020-2024</div>
-                        <div class="vehicle-actions">
-                            <button class="btn-view">View Details</button>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- List View -->
-                <div class="vehicles-list">
-                    <div class="vehicle-list-item">
-                        <div class="list-icon"><i class="fas fa-car"></i></div>
-                        <div class="list-info">
-                            <h3>Toyota Camry</h3>
-                            <div class="list-meta">
-                                <span><i class="fas fa-calendar"></i> 2020-2024</span>
-                                <span><i class="fas fa-check-circle"></i> Available</span>
-                            </div>
-                        </div>
-                        <button class="btn-view">View Details</button>
-                    </div>
-                    <!-- More list items to match grid -->
-                </div>
 
-                <!-- Pagination -->
-                <div class="pagination">
-                    <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
-                    <button class="page-btn active">1</button>
-                    <button class="page-btn">2</button>
-                    <button class="page-btn">3</button>
-                    <button class="page-btn">...</button>
-                    <button class="page-btn">12</button>
-                    <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+        <!-- Main Content -->
+        <main>
+          <!-- Sort & Results -->
+          <div class="results-header">
+            <div class="results-count"><strong>167</strong> vehicles found</div>
+            <div class="sort-controls">
+              <select class="sort-select">
+                <option>Sort by: Relevance</option>
+                <option>Sort by: Name (A-Z)</option>
+                <option>Sort by: Name (Z-A)</option>
+                <option>Sort by: Year (Newest)</option>
+                <option>Sort by: Year (Oldest)</option>
+              </select>
+              <div class="compare-mode">
+                <input type="checkbox" id="compareMode" />
+                <label for="compareMode">Compare Mode</label>
+              </div>
+              <button class="compare-btn">Compare Selected (0)</button>
+            </div>
+          </div>
+
+          <!-- Grid View -->
+          <div class="vehicles-grid">
+            <div class="vehicle-card">
+              <input
+                type="checkbox"
+                class="compare-checkbox"
+                style="display: none"
+              />
+              <div class="vehicle-icon"><i class="fas fa-car"></i></div>
+              <h3>Camry</h3>
+              <div class="vehicle-brand">Toyota</div>
+              <div class="vehicle-year">2020-2024</div>
+              <div class="vehicle-actions">
+                <button class="btn-view">View Details</button>
+              </div>
+            </div>
+            <!-- Repeat cards... -->
+            <div class="vehicle-card">
+              <input
+                type="checkbox"
+                class="compare-checkbox"
+                style="display: none"
+              />
+              <div class="vehicle-icon"><i class="fas fa-car"></i></div>
+              <h3>Accord</h3>
+              <div class="vehicle-brand">Honda</div>
+              <div class="vehicle-year">2018-2023</div>
+              <div class="vehicle-actions">
+                <button class="btn-view">View Details</button>
+              </div>
+            </div>
+            <div class="vehicle-card">
+              <input
+                type="checkbox"
+                class="compare-checkbox"
+                style="display: none"
+              />
+              <div class="vehicle-icon"><i class="fas fa-car"></i></div>
+              <h3>3 Series</h3>
+              <div class="vehicle-brand">BMW</div>
+              <div class="vehicle-year">2019-2024</div>
+              <div class="vehicle-actions">
+                <button class="btn-view">View Details</button>
+              </div>
+            </div>
+            <div class="vehicle-card">
+              <input
+                type="checkbox"
+                class="compare-checkbox"
+                style="display: none"
+              />
+              <div class="vehicle-icon"><i class="fas fa-car"></i></div>
+              <h3>C-Class</h3>
+              <div class="vehicle-brand">Mercedes</div>
+              <div class="vehicle-year">2020-2024</div>
+              <div class="vehicle-actions">
+                <button class="btn-view">View Details</button>
+              </div>
+            </div>
+            <div class="vehicle-card">
+              <input
+                type="checkbox"
+                class="compare-checkbox"
+                style="display: none"
+              />
+              <div class="vehicle-icon"><i class="fas fa-car"></i></div>
+              <h3>Civic</h3>
+              <div class="vehicle-brand">Honda</div>
+              <div class="vehicle-year">2019-2024</div>
+              <div class="vehicle-actions">
+                <button class="btn-view">View Details</button>
+              </div>
+            </div>
+            <div class="vehicle-card">
+              <input
+                type="checkbox"
+                class="compare-checkbox"
+                style="display: none"
+              />
+              <div class="vehicle-icon"><i class="fas fa-car"></i></div>
+              <h3>A4</h3>
+              <div class="vehicle-brand">Audi</div>
+              <div class="vehicle-year">2020-2024</div>
+              <div class="vehicle-actions">
+                <button class="btn-view">View Details</button>
+              </div>
+            </div>
+            <div class="vehicle-card">
+              <input
+                type="checkbox"
+                class="compare-checkbox"
+                style="display: none"
+              />
+              <div class="vehicle-icon"><i class="fas fa-car"></i></div>
+              <h3>RAV4</h3>
+              <div class="vehicle-brand">Toyota</div>
+              <div class="vehicle-year">2019-2024</div>
+              <div class="vehicle-actions">
+                <button class="btn-view">View Details</button>
+              </div>
+            </div>
+            <div class="vehicle-card">
+              <input
+                type="checkbox"
+                class="compare-checkbox"
+                style="display: none"
+              />
+              <div class="vehicle-icon"><i class="fas fa-car"></i></div>
+              <h3>X5</h3>
+              <div class="vehicle-brand">BMW</div>
+              <div class="vehicle-year">2020-2024</div>
+              <div class="vehicle-actions">
+                <button class="btn-view">View Details</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- List View -->
+          <div class="vehicles-list">
+            <div class="vehicle-list-item">
+              <div class="list-icon"><i class="fas fa-car"></i></div>
+              <div class="list-info">
+                <h3>Toyota Camry</h3>
+                <div class="list-meta">
+                  <span><i class="fas fa-calendar"></i> 2020-2024</span>
+                  <span><i class="fas fa-check-circle"></i> Available</span>
                 </div>
-            </main>
-        </div>
+              </div>
+              <button class="btn-view">View Details</button>
+            </div>
+            <!-- More list items to match grid -->
+          </div>
+
+          <!-- Pagination -->
+          <div class="pagination">
+            <button class="page-btn">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">...</button>
+            <button class="page-btn">12</button>
+            <button class="page-btn">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </main>
+      </div>
     </div>
 
     <!-- Footer (Copied from index.html) -->
@@ -501,9 +494,9 @@
               </svg>
             </div>
             <div class="footer-text">
-            <h3>Sherif-Auto</h3>
-            <p>Premium Auto Upholstery Services</p>
-          </div>
+              <h3>Sherif-Auto</h3>
+              <p>Premium Auto Upholstery Services</p>
+            </div>
           </div>
 
           <div class="footer-links">
@@ -555,6 +548,8 @@
 
     <!-- Scripts -->
     <script src="script.js"></script>
+    <!-- PapaParse for CSV Parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <script src="category.js"></script>
   </body>
 </html>
