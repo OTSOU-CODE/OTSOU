@@ -1145,51 +1145,9 @@ if ('serviceWorker' in navigator) {
 
 // Car Brands Section Setup
 function setupCarBrands() {
+    // Function disabled: Replaced by Marquee component in index.html
     const track = document.querySelector('.car-brands-track');
-    if (!track) return;
-
-    // List of car brand image filenames from images/brands folder
-    const carBrands = [
-        'images/brands/Sans-titre-1.webp',
-        'images/brands/Sans-titre-2.webp',
-        'images/brands/Sans-titre-3.webp',
-        'images/brands/Sans-titre-4.webp',
-        'images/brands/Sans-titre-5.webp',
-        'images/brands/Sans-titre-6.webp',
-        'images/brands/Sans-titre-7.webp',
-        'images/brands/Sans-titre-8.webp',
-        'images/brands/Sans-titre-9.webp',
-        'images/brands/Sans-titre-10.webp',
-        'images/brands/Sans-titre-11.webp',
-        'images/brands/Sans-titre-12.webp',
-        'images/brands/Sans-titre-13.webp',
-        'images/brands/Sans-titre-14.webp'
-    ];
-
-    // Create brand items (duplicate for seamless loop)
-    const createBrandItems = (brands) => {
-        return brands.map(brand => {
-            const item = document.createElement('div');
-            item.className = 'car-brand-item';
-            const img = document.createElement('img');
-            img.src = brand;
-            const altText = brand.split('/').pop().replace('.webp', '').replace('Sans-titre-', 'Brand ');
-            img.alt = altText;
-            img.onerror = function () {
-                // Hide broken images
-                this.style.display = 'none';
-            };
-            item.appendChild(img);
-            return item;
-        });
-    };
-
-    // Add brands twice for seamless scrolling
-    const items1 = createBrandItems(carBrands);
-    const items2 = createBrandItems(carBrands);
-
-    items1.forEach(item => track.appendChild(item));
-    items2.forEach(item => track.appendChild(item));
+    if (track) track.style.display = 'none'; // Ensure old track is hidden if it exists
 }
 
 // Export functions for global access
