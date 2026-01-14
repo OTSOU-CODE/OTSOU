@@ -133,6 +133,31 @@ export function createTubelightNavbar({ items, target = document.body, logo = ''
          const activeEl = itemElements.find(el => el.dataset.name === activeTab);
          if (activeEl) moveLampTo(activeEl);
     });
+
+    // Smart Navbar (Hide on scroll down, show on scroll up)
+    let lastScrollTop = 0;
+    const scrollThreshold = 100; // Minimum scroll amount before hiding
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      
+      // Don't hide if we're near the top
+      if (currentScroll < scrollThreshold) {
+        navbar.classList.remove('navbar-hidden');
+        lastScrollTop = currentScroll;
+        return;
+      }
+
+      if (currentScroll > lastScrollTop) {
+        // Scrolling Down
+        navbar.classList.add('navbar-hidden');
+      } else {
+        // Scrolling Up
+        navbar.classList.remove('navbar-hidden');
+      }
+      
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
+    });
   
     return navbar;
   }

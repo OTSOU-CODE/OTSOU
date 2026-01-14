@@ -208,53 +208,38 @@
 
     <!-- Hero Section -->
     <section class="hero-category">
-      <img
-        src="images/hero_upholstery_bg.png"
-        class="hero-category-bg"
-        alt="Luxury Interior"
-        onerror="this.src='https://placehold.co/1920x800/2c2c2c/D4AF37?text=Luxury+Upholstery'"
-      />
       <div class="hero-category-content">
         <h1 class="hero-title-large">
-          Find Perfect Upholstery<br />For Your Vehicle
+          Premium Customization<br />
+          <span style="color: var(--upholstery-gold)"
+            >Transform Your Vehicle</span
+          >
         </h1>
-        <div class="hero-stats-row">
-          <div class="hero-stat-item">
-            <span class="hero-stat-number" data-count="500">500+</span>
-            <span class="hero-stat-label">Vehicle Models</span>
-          </div>
-          <div class="hero-stat-item">
-            <span class="hero-stat-number">50+</span>
-            <span class="hero-stat-label">Luxury Brands</span>
-          </div>
-          <div class="hero-stat-item">
-            <span class="hero-stat-number">100%</span>
-            <span class="hero-stat-label">Premium Quality</span>
-          </div>
-        </div>
+        <p class="hero-subtitle">
+          Revitalize your car's interior with our bespoke upholstery services.
+          Experience luxury and comfort tailored to your style.
+          <a href="#" style="color: white; text-decoration: underline"
+            >Read more</a
+          >
+        </p>
       </div>
     </section>
 
     <!-- Sticky Search & Filter Bar -->
     <div class="filter-sticky-bar" id="filterBar">
+      <div class="filter-intro-row">
+        <span>Filter by options</span>
+        <button class="reset-filters-btn" id="resetFiltersLink">
+          Reset filters
+        </button>
+      </div>
       <div class="filter-bar-content">
-        <!-- Search -->
-        <div class="bar-search-wrapper">
-          <i class="fas fa-search bar-search-icon"></i>
-          <input
-            type="text"
-            class="bar-search-input"
-            id="globalSearch"
-            placeholder="Search by brand, model or year..."
-          />
-        </div>
-
         <!-- Filter Groups -->
         <div class="bar-filters-group">
-          <!-- Brand Filter -->
-          <div class="filter-dropdown" id="brandFilter">
+          <!-- Make Filter -->
+          <div class="filter-dropdown" id="makeFilter">
             <div class="filter-trigger">
-              <i class="fas fa-tag"></i> <span>Brand</span>
+              <span>Make</span>
               <i class="fas fa-chevron-down"></i>
             </div>
             <div class="filter-menu">
@@ -264,62 +249,52 @@
             </div>
           </div>
 
-          <!-- Type Filter -->
-          <div class="filter-dropdown" id="typeFilter">
+          <!-- Model Filter -->
+          <div class="filter-dropdown" id="modelFilter">
             <div class="filter-trigger">
-              <i class="fas fa-car-side"></i> <span>Vehicle Type</span>
+              <span>Model</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <!-- TODO: Implement Model Logic -->
+          </div>
+
+          <!-- Year Filter -->
+          <div class="filter-dropdown" id="yearFilter">
+            <div class="filter-trigger">
+              <span>Year</span>
               <i class="fas fa-chevron-down"></i>
             </div>
             <div class="filter-menu">
-              <div class="type-options" id="typeOptions">
-                <button class="type-option-btn" data-type="Sedan">
-                  <i class="fas fa-car"></i>
-                  <span>Sedan</span>
-                </button>
-                <button class="type-option-btn" data-type="SUV">
-                  <i class="fas fa-shuttle-van"></i>
-                  <span>SUV</span>
-                </button>
-                <button class="type-option-btn" data-type="Truck">
-                  <i class="fas fa-truck-pickup"></i>
-                  <span>Truck</span>
-                </button>
-                <button class="type-option-btn" data-type="Sports">
-                  <i class="fas fa-tachometer-alt"></i>
-                  <span>Sports</span>
-                </button>
+              <div class="simple-list-options" id="yearOptions" data-filter="year">
+                <!-- Years injected by JS -->
               </div>
             </div>
           </div>
 
-          <!-- Year Filter (Simple Range for MVP) -->
-          <div class="filter-dropdown" id="yearFilter">
-            <div class="filter-trigger">
-              <i class="fas fa-calendar-alt"></i> <span>Year</span>
+          <!-- Body Type Removed -->
+          <!-- Gearbox Removed -->
+          <!-- Min Price Removed -->
+          <!-- Max Price Removed -->
+          <!-- Fuel Type Removed -->
+        </div>
+      </div>
+
+      <!-- Second Row: Type Toggle & Sort -->
+      <div class="filter-controls-row">
+        <!-- Business/Personal Toggle Removed -->
+
+        <div class="sort-group">
+          <span>Sort by</span>
+          <div
+            class="filter-dropdown sort-dropdown"
+            style="display: inline-block; width: auto; margin: 0"
+          >
+            <div
+              class="filter-trigger"
+              style="padding: 0.5rem 1rem; border: 1px solid #ddd"
+            >
+              <span id="currentSort">Relevance</span>
               <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="filter-menu">
-              <div class="year-range-wrapper" style="padding: 10px">
-                <div
-                  class="year-values"
-                  style="
-                    display: flex;
-                    justify-content: space-between;
-                    margin-bottom: 10px;
-                  "
-                >
-                  <span id="minYearLabel">2010</span>
-                  <span id="maxYearLabel">2024</span>
-                </div>
-                <input
-                  type="range"
-                  id="filterYearMin"
-                  min="1990"
-                  max="2025"
-                  value="2010"
-                  style="width: 100%"
-                />
-              </div>
             </div>
           </div>
         </div>
@@ -328,21 +303,12 @@
 
     <!-- Active Filters & Results Info -->
     <div class="container active-filters-container">
-      <div class="active-tags" id="activeTags">
-        <!-- Active tags injected here -->
-      </div>
       <div class="results-meta">
         <span id="resultsCount">Loading...</span>
-      </div>
-
-      <!-- View Toggle -->
-      <div class="view-controls" style="margin-left: 20px">
-        <button class="view-btn active" data-view="grid">
-          <i class="fas fa-th-large"></i>
-        </button>
-        <button class="view-btn" data-view="list">
-          <i class="fas fa-list"></i>
-        </button>
+        <span class="results-subtext"
+          >Select a vehicle to view our bespoke upholstery packages. Contact us
+          for a personalized quote based on your material choices. <a href="#">Learn more</a></span
+        >
       </div>
     </div>
 

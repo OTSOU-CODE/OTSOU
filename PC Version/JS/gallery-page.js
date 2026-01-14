@@ -7,16 +7,7 @@ const galleryData = [
     title: "Premium Black & Orange",
     description: "Sporty two-tone upholstery with vibrant orange accents.",
   },
-  {
-    src: "images/gallery/Blue.webp",
-    title: "Elegant Blue Style",
-    description: "Sophisticated blue leather design.",
-  },
-  {
-    src: "images/gallery/Red.webp",
-    title: "Classic Red Design",
-    description: "Rich red leather interior with premium stitching.",
-  },
+
   {
     src: "images/gallery/Dark-blue-&-white.webp",
     title: "Modern Dark Blue & White",
@@ -92,27 +83,7 @@ function loadGalleryImages() {
 }
 
 // Create gallery item HTML
-function createGalleryItem(item, index) {
-  const div = document.createElement("div");
-  div.className = "gallery-item";
-  div.innerHTML = `
-    <div class="gallery-image-container">
-      <img src="${item.src}" alt="${item.title}" loading="lazy">
-      <div class="gallery-overlay">
-        <div class="gallery-info">
-          <h3>${item.title}</h3>
-          <p>${item.description}</p>
-        </div>
-      </div>
-    </div>
-  `;
 
-  div.addEventListener("click", () => {
-    window.location.href = `image-preview.html?index=${index}`;
-  });
-
-  return div;
-}
 
 function showEmptyState() {
   const galleryGrid = document.getElementById("gallery-grid");
