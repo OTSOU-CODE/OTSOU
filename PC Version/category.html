@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -265,7 +265,11 @@
               <i class="fas fa-chevron-down"></i>
             </div>
             <div class="filter-menu">
-              <div class="simple-list-options" id="yearOptions" data-filter="year">
+              <div
+                class="simple-list-options"
+                id="yearOptions"
+                data-filter="year"
+              >
                 <!-- Years injected by JS -->
               </div>
             </div>
@@ -307,7 +311,8 @@
         <span id="resultsCount">Loading...</span>
         <span class="results-subtext"
           >Select a vehicle to view our bespoke upholstery packages. Contact us
-          for a personalized quote based on your material choices. <a href="#">Learn more</a></span
+          for a personalized quote based on your material choices.
+          <a href="#">Learn more</a></span
         >
       </div>
     </div>
@@ -334,6 +339,7 @@
     <!-- Scripts -->
     <script src="JS/config.js"></script>
     <script src="JS/script.js"></script>
+    <script src="JS/vehicles_data.js"></script>
     <script src="JS/category.js"></script>
 
     <!-- Lucide Icons -->
@@ -374,8 +380,8 @@
 
       const navItems = [
         { name: "Home", url: "index.html#home", icon: "home" },
-        { name: "Services", url: "index.html#services", icon: "wrench" },
         { name: "About", url: "index.html#why-choose-us", icon: "info" },
+        { name: "Services", url: "index.html#services", icon: "wrench" },
         { name: "Category", url: "category.html", icon: "grid" },
         { name: "Our Work", url: "gallery.html", icon: "image" },
         { name: "Contact", url: "index.html#contact", icon: "phone" },

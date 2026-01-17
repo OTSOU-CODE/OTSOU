@@ -42,50 +42,23 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- Data Loading ---
+  // --- Data Loading ---
   async function loadVehicles() {
     grid.innerHTML = getSkeletonHTML(4);
     try {
-      // Load top luxury brands for the leasing aesthetic
-      const files = [
-        "../DATA/ACURA.csv", "../DATA/ALFA ROMEO.csv", "../DATA/ALPINE.csv", "../DATA/ASTON MARTIN.csv",
-        "../DATA/AUDI.csv", "../DATA/BENTLEY.csv", "../DATA/BMW.csv", "../DATA/BUGATTI.csv",
-        "../DATA/BUICK.csv", "../DATA/CADILLAC.csv", "../DATA/CHERY.csv", "../DATA/CHEVROLET.csv",
-        "../DATA/CHRYSLER.csv", "../DATA/CITROEN.csv", "../DATA/CUPRA.csv", "../DATA/DACIA.csv",
-        "../DATA/DODGE.csv", "../DATA/DS AUTOMOBILES.csv", "../DATA/FERRARI.csv", "../DATA/FIAT.csv",
-        "../DATA/FISKER.csv", "../DATA/FORD.csv", "../DATA/GEELY.csv", "../DATA/GENESIS.csv",
-        "../DATA/GMC.csv", "../DATA/HONDA.csv", "../DATA/HYUNDAI.csv", "../DATA/INFINITI.csv",
-        "../DATA/ISUZU.csv", "../DATA/JAGUAR.csv", "../DATA/JEEP.csv", "../DATA/KIA.csv",
-        "../DATA/KOENIGSEGG.csv", "../DATA/LAMBORGHINI.csv", "../DATA/LAND ROVER.csv", "../DATA/LEXUS.csv",
-        "../DATA/LINCOLN.csv", "../DATA/LOTUS.csv", "../DATA/Lucid Motors.csv", "../DATA/MARUTI SUZUKI.csv",
-        "../DATA/MASERATI.csv", "../DATA/MAZDA.csv", "../DATA/MCLAREN.csv", "../DATA/MERCEDES BENZ.csv",
-        "../DATA/MG.csv", "../DATA/MINI.csv", "../DATA/MITSUBISHI.csv", "../DATA/Mahindra.csv",
-        "../DATA/Mercedes-AMG.csv", "../DATA/NIO.csv", "../DATA/NISSAN.csv", "../DATA/OPEL.csv",
-        "../DATA/PAGANI.csv", "../DATA/PEUGEOT.csv", "../DATA/PORSCHE.csv", "../DATA/PROTON.csv",
-        "../DATA/Polestar.csv", "../DATA/RAM Trucks.csv", "../DATA/RENAULT.csv", "../DATA/RIMAC.csv",
-        "../DATA/RIVIAN.csv", "../DATA/ROLLS-ROYCE.csv", "../DATA/SEAT.csv", "../DATA/SKODA.csv",
-        "../DATA/SMART.csv", "../DATA/SSANGYONG.csv", "../DATA/SUBARU.csv", "../DATA/SUZUKI.csv",
-        "../DATA/TATA MOTORS.csv", "../DATA/TESLA.csv", "../DATA/TOYOTA.csv", "../DATA/VOLKSWAGEN.csv",
-        "../DATA/VOLVO.csv", "../DATA/VinFast.csv", "../DATA/Xiaomi.csv", "../DATA/Xpeng.csv"
-      ];
+      if (!window.VEHICLE_DATA) {
+        throw new Error("Vehicle data script not loaded.");
+      }
+      
+      const data = window.VEHICLE_DATA;
 
-      const promises = files.map((file) =>
-        fetch(file).then((res) => (res.ok ? res.text() : ""))
-      );
-      const rawTexts = await Promise.all(promises);
-
-      let combinedRows = [];
-      rawTexts.forEach((text) => {
-        if (text) combinedRows = [...combinedRows, ...parseComplexCSV(text)];
+      // Normalize and Shuffle
+      allVehicles = data.map(v => {
+          return enrichWithMockData(v);
       });
 
-      // Shuffle for variety
-      combinedRows.sort(() => Math.random() - 0.5);
-
-      // Normalize AND Enrich with Mock Data for Leasing
-      allVehicles = combinedRows
-        .map(normalizeVehicle)
-        .filter((v) => v.brand && v.model)
-        .map(enrichWithMockData);
+      // Shuffle
+      allVehicles.sort(() => Math.random() - 0.5);
 
       applyFilters();
     } catch (e) {
@@ -94,32 +67,68 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // --- Mock Data Generation ---
+  // --- Mock Data Generation & Normalization ---
   function enrichWithMockData(v) {
-    // Generate consistent mock data based on ID or string hash
-    const seed = v.id.split("").reduce((a, b) => a + b.charCodeAt(0), 0);
+    // Generate consistent mock data based on ID
+    // If ID is numeric string like "car-123", use that.
+    const idNum = parseInt(v.id.replace(/[^0-9]/g, '')) || 0;
+    const seed = idNum;
+
+    // Helper for pseudo-random
+    const rand = (offset) => {
+        const x = Math.sin(seed + offset) * 10000;
+        return x - Math.floor(x);
+    };
 
     const fuelTypes = ["Petrol", "Diesel", "Hybrid", "Electric", "Plug-in"];
     const transmissions = ["Manual", "Automatic"];
-    const bodyTypes = ["Hatchback", "SUV", "Saloon", "Coupe", "Estate"];
+    
+    // Monthly Price Mock logic (if real price is very high, just use "Contact Us" or scale it)
+    // If real priceRaw exists, calculate consistent monthly
+    let priceMonthly = 0;
+    let initialPayment = 0;
+    
+    if (v.priceRaw > 0) {
+        // Assume simplified leasing: 1/40th of price per month roughly?
+        priceMonthly = Math.floor(v.priceRaw / 48);
+        initialPayment = Math.floor(v.priceRaw * 0.15);
+    } else {
+        // Fallback mock
+        priceMonthly = Math.floor(rand(1) * 400) + 150;
+        initialPayment = Math.floor(priceMonthly * (Math.floor(rand(2) * 6) + 3));
+    }
 
-    // Deterministic pseudo-random
-    const rand = (offset) => Math.abs(Math.sin(seed + offset));
+    // Spec Fallbacks
+    // We want to use v.specs.* if available, otherwise generate mock
+    const specs = v.specs || {};
 
-    const price = Math.floor(rand(1) * 400) + 150; // 150 - 550
-    const initialPayment = Math.floor(price * (Math.floor(rand(2) * 6) + 3)); // 3x - 9x monthly
+    const fuel = specs.fuel || v.fuel || fuelTypes[Math.floor(rand(5) * fuelTypes.length)];
+    const transmission = specs.transmission || v.transmission || transmissions[Math.floor(rand(6) * transmissions.length)];
+    
+    // Parse engine size from specs if possible, or mock
+    let engineSize = specs.engine || v.engineSize || (1.0 + rand(8) * 2.0).toFixed(1);
+    // If engine is like "1995 cc", convert to 2.0
+    if (specs.engine && specs.engine.includes("cc")) {
+        const cc = parseInt(specs.engine);
+        if (!isNaN(cc)) engineSize = (cc / 1000).toFixed(1);
+    }
+
+    const type = specs.bodyType || v.type || "Car";
 
     return {
       ...v,
-      priceMonthly: price,
+      // Flattened props for easy access in createGridCard
+      fuel: fuel,
+      transmission: transmission,
+      engineSize: engineSize,
+      type: type, // Ensure type is top-level
+      seats: specs.seats || v.seats || (Math.floor(rand(7) * 4) + 2),
+      doors: specs.doors || v.doors || 5,
+      
+      priceMonthly: priceMonthly,
       initialPayment: initialPayment,
       contractLength: [24, 36, 48][Math.floor(rand(3) * 3)],
       mileage: [5000, 8000, 10000, 12000][Math.floor(rand(4) * 4)],
-      fuel: fuelTypes[Math.floor(rand(5) * fuelTypes.length)],
-      transmission: transmissions[Math.floor(rand(6) * transmissions.length)],
-      seats: Math.floor(rand(7) * 4) + 2, // 2-5 (rough)
-      doors: 5,
-      engineSize: (1.0 + rand(8) * 2.0).toFixed(1),
     };
   }
 
@@ -157,65 +166,53 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function createGridCard(v) {
-    const imgUrl = `https://placehold.co/600x450/f9f9f9/333?text=${v.brand}+${v.model}`;
+    // Use the first image from the list or a placeholder if missing
+    let imgUrl = v.coverImage || (v.images && v.images.length > 0 ? v.images[0] : null);
+    
+    if (!imgUrl) {
+        imgUrl = `https://placehold.co/600x450/2c2c2c/D4AF37?text=${v.brand}+${v.model}`;
+    }
+    
     const brandLogo = getBrandLogo(v.brand);
-
-    const isElectric = v.fuel === "Electric" || v.fuel === "Hybrid";
 
     return `
         <div class="product-card">
           <div class="card-image-wrapper">
-             <span class="badge-count"><i class="fas fa-camera"></i> ${
-               Math.floor(Math.random() * 10) + 2
-             }</span>
-             <img src="${imgUrl}" class="card-image" alt="${
-      v.model
-    }" loading="lazy">
+             <span class="badge-count"><i class="fas fa-layer-group"></i> Custom</span>
+             <img src="${imgUrl}" class="card-image" alt="${v.model}" loading="lazy">
           </div>
 
           <div class="card-content">
-            <div class="card-pricing">
-                <div class="price-row">
-                    <div class="price-main">
-                        <span class="price-label">From</span>
-                        <span class="price-value">£${v.priceMonthly}</span>
-                        <span class="price-label">Per month (inc. VAT)</span>
-                    </div>
-                    <div class="price-detail">
-                        <strong>£${v.initialPayment.toLocaleString()} Initial payment</strong>
-                        <span>${v.contractLength} month contract</span>
-                        <span>${v.mileage.toLocaleString()} miles p/a</span>
-                    </div>
+            <div class="card-header">
+                <h3 class="card-title">${v.year} ${v.brand} ${v.model}</h3>
+                <p class="card-subtitle">${v.engineSize}L ${v.fuel} • ${v.type}</p>
+            </div>
+
+            <div class="specs-grid">
+                <div class="spec-item" title="Fuel Type">
+                    <i class="fas fa-gas-pump"></i> ${v.fuel}
+                </div>
+                <div class="spec-item" title="Transmission">
+                    <i class="fas fa-cog"></i> ${v.transmission}
+                </div>
+                <div class="spec-item" title="Seats">
+                    <i class="fas fa-chair"></i> ${v.seats} Seats
+                </div>
+                <div class="spec-item" title="Doors">
+                    <i class="fas fa-door-open"></i> ${v.doors} Doors
                 </div>
             </div>
 
-            <span class="delivery-tag">February 2026 delivery</span>
-
-            <h3 class="card-title">${v.year} ${v.brand} ${v.model}</h3>
-            <p class="card-subtitle">${v.engineSize} ${v.fuel} ${v.type} 5dr</p>
-
-            <div class="specs-grid">
-                <div class="spec-item"><i class="fas fa-gas-pump"></i> ${
-                  v.fuel
-                }</div>
-                <div class="spec-item"><i class="fas fa-door-open"></i> ${
-                  v.doors
-                } doors</div>
-                <div class="spec-item"><i class="fas fa-cog"></i> ${
-                  v.transmission
-                }</div>
-                <div class="spec-item"><i class="fas fa-chair"></i> ${
-                  v.seats
-                } Seats</div>
-                <div class="spec-item"><i class="fas fa-car-side"></i> ${
-                  v.type
-                }</div>
-                <div class="spec-item"><i class="fas fa-tachometer-alt"></i> ${
-                  v.engineSize
-                } litres</div>
+            <div class="card-actions">
+                <div class="price-info">
+                    <span class="price-label">Customization from</span>
+                    <span class="price-value">Contact Us</span>
+                </div>
+                <a href="image-preview.html?id=${v.id}" class="btn-card-action">
+                    <span>View Options</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
-
-            <!-- Hidden action layer if needed, or just clickable card -->
           </div>
         </div>
       `;
@@ -250,6 +247,24 @@ document.addEventListener("DOMContentLoaded", () => {
       return true;
     });
 
+    // Group by Brand + Model + Year
+    const uniqueMap = new Map();
+    filteredVehicles.forEach(v => {
+        const key = `${v.brand}-${v.model}-${v.year}`;
+        if (!uniqueMap.has(key)) {
+            uniqueMap.set(key, v);
+        } else {
+            // Keep the one with lower price? Or just the first one?
+            // Let's keep the one with lower monthly price
+            const existing = uniqueMap.get(key);
+            if (v.priceMonthly < existing.priceMonthly) {
+                uniqueMap.set(key, v);
+            }
+        }
+    });
+    
+    filteredVehicles = Array.from(uniqueMap.values());
+
     if (resultsCountEl)
       resultsCountEl.innerText = `${filteredVehicles.length} results`;
     renderBatch(true);
@@ -260,6 +275,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Buttons (Personal/Business) removed
 
     if (resetFiltersLink) {
+      resetFiltersLink.addEventListener('click', (e) => {
+        e.preventDefault();
         activeFilters.make.clear();
         activeFilters.year.clear();
         // activeFilters.fuel.clear();
@@ -367,122 +384,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Complex CSV Parser ---
-  // The CSV format has one header row, but the data for a SINGLE car is spread across ~8 lines.
-  // We need to group by a unique ID (the 'URL' column is good for this) and merge the properties.
-  function parseComplexCSV(text) {
-    const lines = text.split(/\r?\n/).filter((l) => l.trim().length);
-    if (!lines.length) return [];
 
-    // Header is line 0
-    const headers = splitCSVLine(lines[0]);
-
-    // Temporary storage to merge rows
-    const vehicleMap = new Map();
-
-    // Start from line 1
-    for (let i = 1; i < lines.length; i++) {
-      const row = splitCSVLine(lines[i]);
-      if (row.length < 5) continue; // Skip malformed
-
-      // URL is usually index 4 based on the file inspection
-      // Brand=0, Model=1, Gen=2, Engine=3, URL=4
-      const url = row[4];
-
-      if (!url) continue;
-
-      if (!vehicleMap.has(url)) {
-        vehicleMap.set(url, {});
-      }
-
-      const vehicleObj = vehicleMap.get(url);
-
-      // Iterate columns and add non-empty values
-      headers.forEach((header, index) => {
-        const cleanHeader = header.replace(/:$/, "").trim(); // Remove trailing colon
-        const val = row[index] ? row[index].trim() : "";
-
-        if (val) {
-          // If key exists, parsing strategies:
-          // 1. If distinct, keep longest?
-          // 2. Just overwrite? (Most rows seem to have specific disjoint data)
-          // 3. Simple overwrite is likely fine as the rows carry different distinct columns
-          if (
-            !vehicleObj[cleanHeader] ||
-            vehicleObj[cleanHeader].length < val.length
-          ) {
-            vehicleObj[cleanHeader] = val;
-          }
-        }
-      });
-    }
-
-    return Array.from(vehicleMap.values());
-  }
-
-  function splitCSVLine(line) {
-    const values = [];
-    let current = "";
-    let inQuotes = false;
-    for (let char of line) {
-      if (char === '"') inQuotes = !inQuotes;
-      else if (char === "," && !inQuotes) {
-        values.push(current);
-        current = "";
-      } else current += char;
-    }
-    values.push(current);
-    return values.map((v) => v.replace(/^"|"$/g, "").trim());
-  }
-
-  function normalizeVehicle(v) {
-    // console.log(v); // Debug if needed
-
-    // Extract Year from Generation text or Model
-    let year = "2025"; // Default
-    const generationText = v["Generation"] || v["Model"] || "";
-    const yearMatch = generationText.match(/\b(20\d{2})\b/);
-    if (yearMatch) {
-      year = yearMatch[1];
-    }
-
-    // Engine Size logic...
-    let engineSize = "2.0";
-    if (v["Displacement"]) {
-      const match = v["Displacement"].match(/(\d+)/);
-      if (match) {
-        engineSize = (parseInt(match[1]) / 1000).toFixed(1);
-      }
-    }
-
-    // Clean Brand/Model
-    const brand = v["Brand"] || "Unknown";
-    let model = v["Model"] || "Vehicle";
-    // Remove Brand from Model if present to avoid "BMW BMW X5"
-    if (model.startsWith(brand)) {
-      model = model.substring(brand.length).trim();
-    }
-
-    return {
-      id: v["URL"] || Math.random().toString(36), // Unique ID from URL
-      year: year,
-      brand: brand,
-      model: model,
-      type: v["Drive Type"] || v["Body style"] || "Car", // CSV key might vary, check Body Type if available
-      fuel: v["Fuel"] || "Petrol",
-      transmission: v["Gearbox"]
-        ? v["Gearbox"].toLowerCase().includes("auto")
-          ? "Automatic"
-          : "Manual"
-        : "Automatic",
-      seats: 5, // Default as rarely in CSV
-      doors: 5, // Default
-      engineSize: engineSize,
-
-      // Keep raw for specs
-      raw: v,
-    };
-  }
 
   function getBrandLogo(brand) {
     // Basic map or fallback

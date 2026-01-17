@@ -411,6 +411,45 @@
 }
 
 /* Responsive */
+/* === NEW CARD ACTIONS & STYLING === */
+.card-header {
+  margin-bottom: 1rem;
+}
+
+.card-actions {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-card-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--upholstery-gold);
+  color: var(--upholstery-charcoal);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-small);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.btn-card-action:hover {
+  background: var(--upholstery-gold-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
 @media (max-width: 900px) {
   .bar-filters-group {
     display: none; /* Hide top filters on mobile for MVP styling simplification, or scroll */
