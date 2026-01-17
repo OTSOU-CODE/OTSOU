@@ -323,20 +323,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // Mobile FAB Toggle
-    const mobileFab = document.getElementById("mobileFilterFab");
-    if (mobileFab) {
-        mobileFab.addEventListener("click", () => {
-             const filterGroup = document.querySelector(".bar-filters-group");
-             if (filterGroup) {
-                 filterGroup.classList.toggle("show-mobile");
-                 if (filterGroup.classList.contains("show-mobile")) {
-                     document.getElementById("filterBar").scrollIntoView({ behavior: "smooth" });
-                 }
-             }
-        });
-    }
-
     // View Dropdown Toggling
     document.addEventListener("click", (e) => {
       const trigger = e.target.closest(".filter-trigger");
@@ -474,5 +460,4 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     return map[brand] || CONFIG.images.carBrands[0];
   }
-    init();
 });
