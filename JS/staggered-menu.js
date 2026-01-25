@@ -224,14 +224,18 @@ export class StaggeredMenu {
         const panelStart = Number(gsap.getProperty(panel, 'xPercent'));
         
         // Reset states for enter animation
-        if (itemEls.length) gsap.set(itemEls, { yPercent: 140, rotate: 10 });
+        // Flutter: Slide from right (150px) -> 0. Opacity 0 -> 1.
+        if (itemEls.length) gsap.set(itemEls, { x: 150, opacity: 0, rotate: 0, yPercent: 0 }); // Reset rotate/yPercent from old anim
         if (numberEls.length) gsap.set(numberEls, { '--sm-num-opacity': 0 });
         if (socialTitle) gsap.set(socialTitle, { opacity: 0 });
-        if (socialLinks.length) gsap.set(socialLinks, { y: 25, opacity: 0 });
+        
+        // Flutter Button: Scale 0.5 -> 1.0, Elastic
+        if (socialLinks.length) gsap.set(socialLinks, { scale: 0.5, opacity: 0, y: 0 }); // Reset y from old anim
 
         const tl = gsap.timeline({ paused: true });
 
-        // Layers animation
+        // Layers animation (Keep existing pre-layers or speed them up slightly to match Flutter snap?)
+        // Flutter example doesn't have pre-layers, but we keep them for style.
         preLayers.forEach((el, i) => {
             const start = Number(gsap.getProperty(el, 'xPercent'));
             tl.fromTo(el, { xPercent: start }, { xPercent: 0, duration: 0.5, ease: 'power4.out' }, i * 0.07);
@@ -248,15 +252,17 @@ export class StaggeredMenu {
             panelInsertTime
         );
 
-        // Items Entrance
+        // Items Entrance - Flutter Style
+        // Curve: easeOut -> GSAP power2.out
         if (itemEls.length) {
-            const itemsStartRatio = 0.15;
+            const itemsStartRatio = 0.3; // Start a bit later so panel is visible
             const itemsStart = panelInsertTime + panelDuration * itemsStartRatio;
+            
             tl.to(itemEls, {
-                yPercent: 0,
-                rotate: 0,
-                duration: 1,
-                ease: 'power4.out',
+                x: 0,
+                opacity: 1,
+                duration: 0.8,
+                ease: 'power2.out',
                 stagger: { each: 0.1, from: 'start' }
             }, itemsStart);
 
@@ -270,21 +276,23 @@ export class StaggeredMenu {
             }
         }
 
-        // Socials Entrance
+        // Socials/Button Entrance - Flutter Style
+        // Curve: elasticOut -> GSAP elastic.out(1, 0.5)
         if (socialTitle || socialLinks.length) {
-            const socialsStart = panelInsertTime + panelDuration * 0.4;
+            const socialsStart = panelInsertTime + panelDuration * 0.6;
             if (socialTitle) {
                 tl.to(socialTitle, { opacity: 1, duration: 0.5, ease: 'power2.out' }, socialsStart);
             }
             if (socialLinks.length) {
+                // Approximate Elastic scale pop
                 tl.to(socialLinks, {
-                    y: 0,
+                    scale: 1,
                     opacity: 1,
-                    duration: 0.55,
-                    ease: 'power3.out',
+                    duration: 1.0, // Elastic needs more time to settle
+                    ease: 'elastic.out(1, 0.5)',
                     stagger: { each: 0.08, from: 'start' },
-                    onComplete: () => gsap.set(socialLinks, { clearProps: 'opacity' })
-                }, socialsStart + 0.04);
+                    onComplete: () => gsap.set(socialLinks, { clearProps: 'transform,opacity' }) // Clear to prevent blur?
+                }, socialsStart + 0.1);
             }
         }
 

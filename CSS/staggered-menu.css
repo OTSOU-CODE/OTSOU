@@ -393,3 +393,24 @@
     padding: 1.5em 1em; /* Reduced padding for mobile */
   }
 }
+
+/* =========================================
+   Dark Mode Overrides
+   ========================================= */
+
+[data-theme="dark"] .staggered-menu-panel {
+  background: #1A1A1A !important;
+}
+
+[data-theme="dark"] .sm-panel-item {
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .sm-socials-link {
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .sm-panel-item:hover,
+[data-theme="dark"] .sm-socials-link:hover {
+  color: var(--sm-accent, #5227ff);
+}
