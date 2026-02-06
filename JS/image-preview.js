@@ -82,71 +82,85 @@ function initPDP() {
 
 function renderProduct(product) {
   // 1. Populate Text Info
-  document.getElementById('product-title').textContent = product.title;
+  const titleEl = document.getElementById('product-title');
+  if (titleEl) titleEl.textContent = product.title;
 
-  const descriptionEl = document.getElementById('product-description');
-  if (descriptionEl) {
-    descriptionEl.textContent = product.description || 'Premium quality upholstery with exceptional attention to detail.';
+  const descEl = document.getElementById('product-description');
+  if (descEl) {
+    descEl.textContent = product.description || 'Premium quality upholstery with exceptional attention to detail.';
   }
 
-  // 2. Setup Gallery
-  const galleryScroll = document.getElementById('galleryScroll');
-  const galleryDots = document.getElementById('galleryDots');
+  // Sticky Bar Info
+  const barTitle = document.getElementById('barTitle');
+  if (barTitle) barTitle.textContent = product.title;
 
-  if (galleryScroll && galleryDots) {
-    galleryScroll.innerHTML = '';
-    galleryDots.innerHTML = '';
+  const barThumb = document.getElementById('barThumb');
+  if (barThumb) barThumb.src = product.src;
 
-    const variants = product.variants || [{ src: product.src }];
+  // 2. Setup Gallery (Main Image + Thumbnails)
+  const mainImage = document.getElementById('mainImage');
+  const thumbnailsGrid = document.getElementById('thumbnailsGrid');
+  const variants = product.variants || [{ src: product.src }];
 
-    variants.forEach((variant, index) => {
-      // Image
-      const img = document.createElement('img');
-      img.src = variant.src;
-      img.className = 'gallery-img';
-      img.alt = variant.title || product.title;
-      galleryScroll.appendChild(img);
+  if (mainImage && variants.length > 0) {
+    // Set initial main image
+    mainImage.src = variants[0].src;
+    mainImage.classList.add('fade-in'); // Trigger animation if any
+    
+    // Clear thumbs
+    if (thumbnailsGrid) {
+        thumbnailsGrid.innerHTML = '';
+        
+        variants.forEach((variant, index) => {
+            const btn = document.createElement('button');
+            btn.className = `thumbnail-btn ${index === 0 ? 'active' : ''}`;
+            btn.onclick = () => {
+                // Update Main Image
+                mainImage.style.opacity = '0.5';
+                setTimeout(() => {
+                    mainImage.src = variant.src;
+                    mainImage.style.opacity = '1';
+                }, 150);
+                
+                // Update active state
+                thumbnailsGrid.querySelectorAll('.thumbnail-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            };
 
-      // Dot
-      const dot = document.createElement('div');
-      dot.className = `dot ${index === 0 ? 'active' : ''}`;
-      galleryDots.appendChild(dot);
-    });
-
-    // 3. Setup Scroll Listener for Dots
-    galleryScroll.onscroll = () => {
-      const scrollLeft = galleryScroll.scrollLeft;
-      const width = galleryScroll.offsetWidth;
-      const index = Math.round(scrollLeft / width);
-
-      const dots = document.querySelectorAll('.dot');
-      dots.forEach(dot => dot.classList.remove('active'));
-      if (dots[index]) dots[index].classList.add('active');
-    };
+            const img = document.createElement('img');
+            img.src = variant.src;
+            img.alt = variant.title || `View ${index + 1}`;
+            
+            btn.appendChild(img);
+            thumbnailsGrid.appendChild(btn);
+        });
+    }
   }
 }
 
 function renderColorVariants() {
-  // Find the container specifically for colors. 
-  // We look for the section title "Select Color" and get its next sibling.
-  const sectionTitles = document.querySelectorAll('.section-title');
-  let colorContainer = null;
-
-  sectionTitles.forEach(title => {
-    if (title.textContent.trim().toLowerCase() === 'select color') {
-      colorContainer = title.nextElementSibling;
-    }
-  });
-
-  if (colorContainer && colorContainer.classList.contains('variant-scroll')) {
+  const colorContainer = document.getElementById('colorOptions');
+  const selectedNameVal = document.getElementById('selectedColorName');
+  
+  if (colorContainer) {
     colorContainer.innerHTML = '';
 
     galleryData.forEach((item, index) => {
-      const circle = document.createElement('div');
-      circle.className = `color-circle ${index === currentImageIndex ? 'selected' : ''}`;
-      circle.style.background = item.colorCode || '#ccc';
-      circle.onclick = () => switchProduct(index);
-      colorContainer.appendChild(circle);
+      const btn = document.createElement('button');
+      btn.className = `color-btn ${index === currentImageIndex ? 'active' : ''}`;
+      btn.style.background = item.colorCode || '#ccc';
+      btn.onclick = () => switchProduct(index);
+      
+      // Icon
+      const icon = document.createElement('i');
+      icon.className = 'fas fa-check';
+      btn.appendChild(icon);
+      
+      colorContainer.appendChild(btn);
+      
+      if (index === currentImageIndex && selectedNameVal) {
+          selectedNameVal.textContent = item.title;
+      }
     });
   }
 }
@@ -163,41 +177,42 @@ function switchProduct(index) {
   window.history.pushState({}, '', newUrl);
 
   renderProduct(product);
-  renderColorVariants(); // Re-render to update selected state
-}
-
-/* --- Selectors Logic --- */
-function selectChip(el) {
-  // Simple visual selection for chips
-  const parent = el.parentElement;
-  if (parent) {
-    parent.querySelectorAll('.size-chip').forEach(c => c.classList.remove('selected'));
-    el.classList.add('selected');
-  }
+  renderColorVariants();
 }
 
 /* --- Quantity Logic --- */
 let qty = 1;
+
 function updateQty(change) {
-  if (qty + change > 0) {
-    qty += change;
-    const qtyNum = document.getElementById('qtyNum');
-    if (qtyNum) qtyNum.innerText = qty;
+  const qtyInput = document.getElementById('qtyInput');
+  if (!qtyInput) return;
+  
+  let currentVal = parseInt(qtyInput.value) || 1;
+  const newVal = currentVal + change;
+  
+  if (newVal > 0) {
+      qtyInput.value = newVal;
   }
 }
 
-function addToCart() {
-  const btn = document.querySelector('.add-btn');
+/* --- Add to Cart --- */
+function addToCart(btn) {
   if (!btn) return;
 
   const originalContent = btn.innerHTML;
   const originalBg = btn.style.background;
 
   btn.innerHTML = '<i class="fas fa-check"></i> Added';
-  btn.style.background = '#10b981'; // Success green
+  btn.style.background = '#4CAF50'; // Green
 
   setTimeout(() => {
     btn.innerHTML = originalContent;
-    btn.style.background = originalBg;
+    btn.style.background = ''; // Revert to CSS default
   }, 1500);
 }
+
+// Make functions global for inline onclick
+window.updateQty = updateQty;
+window.addToCart = addToCart;
+window.selectColor = switchProduct; // Mapping for safety
+

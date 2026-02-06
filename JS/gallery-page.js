@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initGallery();
   setupGalleryEvents();
   animateStats();
-  initBeforeAfterSlider();
+
 });
 
 // Initialize gallery
@@ -187,77 +187,4 @@ function showEmptyState() {
 }
 
 // Setup gallery events
-// Before/After Slider Logic
-function initBeforeAfterSlider() {
-  const container = document.getElementById("beforeAfterSlider");
-  if (!container) return;
 
-  const handle = container.querySelector(".ba-handle");
-  const beforeWrapper = container.querySelector(".ba-image-wrapper.before");
-  const beforeImage = beforeWrapper.querySelector("img");
-  let isDragging = false;
-
-  // Set initial width
-  // Ensure the image inside the clipping container remains full width
-  // This is handled by CSS: .ba-image { width: 900px; max-width: none; }
-  // We need to ensure the width matches the container width dynamically if responsive.
-
-  function updateSlider(x) {
-    const rect = container.getBoundingClientRect();
-    let pos = x - rect.left;
-
-    // Constrain
-    if (pos < 0) pos = 0;
-    if (pos > rect.width) pos = rect.width;
-
-    const percentage = (pos / rect.width) * 100;
-
-    beforeWrapper.style.width = percentage + "%";
-    handle.style.left = percentage + "%";
-  }
-
-  // Mouse Events
-  handle.addEventListener("mousedown", () => (isDragging = true));
-  window.addEventListener("mouseup", () => (isDragging = false));
-  container.addEventListener("mousemove", (e) => {
-    if (!isDragging) return;
-    updateSlider(e.clientX);
-  });
-
-  // Touch Events
-  handle.addEventListener("touchstart", () => (isDragging = true));
-  window.addEventListener("touchend", () => (isDragging = false));
-  container.addEventListener("touchmove", (e) => {
-    if (!isDragging) return;
-    updateSlider(e.touches[0].clientX);
-  });
-
-  // Click to jump
-  container.addEventListener("click", (e) => {
-    updateSlider(e.clientX);
-  });
-
-  // Handle Resize to keep aspect ratio or image width correct
-  window.addEventListener("resize", () => {
-    const rect = container.getBoundingClientRect();
-    // If we are using fixed pixel width for image to prevent squishing, we might need to update it.
-    // But object-fit: cover is easier if container has fixed aspect ratio.
-    // My CSS set .ba-image { width: 900px; } which is rigid.
-    // Better: .ba-image { width: [containerWidth]px; }
-
-    const w = rect.width;
-    const images = container.querySelectorAll(".ba-image");
-    images.forEach((img) => {
-      img.style.width = w + "px";
-    });
-  });
-
-  // Init Resize once
-  setTimeout(() => {
-    const rect = container.getBoundingClientRect();
-    const images = container.querySelectorAll(".ba-image");
-    images.forEach((img) => {
-      img.style.width = rect.width + "px";
-    });
-  }, 100);
-}
