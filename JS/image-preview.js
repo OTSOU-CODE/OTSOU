@@ -3,9 +3,13 @@
 // Gallery data
 const galleryData = [
   {
+    id: 1,
     src: 'images/gallery/Black-&-Orange.png',
     title: 'Premium Black & Orange',
-    description: 'Sporty two-tone upholstery with vibrant orange accents. Perfect for those who want to stand out.',
+    code: 'B-O-001',
+    price: 2500,
+    oldPrice: 3200,
+    description: 'Sporty two-tone upholstery with vibrant orange accents. Perfect for those who want to stand out with a custom look.',
     colorCode: 'linear-gradient(135deg, #000000 50%, #FF4500 50%)',
     variants: [
       { src: 'images/gallery/Black-&-Orange.png', title: 'Main View' },
@@ -16,8 +20,12 @@ const galleryData = [
     ]
   },
   {
+    id: 2,
     src: 'images/gallery/Blue.png',
     title: 'Elegant Blue Style',
+    code: 'BL-002',
+    price: 2400,
+    oldPrice: 3000,
     description: 'Sophisticated blue leather design. Adds a touch of class and calm to your interior.',
     colorCode: '#1E3A8A',
     variants: [
@@ -25,8 +33,12 @@ const galleryData = [
     ]
   },
   {
+    id: 3,
     src: 'images/gallery/Red.png',
     title: 'Classic Red Design',
+    code: 'RD-003',
+    price: 2600,
+    oldPrice: 3400,
     description: 'Rich red leather interior with premium stitching. A bold choice for a bold driver.',
     colorCode: '#DC2626',
     variants: [
@@ -34,8 +46,12 @@ const galleryData = [
     ]
   },
   {
+    id: 4,
     src: 'images/gallery/Dark-blue-&-white.png',
     title: 'Modern Dark Blue & White',
+    code: 'BW-004',
+    price: 2700,
+    oldPrice: 3500,
     description: 'Bold contrast with exceptional craftsmanship. Creates a bright and airy feel inside.',
     colorCode: 'linear-gradient(135deg, #1E3A8A 50%, #FFFFFF 50%)',
     variants: [
@@ -47,8 +63,12 @@ const galleryData = [
     ]
   },
   {
+    id: 5,
     src: 'images/gallery/Black-&-Red.png',
     title: 'Sporty Black & Red',
+    code: 'BR-005',
+    price: 2500,
+    oldPrice: 3200,
     description: 'Dynamic black and red leather combination. Racing inspired aesthetics for your daily drive.',
     colorCode: 'linear-gradient(135deg, #000000 50%, #DC2626 50%)',
     variants: [
@@ -62,9 +82,13 @@ const galleryData = [
 ];
 
 let currentImageIndex = 0;
+let qty = 1;
 
 document.addEventListener('DOMContentLoaded', function () {
   initPDP();
+  updateCartBadge();
+  initHeaderActions();
+  initWishlist();
 });
 
 function initPDP() {
@@ -87,8 +111,15 @@ function renderProduct(product) {
 
   const descEl = document.getElementById('product-description');
   if (descEl) {
-    descEl.textContent = product.description || 'Premium quality upholstery with exceptional attention to detail.';
+    descEl.textContent = product.description;
   }
+
+  // Update Prices
+  const priceEls = document.querySelectorAll('.current-price, .bar-text span');
+  priceEls.forEach(el => el.textContent = `${product.price} MAD`);
+  
+  const oldPriceEl = document.querySelector('.old-price');
+  if (oldPriceEl) oldPriceEl.textContent = `${product.oldPrice} MAD`;
 
   // Sticky Bar Info
   const barTitle = document.getElementById('barTitle');
@@ -105,7 +136,7 @@ function renderProduct(product) {
   if (mainImage && variants.length > 0) {
     // Set initial main image
     mainImage.src = variants[0].src;
-    mainImage.classList.add('fade-in'); // Trigger animation if any
+    mainImage.classList.add('fade-in'); 
     
     // Clear thumbs
     if (thumbnailsGrid) {
@@ -136,6 +167,9 @@ function renderProduct(product) {
         });
     }
   }
+  
+  // Update Wishlist State
+  checkWishlist(product.id);
 }
 
 function renderColorVariants() {
@@ -148,10 +182,10 @@ function renderColorVariants() {
     galleryData.forEach((item, index) => {
       const btn = document.createElement('button');
       btn.className = `color-btn ${index === currentImageIndex ? 'active' : ''}`;
-      btn.style.background = item.colorCode || '#ccc';
+      // Basic gradient logic
+      btn.style.background = item.colorCode || '#ccc'; 
       btn.onclick = () => switchProduct(index);
       
-      // Icon
       const icon = document.createElement('i');
       icon.className = 'fas fa-check';
       btn.appendChild(icon);
@@ -180,9 +214,18 @@ function switchProduct(index) {
   renderColorVariants();
 }
 
-/* --- Quantity Logic --- */
-let qty = 1;
+/* --- Accordion Logic --- */
+function toggleAccordion(btn) {
+    btn.classList.toggle('active');
+    const content = btn.nextElementSibling;
+    
+    if (content) {
+        content.classList.toggle('active');
+    }
+}
+window.toggleAccordion = toggleAccordion;
 
+/* --- Quantity Logic --- */
 function updateQty(change) {
   const qtyInput = document.getElementById('qtyInput');
   if (!qtyInput) return;
@@ -192,27 +235,125 @@ function updateQty(change) {
   
   if (newVal > 0) {
       qtyInput.value = newVal;
+      qty = newVal;
   }
 }
+window.updateQty = updateQty;
 
-/* --- Add to Cart --- */
+/* --- Cart Logic --- */
 function addToCart(btn) {
   if (!btn) return;
+  
+  const product = galleryData[currentImageIndex];
+  const cartItem = {
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      image: product.src,
+      quantity: qty,
+      config: document.querySelector('.config-btn.active .config-name')?.textContent || 'Standard'
+  };
+  
+  // Save to LocalStorage
+  let cart = JSON.parse(localStorage.getItem('cart_items')) || [];
+  // Check if exists
+  const existingIndex = cart.findIndex(item => item.id === cartItem.id && item.config === cartItem.config);
+  
+  if (existingIndex > -1) {
+      cart[existingIndex].quantity += qty;
+  } else {
+      cart.push(cartItem);
+  }
+  
+  localStorage.setItem('cart_items', JSON.stringify(cart));
+  updateCartBadge();
 
+  // Visual Feedback
   const originalContent = btn.innerHTML;
-  const originalBg = btn.style.background;
-
   btn.innerHTML = '<i class="fas fa-check"></i> Added';
-  btn.style.background = '#4CAF50'; // Green
-
+  btn.style.background = '#4CAF50'; 
+  
   setTimeout(() => {
     btn.innerHTML = originalContent;
-    btn.style.background = ''; // Revert to CSS default
+    btn.style.background = ''; 
   }, 1500);
 }
-
-// Make functions global for inline onclick
-window.updateQty = updateQty;
 window.addToCart = addToCart;
-window.selectColor = switchProduct; // Mapping for safety
+
+function updateCartBadge() {
+    const badge = document.querySelector('.cart-badge');
+    if (!badge) return;
+    
+    const cart = JSON.parse(localStorage.getItem('cart_items')) || [];
+    const count = cart.reduce((total, item) => total + item.quantity, 0);
+    
+    badge.textContent = count;
+    badge.style.display = count > 0 ? 'flex' : 'none';
+}
+
+/* --- Wishlist Logic --- */
+function initWishlist() {
+    const btns = document.querySelectorAll('.header-icon-btn[title="Wishlist"], .wishlist-btn-overlay');
+    
+    btns.forEach(btn => {
+       btn.onclick = () => {
+           const product = galleryData[currentImageIndex];
+           toggleWishlistItem(product);
+       }; 
+    });
+}
+
+function toggleWishlistItem(product) {
+    let wishlist = JSON.parse(localStorage.getItem('wishlist_items')) || [];
+    const index = wishlist.findIndex(item => item.id === product.id);
+    
+    if (index > -1) {
+        wishlist.splice(index, 1); // Remove
+        // alert('Removed from Wishlist');
+    } else {
+        wishlist.push({ id: product.id, title: product.title, image: product.src });
+        // alert('Added to Wishlist');
+    }
+    
+    localStorage.setItem('wishlist_items', JSON.stringify(wishlist));
+    renderWishlistState(wishlist);
+}
+
+function checkWishlist(productId) {
+    const wishlist = JSON.parse(localStorage.getItem('wishlist_items')) || [];
+    renderWishlistState(wishlist);
+}
+
+function renderWishlistState(wishlist) {
+    const productId = galleryData[currentImageIndex].id;
+    const isSaved = wishlist.some(item => item.id === productId);
+    
+    // Update Hearts
+    const hearts = document.querySelectorAll('.wishlist-btn-overlay i, .header-icon-btn[title="Wishlist"] i');
+    hearts.forEach(icon => {
+        if (isSaved) {
+            icon.classList.remove('far');
+            icon.classList.add('fas');
+            icon.style.color = 'var(--error)';
+        } else {
+            icon.classList.remove('fas');
+            icon.classList.add('far');
+            icon.style.color = '';
+        }
+    });
+}
+
+/* --- Header Actions --- */
+function initHeaderActions() {
+
+    
+    const cartBtn = document.querySelector('.header-icon-btn[title="Cart"]');
+    if (cartBtn) {
+        cartBtn.onclick = () => {
+            // alert('Opening Cart...');
+            // In a real app, redirect to cart.html or open side drawer
+        };
+    }
+}
+
 

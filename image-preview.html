@@ -48,9 +48,7 @@
 
             <!-- Right Actions -->
             <div class="header-actions">
-                <button class="header-icon-btn" title="Search">
-                    <i class="fas fa-search"></i>
-                </button>
+
                 <button class="header-icon-btn" title="Wishlist">
                     <i class="far fa-heart"></i>
                 </button>
@@ -150,13 +148,35 @@
 
                 <!-- Accordions -->
                 <div style="border-top: 1px solid var(--border); padding-top: 1rem;">
-                    <div class="accordion-item">
-                        <span class="accordion-title">Technical Specifications</span>
-                        <i class="fas fa-plus"></i>
+                    <!-- Item 1 -->
+                    <div class="accordion-panel">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-title">Technical Specifications</span>
+                            <i class="fas fa-plus accordion-icon"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Material: Premium Automotive Grade Leather</p>
+                            <p>Thickness: 1.2mm - 1.4mm</p>
+                            <p>Stitching: High-tensile Nylon Thread</p>
+                            <p>Foam Padding: High-density memory foam support</p>
+                        </div>
                     </div>
-                    <div class="accordion-item">
-                        <span class="accordion-title">Compatibility List</span>
-                        <i class="fas fa-plus"></i>
+                    
+                    <!-- Item 2 -->
+                    <div class="accordion-panel">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-title">Compatibility List</span>
+                            <i class="fas fa-plus accordion-icon"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Universal fit for most mid-size sedans and SUVs.</p>
+                            <ul style="padding-left: 1rem; margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                                <li>Toyota Camry / Corolla</li>
+                                <li>Honda Accord / Civic</li>
+                                <li>Volkswagen Golf / Passat</li>
+                                <li>Dacia Duster / Logan</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
