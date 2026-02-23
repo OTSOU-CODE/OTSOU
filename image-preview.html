@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="CSS/navbar.css">
     <link rel="stylesheet" href="CSS/footer.css">
     <link rel="stylesheet" href="CSS/image-preview.css">
+    <link rel="stylesheet" href="CSS/cart-drawer.css">
+    <link rel="stylesheet" href="CSS/wishlist-drawer.css">
 </head>
 
 <body>
@@ -48,11 +50,10 @@
 
             <!-- Right Actions -->
             <div class="header-actions">
-
                 <button class="header-icon-btn" title="Wishlist">
                     <i class="far fa-heart"></i>
                 </button>
-                <button class="header-icon-btn" title="Cart">
+                <button class="header-icon-btn open-cart-trigger" title="Cart">
                     <i class="fas fa-shopping-bag"></i>
                     <span class="cart-badge">2</span>
                 </button>
@@ -214,6 +215,31 @@
     <!-- Footer Injection Target -->
     <div id="footer-target"></div>
 
+    <!-- Firebase Initialization -->
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyA3z_kZw09NYYdNeyygNqsPjPPTZWgMJYQ",
+        authDomain: "sherif-siege.firebaseapp.com",
+        projectId: "sherif-siege",
+        storageBucket: "sherif-siege.firebasestorage.app",
+        messagingSenderId: "192096233926",
+        appId: "1:192096233926:web:91bfeebeff3872c9252ac7",
+        measurementId: "G-GRG0Y3YKJQ"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
+
     <!-- Scripts -->
     <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -221,21 +247,31 @@
     <script src="JS/script.js"></script>
     <script src="JS/image-preview.js"></script>
 
+    <!-- Cart Drawer Init -->
+    <script type="module">
+        import { initCartDrawer } from './JS/cart-drawer.js';
+        
+        // Initialize Cart Drawer
+        document.addEventListener('DOMContentLoaded', () => {
+            initCartDrawer();
+        });
+    </script>
+    
+    <!-- Wishlist Drawer Init -->
+    <script type="module">
+        import { initWishlistDrawer } from './JS/wishlist-drawer.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            initWishlistDrawer();
+        });
+    </script>
+
     <!-- Footer Init -->
     <script type="module">
         import { createFooter } from './JS/footer.js';
         
         // Initialize Footer
         createFooter(document.body);
-    </script>
-
-    <!-- Config Chips Logic -->
-    <script>
-        function selectConfig(btn) {
-            const parent = btn.parentElement;
-            parent.querySelectorAll('.config-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        }
     </script>
 </body>
 </html>

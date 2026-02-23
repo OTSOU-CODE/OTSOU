@@ -263,7 +263,32 @@
     </div>
   </main>
 
-  <!-- Custom JavaScript -->
+    <!-- Firebase Initialization -->
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyA3z_kZw09NYYdNeyygNqsPjPPTZWgMJYQ",
+        authDomain: "sherif-siege.firebaseapp.com",
+        projectId: "sherif-siege",
+        storageBucket: "sherif-siege.firebasestorage.app",
+        messagingSenderId: "192096233926",
+        appId: "1:192096233926:web:91bfeebeff3872c9252ac7",
+        measurementId: "G-GRG0Y3YKJQ"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
+    
+    <!-- Custom JavaScript -->
   <script src="JS/config.js"></script>
   <script src="JS/script.js"></script>
 

@@ -225,6 +225,44 @@ function toggleAccordion(btn) {
 }
 window.toggleAccordion = toggleAccordion;
 
+/* --- Config Logic --- */
+function selectConfig(btn) {
+    const parent = btn.parentElement;
+    parent.querySelectorAll('.config-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    
+    // Update displayed price based on selection
+    updateDisplayedPrice();
+}
+window.selectConfig = selectConfig;
+
+function updateDisplayedPrice() {
+    const product = galleryData[currentImageIndex];
+    let extraPrice = 0;
+    
+    const activeConfigBtn = document.querySelector('.config-btn.active');
+    if (activeConfigBtn) {
+       const priceText = activeConfigBtn.querySelector('.config-price').textContent;
+       const match = priceText.match(/\+(\d+)/);
+       if (match) {
+           extraPrice = parseInt(match[1]);
+       }
+    }
+    
+    const finalPrice = product.price + extraPrice;
+    
+    // Update Main Price
+    document.querySelectorAll('.current-price').forEach(el => {
+        el.textContent = `${finalPrice} MAD`;
+    });
+    
+    // Update Sticky Bar Price
+    const barPrice = document.querySelector('.bar-text span');
+    if (barPrice) {
+        barPrice.textContent = `${finalPrice} MAD`;
+    }
+}
+
 /* --- Quantity Logic --- */
 function updateQty(change) {
   const qtyInput = document.getElementById('qtyInput');
@@ -243,15 +281,30 @@ window.updateQty = updateQty;
 /* --- Cart Logic --- */
 function addToCart(btn) {
   if (!btn) return;
-  
+
+  /* --- Config Price Logic --- */
+  let extraPrice = 0;
+  const activeConfigBtn = document.querySelector('.config-btn.active');
+  if (activeConfigBtn) {
+      const priceText = activeConfigBtn.querySelector('.config-price').textContent;
+      // Extract number from "+850 MAD"
+      const match = priceText.match(/\+(\d+)/);
+      if (match) {
+          extraPrice = parseInt(match[1]);
+      }
+  }
+
   const product = galleryData[currentImageIndex];
+  const finalPrice = product.price + extraPrice;
+
   const cartItem = {
       id: product.id,
       title: product.title,
-      price: product.price,
+      price: finalPrice, 
+      basePrice: product.price,
       image: product.src,
       quantity: qty,
-      config: document.querySelector('.config-btn.active .config-name')?.textContent || 'Standard'
+      config: activeConfigBtn ? activeConfigBtn.querySelector('.config-name').textContent : 'Standard'
   };
   
   // Save to LocalStorage
@@ -266,6 +319,10 @@ function addToCart(btn) {
   }
   
   localStorage.setItem('cart_items', JSON.stringify(cart));
+  
+  // Notify other components (like Cart Drawer)
+  window.dispatchEvent(new CustomEvent('cartUpdated'));
+
   updateCartBadge();
 
   // Visual Feedback
@@ -317,6 +374,9 @@ function toggleWishlistItem(product) {
     
     localStorage.setItem('wishlist_items', JSON.stringify(wishlist));
     renderWishlistState(wishlist);
+    
+    // Notify Drawer
+    window.dispatchEvent(new CustomEvent('wishlistUpdated'));
 }
 
 function checkWishlist(productId) {

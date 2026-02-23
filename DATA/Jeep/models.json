@@ -1,0 +1,82 @@
+[
+  {
+    "model_name": "Jeep Wrangler (JL)",
+    "production_years": "2017 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Jeep+Wrangler+JL"
+  },
+  {
+    "model_name": "Jeep Grand Cherokee (WK2 / WL)",
+    "production_years": "1993 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Jeep+Grand+Cherokee"
+  },
+  {
+    "model_name": "Jeep Compass",
+    "production_years": "2007 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Jeep+Compass"
+  },
+  {
+    "model_name": "Jeep Renegade",
+    "production_years": "2014 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Jeep+Renegade"
+  },
+  {
+    "model_name": "Jeep Gladiator",
+    "production_years": "2019 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Jeep+Gladiator"
+  },
+  {
+    "model_name": "Jeep Wagoneer (WS)",
+    "production_years": "2021 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Jeep+Wagoneer+2022"
+  },
+  {
+    "model_name": "Jeep Grand Wagoneer (WS)",
+    "production_years": "2021 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Jeep+Grand+Wagoneer+2022"
+  },
+  {
+    "model_name": "Jeep Commander (Meridian)",
+    "production_years": "2021 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Jeep+Commander+2022"
+  },
+  {
+    "model_name": "Jeep Avenger",
+    "production_years": "2023 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Jeep+Avenger"
+  },
+  {
+    "model_name": "Jeep Recon",
+    "production_years": "2024 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Jeep+Recon"
+  },
+  {
+    "model_name": "Jeep Wagoneer S",
+    "production_years": "2024 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Jeep+Wagoneer+S"
+  },
+  {
+    "model_name": "Jeep Wrangler (TJ)",
+    "production_years": "1996 \u2013 2006",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Jeep+Wrangler+TJ"
+  },
+  {
+    "model_name": "Jeep Liberty (KJ / KK)",
+    "production_years": "2002 \u2013 2012",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Jeep+Liberty"
+  },
+  {
+    "model_name": "Jeep Commander (XK)",
+    "production_years": "2005 \u2013 2010",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Jeep+Commander+XK"
+  },
+  {
+    "model_name": "Jeep Patriot",
+    "production_years": "2007 \u2013 2017",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Jeep+Patriot"
+  },
+  {
+    "model_name": "Jeep Cherokee (KL)",
+    "production_years": "2014 \u2013 2023",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Jeep+Cherokee+KL"
+  }
+]

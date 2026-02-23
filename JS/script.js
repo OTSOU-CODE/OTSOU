@@ -258,25 +258,27 @@ function performThemeToggle() {
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
 
-    // Update button icon
-    const icon = themeToggleBtn.querySelector('i');
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Update button icon if button exists
+    if (themeToggleBtn) {
+        const icon = themeToggleBtn.querySelector('i');
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    if (reducedMotion) {
-        icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-        themeToggleBtn.classList.remove('rotating');
+        if (reducedMotion) {
+            if (icon) icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            themeToggleBtn.classList.remove('rotating');
+            themeToggleBtn.setAttribute('aria-pressed', newTheme === 'dark');
+            return;
+        }
+
+        // Add a quick rotation cue
+        themeToggleBtn.classList.add('rotating');
+        setTimeout(() => {
+            if (icon) icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            setTimeout(() => themeToggleBtn.classList.remove('rotating'), 260);
+        }, 120);
+
         themeToggleBtn.setAttribute('aria-pressed', newTheme === 'dark');
-        return;
     }
-
-    // Add a quick rotation cue
-    themeToggleBtn.classList.add('rotating');
-    setTimeout(() => {
-        icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-        setTimeout(() => themeToggleBtn.classList.remove('rotating'), 260);
-    }, 120);
-
-    themeToggleBtn.setAttribute('aria-pressed', newTheme === 'dark');
 }
 
 // Load saved theme
@@ -286,11 +288,12 @@ function loadTheme() {
 
     if (themeToggleBtn) {
         const icon = themeToggleBtn.querySelector('i');
-
-        if (savedTheme === 'dark') {
-            icon.className = 'fas fa-sun';
-        } else {
-            icon.className = 'fas fa-moon';
+        if (icon) {
+            if (savedTheme === 'dark') {
+                icon.className = 'fas fa-sun';
+            } else {
+                icon.className = 'fas fa-moon';
+            }
         }
     }
 }

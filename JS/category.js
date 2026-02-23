@@ -1,3 +1,5 @@
+import dataManager from './DataManager.js';
+
 document.addEventListener("DOMContentLoaded", () => {
   // --- DOM Elements ---
   const grid = document.getElementById("vehicleGrid");
@@ -43,70 +45,32 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- Data Loading ---
-  // --- Data Loading ---
-  // --- Data Loading ---
   async function loadVehicles() {
     grid.innerHTML = getSkeletonHTML(4);
     try {
-      let dataRows = [];
-      let isLocal = false;
-
-      // Check for local data first (Fix for CORS on file://)
-      if (window.VEHICLE_DATA && Array.isArray(window.VEHICLE_DATA)) {
-          console.log("Using local VEHICLE_DATA");
-          dataRows = window.VEHICLE_DATA;
-          isLocal = true;
-      } else {
-          // Fallback to Fetch
-          const csvPath = (window.CONFIG && window.CONFIG.paths && window.CONFIG.paths.vehiclesCsv) ? window.CONFIG.paths.vehiclesCsv : "DATA/vehicles.csv";
-          const response = await fetch(csvPath);
-          if (!response.ok) throw new Error("Failed to load vehicle data");
-
-          const text = await response.text();
-          const lines = text.split("\n").filter((l) => l.trim());
-          dataRows = lines[0].toLowerCase().includes("brand") ? lines.slice(1) : lines;
-      }
-
-      allVehicles = dataRows
-        .map((item, index) => {
-          let brand, model, year;
-
-          if (isLocal) {
-              brand = item.brand;
-              model = item.model;
-              year = item.year;
-          } else {
-              // CSV Line parsing
-              const cols = item.split(",");
-              if (cols.length < 2) return null;
-              brand = cols[0].trim();
-              model = cols[1].trim();
-              year = cols[2] ? cols[2].trim() : "2020";
-          }
-
-          return {
-            id: isLocal ? `local-${index}` : `csv-${index}`,
-            brand: brand,
-            model: model,
-            year: year,
-            priceMonthly: 0,
-            engineSize: "2.0",
-            fuel: "Petrol",
-            type: "Sedan",
-            transmission: "Automatic",
-            seats: 5,
-            doors: 4,
-            realImagePath: "", 
-            coverImage: "", 
+        // Use DataManager to fetch vehicles
+        const vehicles = await dataManager.init();
+        
+        // Transform/Map if necessary, ensuring compatibility with category.js expectations
+        // DataManager should already return objects with { id, brand, model, year, image, price, type }
+        
+        allVehicles = vehicles.map(v => ({
+            ...v,
+            priceMonthly: v.price === "Inquire for Price" ? 0 : parseFloat(v.price.replace(/[^0-9.]/g, '')) || 0,
+            engineSize: "2.0", // Default
+            fuel: "Petrol", // Default
+            transmission: "Automatic", // Default
+            seats: 5, // Default
+            doors: 4, // Default
+            realImagePath: v.image,
             images: [],
-          };
-        })
-        .filter((v) => v !== null);
+            // Ensure ID is unique if not already
+        }));
 
-      // Shuffle
-      allVehicles.sort(() => Math.random() - 0.5);
+        // Shuffle
+        allVehicles.sort(() => Math.random() - 0.5);
 
-      applyFilters();
+        applyFilters();
     } catch (e) {
       console.error("Failed to load data", e);
       grid.innerHTML = `
@@ -120,18 +84,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- Rendering ---
+  // --- Rendering ---
+  let currentPage = 1;
+  
   function renderBatch(reset = false) {
     if (reset) {
-      grid.innerHTML = "";
-      renderIndex = 0;
+      currentPage = 1;
     }
 
-    const nextBatch = filteredVehicles.slice(
-      renderIndex,
-      renderIndex + batchSize,
-    );
+    const totalPages = Math.ceil(filteredVehicles.length / batchSize);
+    const start = (currentPage - 1) * batchSize;
+    const end = start + batchSize;
+    
+    const currentVehicles = filteredVehicles.slice(start, end);
 
-    if (nextBatch.length === 0 && reset) {
+    if (currentVehicles.length === 0 && reset) {
       grid.innerHTML = `
           <div class="empty-state" style="grid-column: 1/-1; text-align: center; padding: 4rem;">
             <i class="fas fa-search" style="font-size: 3rem; color: #ddd; margin-bottom: 1rem;"></i>
@@ -139,80 +106,342 @@ document.addEventListener("DOMContentLoaded", () => {
             <p>Try adjusting your filters.</p>
           </div>
         `;
+      if(paginationEl) paginationEl.style.display = 'none';
       return;
     }
 
-    const html = nextBatch.map(createGridCard).join("");
-    grid.insertAdjacentHTML("beforeend", html);
-    renderIndex += nextBatch.length;
-
-    if (paginationEl) {
-      paginationEl.style.display =
-        renderIndex >= filteredVehicles.length ? "none" : "flex";
-    }
+    // Render Grid
+    grid.innerHTML = currentVehicles.map(createGridCard).join("");
+    
+    // Render Pagination
+    renderPagination(totalPages);
   }
+
+  function renderPagination(totalPages) {
+      if (!paginationEl) return;
+      
+      if (totalPages <= 1) {
+          paginationEl.style.display = 'none';
+          return;
+      }
+      
+      paginationEl.style.display = 'flex';
+      let html = '';
+      
+      // Prev Button
+      html += `<button class="page-btn ${currentPage === 1 ? 'disabled' : ''}" onclick="window.changePage(${currentPage - 1})"><i class="fas fa-chevron-left"></i></button>`;
+      
+      // Page Numbers
+      // Simple logic: Show all if <= 7, else show complex range?
+      // For now, let's keep it simple or show valid range around current.
+      for (let i = 1; i <= totalPages; i++) {
+          if (
+              i === 1 || 
+              i === totalPages || 
+              (i >= currentPage - 1 && i <= currentPage + 1)
+          ) {
+              html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="window.changePage(${i})">${i}</button>`;
+          } else if (
+              (i === currentPage - 2 && i > 1) || 
+              (i === currentPage + 2 && i < totalPages)
+          ) {
+              html += `<span class="page-dots">...</span>`;
+          }
+      }
+      
+      // Next Button
+      html += `<button class="page-btn ${currentPage === totalPages ? 'disabled' : ''}" onclick="window.changePage(${currentPage + 1})"><i class="fas fa-chevron-right"></i></button>`;
+      
+      paginationEl.innerHTML = html;
+  }
+
+  window.changePage = (page) => {
+      const totalPages = Math.ceil(filteredVehicles.length / batchSize);
+      if (page < 1 || page > totalPages) return;
+      
+      currentPage = page;
+      renderBatch();
+      
+      // Scroll to top of grid
+      const gridTop = document.getElementById('filterBar').getBoundingClientRect().top + window.scrollY - 100;
+      window.scrollTo({ top: gridTop, behavior: 'smooth' });
+  };
 
   function createGridCard(v) {
     // Robust Fallback Image
-    // Uses a stylish placeholder or random existing image if we had logic for it.
-    // For now, consistent placeholders are better than 404s.
     const fallbackUrl = `https://placehold.co/600x450/2c2c2c/D4AF37?text=${encodeURIComponent(v.brand + '\\n' + v.model)}`;
     let imgUrl = v.realImagePath || fallbackUrl;
 
+    // Ensure placeholder is used if imgUrl is somehow empty or strictly "images/placeholder.jpg" which effectively doesn't exist
+    if (imgUrl === "images/placeholder.jpg" || !imgUrl) {
+         imgUrl = fallbackUrl;
+    }
+
+    // Determine typography classes based on length if needed, or just standard
+    
     return `
-        <div class="product-card">
-          <div class="card-image-wrapper">
-             <span class="badge-count"><i class="fas fa-layer-group"></i> Custom</span>
-             <img src="${imgUrl}" class="card-image" alt="${v.model}" loading="lazy" onerror="this.onerror=null; this.src='${fallbackUrl}';">
-          </div>
-
-          <div class="card-content">
-            <div class="card-header">
-                <div class="brand-badge">
-                   <!-- Logo is injected here -->
-                   <img src="${getBrandLogo(v.brand)}" alt="${v.brand}" style="width: 24px; height: 24px; object-fit: contain;">
-                </div>
-                <div>
-                   <h3 class="card-title">${v.year} ${v.brand} ${v.model}</h3>
-                   <p class="card-subtitle">${v.engineSize}L ${v.fuel} • ${v.type}</p>
+        <div class="vehicle-card" onclick="window.location.href='image-preview.html?id=${v.id}'" style="cursor: pointer;">
+            <div class="vehicle-image-container">
+                <img src="${imgUrl}" alt="${v.brand} ${v.model}" loading="lazy" onerror="this.onerror=null; this.src='${fallbackUrl}';">
+            </div>
+            <div class="vehicle-info">
+                <div class="vehicle-brand">${v.brand}</div>
+                <div class="vehicle-model">${v.model}</div>
+                <div class="vehicle-type">${v.year} • ${v.type || 'Sedan'}</div>
+                
+                <div class="vehicle-specs">
+                    <div class="spec-row">
+                        <i class="fas fa-chair"></i> ${v.seats || 5} seats
+                    </div>
                 </div>
             </div>
-
-            <div class="specs-grid">
-                <div class="spec-item" title="Fuel Type">
-                    <i class="fas fa-gas-pump"></i> ${v.fuel}
-                </div>
-                <div class="spec-item" title="Transmission">
-                    <i class="fas fa-cog"></i> ${v.transmission}
-                </div>
-                <div class="spec-item" title="Seats">
-                    <i class="fas fa-chair"></i> ${v.seats} Seats
-                </div>
-                <div class="spec-item" title="Doors">
-                    <i class="fas fa-door-open"></i> ${v.doors} Doors
+                
+                <div class="vehicle-divider"></div>
+                
+                <div class="vehicle-price">
+                    New from <span class="price-amount">${v.price === 'Inquire for Price' ? 'Contact Us' : v.price}</span>
                 </div>
             </div>
-
-            <div class="card-actions">
-                <div class="price-info">
-                    <span class="price-label">Customization from</span>
-                    <span class="price-value">Contact Us</span>
-                </div>
-                <a href="#" class="btn-card-action">
-                    <span>View Options</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-          </div>
         </div>
-      `;
+    `;
   }
 
-  // ... (getSkeletonHTML remains same) ...
+  function getSkeletonHTML(count) {
+    return Array(count).fill(0).map(() => `
+      <div class="vehicle-card skeleton-card">
+        <div class="vehicle-image-container skeleton-image"></div>
+        <div class="vehicle-info">
+          <div class="skeleton-text" style="width: 30%; height: 12px; margin-bottom: 8px;"></div>
+          <div class="skeleton-text" style="width: 70%; height: 24px; margin-bottom: 8px;"></div>
+          <div class="skeleton-text" style="width: 40%; height: 16px; margin-bottom: 16px;"></div>
+          
+          <div class="vehicle-specs">
+            <div class="skeleton-text" style="width: 50%; height: 14px;"></div>
+          </div>
+          
+          <div class="vehicle-divider"></div>
+          
+          <div class="skeleton-text" style="width: 40%; height: 14px;"></div>
+        </div>
+      </div>
+    `).join("");
+  }
 
-  // ... (applyFilters remains same) ...
+  function applyFilters() {
+    filteredVehicles = allVehicles.filter(v => {
+      // Brand filter
+      if (activeFilters.make.size > 0 && !activeFilters.make.has(v.brand)) return false;
+      // Model filter
+      if (activeFilters.model.size > 0 && !activeFilters.model.has(v.model)) return false;
+      // Year filter
+      if (activeFilters.year.size > 0) {
+          // Normalize year checks
+          // v.year might be "2015 – 2020" or "2018".
+          // If filter is specific year, check inclusion.
+          // Simplification: check if string contains the year
+          let match = false;
+          for (let yr of activeFilters.year) {
+              if (v.year.includes(yr)) match = true;
+          }
+          if (!match) return false;
+      }
+      return true;
+    });
 
-  // ... (setupEventListeners remains same) ...
+    resultsCountEl.textContent = `${filteredVehicles.length} Vehicles Found`;
+    renderBatch(true);
+  }
+
+  function setupEventListeners() {
+      if (resetFiltersLink) {
+          resetFiltersLink.addEventListener("click", (e) => {
+              e.preventDefault();
+              activeFilters.make.clear();
+              activeFilters.model.clear();
+              activeFilters.year.clear();
+              
+              // Uncheck all inputs
+              document.querySelectorAll("input[type='checkbox']").forEach(cb => cb.checked = false);
+              
+              // Re-inject to reset states
+              injectModels(); 
+              applyFilters();
+          });
+      }
+
+      setupDropdowns();
+      setupMobileFilters();
+      setupSort();
+  }
+
+  function setupMobileFilters() {
+      const filterBar = document.getElementById('filterBar');
+      if (!filterBar) return;
+      
+      const toggleBtn = document.getElementById('mobileFilterToggle');
+      if (!toggleBtn) return;
+      
+      toggleBtn.addEventListener('click', () => {
+          const group = filterBar.querySelector('.bar-filters-group');
+          if (group) {
+              group.classList.toggle('show-mobile');
+              toggleBtn.innerHTML = group.classList.contains('show-mobile') 
+                  ? '<i class="fas fa-times"></i> Close Filters' 
+                  : '<i class="fas fa-filter"></i> Show Filters';
+          }
+      });
+  }
+
+  function setupSort() {
+      const sortDropdown = document.querySelector('.sort-dropdown');
+      const currentSortLabel = document.getElementById('currentSort');
+      
+      if (!sortDropdown || !currentSortLabel) return;
+      
+      const sortMenu = sortDropdown.querySelector('.filter-menu');
+      if (!sortMenu) return; // Expecting static HTML now
+      
+      // Handle sort selection
+      sortMenu.querySelectorAll('input[type="radio"]').forEach(radio => {
+          radio.addEventListener('change', (e) => {
+              const sortType = e.target.value;
+              const label = e.target.closest('label').textContent.trim();
+              currentSortLabel.textContent = label;
+              sortVehicles(sortType);
+              sortDropdown.classList.remove('is-open'); // Close on select
+          });
+      });
+  }
+  
+  function sortVehicles(sortType) {
+      if (sortType === 'price_asc') {
+          filteredVehicles.sort((a, b) => a.priceMonthly - b.priceMonthly);
+      } else if (sortType === 'price_desc') {
+          filteredVehicles.sort((a, b) => b.priceMonthly - a.priceMonthly);
+      } else if (sortType === 'year_asc') {
+           filteredVehicles.sort((a, b) => parseInt(a.year) - parseInt(b.year));
+      } else if (sortType === 'year_desc') {
+           filteredVehicles.sort((a, b) => parseInt(b.year) - parseInt(a.year));
+      } else {
+          // Relevance (Random or Original ID?) - let's shuffle or reset
+          filteredVehicles.sort((a, b) => a.id - b.id); 
+      }
+      renderBatch(true);
+  }
+
+  function setupDropdowns() {
+      const dropdowns = document.querySelectorAll('.filter-dropdown');
+      
+      dropdowns.forEach(dropdown => {
+          const trigger = dropdown.querySelector('.filter-trigger');
+          
+          if(trigger) {
+              trigger.addEventListener('click', (e) => {
+                  e.stopPropagation();
+                  // Close others
+                  dropdowns.forEach(d => {
+                      if (d !== dropdown) d.classList.remove('is-open');
+                  });
+                  dropdown.classList.toggle('is-open');
+              });
+          }
+      });
+
+      // Close when clicking outside
+      document.addEventListener('click', () => {
+          dropdowns.forEach(d => d.classList.remove('is-open'));
+      });
+
+      // Prevent closing when clicking inside menu
+      document.querySelectorAll('.filter-menu').forEach(menu => {
+          menu.addEventListener('click', (e) => e.stopPropagation());
+      });
+  }
+  
+  function injectBrands() {
+    // Only inject if empty (user might have static HTML)
+    if (brandGrid.children.length > 5) return; 
+
+    const brands = [...new Set(allVehicles.map(v => v.brand))].sort();
+    brandGrid.innerHTML = brands.map(brand => {
+        const count = allVehicles.filter(v => v.brand === brand).length;
+        return `
+        <label class="brand-option">
+            <input type="checkbox" value="${brand}" onchange="toggleFilter('make', '${brand}')"> 
+            ${brand}
+            <span style="opacity: 0.5; font-size: 0.85em; margin-left: 4px;">(${count})</span>
+        </label>`;
+    }).join("");
+  }
+
+  function injectModels() {
+      let availableModels = [];
+      
+      if (activeFilters.make.size === 0) {
+          // If no make selected, show message or all models?
+          // Showing all models might be too much, usually "Select a Make" is better
+          modelGrid.innerHTML = '<div class="empty-filter-state" style="padding: 1rem; color: var(--text-secondary);">Please select a Make first</div>';
+          return;
+      } else {
+          // Filter vehicles by selected brands first
+          const vehiclesByBrand = allVehicles.filter(v => activeFilters.make.has(v.brand));
+          availableModels = [...new Set(vehiclesByBrand.map(v => v.model))].sort();
+      }
+
+      modelGrid.innerHTML = availableModels.map(m => `
+          <label class="list-option">
+              <input type="checkbox" value="${m}" onchange="toggleFilter('model', '${m}')"
+              ${activeFilters.model.has(m) ? 'checked' : ''}>
+              ${m}
+          </label>
+      `).join("");
+  }
+
+  function injectYears() {
+      // Extract all unique years strings from data
+      // Some years are ranges "2010 - 2020", some are single "2024"
+      // We can simplisticly offer them as string options
+      const rawYears = [...new Set(allVehicles.map(v => v.year))].sort().reverse();
+      
+      // OR better: extract 4-digit years from strings and offer those? 
+      // User likely wants "2020" to match "2019-2021".
+      // Let's stick to simple string matching for now to avoid complex logic issues, 
+      // or just list top distinct values.
+      const yearOptionsEl = document.getElementById("yearOptions");
+      if(yearOptionsEl) {
+         yearOptionsEl.innerHTML = rawYears.slice(0, 20).map(y => `
+            <label class="list-option">
+                <input type="checkbox" value="${y}" onchange="toggleFilter('year', '${y}')"
+                ${activeFilters.year.has(y) ? 'checked' : ''}>
+                ${y}
+            </label>
+         `).join("");
+      }
+  }
+  
+  function setupStickyFilterBar() {
+      // Intentionally empty as sticky behavior was disabled via CSS
+  }
+
+  // Globals for inline event handlers (toggleFilter)
+  window.toggleFilter = (type, value) => {
+      if (activeFilters[type].has(value)) {
+          activeFilters[type].delete(value);
+      } else {
+          activeFilters[type].add(value);
+      }
+      
+      // If we changed Brand, we must update Models and clear invalid model selections
+      if (type === 'make') {
+          // Remove models that are no longer valid?
+          // For simplicity, just reset model filters if they don't belong to selected brands?
+          // Or keep them but they won't match anything.
+          // Let's re-inject models to show valid options.
+          injectModels();
+      }
+
+      applyFilters();
+  };
 
   function getBrandLogo(brand) {
     // Use CONFIG.images.brands
