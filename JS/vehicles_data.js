@@ -553,7 +553,7 @@ export const VEHICLES_DATA = {
       "model": "Alfa Romeo 164",
       "year": "1987 – 1998",
       "price": "Inquire for Price",
-      "image": "images/placeholder.jpg",
+      "image": "images/CAR Models/Alfa Romeo 164.png",
       "type": "Sedan",
       "originalData": {
         "model_name": "Alfa Romeo 164",
@@ -581,7 +581,7 @@ export const VEHICLES_DATA = {
       "model": "Alfa Romeo 155",
       "year": "1992 – 1998",
       "price": "Inquire for Price",
-      "image": "images/placeholder.jpg",
+      "image": "images/CAR Models/Alfa Romeo 155.png",
       "type": "Sedan",
       "originalData": {
         "model_name": "Alfa Romeo 155",
@@ -595,7 +595,7 @@ export const VEHICLES_DATA = {
       "model": "Alfa Romeo 145 / 146",
       "year": "1994 – 2000",
       "price": "Inquire for Price",
-      "image": "images/placeholder.jpg",
+      "image": "images/CAR Models/Alfa Romeo 145 - 146.png",
       "type": "Sedan",
       "originalData": {
         "model_name": "Alfa Romeo 145 / 146",
@@ -609,7 +609,7 @@ export const VEHICLES_DATA = {
       "model": "Alfa Romeo GTV / Spider (Type 916)",
       "year": "1995 – 2005",
       "price": "Inquire for Price",
-      "image": "images/placeholder.jpg",
+      "image": "images/CAR Models/Alfa Romeo GTV - Spider (Type 916).png",
       "type": "Sedan",
       "originalData": {
         "model_name": "Alfa Romeo GTV / Spider (Type 916)",
@@ -623,7 +623,7 @@ export const VEHICLES_DATA = {
       "model": "Alfa Romeo 156",
       "year": "1997 – 2007",
       "price": "Inquire for Price",
-      "image": "images/placeholder.jpg",
+      "image": "images/CAR Models/Alfa Romeo 156.png",
       "type": "Sedan",
       "originalData": {
         "model_name": "Alfa Romeo 156",
@@ -679,7 +679,7 @@ export const VEHICLES_DATA = {
       "model": "Alfa Romeo 159",
       "year": "2005 – 2011",
       "price": "Inquire for Price",
-      "image": "images/placeholder.jpg",
+      "image": "images/CAR Models/Alfa Romeo 159.png",
       "type": "Sedan",
       "originalData": {
         "model_name": "Alfa Romeo 159",
@@ -749,7 +749,7 @@ export const VEHICLES_DATA = {
       "model": "Alfa Romeo Giulietta (Type 940)",
       "year": "2010 – 2020",
       "price": "Inquire for Price",
-      "image": "images/placeholder.jpg",
+      "image": "images/CAR Models/Alfa Romeo Giulietta (Type 940).png",
       "type": "Sedan",
       "originalData": {
         "model_name": "Alfa Romeo Giulietta (Type 940)",
@@ -777,7 +777,7 @@ export const VEHICLES_DATA = {
       "model": "Alfa Romeo Giulia (Type 952)",
       "year": "2015 – Present",
       "price": "Inquire for Price",
-      "image": "images/placeholder.jpg",
+      "image": "images/CAR Models/Alfa Romeo Giulia (Type 952).png",
       "type": "Sedan",
       "originalData": {
         "model_name": "Alfa Romeo Giulia (Type 952)",
@@ -791,7 +791,7 @@ export const VEHICLES_DATA = {
       "model": "Alfa Romeo Stelvio",
       "year": "2016 – Present",
       "price": "Inquire for Price",
-      "image": "images/placeholder.jpg",
+      "image": "images/CAR Models/Alfa Romeo Stelvio.png",
       "type": "Sedan",
       "originalData": {
         "model_name": "Alfa Romeo Stelvio",
@@ -805,7 +805,7 @@ export const VEHICLES_DATA = {
       "model": "Alfa Romeo Tonale",
       "year": "2022 – Present",
       "price": "Inquire for Price",
-      "image": "images/placeholder.jpg",
+      "image": "images/CAR Models/Alfa Romeo Tonale.png",
       "type": "Sedan",
       "originalData": {
         "model_name": "Alfa Romeo Tonale",
@@ -819,7 +819,7 @@ export const VEHICLES_DATA = {
       "model": "Alfa Romeo Junior (Milano)",
       "year": "2024 – Present",
       "price": "Inquire for Price",
-      "image": "images/placeholder.jpg",
+      "image": "images/CAR Models/Alfa Romeo Junior (Milano).png",
       "type": "Sedan",
       "originalData": {
         "model_name": "Alfa Romeo Junior (Milano)",
@@ -5997,7 +5997,7 @@ export const VEHICLES_DATA = {
       "model": "Dacia 1325 Liberta",
       "year": "1990 – 1996",
       "price": "Inquire for Price",
-      "image": "images/placeholder.jpg",
+      "image": "images/CAR Models/Dacia 1325 Liberta.png",
       "type": "Sedan",
       "originalData": {
         "model_name": "Dacia 1325 Liberta",
@@ -6011,7 +6011,7 @@ export const VEHICLES_DATA = {
       "model": "Dacia Nova",
       "year": "1995 – 2000",
       "price": "Inquire for Price",
-      "image": "images/placeholder.jpg",
+      "image": "images/CAR Models/Dacia Nova.png",
       "type": "Sedan",
       "originalData": {
         "model_name": "Dacia Nova",
@@ -6025,7 +6025,7 @@ export const VEHICLES_DATA = {
       "model": "Dacia SupeRNova",
       "year": "2000 – 2003",
       "price": "Inquire for Price",
-      "image": "images/placeholder.jpg",
+      "image": "images/CAR Models/Dacia SupeRNova.png",
       "type": "Sedan",
       "originalData": {
         "model_name": "Dacia SupeRNova",
@@ -6039,7 +6039,7 @@ export const VEHICLES_DATA = {
       "model": "Dacia Solenza",
       "year": "2003 – 2005",
       "price": "Inquire for Price",
-      "image": "images/placeholder.jpg",
+      "image": "images/CAR Models/Dacia Solenza.png",
       "type": "Sedan",
       "originalData": {
         "model_name": "Dacia Solenza",
@@ -6053,7 +6053,7 @@ export const VEHICLES_DATA = {
       "model": "Dacia Logan I",
       "year": "2004 – 2012",
       "price": "Inquire for Price",
-      "image": "images/placeholder.jpg",
+      "image": "images/CAR Models/Dacia Logan I.png",
       "type": "Sedan",
       "originalData": {
         "model_name": "Dacia Logan I",
@@ -6095,7 +6095,7 @@ export const VEHICLES_DATA = {
       "model": "Dacia Sandero I",
       "year": "2008 – 2012",
       "price": "Inquire for Price",
-      "image": "images/placeholder.jpg",
+      "image": "images/CAR Models/Dacia Sandero I.png",
       "type": "Sedan",
       "originalData": {
         "model_name": "Dacia Sandero I",
@@ -6109,7 +6109,7 @@ export const VEHICLES_DATA = {
       "model": "Dacia Duster I",
       "year": "2010 – 2017",
       "price": "Inquire for Price",
-      "image": "images/placeholder.jpg",
+      "image": "images/CAR Models/Dacia Duster I.png",
       "type": "Sedan",
       "originalData": {
         "model_name": "Dacia Duster I",
@@ -6123,7 +6123,7 @@ export const VEHICLES_DATA = {
       "model": "Dacia Lodgy",
       "year": "2012 – 2022",
       "price": "Inquire for Price",
-      "image": "images/placeholder.jpg",
+      "image": "images/CAR Models/Dacia Lodgy.png",
       "type": "Sedan",
       "originalData": {
         "model_name": "Dacia Lodgy",
@@ -6137,7 +6137,7 @@ export const VEHICLES_DATA = {
       "model": "Dacia Dokker",
       "year": "2012 – 2021",
       "price": "Inquire for Price",
-      "image": "images/placeholder.jpg",
+      "image": "images/CAR Models/Dacia Dokker.png",
       "type": "Sedan",
       "originalData": {
         "model_name": "Dacia Dokker",
