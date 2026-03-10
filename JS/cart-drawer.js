@@ -146,7 +146,7 @@ function renderCartItems() {
     });
 }
 
-function updateCartItemQty(index, change) {
+export function updateCartItemQty(index, change) {
     let cart = JSON.parse(localStorage.getItem('cart_items')) || [];
     if (!cart[index]) return;
 
