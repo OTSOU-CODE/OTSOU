@@ -49,6 +49,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Expose for testing
   if (typeof window !== 'undefined') {
     window.activeFilters = activeFilters;
+    window.__setAllVehicles = (v) => { allVehicles = v; };
+    window.__getFilteredVehicles = () => filteredVehicles;
+    window.__applyFilters = applyFilters;
   }
   let renderIndex = 0;
   const batchSize = 12;
