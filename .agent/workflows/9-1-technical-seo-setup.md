@@ -1,32 +1,179 @@
 ---
-description: SEO - Technical SEO Setup
+description: "SEO - Technical SEO Setup"
 ---
 
 # Static Technical SEO Setup (Sherif-Auto)
 
-START → Meta Tags HTML Verification → Canonical Linking → Schema Injection → Firebase Hosting Check → END
+START → Meta Tags → Canonical Links → JSON-LD Schema → Sitemap & Robots → Open Graph → Firebase Hosting → END
 
 ## Scope & Context
 
-Since we operate without a framework-based router, Technical SEO setup involves manually injecting critical SEO tags directly into every single `.html` file head.
+Without a framework-based router, Technical SEO setup involves manually injecting critical SEO tags directly into every `.html` file. Each page must be independently optimized.
 
-## Steps:
+## Prerequisites
 
-1. **TITLE & META REVIEW:**
-   - `<title>`: "Sherif-Auto | [Page Specific Focus] | Premium Upholstery" (Keep under 60 chars).
-   - `<meta name="description">`: Pitch the exact luxury car service offered on that page to increase click-throughs (150 chars).
+- All HTML pages finalized and accessible
+- Brand keywords identified (see `/6-1-content-strategy`)
 
-2. **CANONICAL LINKS:**
-   - Set `<link rel="canonical" href="https://sherif-auto.com/page.html"/>` on pages to avoid duplicate indexing if URL query params (like `?category=leather`) exist.
+## Steps
 
-3. **SCHEMA MARKUP INJECTION (JSON-LD):**
-   - Place a `<script type="application/ld+json">` block defining standard `LocalBusiness` setup directly in `Index.html` or `footer.js`.
-   - Incorporate `Product` schema arrays mapped logically out of `vehicles_data.js` via a generation script.
+### 1. TITLE & META REVIEW
 
-4. **SITEMAP & ROBOTS GENERATION:**
-   - For static sites, explicitly draft `sitemap.xml` mapping base HTML files and explicit sub-gallery parameter links.
-   - `robots.txt`: Disallow `/DATA/` raw files if they expose non-indexable configurations.
+- [ ] Set unique `<title>` per page (< 60 chars):
 
-5. **FIREBASE HOSTING SETUP:**
-   - Configure `firebase.json` headers to return explicit `Cache-Control` flags for images heavily reducing crawl budget waste on 8K WebPs.
-   - Ensure clean URLs (`"cleanUrls": true`) so `.html` extensions are naturally hidden.
+  ```html
+  <!-- Homepage -->
+  <title>Sherif-Auto | Premium Auto Upholstery & Interior Craftsmanship</title>
+
+  <!-- Category Page -->
+  <title>Vehicle Categories | Sherif-Auto Premium Upholstery</title>
+
+  <!-- Gallery -->
+  <title>Our Work | Portfolio | Sherif-Auto</title>
+  ```
+
+- [ ] Set compelling `<meta name="description">` per page (< 160 chars):
+
+  ```html
+  <meta
+    name="description"
+    content="Transform your vehicle interior with Sherif-Auto's premium leather upholstery, dashboard restoration, and custom seat design. Request a free consultation."
+  />
+  ```
+
+- [ ] Set viewport and charset:
+  ```html
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  ```
+
+### 2. CANONICAL LINKS
+
+- [ ] Set `<link rel="canonical">` on every page to prevent duplicate indexing:
+  ```html
+  <link rel="canonical" href="https://sherif-auto.com/category.html" />
+  ```
+- [ ] For pages with query params (like `?category=leather`), canonical should point to the base URL without query strings
+
+### 3. JSON-LD STRUCTURED DATA
+
+- [ ] Inject `LocalBusiness` schema in `Index.html`:
+
+  ```html
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Sherif-Auto",
+      "description": "Premium auto upholstery, custom leather seats, and dashboard restoration services",
+      "url": "https://sherif-auto.com",
+      "telephone": "+213-XXX-XXX-XXX",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "City",
+        "addressCountry": "DZ"
+      },
+      "priceRange": "$$",
+      "image": "https://sherif-auto.com/images/logo.webp",
+      "sameAs": [],
+      "openingHours": "Mo-Sa 08:00-18:00"
+    }
+  </script>
+  ```
+
+- [ ] Add `Product` schema for service pages (optional, enhances rich results)
+
+### 4. OPEN GRAPH & SOCIAL META
+
+- [ ] Add Open Graph tags for social sharing:
+
+  ```html
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Sherif-Auto | Premium Auto Upholstery" />
+  <meta
+    property="og:description"
+    content="Transform your vehicle interior..."
+  />
+  <meta
+    property="og:image"
+    content="https://sherif-auto.com/images/og-image.webp"
+  />
+  <meta property="og:url" content="https://sherif-auto.com/" />
+  ```
+
+- [ ] Add Twitter Card meta:
+  ```html
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sherif-Auto" />
+  <meta name="twitter:description" content="Premium auto upholstery..." />
+  <meta
+    name="twitter:image"
+    content="https://sherif-auto.com/images/og-image.webp"
+  />
+  ```
+
+### 5. SITEMAP & ROBOTS
+
+- [ ] Create `sitemap.xml` at root:
+
+  ```xml
+  <?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+      <loc>https://sherif-auto.com/</loc>
+      <lastmod>2026-02-24</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>1.0</priority>
+    </url>
+    <url>
+      <loc>https://sherif-auto.com/category.html</loc>
+      <priority>0.8</priority>
+    </url>
+    <url>
+      <loc>https://sherif-auto.com/gallery.html</loc>
+      <priority>0.8</priority>
+    </url>
+    <!-- Add all public pages -->
+  </urlset>
+  ```
+
+- [ ] Create `robots.txt` at root:
+  ```
+  User-agent: *
+  Allow: /
+  Disallow: /DATA/
+  Disallow: /Global/
+  Sitemap: https://sherif-auto.com/sitemap.xml
+  ```
+
+### 6. FIREBASE HOSTING SEO CONFIG
+
+- [ ] Enable clean URLs in `firebase.json`:
+  ```json
+  {
+    "hosting": {
+      "cleanUrls": true,
+      "trailingSlash": false
+    }
+  }
+  ```
+- [ ] Set cache headers for images to reduce crawl budget waste
+- [ ] Ensure HTTPS redirect is active (Firebase does this by default)
+
+## Verification Checklist
+
+- [ ] Every `.html` has unique `<title>` (< 60 chars)
+- [ ] Every `.html` has unique `<meta name="description">` (< 160 chars)
+- [ ] Every `.html` has `<link rel="canonical">`
+- [ ] `Index.html` has JSON-LD LocalBusiness schema
+- [ ] Open Graph tags set for social previews
+- [ ] `sitemap.xml` maps all public pages
+- [ ] `robots.txt` blocks `/DATA/` and `/Global/`
+- [ ] Firebase `cleanUrls: true` configured
+- [ ] Test with Google Rich Results Test tool
+
+## Related Workflows
+
+- **Content SEO:** `/9-2-content-seo-optimization` — Keyword integration, heading hierarchy
+- **Content Strategy:** `/6-1-content-strategy` — Brand voice and copy guidelines
+- **Pre-Launch Checklist:** `/10-2-pre-launch-testing-checklist` — SEO verification gate

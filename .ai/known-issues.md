@@ -1,18 +1,65 @@
 # Sherif-Auto: Known Issues & Limitations
 
-_Log bugs, technical debt constraints, and framework limitations here to prevent AI Agents from debugging intended architectural choices._
+_Log bugs, technical debt, framework constraints, and intended behaviors here to prevent AI Agents from debugging architectural choices._
 
 ## System Constraints (Not Bugs)
 
-1. **"Missing Framework Errors"**: Do not attempt to run `npm install react` or implement Webpack. The site is intended to run as a flat directory structure over native localhost testing servers (e.g., Live Server extension or `python -m http.server`).
-2. **Image Load Delays on Large Grids**: We are prioritizing WebP loading natively over `<canvas>` or heavy lazy-load frameworks. Do not implement third-party lazy-loading libraries; use native `loading="lazy"` attributes.
-3. **`import` Errors**: If seeing ES6 import errors locally, ensure the server is interpreting files correctly and the `<script>` tag is explicitly set to `type="module"`. Do not attempt to compile JS down to CommonJS `require()`.
+### 1. No Framework Runtime
 
-## Current Technical Debt
+Do not attempt `npm install react`, implement Webpack, or convert to a SPA framework. The site runs as a flat HTML directory served by Firebase Hosting or a local dev server (Live Server, `python -m http.server`).
 
-- **Form State Duplication**: The "Get Quote" form logic requires a centralized validation script (`validation.js`) rather than re-writing the Regex per HTML file route.
-- **Hard-coded Data Loading**: `vehicles_data.js` is currently massive. Future updates may necessitate splitting this localized data file or officially shifting the source of truth to Firestore to reduce initial parsing times.
+### 2. Image Load Delays on Large Grids
+
+We use native `loading="lazy"` exclusively. Do **not** install third-party lazy-loading libraries (lozad, lazysizes, etc.). Performance comes from proper WebP compression, thumbnails, and defined `width`/`height` attributes on `<img>` tags.
+
+### 3. ES Module Import Errors
+
+If seeing `import` errors locally, verify:
+
+- The `<script>` tag has `type="module"` set
+- The server supports CORS for local module loading (Live Server handles this)
+- Do **not** convert ES Modules to CommonJS `require()` syntax
+
+### 4. Firebase Config is Public
+
+The `apiKey` and `projectId` in HTML files are designed to be client-visible. This is normal Firebase Web SDK behavior. Security is enforced via **Firestore Security Rules**, not hidden config.
+
+### 5. Safari `backdrop-filter` Quirks
+
+Always include `-webkit-backdrop-filter` alongside `backdrop-filter`. Safari may also clip `blur()` effects on elements without explicit `border-radius` or `overflow: hidden`.
+
+## Active Technical Debt
+
+### Form State Duplication
+
+The "Get Quote" form logic has regex validation duplicated across files. **Fix:** Create a centralized `validation.js` module exporting reusable validators (email, phone, required fields).
+
+### Monolithic Data File
+
+`vehicles_data.js` is large and growing. Current mitigations:
+
+- Browser parses it in a single pass (acceptable for now)
+- Future option: Split by brand into separate modules or migrate to Firestore
+
+### CSS File Splitting
+
+`style.css` must remain under 1,000 lines. As it grows, extract component-specific styles into `/CSS/[component].css` and import via `<link>` in the relevant HTML files.
+
+### Missing Centralized Error Handling
+
+External integrations (Firebase Analytics, EmailJS) should degrade gracefully if blocked by adblockers. Use optional chaining: `window.analytics?.logEvent(...)`.
 
 ## Pending Bugs
 
-- None accurately mapped yet for the new Vanilla/GSAP workflow overhaul. Wait for integration testing.
+| ID      | Severity | Description                                                              | Status |
+| ------- | -------- | ------------------------------------------------------------------------ | ------ |
+| BUG-001 | Low      | Mobile filter toggle visibility edge case at exactly 768px breakpoint    | Open   |
+| BUG-002 | Medium   | Gallery grid may show empty cells if `thumbnail_path` is missing in data | Open   |
+
+## Common Gotchas for AI Agents
+
+1. **Don't remove existing GSAP imports** — Multiple components depend on the shared GSAP CDN include
+2. **Don't convert `Index.html` to `index.html`** — Firebase Hosting is configured for the current casing
+3. **Don't add `overflow: hidden` to `<body>`** — It breaks GSAP ScrollTrigger calculations
+4. **Don't use `position: fixed` without testing** — It conflicts with GSAP pinning behavior
+5. **Always test at 320px, 768px, and 1440px** — These are the critical responsive breakpoints

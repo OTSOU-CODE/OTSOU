@@ -6067,7 +6067,7 @@ export const VEHICLES_DATA = {
       "model": "Dacia Logan MCV I",
       "year": "2006 – 2012",
       "price": "Inquire for Price",
-      "image": "images/placeholder.jpg",
+      "image": "images/CAR Models/Dacia Logan MCV I.png",
       "type": "Sedan",
       "originalData": {
         "model_name": "Dacia Logan MCV I",
@@ -6081,7 +6081,7 @@ export const VEHICLES_DATA = {
       "model": "Dacia Logan Pick-Up",
       "year": "2008 – 2012",
       "price": "Inquire for Price",
-      "image": "images/placeholder.jpg",
+      "image": "images/CAR Models/Dacia Logan Pick-Up.png",
       "type": "Sedan",
       "originalData": {
         "model_name": "Dacia Logan Pick-Up",
@@ -6221,7 +6221,7 @@ export const VEHICLES_DATA = {
       "model": "Dacia Spring (Electric)",
       "year": "2021 – Present",
       "price": "Inquire for Price",
-      "image": "images/placeholder.jpg",
+      "image": "images/CAR Models/Dacia Spring (Electric).png",
       "type": "Sedan",
       "originalData": {
         "model_name": "Dacia Spring (Electric)",
@@ -6235,7 +6235,7 @@ export const VEHICLES_DATA = {
       "model": "Dacia Jogger",
       "year": "2022 – Present",
       "price": "Inquire for Price",
-      "image": "images/placeholder.jpg",
+      "image": "images/CAR Models/Dacia Jogger.png",
       "type": "Sedan",
       "originalData": {
         "model_name": "Dacia Jogger",
@@ -6263,7 +6263,7 @@ export const VEHICLES_DATA = {
       "model": "Dacia Bigster",
       "year": "2025 (Expected)",
       "price": "Inquire for Price",
-      "image": "images/placeholder.jpg",
+      "image": "images/CAR Models/Dacia Bigster.png",
       "type": "Sedan",
       "originalData": {
         "model_name": "Dacia Bigster",
