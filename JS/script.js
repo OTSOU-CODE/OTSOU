@@ -1212,6 +1212,7 @@ function setupCarBrands() {
 window.scrollToSection = scrollToSection;
 window.nextCarSeatImage = nextCarSeatImage;
 window.prevCarSeatImage = prevCarSeatImage;
+window.initializeElements = initializeElements;
 
 // Scroll Animations
 // Scroll Animations
