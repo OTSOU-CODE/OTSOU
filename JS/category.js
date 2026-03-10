@@ -49,6 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // Expose for testing
   if (typeof window !== 'undefined') {
     window.activeFilters = activeFilters;
+    Object.defineProperty(window, 'filteredVehicles', {
+      get: () => filteredVehicles,
+      set: (val) => { filteredVehicles = val; },
+      configurable: true
+    });
   }
   let renderIndex = 0;
   const batchSize = 12;
@@ -399,7 +404,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  function sortVehicles(sortType) {
+  window.sortVehicles = function sortVehicles(sortType) {
     if (sortType === "price_asc") {
       filteredVehicles.sort((a, b) => a.priceMonthly - b.priceMonthly);
     } else if (sortType === "price_desc") {
