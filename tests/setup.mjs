@@ -16,7 +16,24 @@ global.document = {
             global._triggerDOMContentLoaded = callback;
         }
     },
-    getElementById: (id) => mockElement,
+    _elements: {},
+    getElementById: function(id) {
+        if (!this._elements[id]) {
+            this._elements[id] = {
+                id,
+                innerHTML: '',
+                style: {},
+                children: [],
+                classList: { toggle: () => {}, contains: () => false, add: () => {}, remove: () => {} },
+                addEventListener: () => {},
+                textContent: '',
+                querySelectorAll: () => [],
+                getBoundingClientRect: () => ({ top: 0 })
+            };
+            this._elements[id].querySelector = () => this._elements[id];
+        }
+        return this._elements[id];
+    },
     querySelectorAll: () => [],
     querySelector: () => mockElement
 };

@@ -49,6 +49,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // Expose for testing
   if (typeof window !== 'undefined') {
     window.activeFilters = activeFilters;
+    window._setFilteredVehicles = (vehicles) => { filteredVehicles = vehicles; };
+    window._getFilteredVehicles = () => filteredVehicles;
+    window._renderBatch = (reset) => renderBatch(reset);
+    window._getCurrentPage = () => currentPage;
   }
   let renderIndex = 0;
   const batchSize = 12;
