@@ -1387,11 +1387,16 @@ function initCompatibilityChecker() {
             // Count how many we have done (fake or real count from CSV)
             const count = vehicleData.filter(v => v.brand === brand && v.model === model).length;
             
+            resultDiv.innerHTML = '<i class="fas fa-check-circle"></i> ';
             if (count > 0) {
-                resultDiv.innerHTML = '<i class="fas fa-check-circle"></i> We have worked on <b>' + count + '</b> ' + brand + ' ' + model + '(s)!';
+                resultDiv.appendChild(document.createTextNode('We have worked on '));
+                const b = document.createElement('b');
+                b.textContent = count;
+                resultDiv.appendChild(b);
+                resultDiv.appendChild(document.createTextNode(' ' + brand + ' ' + model + '(s)!'));
                 resultDiv.style.color = 'var(--success)';
             } else {
-                resultDiv.innerHTML = '<i class="fas fa-check-circle"></i> We are compatible with ' + brand + ' ' + model + '!';
+                resultDiv.appendChild(document.createTextNode('We are compatible with ' + brand + ' ' + model + '!'));
                 resultDiv.style.color = 'var(--primary)';
             }
              // Haptic
