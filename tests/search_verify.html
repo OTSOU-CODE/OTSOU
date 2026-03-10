@@ -1,0 +1,22 @@
+
+        <!DOCTYPE html>
+        <html>
+        <body>
+            <div class="search-container" style="width: 300px; border: 1px solid #ccc;">
+                <button id="search-toggle">Toggle</button>
+                <input id="header-search-input" type="text" placeholder="Search" />
+                <div id="header-search-results"></div>
+            </div>
+            <script>
+                // Mock local storage BEFORE loading script
+                localStorage.setItem('searchHistory', JSON.stringify(['<script>alert("xss")<\/script>', 'Normal Search']));
+
+                // Mock Fetch so that vehicle data logic doesn't throw
+                window.fetch = () => Promise.resolve({
+                    ok: true,
+                    text: () => Promise.resolve('brand,model,year\nToyota,Camry,2020')
+                });
+            </script>
+            <script src="file:///app/JS/script.js"></script>
+        </body>
+        </html>

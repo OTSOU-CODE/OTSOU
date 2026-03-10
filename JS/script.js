@@ -760,15 +760,19 @@ function initHeaderSearch() {
                 const div = document.createElement('div');
                 div.className = 'search-result-item';
 
-                const span = document.createElement('span');
+                const wrapper = document.createElement('span');
+
                 const icon = document.createElement('i');
                 icon.className = 'fas fa-history';
-                icon.style.marginRight = '8px';
                 icon.style.opacity = '0.6';
 
-                span.appendChild(icon);
-                span.appendChild(document.createTextNode(item));
-                div.appendChild(span);
+                const textSpan = document.createElement('span');
+                textSpan.style.marginLeft = '8px';
+                textSpan.textContent = item;
+
+                wrapper.appendChild(icon);
+                wrapper.appendChild(textSpan);
+                div.appendChild(wrapper);
 
                 div.addEventListener('click', () => {
                     searchInput.value = item;
@@ -803,14 +807,18 @@ function initHeaderSearch() {
                     location.href = 'category.html?search=' + encodeURIComponent(v.brand + " " + v.model);
                 });
 
+                const wrapper = document.createElement('span');
+
                 const icon = document.createElement('i');
                 icon.className = 'fas fa-car';
 
                 const span = document.createElement('span');
+                span.style.marginLeft = '8px';
                 span.textContent = `${v.brand} ${v.model} ${v.year}`;
 
-                div.appendChild(icon);
-                div.appendChild(span);
+                wrapper.appendChild(icon);
+                wrapper.appendChild(span);
+                div.appendChild(wrapper);
                 searchResults.appendChild(div);
             });
         }
@@ -832,14 +840,18 @@ function initHeaderSearch() {
                     location.href = s.url;
                 });
 
+                const wrapper = document.createElement('span');
+
                 const icon = document.createElement('i');
                 icon.className = 'fas ' + (s.type === 'page' ? 'fa-link' : 'fa-tools');
 
                 const span = document.createElement('span');
+                span.style.marginLeft = '8px';
                 span.textContent = s.name;
 
-                div.appendChild(icon);
-                div.appendChild(span);
+                wrapper.appendChild(icon);
+                wrapper.appendChild(span);
+                div.appendChild(wrapper);
                 searchResults.appendChild(div);
             });
         }
