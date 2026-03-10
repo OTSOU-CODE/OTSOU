@@ -599,12 +599,13 @@ function showNotification(message, type = 'info') {
     notification.innerHTML = `
         <div class="notification-content">
             <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle'}"></i>
-            <span>${message}</span>
+            <span class="notification-message"></span>
         </div>
         <button class="notification-close">
             <i class="fas fa-times"></i>
         </button>
     `;
+    notification.querySelector('.notification-message').textContent = message;
 
     // Add styles
     notification.style.cssText = `
