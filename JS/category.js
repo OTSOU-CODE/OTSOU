@@ -30,6 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // gearbox: new Set(), // Removed
     // leasingType: "Personal", // Removed
   };
+
+  // Expose for testing
+  if (typeof window !== 'undefined') {
+    window.activeFilters = activeFilters;
+  }
   let renderIndex = 0;
   const batchSize = 12;
   let currentView = "grid";
