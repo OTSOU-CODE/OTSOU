@@ -53,11 +53,3 @@ The `JS/` directory contains modular JavaScript files that power the interactivi
 - **Firebase**: Initialized on pages for analytics and potential future backend integrations (Auth/Storage).
 - **FontAwesome & Lucide**: For scalable vector icons.
 
-## 🚀 How to Run
-Since this is a front-end heavy project with ES6 Modules:
-1. Clone or download the repository.
-2. Due to CORS restrictions with ES6 Modules (`type="module"`), you cannot simply open the HTML files from your local filesystem.
-3. Serve the directory using a local web server.
-   - If using VS Code, use the **Live Server** extension.
-   - Alternatively, run `npx serve` or `python3 -m http.server` in the root directory.
-4. Navigate to `http://localhost:<port>/Index.html` to view the site.
