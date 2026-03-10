@@ -14,7 +14,7 @@ const mockElement = {
     style: {},
     children: [],
     classList: { toggle: () => {}, contains: () => false, add: () => {}, remove: () => {} },
-    addEventListener: () => {},
+    addEventListener: function(type, handler) { this.listeners = this.listeners || {}; this.listeners[type] = this.listeners[type] || []; this.listeners[type].push(handler); },
     textContent: '',
     querySelectorAll: () => []
 };
@@ -34,10 +34,15 @@ global.document = {
             children: [],
             childNodes: [],
             classList: { toggle: () => {}, contains: () => false, add: () => {}, remove: () => {} },
-            addEventListener: () => {},
+            addEventListener: function(type, handler) { this.listeners = this.listeners || {}; this.listeners[type] = this.listeners[type] || []; this.listeners[type].push(handler); },
             textContent: '',
             focus: () => {},
             blur: () => {},
+            dispatchEvent: function(event) {
+                if (this.listeners && this.listeners[event.type]) {
+                    this.listeners[event.type].forEach(handler => handler(event));
+                }
+            },
             querySelectorAll: () => [],
             querySelector: () => null,
             appendChild: function(child) { this.children.push(child); this.childNodes.push(child); }
