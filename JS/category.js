@@ -1,6 +1,21 @@
 import dataManager from "./DataManager.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  // --- Safe GSAP Wrapper ---
+  const safeGsap = {
+    to: (targets, vars) => {
+      if (typeof gsap !== "undefined") gsap.to(targets, vars);
+      else if (vars && typeof vars.onComplete === "function") vars.onComplete();
+    },
+    fromTo: (targets, fromVars, toVars) => {
+      if (typeof gsap !== "undefined") gsap.fromTo(targets, fromVars, toVars);
+      else if (toVars && typeof toVars.onComplete === "function") toVars.onComplete();
+    },
+    set: (targets, vars) => {
+      if (typeof gsap !== "undefined") gsap.set(targets, vars);
+    }
+  };
+
   // --- DOM Elements ---
   const grid = document.getElementById("vehicleGrid");
   const paginationEl = document.getElementById("pagination");
@@ -124,27 +139,25 @@ document.addEventListener("DOMContentLoaded", () => {
         renderPagination(totalPages);
 
         // GSAP Enter Animation
-        if (typeof gsap !== "undefined") {
-          gsap.fromTo(
-            grid.querySelectorAll(".vehicle-card"),
-            { opacity: 0, y: 30 },
-            {
-              opacity: 1,
-              y: 0,
-              stagger: 0.05,
-              duration: 0.4,
-              ease: "power2.out",
-              clearProps: "all",
-            },
-          );
-        }
+        safeGsap.fromTo(
+          grid.querySelectorAll(".vehicle-card"),
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            stagger: 0.05,
+            duration: 0.4,
+            ease: "power2.out",
+            clearProps: "all",
+          },
+        );
       }
     };
 
     // Fade out old cards before replacing
     const oldCards = grid.querySelectorAll(".vehicle-card");
-    if (oldCards.length > 0 && typeof gsap !== "undefined") {
-      gsap.to(oldCards, {
+    if (oldCards.length > 0) {
+      safeGsap.to(oldCards, {
         opacity: 0,
         y: -20,
         duration: 0.2,
@@ -421,15 +434,15 @@ document.addEventListener("DOMContentLoaded", () => {
           dropdowns.forEach((d) => {
             if (d !== dropdown && d.classList.contains("is-open")) {
               const otherMenu = d.querySelector(".filter-menu");
-              if (typeof gsap !== "undefined" && otherMenu) {
-                gsap.to(otherMenu, {
+              if (otherMenu) {
+                safeGsap.to(otherMenu, {
                   autoAlpha: 0,
                   y: -10,
                   duration: 0.2,
                   ease: "power2.in",
                   onComplete: () => {
                     d.classList.remove("is-open");
-                    gsap.set(otherMenu, { clearProps: "all" });
+                    safeGsap.set(otherMenu, { clearProps: "all" });
                   },
                 });
               } else {
@@ -440,28 +453,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
           if (!isOpen) {
             dropdown.classList.add("is-open");
-            if (typeof gsap !== "undefined") {
-              gsap.fromTo(
-                menu,
-                { autoAlpha: 0, y: -10 },
-                { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out" },
-              );
-            }
+            safeGsap.fromTo(
+              menu,
+              { autoAlpha: 0, y: -10 },
+              { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out" },
+            );
           } else {
-            if (typeof gsap !== "undefined") {
-              gsap.to(menu, {
-                autoAlpha: 0,
-                y: -10,
-                duration: 0.2,
-                ease: "power2.in",
-                onComplete: () => {
-                  dropdown.classList.remove("is-open");
-                  gsap.set(menu, { clearProps: "all" });
-                },
-              });
-            } else {
-              dropdown.classList.remove("is-open");
-            }
+            safeGsap.to(menu, {
+              autoAlpha: 0,
+              y: -10,
+              duration: 0.2,
+              ease: "power2.in",
+              onComplete: () => {
+                dropdown.classList.remove("is-open");
+                safeGsap.set(menu, { clearProps: "all" });
+              },
+            });
           }
         });
       }
@@ -472,15 +479,15 @@ document.addEventListener("DOMContentLoaded", () => {
       dropdowns.forEach((d) => {
         if (d.classList.contains("is-open")) {
           const menu = d.querySelector(".filter-menu");
-          if (typeof gsap !== "undefined" && menu) {
-            gsap.to(menu, {
+          if (menu) {
+            safeGsap.to(menu, {
               autoAlpha: 0,
               y: -10,
               duration: 0.2,
               ease: "power2.in",
               onComplete: () => {
                 d.classList.remove("is-open");
-                gsap.set(menu, { clearProps: "all" });
+                safeGsap.set(menu, { clearProps: "all" });
               },
             });
           } else {
