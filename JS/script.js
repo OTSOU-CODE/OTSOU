@@ -717,7 +717,7 @@ function initHeaderSearch() {
         { name: 'Contact Us', type: 'page', url: '#contact' },
         { name: 'About Us', type: 'page', url: '#why-choose-us' },
         { name: 'Our Work', type: 'page', url: 'gallery.html' }
-    ];
+    ].map(s => ({...s, _searchString: s.name.toLowerCase()}));
 
     fetch(csvPath)
         .then((response) => response.ok ? response.text() : Promise.reject("Failed to load"))
@@ -727,10 +727,13 @@ function initHeaderSearch() {
             vehicleData = lines.slice(start).map((line) => {
                 const cols = line.split(",");
                 if (cols.length >= 2) {
+                    const brand = cols[0].trim();
+                    const model = cols[1].trim();
                     return {
-                        brand: cols[0].trim(),
-                        model: cols[1].trim(),
+                        brand: brand,
+                        model: model,
                         year: cols[2] ? cols[2].trim() : "",
+                        _searchString: `${brand.toLowerCase()} ${model.toLowerCase()}`
                     };
                 }
                 return null;
@@ -851,16 +854,27 @@ function initHeaderSearch() {
             return;
         }
         
+        const q = query.toLowerCase();
+
         // Filter Vehicles
-        const vehicleMatches = vehicleData.filter((v) =>
-            v.brand.toLowerCase().includes(query.toLowerCase()) ||
-            v.model.toLowerCase().includes(query.toLowerCase())
-        ).slice(0, 3);
+        const vehicleMatches = [];
+        for (let i = 0; i < vehicleData.length; i++) {
+            const v = vehicleData[i];
+            if (v._searchString.includes(q)) {
+                vehicleMatches.push(v);
+                if (vehicleMatches.length === 3) break;
+            }
+        }
 
         // Filter Services
-        const serviceMatches = servicesData.filter((s) => 
-            s.name.toLowerCase().includes(query.toLowerCase())
-        ).slice(0, 3);
+        const serviceMatches = [];
+        for (let i = 0; i < servicesData.length; i++) {
+            const s = servicesData[i];
+            if (s._searchString.includes(q)) {
+                serviceMatches.push(s);
+                if (serviceMatches.length === 3) break;
+            }
+        }
         
         renderResults(vehicleMatches, serviceMatches);
     };
