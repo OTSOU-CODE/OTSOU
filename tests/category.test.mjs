@@ -65,3 +65,49 @@ test('window.toggleFilter toggles values correctly', async () => {
     window.activeFilters.model.clear();
     window.activeFilters.year.clear();
 });
+
+test('loadVehicles shows error fallback on dataManager.init failure', async () => {
+    // Import and initialize category.js environment
+    // Note: since the file was imported in the first test, we don't necessarily need to re-import it
+    // But dataManager is used in category.js. We need to override it.
+    const { default: dataManager } = await import('../JS/DataManager.js');
+
+    const mockGrid = { innerHTML: '', style: {}, children: [] };
+    const originalGetElementById = document.getElementById;
+
+    document.getElementById = (id) => {
+        if (id === 'vehicleGrid') return mockGrid;
+        return {
+            innerHTML: '',
+            style: {},
+            classList: { toggle: () => {}, contains: () => false, add: () => {}, remove: () => {} },
+            addEventListener: () => {},
+            querySelectorAll: () => [],
+            querySelector: () => null,
+            children: []
+        };
+    };
+
+    const originalInit = dataManager.init;
+    dataManager.init = async () => {
+        throw new Error('Test Error');
+    };
+
+    const originalConsoleError = console.error;
+    console.error = () => {};
+
+    try {
+        await import('../JS/category.js');
+        global._triggerDOMContentLoaded();
+
+        // Let event loop clear microtasks so the async loadVehicles completes
+        await new Promise(resolve => setTimeout(resolve, 0));
+
+        assert.ok(mockGrid.innerHTML.includes('Unable to load vehicles'), 'Grid should display error message title');
+        assert.ok(mockGrid.innerHTML.includes('Test Error'), 'Grid should display the error message itself');
+    } finally {
+        document.getElementById = originalGetElementById;
+        dataManager.init = originalInit;
+        console.error = originalConsoleError;
+    }
+});
