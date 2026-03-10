@@ -561,8 +561,14 @@ function setupContactForm() {
                 payload.append('file', fileInput.files[0]);
             }
 
-            // Simulate sending (replace with actual endpoint)
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                body: payload
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
 
             // Success
             showNotification('Thank you for your message. We will contact you very soon!', 'success');
