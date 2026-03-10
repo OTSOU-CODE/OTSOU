@@ -1365,6 +1365,7 @@ function initCompatibilityChecker() {
     // So if the URL is /phone/index.html, then ../DATA/vehicles.csv is correct.
     const csvPath = '../DATA/vehicles.csv';
     let vehicleData = [];
+    let brandToModelsMap = new Map();
 
     // Fetch Data
     fetch(csvPath)
@@ -1387,6 +1388,18 @@ function initCompatibilityChecker() {
                     model: cols[1].trim(),
                 };
             }).filter(item => item !== null);
+
+            // Build Map
+            const tempMap = new Map();
+            vehicleData.forEach(v => {
+                if (!tempMap.has(v.brand)) {
+                    tempMap.set(v.brand, new Set());
+                }
+                tempMap.get(v.brand).add(v.model);
+            });
+            for (const [brand, modelsSet] of tempMap.entries()) {
+                brandToModelsMap.set(brand, [...modelsSet].sort());
+            }
 
             // Populate Brands
             const brands = [...new Set(vehicleData.map(v => v.brand))].sort();
@@ -1414,11 +1427,7 @@ function initCompatibilityChecker() {
             return;
         }
 
-        const models = [...new Set(
-            vehicleData
-                .filter(v => v.brand === selectedBrand)
-                .map(v => v.model)
-        )].sort();
+        const models = brandToModelsMap.get(selectedBrand) || [];
 
         models.forEach(model => {
             const opt = document.createElement('option');
