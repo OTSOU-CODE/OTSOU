@@ -20,3 +20,15 @@ global.document = {
     querySelectorAll: () => [],
     querySelector: () => mockElement
 };
+
+global.window.removeEventListener = () => {};
+global.window.matchMedia = () => ({ matches: false });
+global.window.addEventListener = () => {};
+global.document.documentElement = { setAttribute: () => {} };
+
+global.IntersectionObserver = class {
+    constructor() {}
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+};
