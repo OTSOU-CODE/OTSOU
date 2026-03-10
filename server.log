@@ -1,0 +1,20 @@
+127.0.0.1 - - [10/Mar/2026 11:19:51] "GET /Index.html HTTP/1.1" 200 -
+127.0.0.1 - - [10/Mar/2026 11:19:51] "GET /CSS/theme-transition.css HTTP/1.1" 200 -
+127.0.0.1 - - [10/Mar/2026 11:19:51] "GET /CSS/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [10/Mar/2026 11:19:51] "GET /CSS/navbar.css HTTP/1.1" 200 -
+127.0.0.1 - - [10/Mar/2026 11:19:51] "GET /CSS/staggered-menu.css HTTP/1.1" 200 -
+127.0.0.1 - - [10/Mar/2026 11:19:51] "GET /CSS/footer.css HTTP/1.1" 200 -
+127.0.0.1 - - [10/Mar/2026 11:19:51] "GET /JS/config.js HTTP/1.1" 200 -
+127.0.0.1 - - [10/Mar/2026 11:19:51] "GET /JS/script.js HTTP/1.1" 200 -
+127.0.0.1 - - [10/Mar/2026 11:19:52] "GET /JS/navbar.js HTTP/1.1" 200 -
+127.0.0.1 - - [10/Mar/2026 11:19:52] "GET /JS/footer.js HTTP/1.1" 200 -
+127.0.0.1 - - [10/Mar/2026 11:19:52] "GET /JS/staggered-menu.js HTTP/1.1" 200 -
+127.0.0.1 - - [10/Mar/2026 11:19:52] code 404, message File not found
+127.0.0.1 - - [10/Mar/2026 11:19:52] "GET /DATA/vehicles.csv HTTP/1.1" 404 -
+127.0.0.1 - - [10/Mar/2026 11:19:52] "GET /images/gallery/Black-&-Orange.webp HTTP/1.1" 200 -
+127.0.0.1 - - [10/Mar/2026 11:19:53] code 404, message File not found
+127.0.0.1 - - [10/Mar/2026 11:19:53] "GET /sw.js HTTP/1.1" 404 -
+127.0.0.1 - - [10/Mar/2026 11:19:56] "GET /images/gallery/Black-&-Red.webp HTTP/1.1" 200 -
+127.0.0.1 - - [10/Mar/2026 11:20:00] "GET /images/gallery/Blue.webp HTTP/1.1" 200 -
+127.0.0.1 - - [10/Mar/2026 11:20:04] "GET /images/gallery/Dark-blue-&-white.webp HTTP/1.1" 200 -
+127.0.0.1 - - [10/Mar/2026 11:20:08] "GET /images/gallery/Red.webp HTTP/1.1" 200 -

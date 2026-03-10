@@ -169,7 +169,7 @@ function removeCartItem(index) {
     updateGlobalBadge();
 }
 
-function updateGlobalBadge() {
+export function updateGlobalBadge() {
     // Dispatch event or manually update if function available
     const event = new CustomEvent('cartUpdated');
     window.dispatchEvent(event);
