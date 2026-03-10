@@ -740,7 +740,7 @@ function initHeaderSearch() {
 
     let debounceTimer;
 
-    const renderResults = (vehicleMatches, serviceMatches, isHistory = false) => {
+        const renderResults = (vehicleMatches, serviceMatches, isHistory = false) => {
         if (!searchResults) return;
         searchResults.innerHTML = '';
         
@@ -756,7 +756,17 @@ function initHeaderSearch() {
              vehicleMatches.forEach(item => {
                 const div = document.createElement('div');
                 div.className = 'search-result-item';
-                div.innerHTML = `<span><i class="fas fa-history" style="margin-right: 8px; opacity: 0.6;"></i>${item}</span>`;
+
+                const span = document.createElement('span');
+                const icon = document.createElement('i');
+                icon.className = 'fas fa-history';
+                icon.style.marginRight = '8px';
+                icon.style.opacity = '0.6';
+
+                span.appendChild(icon);
+                span.appendChild(document.createTextNode(item));
+                div.appendChild(span);
+
                 div.addEventListener('click', () => {
                     searchInput.value = item;
                     performSearch(item);
@@ -774,33 +784,63 @@ function initHeaderSearch() {
             return;
         }
 
-        let html = "";
-
         if (vehicleMatches.length > 0) {
-            html += `<div style="padding: 8px 12px; font-size: 0.75rem; color: var(--text-secondary); font-weight: 600;">VEHICLES</div>`;
+            const header = document.createElement('div');
+            header.style.padding = '8px 12px';
+            header.style.fontSize = '0.75rem';
+            header.style.color = 'var(--text-secondary)';
+            header.style.fontWeight = '600';
+            header.textContent = 'VEHICLES';
+            searchResults.appendChild(header);
+
             vehicleMatches.forEach((v) => {
-                html += `
-                        <div class="search-result-item" onclick="location.href='category.html?search=${encodeURIComponent(v.brand + " " + v.model)}'">
-                                <i class="fas fa-car"></i>
-                                <span>${v.brand} ${v.model} ${v.year}</span>
-                        </div>
-                  `;
+                const div = document.createElement('div');
+                div.className = 'search-result-item';
+                div.addEventListener('click', () => {
+                    location.href = 'category.html?search=' + encodeURIComponent(v.brand + " " + v.model);
+                });
+
+                const icon = document.createElement('i');
+                icon.className = 'fas fa-car';
+
+                const span = document.createElement('span');
+                span.textContent = `${v.brand} ${v.model} ${v.year}`;
+
+                div.appendChild(icon);
+                div.appendChild(span);
+                searchResults.appendChild(div);
             });
         }
 
         if (serviceMatches.length > 0) {
-            html += `<div style="padding: 8px 12px; font-size: 0.75rem; color: var(--text-secondary); font-weight: 600; margin-top: 5px;">SERVICES & PAGES</div>`;
+            const header = document.createElement('div');
+            header.style.padding = '8px 12px';
+            header.style.fontSize = '0.75rem';
+            header.style.color = 'var(--text-secondary)';
+            header.style.fontWeight = '600';
+            header.style.marginTop = '5px';
+            header.textContent = 'SERVICES & PAGES';
+            searchResults.appendChild(header);
+
             serviceMatches.forEach((s) => {
-                html += `
-                        <div class="search-result-item" onclick="location.href='${s.url}'">
-                                <i class="fas ${s.type === 'page' ? 'fa-link' : 'fa-tools'}"></i>
-                                <span>${s.name}</span>
-                        </div>
-                  `;
+                const div = document.createElement('div');
+                div.className = 'search-result-item';
+                div.addEventListener('click', () => {
+                    location.href = s.url;
+                });
+
+                const icon = document.createElement('i');
+                icon.className = 'fas ' + (s.type === 'page' ? 'fa-link' : 'fa-tools');
+
+                const span = document.createElement('span');
+                span.textContent = s.name;
+
+                div.appendChild(icon);
+                div.appendChild(span);
+                searchResults.appendChild(div);
             });
         }
 
-        searchResults.innerHTML = html;
         searchResults.classList.add("active");
         searchResults.style.display = 'block';
     };
