@@ -84,14 +84,6 @@ function loadGalleryImages() {
 
 // Create gallery item HTML
 
-
-function showEmptyState() {
-  const galleryGrid = document.getElementById("gallery-grid");
-  if (galleryGrid) {
-    galleryGrid.innerHTML = '<div class="error-message">No images found.</div>';
-  }
-}
-
 function setupGalleryEvents() {
   // Any additional events
 }
@@ -184,6 +176,10 @@ function showEmptyState() {
       <p>We're working on adding more photos to our gallery. Please check back soon!</p>
     </div>
   `;
+}
+
+if (typeof window !== 'undefined') {
+  window.showEmptyState = showEmptyState;
 }
 
 // Setup gallery events

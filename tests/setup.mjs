@@ -6,7 +6,8 @@ const mockElement = {
     classList: { toggle: () => {}, contains: () => false, add: () => {}, remove: () => {} },
     addEventListener: () => {},
     textContent: '',
-    querySelectorAll: () => []
+    querySelectorAll: () => [],
+    appendChild: () => {}
 };
 mockElement.querySelector = () => mockElement;
 
@@ -18,5 +19,20 @@ global.document = {
     },
     getElementById: (id) => mockElement,
     querySelectorAll: () => [],
-    querySelector: () => mockElement
+    querySelector: () => mockElement,
+    createElement: (tag) => {
+        const el = { ...mockElement, tagName: tag.toUpperCase(), setAttribute: () => {} };
+        el.appendChild = () => {};
+        return el;
+    }
+};
+
+global.IntersectionObserver = class {
+    constructor(callback, options) {
+        this.callback = callback;
+        this.options = options;
+    }
+    observe() {}
+    unobserve() {}
+    disconnect() {}
 };
