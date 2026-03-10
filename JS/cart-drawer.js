@@ -72,6 +72,20 @@ export function closeCart() {
     document.body.style.overflow = ''; // Unlock scroll
 }
 
+function escapeHTML(str) {
+    if (str === null || str === undefined) return '';
+    return String(str).replace(
+        /[&<>'"]/g,
+        (tag) => ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            "'": '&#39;',
+            '"': '&quot;'
+        }[tag])
+    );
+}
+
 function renderCartItems() {
     const container = document.getElementById('cartItemsContainer');
     const totalEl = document.getElementById('cartTotal');
@@ -99,16 +113,16 @@ function renderCartItems() {
         const cartItem = document.createElement('div');
         cartItem.className = 'cart-item';
         cartItem.innerHTML = `
-            <img src="${item.image}" alt="${item.title}" class="cart-item-img">
+            <img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.title)}" class="cart-item-img">
             <div class="cart-item-details">
-                <h4 class="cart-item-title">${item.title}</h4>
+                <h4 class="cart-item-title">${escapeHTML(item.title)}</h4>
                 <div class="cart-item-config">
-                    ${item.config} | <span class="cart-item-price">${item.price} MAD</span>
+                    ${escapeHTML(item.config)} | <span class="cart-item-price">${escapeHTML(item.price)} MAD</span>
                 </div>
                 <div class="cart-item-controls">
                     <div class="item-qty-control">
                         <button class="item-qty-btn minus" data-index="${index}">-</button>
-                        <span class="item-qty-val">${item.quantity}</span>
+                        <span class="item-qty-val">${escapeHTML(item.quantity)}</span>
                         <button class="item-qty-btn plus" data-index="${index}">+</button>
                     </div>
                     <button class="remove-item-btn" data-index="${index}">Remove</button>
