@@ -217,19 +217,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Determine typography classes based on length if needed, or just standard
 
+    // Escape standard values for HTML
+    const idSafeUrl = escapeHTML(encodeURIComponent(v.id).replace(/'/g, "%27"));
+    const brandSafe = escapeHTML(v.brand);
+    const modelSafe = escapeHTML(v.model);
+    const yearSafe = escapeHTML(v.year);
+    const typeSafe = escapeHTML(v.type || "Sedan");
+    const seatsSafe = escapeHTML(v.seats || 5);
+    const priceSafe = escapeHTML(v.price === "Inquire for Price" ? "Contact Us" : v.price);
+    const imgUrlSafe = escapeHTML(imgUrl); // Encode potentially unsafe image URL path for src attribute
+    const fallbackUrlSafe = escapeHTML(fallbackUrl);
+
     return `
-        <div class="vehicle-card" onclick="window.location.href='image-preview.html?id=${v.id}'" style="cursor: pointer;">
+        <div class="vehicle-card" onclick="window.location.href='image-preview.html?id=${idSafeUrl}'" style="cursor: pointer;">
             <div class="vehicle-image-container">
-                <img src="${imgUrl}" alt="${v.brand} ${v.model}" loading="lazy" onerror="this.onerror=null; this.src='${fallbackUrl}';">
+                <img src="${imgUrlSafe}" alt="${brandSafe} ${modelSafe}" loading="lazy" onerror="this.onerror=null; this.src='${fallbackUrlSafe}';">
             </div>
             <div class="vehicle-info">
-                <div class="vehicle-brand">${v.brand}</div>
-                <div class="vehicle-model">${v.model}</div>
-                <div class="vehicle-type">${v.year} • ${v.type || "Sedan"}</div>
+                <div class="vehicle-brand">${brandSafe}</div>
+                <div class="vehicle-model">${modelSafe}</div>
+                <div class="vehicle-type">${yearSafe} • ${typeSafe}</div>
                 
                 <div class="vehicle-specs">
                     <div class="spec-row">
-                        <i class="fas fa-chair"></i> ${v.seats || 5} seats
+                        <i class="fas fa-chair"></i> ${seatsSafe} seats
                     </div>
                 </div>
             </div>
@@ -237,7 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="vehicle-divider"></div>
                 
                 <div class="vehicle-price">
-                    New from <span class="price-amount">${v.price === "Inquire for Price" ? "Contact Us" : v.price}</span>
+                    New from <span class="price-amount">${priceSafe}</span>
                 </div>
         </div>
     `;
@@ -488,10 +499,12 @@ document.addEventListener("DOMContentLoaded", () => {
     brandGrid.innerHTML = brands
       .map((brand) => {
         const count = allVehicles.filter((v) => v.brand === brand).length;
+        const brandSafe = escapeHTML(brand);
+        const brandJSSafe = escapeHTML(escapeJS(brand));
         return `
         <label class="brand-option">
-            <input type="checkbox" value="${brand}" onchange="toggleFilter('make', '${brand}')"> 
-            ${brand}
+            <input type="checkbox" value="${brandSafe}" onchange="toggleFilter('make', '${brandJSSafe}')">
+            ${brandSafe}
             <span style="opacity: 0.5; font-size: 0.85em; margin-left: 4px;">(${count})</span>
         </label>`;
       })
@@ -519,13 +532,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     modelGrid.innerHTML = availableModels
       .map(
-        (m) => `
+        (m) => {
+          const mSafe = escapeHTML(m);
+          const mJSSafe = escapeHTML(escapeJS(m));
+          return `
           <label class="list-option">
-              <input type="checkbox" value="${m}" onchange="toggleFilter('model', '${m}')"
+              <input type="checkbox" value="${mSafe}" onchange="toggleFilter('model', '${mJSSafe}')"
               ${activeFilters.model.has(m) ? "checked" : ""}>
-              ${m}
+              ${mSafe}
           </label>
-      `,
+      `;
+        }
       )
       .join("");
   }
@@ -547,13 +564,17 @@ document.addEventListener("DOMContentLoaded", () => {
       yearOptionsEl.innerHTML = rawYears
         .slice(0, 20)
         .map(
-          (y) => `
+          (y) => {
+            const ySafe = escapeHTML(y);
+            const yJSSafe = escapeHTML(escapeJS(y));
+            return `
             <label class="list-option">
-                <input type="checkbox" value="${y}" onchange="toggleFilter('year', '${y}')"
+                <input type="checkbox" value="${ySafe}" onchange="toggleFilter('year', '${yJSSafe}')"
                 ${activeFilters.year.has(y) ? "checked" : ""}>
-                ${y}
+                ${ySafe}
             </label>
-         `,
+         `;
+          }
         )
         .join("");
     }
@@ -595,8 +616,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   // --- Security ---
   function escapeHTML(str) {
-    if (!str) return "";
-    return str.replace(
+    if (str === null || str === undefined) return "";
+    return String(str).replace(
       /[&<>'"]/g,
       (tag) =>
         ({
@@ -605,6 +626,19 @@ document.addEventListener("DOMContentLoaded", () => {
           ">": "&gt;",
           "'": "&#39;",
           '"': "&quot;",
+        })[tag],
+    );
+  }
+
+  function escapeJS(str) {
+    if (str === null || str === undefined) return "";
+    return String(str).replace(
+      /[\\'"]/g,
+      (tag) =>
+        ({
+          "'": "\\'",
+          '"': '\\"',
+          "\\": "\\\\",
         })[tag],
     );
   }
