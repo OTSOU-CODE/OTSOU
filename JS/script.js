@@ -561,8 +561,15 @@ function setupContactForm() {
                 payload.append('file', fileInput.files[0]);
             }
 
-            // Simulate sending (replace with actual endpoint)
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            // Send network request
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                body: payload
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
 
             // Success
             showNotification('Thank you for your message. We will contact you very soon!', 'success');
@@ -578,7 +585,7 @@ function setupContactForm() {
             }
             
         } catch (error) {
-            console.error('Error sending form data:', error);
+            console.error('Form submission error:', error);
             showNotification('There was an error sending your message. Please try again or call us directly.', 'error');
         } finally {
             submitButton.innerHTML = originalText;
