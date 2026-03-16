@@ -1,0 +1,137 @@
+[
+  {
+    "model_name": "Skoda Felicia",
+    "production_years": "1994 \u2013 2001",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Skoda+Felicia"
+  },
+  {
+    "model_name": "Skoda Octavia Mk1",
+    "production_years": "1996 \u2013 2010",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Skoda+Octavia+Mk1"
+  },
+  {
+    "model_name": "Skoda Fabia Mk1",
+    "production_years": "1999 \u2013 2007",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Skoda+Fabia+Mk1"
+  },
+  {
+    "model_name": "Skoda Superb Mk1",
+    "production_years": "2001 \u2013 2008",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Skoda+Superb+Mk1"
+  },
+  {
+    "model_name": "Skoda Octavia Mk2",
+    "production_years": "2004 \u2013 2013",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Skoda+Octavia+Mk2"
+  },
+  {
+    "model_name": "Skoda Roomster",
+    "production_years": "2006 \u2013 2015",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Skoda+Roomster"
+  },
+  {
+    "model_name": "Skoda Fabia Mk2",
+    "production_years": "2007 \u2013 2014",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Skoda+Fabia+Mk2"
+  },
+  {
+    "model_name": "Skoda Superb Mk2",
+    "production_years": "2008 \u2013 2015",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Skoda+Superb+Mk2"
+  },
+  {
+    "model_name": "Skoda Yeti",
+    "production_years": "2009 \u2013 2017",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Skoda+Yeti"
+  },
+  {
+    "model_name": "Skoda Citigo",
+    "production_years": "2011 \u2013 2020",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Skoda+Citigo"
+  },
+  {
+    "model_name": "Skoda Rapid (Modern)",
+    "production_years": "2012 \u2013 2019",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Skoda+Rapid"
+  },
+  {
+    "model_name": "Skoda Octavia Mk3",
+    "production_years": "2012 \u2013 2020",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Skoda+Octavia+Mk3"
+  },
+  {
+    "model_name": "Skoda Fabia Mk3",
+    "production_years": "2014 \u2013 2021",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Skoda+Fabia+Mk3"
+  },
+  {
+    "model_name": "Skoda Superb Mk3",
+    "production_years": "2015 \u2013 2023",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Skoda+Superb+Mk3"
+  },
+  {
+    "model_name": "Skoda Kodiaq Mk1",
+    "production_years": "2016 \u2013 2023",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Skoda+Kodiaq+Mk1"
+  },
+  {
+    "model_name": "Skoda Karoq",
+    "production_years": "2017 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Skoda+Karoq"
+  },
+  {
+    "model_name": "Skoda Kamiq",
+    "production_years": "2019 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Skoda+Kamiq"
+  },
+  {
+    "model_name": "Skoda Scala",
+    "production_years": "2019 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Skoda+Scala"
+  },
+  {
+    "model_name": "Skoda Octavia Mk4",
+    "production_years": "2019 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Skoda+Octavia+Mk4"
+  },
+  {
+    "model_name": "Skoda Enyaq iV",
+    "production_years": "2020 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Skoda+Enyaq+iV"
+  },
+  {
+    "model_name": "Skoda Fabia Mk4",
+    "production_years": "2021 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Skoda+Fabia+Mk4"
+  },
+  {
+    "model_name": "Skoda Kushaq",
+    "production_years": "2021 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Skoda+Kushaq"
+  },
+  {
+    "model_name": "Skoda Slavia",
+    "production_years": "2021 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Skoda+Slavia"
+  },
+  {
+    "model_name": "Skoda Enyaq Coup\u00e9 iV",
+    "production_years": "2022 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Skoda+Enyaq+Coupe"
+  },
+  {
+    "model_name": "Skoda Superb Mk4",
+    "production_years": "2023 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Skoda+Superb+Mk4"
+  },
+  {
+    "model_name": "Skoda Kodiaq Mk2",
+    "production_years": "2023 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Skoda+Kodiaq+Mk2"
+  },
+  {
+    "model_name": "Skoda Elroq",
+    "production_years": "2024 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Skoda+Elroq"
+  }
+]
