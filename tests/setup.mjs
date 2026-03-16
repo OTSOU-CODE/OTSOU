@@ -59,3 +59,27 @@ global.document = {
     head: { appendChild: () => {} },
     documentElement: { getAttribute: () => null, setAttribute: () => {}, classList: { add: () => {}, remove: () => {} } }
 };
+
+// Setup localStorage for tests
+let store = {};
+global.localStorage = {
+  getItem: (key) => store[key] || null,
+  setItem: (key, value) => { store[key] = value.toString(); },
+  removeItem: (key) => { delete store[key]; },
+  clear: () => { store = {}; }
+};
+
+// Setup CustomEvent for tests
+global.CustomEvent = class CustomEvent {
+  constructor(name, params) {
+    this.name = name;
+    this.params = params;
+  }
+};
+
+global.window.dispatchEvent = () => {};
+global.document.body = {
+    insertAdjacentHTML: () => {}
+};
+global.document.createElement = () => mockElement;
+mockElement.appendChild = (child) => { mockElement.children.push(child); };
