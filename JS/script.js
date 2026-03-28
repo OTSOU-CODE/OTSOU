@@ -1,5 +1,14 @@
 // Mobile-Optimized JavaScript for SHERIF-SIEGE-AUTO Website
 
+function sanitize(str) {
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#x27;');
+}
+
 // DOM Elements
 let navbar;
 let navToggle;
@@ -599,7 +608,7 @@ function showNotification(message, type = 'info') {
     notification.innerHTML = `
         <div class="notification-content">
             <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle'}"></i>
-            <span>${message}</span>
+            <span>${sanitize(message)}</span>
         </div>
         <button class="notification-close">
             <i class="fas fa-times"></i>
@@ -735,7 +744,7 @@ function initHeaderSearch() {
                 return null;
             }).filter((i) => i);
         })
-        .catch((err) => console.log("Header search data error:", err));
+        .catch((err) => { /* silently handle search data load error */ });
 
     let debounceTimer;
 
@@ -755,7 +764,13 @@ function initHeaderSearch() {
              vehicleMatches.forEach(item => {
                 const div = document.createElement('div');
                 div.className = 'search-result-item';
-                div.innerHTML = `<span><i class="fas fa-history" style="margin-right: 8px; opacity: 0.6;"></i>${item}</span>`;
+                const span = document.createElement('span');
+                const icon = document.createElement('i');
+                icon.className = 'fas fa-history';
+                icon.style.cssText = 'margin-right: 8px; opacity: 0.6;';
+                span.appendChild(icon);
+                span.appendChild(document.createTextNode(item));
+                div.appendChild(span);
                 div.addEventListener('click', () => {
                     searchInput.value = item;
                     performSearch(item);
@@ -773,33 +788,62 @@ function initHeaderSearch() {
             return;
         }
 
-        let html = "";
+        const fragment = document.createDocumentFragment();
 
         if (vehicleMatches.length > 0) {
-            html += `<div style="padding: 8px 12px; font-size: 0.75rem; color: var(--text-secondary); font-weight: 600;">VEHICLES</div>`;
+            const header = document.createElement('div');
+            header.style.cssText = 'padding: 8px 12px; font-size: 0.75rem; color: var(--text-secondary); font-weight: 600;';
+            header.textContent = 'VEHICLES';
+            fragment.appendChild(header);
             vehicleMatches.forEach((v) => {
-                html += `
-                        <div class="search-result-item" onclick="location.href='category.html?search=${encodeURIComponent(v.brand + " " + v.model)}'">
-                                <i class="fas fa-car"></i>
-                                <span>${v.brand} ${v.model} ${v.year}</span>
-                        </div>
-                  `;
+                const item = document.createElement('div');
+                item.className = 'search-result-item';
+                const icon = document.createElement('i');
+                icon.className = 'fas fa-car';
+                const span = document.createElement('span');
+                span.textContent = `${v.brand} ${v.model} ${v.year}`;
+                item.appendChild(icon);
+                item.appendChild(span);
+                item.addEventListener('click', () => {
+                    location.href = `category.html?search=${encodeURIComponent(v.brand + ' ' + v.model)}`;
+                });
+                fragment.appendChild(item);
             });
         }
 
         if (serviceMatches.length > 0) {
-            html += `<div style="padding: 8px 12px; font-size: 0.75rem; color: var(--text-secondary); font-weight: 600; margin-top: 5px;">SERVICES & PAGES</div>`;
+            const header = document.createElement('div');
+            header.style.cssText = 'padding: 8px 12px; font-size: 0.75rem; color: var(--text-secondary); font-weight: 600; margin-top: 5px;';
+            header.textContent = 'SERVICES & PAGES';
+            fragment.appendChild(header);
             serviceMatches.forEach((s) => {
-                html += `
-                        <div class="search-result-item" onclick="location.href='${s.url}'">
-                                <i class="fas ${s.type === 'page' ? 'fa-link' : 'fa-tools'}"></i>
-                                <span>${s.name}</span>
-                        </div>
-                  `;
+                const item = document.createElement('div');
+                item.className = 'search-result-item';
+                const icon = document.createElement('i');
+                icon.className = `fas ${s.type === 'page' ? 'fa-link' : 'fa-tools'}`;
+                const span = document.createElement('span');
+                span.textContent = s.name;
+                item.appendChild(icon);
+                item.appendChild(span);
+                const dest = s.url;
+                item.addEventListener('click', () => {
+                    try {
+                        const parsed = new URL(dest, window.location.origin);
+                        if (parsed.protocol === 'https:' || parsed.protocol === 'http:' || parsed.origin === window.location.origin) {
+                            location.href = dest;
+                        }
+                    } catch (e) {
+                        if (dest && !/^[a-zA-Z][a-zA-Z0-9+\-.]*:/i.test(dest.trim())) {
+                            location.href = dest;
+                        }
+                    }
+                });
+                fragment.appendChild(item);
             });
         }
 
-        searchResults.innerHTML = html;
+        searchResults.innerHTML = '';
+        searchResults.appendChild(fragment);
         searchResults.classList.add("active");
         searchResults.style.display = 'block';
     };
@@ -919,11 +963,11 @@ async function detectComponentImages() {
         // Combine known images with detected additional images
         const allImages = [...knownImages];
 
-        console.log('Detected images:', allImages);
+
 
         return allImages;
     } catch (error) {
-        console.log('Using fallback images');
+
         return [
             'images/gallery/Black-&-Orange.webp',
             'images/gallery/Black-&-Red.webp',
@@ -937,7 +981,7 @@ async function initCarSeatCarousel() {
     seatImages = await detectComponentImages();
 
     if (seatImages.length === 0) {
-        console.log('No car seat images found');
+
         return;
     }
 
@@ -1128,7 +1172,7 @@ if ('performance' in window) {
     window.addEventListener('load', function () {
         setTimeout(() => {
             const perfData = performance.getEntriesByType('navigation')[0];
-            console.log('Page load time:', perfData.loadEventEnd - perfData.loadEventStart, 'ms');
+
         }, 0);
     });
 }
@@ -1138,10 +1182,10 @@ if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
         navigator.serviceWorker.register('/sw.js')
             .then(function (registration) {
-                console.log('ServiceWorker registration successful');
+
             })
             .catch(function (err) {
-                console.log('ServiceWorker registration failed');
+
             });
     });
 }
@@ -1197,7 +1241,7 @@ function setupFileUpload() {
         });
 
         fileInput.addEventListener('change', function (e) {
-            console.log('File input changed:', this.files);
+
             if (this.files && this.files.length > 0) {
                 const file = this.files[0];
                 fileNameDisplay.textContent = file.name;
@@ -1388,10 +1432,10 @@ function initCompatibilityChecker() {
             const count = vehicleData.filter(v => v.brand === brand && v.model === model).length;
             
             if (count > 0) {
-                resultDiv.innerHTML = '<i class="fas fa-check-circle"></i> We have worked on <b>' + count + '</b> ' + brand + ' ' + model + '(s)!';
+                resultDiv.innerHTML = '<i class="fas fa-check-circle"></i> We have worked on <b>' + count + '</b> ' + sanitize(brand) + ' ' + sanitize(model) + '(s)!';
                 resultDiv.style.color = 'var(--success)';
             } else {
-                resultDiv.innerHTML = '<i class="fas fa-check-circle"></i> We are compatible with ' + brand + ' ' + model + '!';
+                resultDiv.innerHTML = '<i class="fas fa-check-circle"></i> We are compatible with ' + sanitize(brand) + ' ' + sanitize(model) + '!';
                 resultDiv.style.color = 'var(--primary)';
             }
              // Haptic

@@ -3,6 +3,29 @@
  * Handles showing/hiding the wishlist sidebar and managing wishlist state.
  */
 
+function sanitize(str) {
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#x27;');
+}
+
+function sanitizeUrl(url) {
+    if (!url) return '';
+    try {
+        const parsed = new URL(url, window.location.origin);
+        if (parsed.protocol === 'https:' || parsed.protocol === 'http:') return url;
+        return '';
+    } catch (e) {
+        // Relative URLs won't parse with new URL(); allow them if they don't start with dangerous schemes
+        const trimmed = String(url).trim();
+        if (/^[a-zA-Z][a-zA-Z0-9+\-.]*:/i.test(trimmed)) return '';
+        return trimmed;
+    }
+}
+
 export function initWishlistDrawer() {
     // 1. Inject HTML if not present
     if (!document.querySelector('.wishlist-drawer')) {
@@ -105,9 +128,9 @@ function renderWishlistItems() {
         // Assuming item has id, title, image. 
         // We create a simpler card than cart.
         wishlistItem.innerHTML = `
-            <img src="${item.image}" alt="${item.title}" class="wishlist-item-img">
+            <img src="${sanitizeUrl(item.image)}" alt="${sanitize(item.title)}" class="wishlist-item-img">
             <div class="wishlist-item-details">
-                <h4 class="wishlist-item-title">${item.title}</h4>
+                <h4 class="wishlist-item-title">${sanitize(item.title)}</h4>
                 <div class="wishlist-item-actions">
                     <button class="add-to-cart-from-wishlist" data-index="${index}"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                     <button class="remove-wishlist-item-btn" data-index="${index}"><i class="fas fa-trash"></i></button>

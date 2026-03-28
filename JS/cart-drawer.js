@@ -3,6 +3,29 @@
  * Handles showing/hiding the cart sidebar and managing cart state.
  */
 
+function sanitize(str) {
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#x27;');
+}
+
+function sanitizeUrl(url) {
+    if (!url) return '';
+    try {
+        const parsed = new URL(url, window.location.origin);
+        if (parsed.protocol === 'https:' || parsed.protocol === 'http:') return url;
+        return '';
+    } catch (e) {
+        // Relative URLs won't parse with new URL(); allow them if they don't start with dangerous schemes
+        const trimmed = String(url).trim();
+        if (/^[a-zA-Z][a-zA-Z0-9+\-.]*:/i.test(trimmed)) return '';
+        return trimmed;
+    }
+}
+
 export function initCartDrawer() {
     // 1. Inject HTML if not present
     if (!document.querySelector('.cart-drawer')) {
@@ -99,16 +122,16 @@ function renderCartItems() {
         const cartItem = document.createElement('div');
         cartItem.className = 'cart-item';
         cartItem.innerHTML = `
-            <img src="${item.image}" alt="${item.title}" class="cart-item-img">
+            <img src="${sanitizeUrl(item.image)}" alt="${sanitize(item.title)}" class="cart-item-img">
             <div class="cart-item-details">
-                <h4 class="cart-item-title">${item.title}</h4>
+                <h4 class="cart-item-title">${sanitize(item.title)}</h4>
                 <div class="cart-item-config">
-                    ${item.config} | <span class="cart-item-price">${item.price} MAD</span>
+                    ${sanitize(item.config)} | <span class="cart-item-price">${sanitize(String(item.price))} MAD</span>
                 </div>
                 <div class="cart-item-controls">
                     <div class="item-qty-control">
                         <button class="item-qty-btn minus" data-index="${index}">-</button>
-                        <span class="item-qty-val">${item.quantity}</span>
+                        <span class="item-qty-val">${sanitize(String(item.quantity))}</span>
                         <button class="item-qty-btn plus" data-index="${index}">+</button>
                     </div>
                     <button class="remove-item-btn" data-index="${index}">Remove</button>

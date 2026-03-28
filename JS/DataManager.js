@@ -40,10 +40,8 @@ class DataManager {
         
         this.loadPromise = (async () => {
             try {
-                console.log("Initializing DataManager...");
                 await this.fetchVehicles();
                 this.isLoaded = true;
-                console.log("DataManager initialized. Vehicles loaded:", this.vehicles.length);
                 return this.vehicles;
             } catch (error) {
                 console.error("Failed to initialize DataManager:", error);
