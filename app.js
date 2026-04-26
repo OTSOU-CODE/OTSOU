@@ -10,6 +10,12 @@ const CHUNK_SIZE = 64 * 1024;
 const $ = id => document.getElementById(id);
 const show = id => { const e = $(id); if (e) { e.hidden = false; e.style.display = ''; } };
 const hide = id => { const e = $(id); if (e) e.hidden = true; };
+const triggerInputShake = inputElement => {
+  if (!inputElement) return;
+  inputElement.classList.remove('error-shake');
+  void inputElement.offsetWidth;
+  inputElement.classList.add('error-shake');
+};
 const fmt = b => {
   if (!b) return '0 B';
   const k = 1024, u = ['B','KB','MB','GB'];
@@ -239,9 +245,7 @@ function validateName() {
   if (inputName) {
     const val = inputName.value.trim();
     if (!val) {
-      inputName.classList.remove('error-shake');
-      void inputName.offsetWidth;
-      inputName.classList.add('error-shake');
+      triggerInputShake(inputName);
       showToast("Please enter your display name.", "error");
       playSound('error');
       return false;
@@ -338,9 +342,7 @@ function handleTyping() {
 function sendChatMessage() {
   const text = chatInput.value.trim();
   if (!text) {
-    chatInput.classList.remove('error-shake');
-    void chatInput.offsetWidth;
-    chatInput.classList.add('error-shake');
+    triggerInputShake(chatInput);
     playSound('error');
     return;
   }
