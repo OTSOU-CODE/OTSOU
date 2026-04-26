@@ -16,6 +16,16 @@ const fmt = b => {
   const i = Math.floor(Math.log(b) / Math.log(k));
   return (b / Math.pow(k, i)).toFixed(2) + ' ' + u[i];
 };
+const fmtSpeed = bps => {
+  if (bps > 1024 * 1024) return (bps / (1024 * 1024)).toFixed(1) + ' MB/s';
+  if (bps > 1024) return (bps / 1024).toFixed(0) + ' KB/s';
+  return bps + ' B/s';
+};
+const fmtEta = secs => {
+  if (!isFinite(secs) || secs > 3600) return '';
+  if (secs >= 60) return `${Math.floor(secs / 60)}m ${Math.round(secs % 60)}s left`;
+  return `${Math.round(secs)}s left`;
+};
 const mimeEmoji = t => {
   if (!t) return '📁';
   if (t.startsWith('image/')) return '🖼️';
@@ -1047,17 +1057,6 @@ function handleIncomingFileTransfer(conn, fileId) {
     btn.disabled = true;
   }
   if (progWrap) progWrap.style.display = 'block';
-
-  const fmtSpeed = bps => {
-    if (bps > 1024 * 1024) return (bps / (1024 * 1024)).toFixed(1) + ' MB/s';
-    if (bps > 1024) return (bps / 1024).toFixed(0) + ' KB/s';
-    return bps + ' B/s';
-  };
-  const fmtEta = secs => {
-    if (!isFinite(secs) || secs > 3600) return '';
-    if (secs >= 60) return `${Math.floor(secs / 60)}m ${Math.round(secs % 60)}s left`;
-    return `${Math.round(secs)}s left`;
-  };
 
   conn.on('data', data => {
     receivedBytes += data.byteLength;
