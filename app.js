@@ -934,6 +934,7 @@ function initiateFileTransfer(targetPeerId, fileId) {
 
   xferConn.on('open', () => {
     let offset = 0;
+    const btn = $(`btn-ul-${fileId}`);
     
     function sendNextChunk() {
       if (offset >= file.size) {
@@ -956,7 +957,6 @@ function initiateFileTransfer(targetPeerId, fileId) {
         
         // Update UI progress for uploader
         const pct = Math.round(offset / file.size * 100);
-        const btn = $(`btn-ul-${fileId}`);
         if (btn) {
           if (!btn.classList.contains('downloading') && pct < 100) {
             btn.classList.add('downloading');
