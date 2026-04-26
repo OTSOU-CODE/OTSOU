@@ -24,6 +24,16 @@ const mimeEmoji = t => {
   if (t.includes('zip')||t.includes('rar')) return '📦';
   return '📄';
 };
+const escapeHTML = str => {
+  if (str === null || str === undefined) return '';
+  str = String(str);
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+};
 
 // ── UI Enhancements ──────────────────────────────────────────────────────────
 function showToast(message, type = 'info') {
@@ -31,7 +41,7 @@ function showToast(message, type = 'info') {
   if (!container) return;
   const t = document.createElement('div');
   t.className = `toast ${type}`;
-  t.innerHTML = `<span style="font-size:1.2rem">${type === 'error' ? '❌' : type === 'success' ? '✅' : 'ℹ️'}</span> <div>${message}</div>`;
+  t.innerHTML = `<span style="font-size:1.2rem">${type === 'error' ? '❌' : type === 'success' ? '✅' : 'ℹ️'}</span> <div>${escapeHTML(message)}</div>`;
   container.appendChild(t);
   setTimeout(() => t.classList.add('show'), 10);
   setTimeout(() => {
@@ -762,32 +772,32 @@ function addFileToFeed(fileMeta) {
   div.style.border = isMine ? '1px solid rgba(59,130,246,0.3)' : '1px solid rgba(255,255,255,0.07)';
 
   const inner = `
-    <div class="avatar" style="background: ${av.bg}">${av.letter}</div>
+    <div class="avatar" style="background: ${av.bg}">${escapeHTML(av.letter)}</div>
     <div class="file-chip-info">
-      <p class="file-chip-name">${fileMeta.name}</p>
+      <p class="file-chip-name">${escapeHTML(fileMeta.name)}</p>
       <p class="file-chip-size">${fmt(fileMeta.size)} ${isMine ? '· Shared by you' : ''}</p>
       
-      ${fileMeta.thumbnail ? `<div style="margin-top:10px; border-radius:8px; overflow:hidden; border:1px solid rgba(59,130,246,0.2);"><img src="${fileMeta.thumbnail}" style="max-width:100%; display:block;" /></div>` : ''}
+      ${fileMeta.thumbnail ? `<div style="margin-top:10px; border-radius:8px; overflow:hidden; border:1px solid rgba(59,130,246,0.2);"><img src="${escapeHTML(fileMeta.thumbnail)}" style="max-width:100%; display:block;" /></div>` : ''}
       
       <!-- Progress Bar (shown during active download) -->
-      <div id="prog-wrap-${fileMeta.id}" style="display:none; margin-top:10px;">
+      <div id="prog-wrap-${escapeHTML(fileMeta.id)}" style="display:none; margin-top:10px;">
         <div class="progress-track">
-          <div id="prog-fill-${fileMeta.id}" class="progress-fill"></div>
+          <div id="prog-fill-${escapeHTML(fileMeta.id)}" class="progress-fill"></div>
         </div>
         <div class="progress-info">
-          <span id="prog-pct-${fileMeta.id}" class="progress-pct">0%</span>
-          <span id="prog-speed-${fileMeta.id}" class="progress-speed"></span>
-          <span id="prog-eta-${fileMeta.id}" class="progress-eta"></span>
+          <span id="prog-pct-${escapeHTML(fileMeta.id)}" class="progress-pct">0%</span>
+          <span id="prog-speed-${escapeHTML(fileMeta.id)}" class="progress-speed"></span>
+          <span id="prog-eta-${escapeHTML(fileMeta.id)}" class="progress-eta"></span>
         </div>
       </div>
       
       <div style="display: flex; gap: 8px; margin-top: 10px; flex-shrink: 0;">
         ${!isMine && fileMeta.mime && fileMeta.mime.startsWith('video/') 
-          ? `<button id="btn-stream-${fileMeta.id}" class="btn-primary" style="padding: 8px 16px; font-size: 0.8rem; background: #a855f7;">▶ Stream</button>` 
+          ? `<button id="btn-stream-${escapeHTML(fileMeta.id)}" class="btn-primary" style="padding: 8px 16px; font-size: 0.8rem; background: #a855f7;">▶ Stream</button>`
           : ''}
         ${isMine 
-        ? `<button id="btn-ul-${fileMeta.id}" disabled class="btn-primary btn-ghost-sm">Shared</button>`
-        : `<button id="btn-dl-${fileMeta.id}" class="btn-primary btn-dl" style="padding: 8px 16px; font-size: 0.8rem;">↓ Download</button>`
+        ? `<button id="btn-ul-${escapeHTML(fileMeta.id)}" disabled class="btn-primary btn-ghost-sm">Shared</button>`
+        : `<button id="btn-dl-${escapeHTML(fileMeta.id)}" class="btn-primary btn-dl" style="padding: 8px 16px; font-size: 0.8rem;">↓ Download</button>`
         }
       </div>
     </div>
@@ -799,7 +809,7 @@ function addFileToFeed(fileMeta) {
   feed.insertBefore(div, feed.firstChild);
 
   if (!isMine) {
-    const btnStream = div.querySelector(`#btn-stream-${fileMeta.id}`);
+    const btnStream = div.querySelector(`#btn-stream-${escapeHTML(fileMeta.id)}`);
     if (btnStream) {
       btnStream.addEventListener('click', () => {
         btnStream.disabled = true;
@@ -816,7 +826,7 @@ function addFileToFeed(fileMeta) {
       });
     }
 
-    const btn = div.querySelector(`#btn-dl-${fileMeta.id}`);
+    const btn = div.querySelector(`#btn-dl-${escapeHTML(fileMeta.id)}`);
     if (btn) {
       btn.addEventListener('click', async () => {
         btn.disabled = true;
@@ -863,7 +873,7 @@ function showTypingIndicator(id) {
 }
 
 function parseMarkdown(text) {
-  let h = text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  let h = escapeHTML(text);
   // Links
   h = h.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" style="color:var(--accent);text-decoration:underline;">$1</a>');
   // Bold
@@ -901,10 +911,10 @@ function addChatToFeed(msg) {
   const timeStr = new Date(msg.time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   
   const inner = `
-    <div class="avatar" style="background: ${av.bg}; width: 28px; height: 28px; font-size: 0.6rem;">${av.letter}</div>
+    <div class="avatar" style="background: ${av.bg}; width: 28px; height: 28px; font-size: 0.6rem;">${escapeHTML(av.letter)}</div>
     <div style="display:flex; flex-direction:column; align-items:${isMine ? 'flex-end' : 'flex-start'}; max-width:80%;">
       <span style="font-size: 0.65rem; color: rgba(255,255,255,0.3); margin-bottom: 4px; padding: 0 4px;">
-        ${isMine ? 'You' : displayName} · ${timeStr}
+        ${isMine ? 'You' : escapeHTML(displayName)} · ${timeStr}
       </span>
       <div style="background: ${isMine ? 'var(--accent)' : 'rgba(255,255,255,0.07)'}; 
                   color: #fff; padding: 10px 14px; border-radius: 14px; 
@@ -1022,12 +1032,12 @@ function handleIncomingFileTransfer(conn, fileId) {
   const fileMeta = allKnownFiles.get(fileId);
   if (!fileMeta) { conn.close(); return; }
 
-  const btn      = $(`btn-dl-${fileId}`);
-  const progWrap = $(`prog-wrap-${fileId}`);
-  const progFill = $(`prog-fill-${fileId}`);
-  const progPct  = $(`prog-pct-${fileId}`);
-  const progSpd  = $(`prog-speed-${fileId}`);
-  const progEta  = $(`prog-eta-${fileId}`);
+  const btn      = $(`btn-dl-${escapeHTML(fileId)}`);
+  const progWrap = $(`prog-wrap-${escapeHTML(fileId)}`);
+  const progFill = $(`prog-fill-${escapeHTML(fileId)}`);
+  const progPct  = $(`prog-pct-${escapeHTML(fileId)}`);
+  const progSpd  = $(`prog-speed-${escapeHTML(fileId)}`);
+  const progEta  = $(`prog-eta-${escapeHTML(fileId)}`);
 
   // Check if we have a streaming writable (File System Access API path)
   const writableStream = fileWritableStreams.get(fileId) || null;
@@ -1153,9 +1163,9 @@ function renderUserList() {
     div.style.alignItems = 'center';
     
     div.innerHTML = `
-      <div class="avatar" style="background: ${av.bg}; width: 30px; height: 30px; font-size: 0.75rem;">${av.letter}</div>
+      <div class="avatar" style="background: ${av.bg}; width: 30px; height: 30px; font-size: 0.75rem;">${escapeHTML(av.letter)}</div>
       <div style="flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-        <span style="font-weight: 600; font-size: 0.9rem;">${data.name}</span>
+        <span style="font-weight: 600; font-size: 0.9rem;">${escapeHTML(data.name)}</span>
         ${isMe ? '<span style="font-size: 0.7rem; color: var(--accent); margin-left: 5px;">(You)</span>' : ''}
         ${role === 'host' && id === MY_ID ? '<span style="font-size: 0.7rem; color: #10b981; margin-left: 5px;">(Host)</span>' : ''}
       </div>
