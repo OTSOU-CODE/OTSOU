@@ -16,6 +16,15 @@ const fmt = b => {
   const i = Math.floor(Math.log(b) / Math.log(k));
   return (b / Math.pow(k, i)).toFixed(2) + ' ' + u[i];
 };
+
+const escapeHTML = str => {
+  if (str == null) return '';
+  return String(str).replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#39;');
+};
 const mimeEmoji = t => {
   if (!t) return '📁';
   if (t.startsWith('image/')) return '🖼️';
@@ -31,7 +40,7 @@ function showToast(message, type = 'info') {
   if (!container) return;
   const t = document.createElement('div');
   t.className = `toast ${type}`;
-  t.innerHTML = `<span style="font-size:1.2rem">${type === 'error' ? '❌' : type === 'success' ? '✅' : 'ℹ️'}</span> <div>${message}</div>`;
+  t.innerHTML = `<span style="font-size:1.2rem">${type === 'error' ? '❌' : type === 'success' ? '✅' : 'ℹ️'}</span> <div>${escapeHTML(message)}</div>`;
   container.appendChild(t);
   setTimeout(() => t.classList.add('show'), 10);
   setTimeout(() => {
@@ -764,7 +773,7 @@ function addFileToFeed(fileMeta) {
   const inner = `
     <div class="avatar" style="background: ${av.bg}">${av.letter}</div>
     <div class="file-chip-info">
-      <p class="file-chip-name">${fileMeta.name}</p>
+      <p class="file-chip-name">${escapeHTML(fileMeta.name)}</p>
       <p class="file-chip-size">${fmt(fileMeta.size)} ${isMine ? '· Shared by you' : ''}</p>
       
       ${fileMeta.thumbnail ? `<div style="margin-top:10px; border-radius:8px; overflow:hidden; border:1px solid rgba(59,130,246,0.2);"><img src="${fileMeta.thumbnail}" style="max-width:100%; display:block;" /></div>` : ''}
@@ -904,7 +913,7 @@ function addChatToFeed(msg) {
     <div class="avatar" style="background: ${av.bg}; width: 28px; height: 28px; font-size: 0.6rem;">${av.letter}</div>
     <div style="display:flex; flex-direction:column; align-items:${isMine ? 'flex-end' : 'flex-start'}; max-width:80%;">
       <span style="font-size: 0.65rem; color: rgba(255,255,255,0.3); margin-bottom: 4px; padding: 0 4px;">
-        ${isMine ? 'You' : displayName} · ${timeStr}
+        ${isMine ? 'You' : escapeHTML(displayName)} · ${timeStr}
       </span>
       <div style="background: ${isMine ? 'var(--accent)' : 'rgba(255,255,255,0.07)'}; 
                   color: #fff; padding: 10px 14px; border-radius: 14px; 
@@ -1155,7 +1164,7 @@ function renderUserList() {
     div.innerHTML = `
       <div class="avatar" style="background: ${av.bg}; width: 30px; height: 30px; font-size: 0.75rem;">${av.letter}</div>
       <div style="flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-        <span style="font-weight: 600; font-size: 0.9rem;">${data.name}</span>
+        <span style="font-weight: 600; font-size: 0.9rem;">${escapeHTML(data.name)}</span>
         ${isMe ? '<span style="font-size: 0.7rem; color: var(--accent); margin-left: 5px;">(You)</span>' : ''}
         ${role === 'host' && id === MY_ID ? '<span style="font-size: 0.7rem; color: #10b981; margin-left: 5px;">(Host)</span>' : ''}
       </div>
