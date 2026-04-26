@@ -7,16 +7,6 @@
 const CHUNK_SIZE = 64 * 1024;
 
 // ── DOM Helpers ──────────────────────────────────────────────────────────────
-
-function sanitizeHTML(str) {
-  if (typeof str !== 'string') return str;
-  return str.replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;')
-            .replace(/'/g, '&#039;');
-}
-
 const $ = id => document.getElementById(id);
 const show = id => { const e = $(id); if (e) { e.hidden = false; e.style.display = ''; } };
 const hide = id => { const e = $(id); if (e) e.hidden = true; };
@@ -26,11 +16,29 @@ const triggerInputShake = inputElement => {
   void inputElement.offsetWidth;
   inputElement.classList.add('error-shake');
 };
+const escapeHTML = str => {
+  if (str == null) return '';
+  return String(str).replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#39;');
+};
 const fmt = b => {
   if (!b) return '0 B';
   const k = 1024, u = ['B','KB','MB','GB'];
   const i = Math.floor(Math.log(b) / Math.log(k));
   return (b / Math.pow(k, i)).toFixed(2) + ' ' + u[i];
+};
+const fmtSpeed = bps => {
+  if (bps > 1024 * 1024) return (bps / (1024 * 1024)).toFixed(1) + ' MB/s';
+  if (bps > 1024) return (bps / 1024).toFixed(0) + ' KB/s';
+  return bps + ' B/s';
+};
+const fmtEta = secs => {
+  if (!isFinite(secs) || secs > 3600) return '';
+  if (secs >= 60) return `${Math.floor(secs / 60)}m ${Math.round(secs % 60)}s left`;
+  return `${Math.round(secs)}s left`;
 };
 const mimeEmoji = t => {
   if (!t) return '📁';
@@ -47,7 +55,8 @@ function showToast(message, type = 'info') {
   if (!container) return;
   const t = document.createElement('div');
   t.className = `toast ${type}`;
-  t.innerHTML = `<span style="font-size:1.2rem">${type === 'error' ? '❌' : type === 'success' ? '✅' : 'ℹ️'}</span> <div>${sanitizeHTML(message)}</div>`;
+  t.innerHTML = `<span style="font-size:1.2rem">${type === 'error' ? '❌' : type === 'success' ? '✅' : 'ℹ️'}</span> <div></div>`;
+  t.lastElementChild.textContent = message;
   container.appendChild(t);
   setTimeout(() => t.classList.add('show'), 10);
   setTimeout(() => {
@@ -770,17 +779,27 @@ function addFileToFeed(fileMeta) {
   const isMine = fileMeta.ownerId === peer.id;
   const av = getAvatarParams(fileMeta.ownerId);
 
-  if (!isMine) notify("New File Shared", sanitizeHTML(fileMeta.name));
+  if (!isMine) notify("New File Shared", fileMeta.name);
 
   const div = document.createElement('div');
   div.className = 'file-chip';
   div.style.background = isMine ? 'rgba(59,130,246,0.1)' : 'rgba(255,255,255,0.04)';
   div.style.border = isMine ? '1px solid rgba(59,130,246,0.3)' : '1px solid rgba(255,255,255,0.07)';
 
-  const inner = `
+  div.innerHTML = getFileChipHTML(fileMeta, isMine, av);
+
+  const context = { peer, role, guestConns, hostConn };
+  attachFileChipEvents(div, fileMeta, isMine, context);
+
+  // Prepend so newest is at the top
+  feed.insertBefore(div, feed.firstChild);
+}
+
+function getFileChipHTML(fileMeta, isMine, av) {
+  return `
     <div class="avatar" style="background: ${av.bg}">${av.letter}</div>
     <div class="file-chip-info">
-      <p class="file-chip-name">${sanitizeHTML(fileMeta.name)}</p>
+      <p class="file-chip-name">${escapeHTML(fileMeta.name)}</p>
       <p class="file-chip-size">${fmt(fileMeta.size)} ${isMine ? '· Shared by you' : ''}</p>
       
       ${fileMeta.thumbnail ? `<div style="margin-top:10px; border-radius:8px; overflow:hidden; border:1px solid rgba(59,130,246,0.2);"><img src="${fileMeta.thumbnail}" style="max-width:100%; display:block;" /></div>` : ''}
@@ -808,65 +827,64 @@ function addFileToFeed(fileMeta) {
       </div>
     </div>
   `;
+}
 
-  div.innerHTML = inner;
-  
-  // Prepend so newest is at the top
-  feed.insertBefore(div, feed.firstChild);
+function attachFileChipEvents(div, fileMeta, isMine, context) {
+  if (isMine) return;
 
-  if (!isMine) {
-    const btnStream = div.querySelector(`#btn-stream-${fileMeta.id}`);
-    if (btnStream) {
-      btnStream.addEventListener('click', () => {
-        btnStream.disabled = true;
-        btnStream.textContent = 'Buffering...';
-        setTimeout(() => { btnStream.disabled = false; btnStream.textContent = '▶ Stream'; }, 5000);
-        
-        const msg = { type: 'request_stream', fileId: fileMeta.id, requesterId: peer.id };
-        if (role === 'host') {
-          const ownerConn = guestConns.get(fileMeta.ownerId);
-          if (ownerConn) ownerConn.send({ type: 'peer_wants_stream', fileId: fileMeta.id, requesterId: peer.id });
-        } else {
-          hostConn.send(msg);
+  const { peer, role, guestConns, hostConn } = context;
+
+  const btnStream = div.querySelector(`#btn-stream-${fileMeta.id}`);
+  if (btnStream) {
+    btnStream.addEventListener('click', () => {
+      btnStream.disabled = true;
+      btnStream.textContent = 'Buffering...';
+      setTimeout(() => { btnStream.disabled = false; btnStream.textContent = '▶ Stream'; }, 5000);
+
+      const msg = { type: 'request_stream', fileId: fileMeta.id, requesterId: peer.id };
+      if (role === 'host') {
+        const ownerConn = guestConns.get(fileMeta.ownerId);
+        if (ownerConn) ownerConn.send({ type: 'peer_wants_stream', fileId: fileMeta.id, requesterId: peer.id });
+      } else {
+        hostConn.send(msg);
+      }
+    });
+  }
+
+  const btn = div.querySelector(`#btn-dl-${fileMeta.id}`);
+  if (btn) {
+    btn.addEventListener('click', async () => {
+      btn.disabled = true;
+
+      // ── File System Access API: write chunks directly to disk as they arrive
+      if ('showSaveFilePicker' in window) {
+        try {
+          const fileHandle = await window.showSaveFilePicker({
+            suggestedName: fileMeta.name
+            // No strict types — letting the OS infer from the filename extension
+          });
+          const writable = await fileHandle.createWritable();
+          fileWritableStreams.set(fileMeta.id, writable);
+          btn.textContent = 'Starting…';
+        } catch (err) {
+          btn.disabled = false;
+          btn.textContent = '↓ Download';
+          if (err.name !== 'AbortError') showToast('Could not open save dialog.', 'error');
+          return;
         }
-      });
-    }
+      } else {
+        btn.textContent = 'Requesting…';
+      }
 
-    const btn = div.querySelector(`#btn-dl-${fileMeta.id}`);
-    if (btn) {
-      btn.addEventListener('click', async () => {
-        btn.disabled = true;
-
-        // ── File System Access API: write chunks directly to disk as they arrive
-        if ('showSaveFilePicker' in window) {
-          try {
-            const fileHandle = await window.showSaveFilePicker({
-              suggestedName: fileMeta.name
-              // No strict types — letting the OS infer from the filename extension
-            });
-            const writable = await fileHandle.createWritable();
-            fileWritableStreams.set(fileMeta.id, writable);
-            btn.textContent = 'Starting…';
-          } catch (err) {
-            btn.disabled = false;
-            btn.textContent = '↓ Download';
-            if (err.name !== 'AbortError') showToast('Could not open save dialog.', 'error');
-            return;
-          }
-        } else {
-          btn.textContent = 'Requesting…';
-        }
-
-        // Request the file from the network
-        const msg = { type: 'request_download', fileId: fileMeta.id, requesterId: peer.id };
-        if (role === 'host') {
-          const ownerConn = guestConns.get(fileMeta.ownerId);
-          if (ownerConn) ownerConn.send({ type: 'peer_wants_file', fileId: fileMeta.id, requesterId: peer.id });
-        } else {
-          hostConn.send(msg);
-        }
-      });
-    }
+      // Request the file from the network
+      const msg = { type: 'request_download', fileId: fileMeta.id, requesterId: peer.id };
+      if (role === 'host') {
+        const ownerConn = guestConns.get(fileMeta.ownerId);
+        if (ownerConn) ownerConn.send({ type: 'peer_wants_file', fileId: fileMeta.id, requesterId: peer.id });
+      } else {
+        hostConn.send(msg);
+      }
+    });
   }
 }
 
