@@ -45,7 +45,7 @@ function updatePulse(state) {
   if (!pcd) return;
   if (state === 'connecting') pcd.innerHTML = '<span class="status-pulse connecting"></span>Connecting...';
   else if (state === 'offline') pcd.innerHTML = '<span class="status-pulse offline"></span>Offline';
-  else pcd.innerHTML = `<span class="status-pulse"></span>${state}`;
+  else { pcd.innerHTML = '<span class="status-pulse"></span>'; pcd.appendChild(document.createTextNode(state)); }
 }
 
 function getAvatarParams(id) {
