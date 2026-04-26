@@ -31,7 +31,8 @@ function showToast(message, type = 'info') {
   if (!container) return;
   const t = document.createElement('div');
   t.className = `toast ${type}`;
-  t.innerHTML = `<span style="font-size:1.2rem">${type === 'error' ? '❌' : type === 'success' ? '✅' : 'ℹ️'}</span> <div>${message}</div>`;
+  t.innerHTML = `<span style="font-size:1.2rem">${type === 'error' ? '❌' : type === 'success' ? '✅' : 'ℹ️'}</span> <div></div>`;
+  t.lastElementChild.textContent = message;
   container.appendChild(t);
   setTimeout(() => t.classList.add('show'), 10);
   setTimeout(() => {
