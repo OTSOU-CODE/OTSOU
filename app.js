@@ -1059,20 +1059,27 @@ function handleIncomingFileTransfer(conn, fileId) {
     return `${Math.round(secs)}s left`;
   };
 
+  let lastUIUpdate = 0;
+
   conn.on('data', data => {
     receivedBytes += data.byteLength;
 
-    const pct      = Math.round(receivedBytes / fileMeta.size * 100);
-    const elapsed  = (Date.now() - startTime) / 1000;
-    const speedBps = elapsed > 0 ? receivedBytes / elapsed : 0;
-    const etaSecs  = speedBps > 0 ? (fileMeta.size - receivedBytes) / speedBps : Infinity;
+    const now = Date.now();
 
-    // Update progress bar
-    if (progFill) progFill.style.width = pct + '%';
-    if (progPct)  progPct.textContent  = pct + '%';
-    if (progSpd)  progSpd.textContent  = fmtSpeed(speedBps);
-    if (progEta)  progEta.textContent  = fmtEta(etaSecs);
-    if (btn) btn.textContent = `${pct}%`;
+    if (now - lastUIUpdate > 50) {
+      lastUIUpdate = now;
+      const pct      = Math.round(receivedBytes / fileMeta.size * 100);
+      const elapsed  = (now - startTime) / 1000;
+      const speedBps = elapsed > 0 ? receivedBytes / elapsed : 0;
+      const etaSecs  = speedBps > 0 ? (fileMeta.size - receivedBytes) / speedBps : Infinity;
+
+      // Update progress bar
+      if (progFill) progFill.style.width = pct + '%';
+      if (progPct)  progPct.textContent  = pct + '%';
+      if (progSpd)  progSpd.textContent  = fmtSpeed(speedBps);
+      if (progEta)  progEta.textContent  = fmtEta(etaSecs);
+      if (btn) btn.textContent = `${pct}%`;
+    }
 
     if (writableStream) {
       writeChain = writeChain.then(() => writableStream.write(data));
@@ -1082,10 +1089,13 @@ function handleIncomingFileTransfer(conn, fileId) {
 
     if (receivedBytes >= fileMeta.size) {
       // ─ Finalize ─
+      const elapsedFinal = (Date.now() - startTime) / 1000;
+      const finalSpeedBps = elapsedFinal > 0 ? receivedBytes / elapsedFinal : 0;
+
       const finishUI = () => {
         if (progFill) progFill.style.width = '100%';
         if (progPct)  progPct.textContent  = '100%';
-        if (progSpd)  progSpd.textContent  = fmtSpeed(speedBps);
+        if (progSpd)  progSpd.textContent  = fmtSpeed(finalSpeedBps);
         if (progEta)  progEta.textContent  = 'Done!';
         if (btn) {
           btn.textContent = '✅ Saved';
