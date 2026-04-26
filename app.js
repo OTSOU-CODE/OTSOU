@@ -747,21 +747,9 @@ function finishFileAnnounce(fileId, fileMeta) {
 }
 
 // ── Feed UI ──────────────────────────────────────────────────────────────────
-function addFileToFeed(fileMeta) {
-  hide('empty-feed-msg');
-  
-  const feed = $('file-feed');
-  const isMine = fileMeta.ownerId === peer.id;
-  const av = getAvatarParams(fileMeta.ownerId);
 
-  if (!isMine) notify("New File Shared", fileMeta.name);
-
-  const div = document.createElement('div');
-  div.className = 'file-chip';
-  div.style.background = isMine ? 'rgba(59,130,246,0.1)' : 'rgba(255,255,255,0.04)';
-  div.style.border = isMine ? '1px solid rgba(59,130,246,0.3)' : '1px solid rgba(255,255,255,0.07)';
-
-  const inner = `
+function getFileChipHTML(fileMeta, isMine, av) {
+  return `
     <div class="avatar" style="background: ${av.bg}">${av.letter}</div>
     <div class="file-chip-info">
       <p class="file-chip-name">${fileMeta.name}</p>
@@ -792,68 +780,90 @@ function addFileToFeed(fileMeta) {
       </div>
     </div>
   `;
+}
 
-  div.innerHTML = inner;
+
+function attachFileChipEvents(div, fileMeta, isMine, context) {
+  if (isMine) return;
   
-  // Prepend so newest is at the top
-  feed.insertBefore(div, feed.firstChild);
+  const { peer, role, guestConns, hostConn } = context;
 
-  if (!isMine) {
-    const btnStream = div.querySelector(`#btn-stream-${fileMeta.id}`);
-    if (btnStream) {
-      btnStream.addEventListener('click', () => {
-        btnStream.disabled = true;
-        btnStream.textContent = 'Buffering...';
-        setTimeout(() => { btnStream.disabled = false; btnStream.textContent = '▶ Stream'; }, 5000);
-        
-        const msg = { type: 'request_stream', fileId: fileMeta.id, requesterId: peer.id };
-        if (role === 'host') {
-          const ownerConn = guestConns.get(fileMeta.ownerId);
-          if (ownerConn) ownerConn.send({ type: 'peer_wants_stream', fileId: fileMeta.id, requesterId: peer.id });
-        } else {
-          hostConn.send(msg);
+  const btnStream = div.querySelector(`#btn-stream-${fileMeta.id}`);
+  if (btnStream) {
+    btnStream.addEventListener('click', () => {
+      btnStream.disabled = true;
+      btnStream.textContent = 'Buffering...';
+      setTimeout(() => { btnStream.disabled = false; btnStream.textContent = '▶ Stream'; }, 5000);
+
+      const msg = { type: 'request_stream', fileId: fileMeta.id, requesterId: peer.id };
+      if (role === 'host') {
+        const ownerConn = guestConns.get(fileMeta.ownerId);
+        if (ownerConn) ownerConn.send({ type: 'peer_wants_stream', fileId: fileMeta.id, requesterId: peer.id });
+      } else {
+        hostConn.send(msg);
+      }
+    });
+  }
+
+  const btn = div.querySelector(`#btn-dl-${fileMeta.id}`);
+  if (btn) {
+    btn.addEventListener('click', async () => {
+      btn.disabled = true;
+
+      // ── File System Access API: write chunks directly to disk as they arrive
+      if ('showSaveFilePicker' in window) {
+        try {
+          const fileHandle = await window.showSaveFilePicker({
+            suggestedName: fileMeta.name
+            // No strict types — letting the OS infer from the filename extension
+          });
+          const writable = await fileHandle.createWritable();
+          fileWritableStreams.set(fileMeta.id, writable);
+          btn.textContent = 'Starting…';
+        } catch (err) {
+          btn.disabled = false;
+          btn.textContent = '↓ Download';
+          if (err.name !== 'AbortError') showToast('Could not open save dialog.', 'error');
+          return;
         }
-      });
-    }
+      } else {
+        btn.textContent = 'Requesting…';
+      }
 
-    const btn = div.querySelector(`#btn-dl-${fileMeta.id}`);
-    if (btn) {
-      btn.addEventListener('click', async () => {
-        btn.disabled = true;
-
-        // ── File System Access API: write chunks directly to disk as they arrive
-        if ('showSaveFilePicker' in window) {
-          try {
-            const fileHandle = await window.showSaveFilePicker({
-              suggestedName: fileMeta.name
-              // No strict types — letting the OS infer from the filename extension
-            });
-            const writable = await fileHandle.createWritable();
-            fileWritableStreams.set(fileMeta.id, writable);
-            btn.textContent = 'Starting…';
-          } catch (err) {
-            btn.disabled = false;
-            btn.textContent = '↓ Download';
-            if (err.name !== 'AbortError') showToast('Could not open save dialog.', 'error');
-            return;
-          }
-        } else {
-          btn.textContent = 'Requesting…';
-        }
-
-        // Request the file from the network
-        const msg = { type: 'request_download', fileId: fileMeta.id, requesterId: peer.id };
-        if (role === 'host') {
-          const ownerConn = guestConns.get(fileMeta.ownerId);
-          if (ownerConn) ownerConn.send({ type: 'peer_wants_file', fileId: fileMeta.id, requesterId: peer.id });
-        } else {
-          hostConn.send(msg);
-        }
-      });
-    }
+      // Request the file from the network
+      const msg = { type: 'request_download', fileId: fileMeta.id, requesterId: peer.id };
+      if (role === 'host') {
+        const ownerConn = guestConns.get(fileMeta.ownerId);
+        if (ownerConn) ownerConn.send({ type: 'peer_wants_file', fileId: fileMeta.id, requesterId: peer.id });
+      } else {
+        hostConn.send(msg);
+      }
+    });
   }
 }
 
+function addFileToFeed(fileMeta) {
+  hide('empty-feed-msg');
+
+  const feed = $('file-feed');
+  const isMine = fileMeta.ownerId === peer.id;
+  const av = getAvatarParams(fileMeta.ownerId);
+
+  if (!isMine) notify("New File Shared", fileMeta.name);
+
+  const div = document.createElement('div');
+  div.className = 'file-chip';
+  div.style.background = isMine ? 'rgba(59,130,246,0.1)' : 'rgba(255,255,255,0.04)';
+  div.style.border = isMine ? '1px solid rgba(59,130,246,0.3)' : '1px solid rgba(255,255,255,0.07)';
+
+  div.innerHTML = getFileChipHTML(fileMeta, isMine, av);
+
+  const context = { peer, role, guestConns, hostConn };
+  attachFileChipEvents(div, fileMeta, isMine, context);
+
+  // Prepend so newest is at the top
+  feed.insertBefore(div, feed.firstChild);
+}
 // ── Chat UI ──────────────────────────────────────────────────────────────────
 function showTypingIndicator(id) {
   const ind = $('typing-indicator');

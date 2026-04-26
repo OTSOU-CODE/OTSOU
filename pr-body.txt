@@ -1,0 +1,16 @@
+🧹 [Code Health] Refactor addFileToFeed to extract HTML and events
+
+🎯 **What:** The code health issue addressed
+The `addFileToFeed` function was over 100 lines long, mixing DOM element creation, raw HTML template string generation, and complex nested event handler logic for streaming and downloading.
+
+💡 **Why:** How this improves maintainability
+Extracting the HTML generation (`getFileChipHTML`) and the event listener bindings (`attachFileChipEvents`) into separate functions reduces the cognitive load of `addFileToFeed`. This separation of concerns (presentation vs behavior vs orchestration) makes the code far easier to read, test, and maintain in the future. `addFileToFeed` now acts purely as a clear coordinator.
+
+✅ **Verification:** How you confirmed the change is safe
+- Extracted functions maintain their required module-level global context correctly.
+- Verified syntax with Node interpreter (`node -c app.js`).
+- Executed `node --import ./tests/setup.mjs --test tests/*.test.mjs` test runner successfully.
+- Manually verified standard server load using a Python HTTP server.
+
+✨ **Result:** The improvement achieved
+A significant readability improvement. The DOM element and event handling is now clean and decoupled, leaving a streamlined entrypoint for rendering new files to the feed.
