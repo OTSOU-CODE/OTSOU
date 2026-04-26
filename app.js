@@ -58,12 +58,16 @@ function updatePulse(state) {
   else { pcd.innerHTML = '<span class="status-pulse"></span>'; pcd.appendChild(document.createTextNode(state)); }
 }
 
+const avatarCache = new Map();
 function getAvatarParams(id) {
+  if (avatarCache.has(id)) return avatarCache.get(id);
   let hash = 0;
   for (let i = 0; i < id.length; i++) hash = id.charCodeAt(i) + ((hash << 5) - hash);
   const hue1 = Math.abs(hash) % 360;
   const hue2 = (Math.abs(hash) * 2) % 360;
-  return { letter: id.charAt(0).toUpperCase(), bg: `linear-gradient(135deg, hsl(${hue1}, 80%, 60%), hsl(${hue2}, 80%, 40%))` };
+  const params = { letter: id.charAt(0).toUpperCase(), bg: `linear-gradient(135deg, hsl(${hue1}, 80%, 60%), hsl(${hue2}, 80%, 40%))` };
+  avatarCache.set(id, params);
+  return params;
 }
 
 // ── Audio Synthesizer ────────────────────────────────────────────────────────
