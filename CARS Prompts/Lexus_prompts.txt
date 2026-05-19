@@ -1,0 +1,680 @@
+### PROMPT FOR: Lexus LX ###
+Subject: Lexus LX (1996 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Lexus RX ###
+Subject: Lexus RX (1998 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Lexus IS ###
+Subject: Lexus IS (1998 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Lexus GX ###
+Subject: Lexus GX (2002 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Lexus NX ###
+Subject: Lexus NX (2014 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Lexus RC ###
+Subject: Lexus RC (2014 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Lexus RC F ###
+Subject: Lexus RC F (2014 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Lexus LC ###
+Subject: Lexus LC (2017 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Lexus UX ###
+Subject: Lexus UX (2018 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Lexus RZ ###
+Subject: Lexus RZ (2022 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Lexus TX ###
+Subject: Lexus TX (2023 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Lexus LBX ###
+Subject: Lexus LBX (2023 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Lexus LM ###
+Subject: Lexus LM (2023 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Lexus SC ###
+Subject: Lexus SC (1991 – 2010)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Lexus GS ###
+Subject: Lexus GS (1993 – 2020)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Lexus IS F ###
+Subject: Lexus IS F (2007 – 2014)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Lexus HS ###
+Subject: Lexus HS (2009 – 2018)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Lexus LFA ###
+Subject: Lexus LFA (2010 – 2012)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Lexus CT ###
+Subject: Lexus CT (2011 – 2022)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Lexus GS F ###
+Subject: Lexus GS F (2015 – 2020)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+

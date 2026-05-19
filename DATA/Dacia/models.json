@@ -1,0 +1,102 @@
+[
+  {
+    "model_name": "Dacia 1325 Liberta",
+    "production_years": "1990 \u2013 1996",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Dacia+1325+Liberta"
+  },
+  {
+    "model_name": "Dacia Nova",
+    "production_years": "1995 \u2013 2000",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Dacia+Nova"
+  },
+  {
+    "model_name": "Dacia SupeRNova",
+    "production_years": "2000 \u2013 2003",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Dacia+SupeRNova"
+  },
+  {
+    "model_name": "Dacia Solenza",
+    "production_years": "2003 \u2013 2005",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Dacia+Solenza"
+  },
+  {
+    "model_name": "Dacia Logan I",
+    "production_years": "2004 \u2013 2012",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Dacia+Logan+I"
+  },
+  {
+    "model_name": "Dacia Logan MCV I",
+    "production_years": "2006 \u2013 2012",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Dacia+Logan+MCV+I"
+  },
+  {
+    "model_name": "Dacia Logan Pick-Up",
+    "production_years": "2008 \u2013 2012",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Dacia+Logan+Pick-Up"
+  },
+  {
+    "model_name": "Dacia Sandero I",
+    "production_years": "2008 \u2013 2012",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Dacia+Sandero+I"
+  },
+  {
+    "model_name": "Dacia Duster I",
+    "production_years": "2010 \u2013 2017",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Dacia+Duster+I"
+  },
+  {
+    "model_name": "Dacia Lodgy",
+    "production_years": "2012 \u2013 2022",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Dacia+Lodgy"
+  },
+  {
+    "model_name": "Dacia Dokker",
+    "production_years": "2012 \u2013 2021",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Dacia+Dokker"
+  },
+  {
+    "model_name": "Dacia Logan II",
+    "production_years": "2012 \u2013 2020",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Dacia+Logan+II"
+  },
+  {
+    "model_name": "Dacia Sandero II",
+    "production_years": "2012 \u2013 2020",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Dacia+Sandero+II"
+  },
+  {
+    "model_name": "Dacia Duster II",
+    "production_years": "2017 \u2013 2024",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Dacia+Duster+II"
+  },
+  {
+    "model_name": "Dacia Logan III",
+    "production_years": "2020 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Dacia+Logan+III"
+  },
+  {
+    "model_name": "Dacia Sandero III",
+    "production_years": "2020 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Dacia+Sandero+III"
+  },
+  {
+    "model_name": "Dacia Spring (Electric)",
+    "production_years": "2021 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Dacia+Spring"
+  },
+  {
+    "model_name": "Dacia Jogger",
+    "production_years": "2022 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Dacia+Jogger"
+  },
+  {
+    "model_name": "Dacia Duster III",
+    "production_years": "2024 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Dacia+Duster+2024"
+  },
+  {
+    "model_name": "Dacia Bigster",
+    "production_years": "2025 (Expected)",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Dacia+Bigster"
+  }
+]

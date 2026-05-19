@@ -1,0 +1,782 @@
+### PROMPT FOR: Ford Explorer ###
+Subject: Ford Explorer (1990 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Ford Expedition ###
+Subject: Ford Expedition (1996 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Ford Escape / Kuga ###
+Subject: Ford Escape / Kuga (2000 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Ford Transit Connect ###
+Subject: Ford Transit Connect (2002 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Ford Edge ###
+Subject: Ford Edge (2006 – Present (Phasing out))
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Ford Everest ###
+Subject: Ford Everest (2003 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Ford Territory ###
+Subject: Ford Territory (2004 – 2016; 2018 – Present (China/Global))
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Ford Bronco Sport ###
+Subject: Ford Bronco Sport (2020 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Ford Mustang Mach-E ###
+Subject: Ford Mustang Mach-E (2020 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Ford Puma ###
+Subject: Ford Puma (1997 – 2001; 2019 – Present (Crossover))
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Ford Focus ###
+Subject: Ford Focus (1998 – Present (Discontinued in some markets))
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Ford Tourneo ###
+Subject: Ford Tourneo (1990 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Ford Crown Victoria ###
+Subject: Ford Crown Victoria (1991 – 2011)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Ford Contour / Mondeo ###
+Subject: Ford Contour / Mondeo (1993 – 2022 (Mondeo continues in China))
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Ford Windstar / Freestar ###
+Subject: Ford Windstar / Freestar (1994 – 2007)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Ford Ka ###
+Subject: Ford Ka (1996 – 2021)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Ford Excursion ###
+Subject: Ford Excursion (1999 – 2005)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Ford GT ###
+Subject: Ford GT (2004 – 2006; 2016 – 2022)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Ford Fusion ###
+Subject: Ford Fusion (2006 – 2020)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Ford Flex ###
+Subject: Ford Flex (2008 – 2019)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Ford C-Max ###
+Subject: Ford C-Max (2003 – 2019)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Ford B-Max ###
+Subject: Ford B-Max (2012 – 2017)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Ford EcoSport ###
+Subject: Ford EcoSport (2003 – 2022)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+

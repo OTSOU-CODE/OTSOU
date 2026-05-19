@@ -1,0 +1,307 @@
+[
+  {
+    "model_name": "BMW 3 Series (E36)",
+    "production_years": "1990 \u2013 2000",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+E36"
+  },
+  {
+    "model_name": "BMW 7 Series (E38)",
+    "production_years": "1994 \u2013 2001",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+E38"
+  },
+  {
+    "model_name": "BMW 3 Series Compact (E36/5)",
+    "production_years": "1993 \u2013 2000",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+3+Series+Compact+E36"
+  },
+  {
+    "model_name": "BMW Z3 (E36/7)",
+    "production_years": "1995 \u2013 2002",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+Z3"
+  },
+  {
+    "model_name": "BMW 5 Series (E39)",
+    "production_years": "1995 \u2013 2004",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+E39"
+  },
+  {
+    "model_name": "BMW 3 Series (E46)",
+    "production_years": "1998 \u2013 2006",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+E46"
+  },
+  {
+    "model_name": "BMW X5 (E53)",
+    "production_years": "1999 \u2013 2006",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+X5+E53"
+  },
+  {
+    "model_name": "BMW Z8 (E52)",
+    "production_years": "2000 \u2013 2003",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+Z8"
+  },
+  {
+    "model_name": "BMW 3 Series Compact (E46/5)",
+    "production_years": "2000 \u2013 2004",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+3+Series+Compact+E46"
+  },
+  {
+    "model_name": "BMW 7 Series (E65/E66)",
+    "production_years": "2001 \u2013 2008",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+E65"
+  },
+  {
+    "model_name": "BMW Z4 (E85/E86)",
+    "production_years": "2002 \u2013 2008",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+Z4+E85"
+  },
+  {
+    "model_name": "BMW 5 Series (E60/E61)",
+    "production_years": "2003 \u2013 2010",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+E60"
+  },
+  {
+    "model_name": "BMW 6 Series (E63/E64)",
+    "production_years": "2003 \u2013 2010",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+E63"
+  },
+  {
+    "model_name": "BMW X3 (E83)",
+    "production_years": "2003 \u2013 2010",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+X3+E83"
+  },
+  {
+    "model_name": "BMW 1 Series (E81/E82/E87/E88)",
+    "production_years": "2004 \u2013 2013",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+1+Series+E87"
+  },
+  {
+    "model_name": "BMW 3 Series (E90/E91/E92/E93)",
+    "production_years": "2005 \u2013 2013",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+E90"
+  },
+  {
+    "model_name": "BMW X5 (E70)",
+    "production_years": "2006 \u2013 2013",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+X5+E70"
+  },
+  {
+    "model_name": "BMW X6 (E71)",
+    "production_years": "2008 \u2013 2014",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+X6+E71"
+  },
+  {
+    "model_name": "BMW Z4 (E89)",
+    "production_years": "2009 \u2013 2016",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+Z4+E89"
+  },
+  {
+    "model_name": "BMW X1 (E84)",
+    "production_years": "2009 \u2013 2015",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+X1+E84"
+  },
+  {
+    "model_name": "BMW 5 Series (F10/F11)",
+    "production_years": "2010 \u2013 2017",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+F10"
+  },
+  {
+    "model_name": "BMW 5 Series GT (F07)",
+    "production_years": "2009 \u2013 2017",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+5+Series+GT"
+  },
+  {
+    "model_name": "BMW X3 (F25)",
+    "production_years": "2010 \u2013 2017",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+X3+F25"
+  },
+  {
+    "model_name": "BMW 6 Series (F12/F13/F06)",
+    "production_years": "2011 \u2013 2018",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+6+Series+F12"
+  },
+  {
+    "model_name": "BMW 1 Series (F20/F21)",
+    "production_years": "2011 \u2013 2019",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+1+Series+F20"
+  },
+  {
+    "model_name": "BMW 3 Series (F30/F31/F34)",
+    "production_years": "2011 \u2013 2019",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+F30"
+  },
+  {
+    "model_name": "BMW 4 Series (F32/F33/F36)",
+    "production_years": "2013 \u2013 2020",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+4+Series+F32"
+  },
+  {
+    "model_name": "BMW i3",
+    "production_years": "2013 \u2013 2022",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+i3"
+  },
+  {
+    "model_name": "BMW i8",
+    "production_years": "2014 \u2013 2020",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+i8"
+  },
+  {
+    "model_name": "BMW 2 Series Coup\u00e9/Convertible (F22/F23)",
+    "production_years": "2013 \u2013 2021",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+2+Series+F22"
+  },
+  {
+    "model_name": "BMW 2 Series Active/Gran Tourer (F45/F46)",
+    "production_years": "2014 \u2013 2021",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+2+Series+Active+Tourer"
+  },
+  {
+    "model_name": "BMW X4 (F26)",
+    "production_years": "2014 \u2013 2018",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+X4+F26"
+  },
+  {
+    "model_name": "BMW X5 (F15)",
+    "production_years": "2013 \u2013 2018",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+X5+F15"
+  },
+  {
+    "model_name": "BMW X6 (F16)",
+    "production_years": "2014 \u2013 2019",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+X6+F16"
+  },
+  {
+    "model_name": "BMW 7 Series (G11/G12)",
+    "production_years": "2015 \u2013 2022",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+G11"
+  },
+  {
+    "model_name": "BMW X1 (F48)",
+    "production_years": "2015 \u2013 2022",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+X1+F48"
+  },
+  {
+    "model_name": "BMW 5 Series (G30/G31)",
+    "production_years": "2016 \u2013 2023",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+G30"
+  },
+  {
+    "model_name": "BMW 6 Series GT (G32)",
+    "production_years": "2017 \u2013 2023",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+6+Series+GT"
+  },
+  {
+    "model_name": "BMW X3 (G01)",
+    "production_years": "2017 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+X3+G01"
+  },
+  {
+    "model_name": "BMW X2 (F39)",
+    "production_years": "2017 \u2013 2023",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+X2+F39"
+  },
+  {
+    "model_name": "BMW X4 (G02)",
+    "production_years": "2018 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+X4+G02"
+  },
+  {
+    "model_name": "BMW 8 Series (G14/G15/G16)",
+    "production_years": "2018 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+8+Series+G15"
+  },
+  {
+    "model_name": "BMW X5 (G05)",
+    "production_years": "2018 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+X5+G05"
+  },
+  {
+    "model_name": "BMW X7 (G07)",
+    "production_years": "2018 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+X7"
+  },
+  {
+    "model_name": "BMW Z4 (G29)",
+    "production_years": "2018 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+Z4+G29"
+  },
+  {
+    "model_name": "BMW 3 Series (G20/G21)",
+    "production_years": "2018 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+G20"
+  },
+  {
+    "model_name": "BMW 1 Series (F40)",
+    "production_years": "2019 \u2013 2024",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+1+Series+F40"
+  },
+  {
+    "model_name": "BMW X6 (G06)",
+    "production_years": "2019 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+X6+G06"
+  },
+  {
+    "model_name": "BMW 2 Series Gran Coup\u00e9 (F44)",
+    "production_years": "2019 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+2+Series+Gran+Coupe"
+  },
+  {
+    "model_name": "BMW 4 Series (G22/G23/G26)",
+    "production_years": "2020 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+4+Series+G22"
+  },
+  {
+    "model_name": "BMW iX3 (G08)",
+    "production_years": "2020 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+iX3"
+  },
+  {
+    "model_name": "BMW iX (I20)",
+    "production_years": "2021 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+iX"
+  },
+  {
+    "model_name": "BMW i4 (G26)",
+    "production_years": "2021 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+i4"
+  },
+  {
+    "model_name": "BMW 2 Series Coup\u00e9 (G42)",
+    "production_years": "2021 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+2+Series+G42"
+  },
+  {
+    "model_name": "BMW 2 Series Active Tourer (U06)",
+    "production_years": "2021 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+U06"
+  },
+  {
+    "model_name": "BMW i7 / 7 Series (G70)",
+    "production_years": "2022 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+7+Series+G70"
+  },
+  {
+    "model_name": "BMW X1 (U11)",
+    "production_years": "2022 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+X1+U11"
+  },
+  {
+    "model_name": "BMW XM (G09)",
+    "production_years": "2022 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+XM"
+  },
+  {
+    "model_name": "BMW 5 Series / i5 (G60)",
+    "production_years": "2023 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+5+Series+G60"
+  },
+  {
+    "model_name": "BMW X2 / iX2 (U10)",
+    "production_years": "2023 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+X2+U10"
+  },
+  {
+    "model_name": "BMW 1 Series (F70)",
+    "production_years": "2024 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=BMW+1+Series+F70"
+  }
+]

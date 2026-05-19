@@ -1,0 +1,782 @@
+### PROMPT FOR: Porsche 968 ###
+Subject: Porsche 968 (1991 – 1995)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Porsche 911 (993) ###
+Subject: Porsche 911 (993) (1994 – 1998)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Porsche Boxster (986) ###
+Subject: Porsche Boxster (986) (1996 – 2004)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Porsche 911 (996) ###
+Subject: Porsche 911 (996) (1997 – 2005)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Porsche Carrera GT ###
+Subject: Porsche Carrera GT (2004 – 2007)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Porsche Cayenne (9PA / E1) ###
+Subject: Porsche Cayenne (9PA / E1) (2002 – 2010)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Porsche 911 (997) ###
+Subject: Porsche 911 (997) (2004 – 2012)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Porsche Cayman (987c) ###
+Subject: Porsche Cayman (987c) (2005 – 2013)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Porsche Boxster (987) ###
+Subject: Porsche Boxster (987) (2005 – 2012)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Porsche Panamera (970 / G1) ###
+Subject: Porsche Panamera (970 / G1) (2009 – 2016)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Porsche Cayenne (92A / E2) ###
+Subject: Porsche Cayenne (92A / E2) (2010 – 2017)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Porsche 911 (991) ###
+Subject: Porsche 911 (991) (2011 – 2019)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Porsche Boxster (981) ###
+Subject: Porsche Boxster (981) (2012 – 2016)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Porsche Cayman (981) ###
+Subject: Porsche Cayman (981) (2013 – 2016)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Porsche 918 Spyder ###
+Subject: Porsche 918 Spyder (2013 – 2015)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Porsche Macan (95B) ###
+Subject: Porsche Macan (95B) (2014 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Porsche 718 Boxster (982) ###
+Subject: Porsche 718 Boxster (982) (2016 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Porsche 718 Cayman (982) ###
+Subject: Porsche 718 Cayman (982) (2016 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Porsche Panamera (971 / G2) ###
+Subject: Porsche Panamera (971 / G2) (2016 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Porsche Cayenne (9YA / E3) ###
+Subject: Porsche Cayenne (9YA / E3) (2017 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Porsche 911 (992) ###
+Subject: Porsche 911 (992) (2019 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Porsche Taycan ###
+Subject: Porsche Taycan (2019 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+### PROMPT FOR: Porsche Macan Electric ###
+Subject: Porsche Macan Electric (2024 – Present)
+
+Technical Specs:
+- Camera: Sony A7R V (60MP+ Full Frame)
+- Lens: 100mm Prime Lens (No distortion)
+- Settings: f/8 aperture, 1/125s shutter, ISO 64
+- Resolution: 8K (7680x4320), 16-bit RAW style
+
+Composition:
+- Angle: 3/4 front view looking at the corner of the car
+- Orientation: Car facing LEFT
+- Height: Camera at headlight level (approx. 24-30 inches)
+- Framing: "Hero" cut, car fills 80% of frame, 100% visible (no cropping)
+
+Lighting & Environment:
+- Environment: Pure white "infinity cove" studio, seamless floor
+- Key Light: Large overhead softbox (skylight style) creating rectangular reflection on windshield/roof
+- Fill Light: Soft global white fill, no crushed black shadows
+- Shadows: Realistic soft contact shadows under all 4 tires (15-25% opacity)
+
+Vehicle Details:
+- Color: Official Deep Obsidian Black, Midnight Blue, or Dark Grey (unless specified)
+- Wheels: Front wheels turned 15-20 degrees AWAY from camera to show rim face
+- Branding: Logos/Badges ultra-sharp and perfectly clear
+- Condition: Showroom pristine, tire dressing, no dust
+
+Style:
+- Photorealistic, Automotive Commercial, Ultra-Detailed, Tangible Physics.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+

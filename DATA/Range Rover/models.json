@@ -1,0 +1,57 @@
+[
+  {
+    "model_name": "Range Rover (P38A / MK II)",
+    "production_years": "1994 \u2013 2001",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Range+Rover+P38"
+  },
+  {
+    "model_name": "Range Rover (L322 / MK III)",
+    "production_years": "2002 \u2013 2012",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Range+Rover+L322"
+  },
+  {
+    "model_name": "Range Rover (L405 / MK IV)",
+    "production_years": "2012 \u2013 2021",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Range+Rover+L405"
+  },
+  {
+    "model_name": "Range Rover (L460 / MK V)",
+    "production_years": "2022 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Range+Rover+L460"
+  },
+  {
+    "model_name": "Range Rover Sport (L320)",
+    "production_years": "2005 \u2013 2013",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Range+Rover+Sport+L320"
+  },
+  {
+    "model_name": "Range Rover Sport (L494)",
+    "production_years": "2013 \u2013 2022",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Range+Rover+Sport+L494"
+  },
+  {
+    "model_name": "Range Rover Sport (L461)",
+    "production_years": "2022 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Range+Rover+Sport+L461"
+  },
+  {
+    "model_name": "Range Rover Evoque (L538)",
+    "production_years": "2011 \u2013 2018",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Range+Rover+Evoque+L538"
+  },
+  {
+    "model_name": "Range Rover Evoque Convertible",
+    "production_years": "2016 \u2013 2018",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Range+Rover+Evoque+Convertible"
+  },
+  {
+    "model_name": "Range Rover Evoque (L551)",
+    "production_years": "2018 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Range+Rover+Evoque+L551"
+  },
+  {
+    "model_name": "Range Rover Velar (L560)",
+    "production_years": "2017 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Range+Rover+Velar"
+  }
+]

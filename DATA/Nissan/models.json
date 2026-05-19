@@ -1,0 +1,162 @@
+[
+  {
+    "model_name": "Nissan Primera",
+    "production_years": "1990 \u2013 2008",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+Primera"
+  },
+  {
+    "model_name": "Nissan NX / 100NX",
+    "production_years": "1990 \u2013 1996",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+NX"
+  },
+  {
+    "model_name": "Nissan Serena",
+    "production_years": "1991 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+Serena"
+  },
+  {
+    "model_name": "Nissan Altima",
+    "production_years": "1992 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+Altima"
+  },
+  {
+    "model_name": "Nissan Quest",
+    "production_years": "1993 \u2013 2017",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+Quest"
+  },
+  {
+    "model_name": "Nissan Silvia / 200SX (S14)",
+    "production_years": "1993 \u2013 1998",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+Silvia+S14"
+  },
+  {
+    "model_name": "Nissan Skyline GT-R (R33)",
+    "production_years": "1995 \u2013 1998",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+Skyline+GTR+R33"
+  },
+  {
+    "model_name": "Nissan Almera",
+    "production_years": "1995 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+Almera"
+  },
+  {
+    "model_name": "Nissan Stagea",
+    "production_years": "1996 \u2013 2007",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+Stagea"
+  },
+  {
+    "model_name": "Nissan Elgrand",
+    "production_years": "1997 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+Elgrand"
+  },
+  {
+    "model_name": "Nissan Frontier / Navara",
+    "production_years": "1997 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+Frontier"
+  },
+  {
+    "model_name": "Nissan Cube",
+    "production_years": "1998 \u2013 2019",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+Cube"
+  },
+  {
+    "model_name": "Nissan Silvia (S15)",
+    "production_years": "1999 \u2013 2002",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+Silvia+S15"
+  },
+  {
+    "model_name": "Nissan Skyline GT-R (R34)",
+    "production_years": "1999 \u2013 2002",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+Skyline+GTR+R34"
+  },
+  {
+    "model_name": "Nissan Xterra",
+    "production_years": "1999 \u2013 2015",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+Xterra"
+  },
+  {
+    "model_name": "Nissan Titan",
+    "production_years": "2003 \u2013 2024",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+Titan"
+  },
+  {
+    "model_name": "Nissan Murano",
+    "production_years": "2002 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+Murano"
+  },
+  {
+    "model_name": "Nissan 350Z (Z33)",
+    "production_years": "2002 \u2013 2009",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+350Z"
+  },
+  {
+    "model_name": "Nissan Armada",
+    "production_years": "2003 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+Armada"
+  },
+  {
+    "model_name": "Nissan Tiida / Versa",
+    "production_years": "2004 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+Tiida"
+  },
+  {
+    "model_name": "Nissan Note",
+    "production_years": "2004 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+Note"
+  },
+  {
+    "model_name": "Nissan Qashqai / Rogue Sport",
+    "production_years": "2006 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+Qashqai"
+  },
+  {
+    "model_name": "Nissan Rogue",
+    "production_years": "2007 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+Rogue"
+  },
+  {
+    "model_name": "Nissan GT-R (R35)",
+    "production_years": "2007 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+GTR+R35"
+  },
+  {
+    "model_name": "Nissan 370Z (Z34)",
+    "production_years": "2009 \u2013 2020",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+370Z"
+  },
+  {
+    "model_name": "Nissan Leaf",
+    "production_years": "2010 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+Leaf"
+  },
+  {
+    "model_name": "Nissan Juke",
+    "production_years": "2010 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+Juke"
+  },
+  {
+    "model_name": "Nissan NV Series",
+    "production_years": "2011 \u2013 2021",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+NV200"
+  },
+  {
+    "model_name": "Nissan Kicks",
+    "production_years": "2016 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+Kicks"
+  },
+  {
+    "model_name": "Nissan Terra",
+    "production_years": "2018 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+Terra"
+  },
+  {
+    "model_name": "Nissan Ariya",
+    "production_years": "2022 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+Ariya"
+  },
+  {
+    "model_name": "Nissan Z (RZ34)",
+    "production_years": "2022 \u2013 Present",
+    "image_search_url": "https://www.google.com/search?tbm=isch&q=Nissan+Z+2023"
+  }
+]
