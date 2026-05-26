@@ -8,25 +8,32 @@ class DataManager {
         this.vehicles = [];
         this.services = [
             {
-                name: "Oil Change",
-                image: "images/placeholder.jpg",
-                description: "Full synthetic oil change with filter replacement and fluid top-off.",
-                price: "$79.99",
-                duration: "45 mins"
+                name: "Car Seat Restoration",
+                image: "images/gallery/Black-&-Orange.webp",
+                description: "Complete car seat rebuilding, leather replacement, comfort upgrades, and heated seat installations.",
+                price: "2500 MAD",
+                duration: "3-5 days"
             },
             {
-                name: "Brake Service",
-                image: "images/placeholder.jpg",
-                description: "Comprehensive brake inspection, pad replacement, and rotor resurfacing.",
-                price: "$199.99",
-                duration: "2 hours"
+                name: "Bike Seat Restoration",
+                image: "images/gallery/Blue.webp",
+                description: "Professional motorcycle and bicycle seat restoration, foam shaping, custom stitching, and weatherproofing.",
+                price: "800 MAD",
+                duration: "2 days"
             },
             {
-                name: "Tire Rotation",
-                image: "images/placeholder.jpg",
-                description: "Professional tire rotation and balancing for even wear and better handling.",
-                price: "$49.99",
-                duration: "30 mins"
+                name: "Dashboard Restoration",
+                image: "images/gallery/Dark-blue-&-white.webp",
+                description: "Restoring cracked or faded dashboards with premium leather wrap and precision stitching.",
+                price: "1500 MAD",
+                duration: "3 days"
+            },
+            {
+                name: "Custom Stitching & Piping",
+                image: "images/gallery/Red.webp",
+                description: "Adding luxury bespoke stitching details, contrasting threads, and edge piping.",
+                price: "500 MAD",
+                duration: "1 day"
             }
         ];
         this.brands = {};
@@ -68,12 +75,14 @@ class DataManager {
 
     _extractBrands() {
         this.brands = this.vehicles.reduce((acc, vehicle) => {
-            if (!acc[vehicle.brand]) {
-                acc[vehicle.brand] = 0;
+            const brand = vehicle.brand;
+            if (brand === '__proto__' || brand === 'constructor') return acc;
+            if (!Object.prototype.hasOwnProperty.call(acc, brand)) {
+                acc[brand] = 0;
             }
-            acc[vehicle.brand]++;
+            acc[brand]++;
             return acc;
-        }, {});
+        }, Object.create(null));
     }
 
     search(query) {

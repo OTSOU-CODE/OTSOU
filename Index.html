@@ -15,13 +15,13 @@
     <!-- Preload critical resources -->
     <link
       rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
       as="style"
     />
 
     <!-- Google Fonts -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
@@ -207,38 +207,38 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-      <div class="hero-background">
-        <div class="hero-particles"></div>
-        <div class="hero-gradient"></div>
+      <!-- Immersive Video Background -->
+      <div class="hero-video-container">
+        <video autoplay loop muted playsinline class="hero-video" poster="images/after_upholstery.png">
+          <source src="https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c05414d0d3cf12d27953e5d3&profile_id=139&oauth2_token_id=57447761" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay"></div>
       </div>
 
       <div class="container">
         <div class="hero-content">
           <div class="hero-text">
-            <h1 class="hero-title text-center">
-              <span class="title-line">SHERIF-SIEGE-AUTO</span>
-              <span class="title-line">Auto Upholstery</span>
-              <span class="title-accent">Excellence</span>
+            <h1 class="hero-title">
+              <span class="title-line">Bespoke Upholstery & Restoration</span>
+              <span class="title-accent font-secondary" style="font-family: var(--font-secondary); font-style: italic; font-weight: 500; font-size: 0.9em; display: block; color: var(--primary); margin-top: 5px;">Sherif-Auto Atelier</span>
             </h1>
 
             <p class="hero-description">
-              Transform your vehicle's interior with our premium upholstery
-              services. From custom leather seats to complete dashboard
-              restoration, we deliver unmatched quality and craftsmanship.
+              We design and craft custom luxury automotive interiors for premium vehicle owners. From fine Nappa leather upgrades to complete dashboard, roof, and door restoration, every stitch is executed with master precision in our workshop.
             </p>
 
             <div class="hero-actions">
-              <a href="gallery.html" class="btn btn-primary">
-                <span>View Our Work</span>
-                <i class="fas fa-arrow-right"></i>
-              </a>
               <button
-                class="btn btn-secondary get-price-btn"
+                class="btn btn-primary"
                 onclick="scrollToSection('contact')"
               >
-                <span>Get Price</span>
-                <i class="fas fa-phone"></i>
+                <span>Book a Consultation</span>
+                <i class="fas fa-arrow-right"></i>
               </button>
+              <a href="gallery.html" class="btn btn-secondary">
+                <span>View Our Portfolio</span>
+                <i class="fas fa-image"></i>
+              </a>
             </div>
           </div>
 
@@ -272,6 +272,52 @@
                 <i class="fas fa-palette"></i>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brand Logos Marquee Bar Section -->
+    <section class="brand-marquee-section">
+      <div class="container">
+        <h3 class="brand-marquee-title">Trusted by owners of prestige marques</h3>
+        <div class="brand-logos-container">
+          <div class="brand-logo-item"><i class="fas fa-gem"></i> Porsche</div>
+          <div class="brand-logo-item"><i class="fas fa-gem"></i> Mercedes-Benz</div>
+          <div class="brand-logo-item"><i class="fas fa-gem"></i> BMW</div>
+          <div class="brand-logo-item"><i class="fas fa-gem"></i> Audi</div>
+          <div class="brand-logo-item"><i class="fas fa-gem"></i> Bentley</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Transformation Section (Before/After Slider) -->
+    <section class="transformation-section animate-on-scroll">
+      <div class="container">
+        <div class="section-header animate-on-scroll">
+          <span class="section-tag">The Transformation</span>
+          <h2 class="section-title" style="font-family: var(--font-secondary);">Proof of Craftsmanship</h2>
+          <p class="section-description">
+            Drag the slider to compare a worn-out, damaged interior with our finished custom leather upholstery.
+          </p>
+        </div>
+
+        <div class="luxury-slider" id="luxury-slider">
+          <div class="image-container before-image">
+            <img src="images/before_upholstery.png" alt="Before Restoration">
+            <div class="slider-badge before-badge">Before</div>
+          </div>
+          <div class="image-container after-image" id="after-image-clip">
+            <img src="images/after_upholstery.png" alt="After Restoration">
+            <div class="slider-badge after-badge">After</div>
+          </div>
+          <div class="slider-handle" id="slider-handle">
+            <div class="handle-line"></div>
+            <div class="handle-button">
+              <i class="fas fa-chevron-left"></i>
+              <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="handle-line"></div>
           </div>
         </div>
       </div>
@@ -366,6 +412,57 @@
       </div>
     </section>
 
+    <!-- Our Process Section -->
+    <section id="process" class="process-section animate-on-scroll">
+      <div class="container">
+        <div class="section-header animate-on-scroll">
+          <span class="section-tag">How We Work</span>
+          <h2 class="section-title font-secondary" style="font-family: var(--font-secondary);">The 3-Step Process</h2>
+          <p class="section-description">
+            From initial sketch to the final precision stitch, discover how we transform your vehicle's cabin.
+          </p>
+        </div>
+
+        <div class="process-grid">
+          <!-- Step 1 -->
+          <div class="process-card animate-on-scroll">
+            <div class="process-step-num">01</div>
+            <div class="process-icon">
+              <i class="fas fa-comments"></i>
+            </div>
+            <h3>1. Consult & Design</h3>
+            <p>
+              We sit down with you to discuss your vision, inspect your vehicle, and select the ideal materials (Nappa leather, Alcantara, thread color) to match your taste.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="process-card animate-on-scroll">
+            <div class="process-step-num">02</div>
+            <div class="process-icon">
+              <i class="fas fa-palette"></i>
+            </div>
+            <h3>2. Tailoring & Sourcing</h3>
+            <p>
+              We procure original automotive-grade skins and use digital templating to trace and cut the fabric. Every pattern is customized for a factory-perfect fit.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="process-card animate-on-scroll">
+            <div class="process-step-num">03</div>
+            <div class="process-icon">
+              <i class="fas fa-screwdriver"></i>
+            </div>
+            <h3>3. Master Assembly</h3>
+            <p>
+              Our master artisans hand-stitch and reconstruct your seats, dashboard, or roof in our workshop. We perform a multi-point quality check before hand-over.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Services Section -->
     <section id="services" class="services animate-on-scroll">
       <div class="container">
@@ -428,83 +525,183 @@
       </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Section / Consultative Project Configurator -->
     <section id="contact" class="contact animate-on-scroll">
       <div class="container">
         <div class="section-header animate-on-scroll">
-          <span class="section-tag">Contact Us</span>
-          <h2 class="section-title">Get Your Price Today</h2>
+          <span class="section-tag">Request a Quote</span>
+          <h2 class="section-title font-secondary" style="font-family: var(--font-secondary);">Project Configurator</h2>
           <p class="section-description">
-            Ready to transform your vehicle's interior? Contact us for a free
-            consultation and price.
+            Design your custom interior in 4 simple steps. We will review your selections and prepare a personalized design consultation.
           </p>
         </div>
 
         <div class="contact-content">
           <div class="contact-form-container">
-            <form class="contact-form" id="contact-form">
-              <div class="form-group">
-                <label for="name">Full Name *</label>
-                <input type="text" id="name" name="name" required />
+            <form class="contact-form configurator-wizard" id="contact-form">
+              <!-- Wizard Progress Bar -->
+              <div class="wizard-progress">
+                <div class="wizard-progress-bar" id="wizard-progress-bar" style="width: 25%;"></div>
               </div>
 
-              <div class="form-row">
+              <!-- Wizard Header -->
+              <div class="wizard-header">
+                <span class="wizard-title" id="wizard-step-title">Step 1: Select Vehicle Type</span>
+                <span class="wizard-step-indicator" id="wizard-step-indicator">Step 1 of 4</span>
+              </div>
+
+              <!-- Step 1: Vehicle Type -->
+              <div class="wizard-step active" data-step="1">
                 <div class="form-group">
-                  <label for="email">Email Address *</label>
-                  <input type="email" id="email" name="email" required />
+                  <label>Select Vehicle Make & Model</label>
+                  <div class="configurator-options-grid">
+                    <div class="option-card selected" data-value="Sedan" onclick="selectWizardOption(this, 'vehicle-type')">
+                      <i class="fas fa-car-side"></i>
+                      <span class="option-card-title">Sedan / Coupe</span>
+                      <span class="option-card-desc">Standard 2/4-door cars</span>
+                    </div>
+                    <div class="option-card" data-value="SUV" onclick="selectWizardOption(this, 'vehicle-type')">
+                      <i class="fas fa-car"></i>
+                      <span class="option-card-title">SUV / Crossover</span>
+                      <span class="option-card-desc">Larger cabin space</span>
+                    </div>
+                    <div class="option-card" data-value="Supercar" onclick="selectWizardOption(this, 'vehicle-type')">
+                      <i class="fas fa-bolt"></i>
+                      <span class="option-card-title">Sport / Exotic</span>
+                      <span class="option-card-desc">Premium materials/bolstering</span>
+                    </div>
+                    <div class="option-card" data-value="Classic" onclick="selectWizardOption(this, 'vehicle-type')">
+                      <i class="fas fa-history"></i>
+                      <span class="option-card-title">Vintage / Classic</span>
+                      <span class="option-card-desc">Authentic style restoration</span>
+                    </div>
+                  </div>
+                  <input type="hidden" name="vehicle_type" id="input-vehicle-type" value="Sedan" />
                 </div>
+                <div class="form-group" style="margin-top: 1.5rem;">
+                  <label for="wizard-vehicle-details">Year, Make, Model *</label>
+                  <input type="text" id="wizard-vehicle-details" name="vehicle" placeholder="e.g., 2022 Porsche 911 Carrera" required />
+                </div>
+              </div>
+
+              <!-- Step 2: Interior Scope -->
+              <div class="wizard-step" data-step="2">
                 <div class="form-group">
-                  <label for="phone">Phone Number</label>
-                  <input type="tel" id="phone" name="phone" />
+                  <label>What areas need restoration/customization?</label>
+                  <div class="configurator-options-grid">
+                    <div class="option-card" data-value="Seats Only" onclick="selectWizardOption(this, 'project-scope')">
+                      <i class="fas fa-couch"></i>
+                      <span class="option-card-title">Full Seats</span>
+                      <span class="option-card-desc">Front and rear seats restoration</span>
+                    </div>
+                    <div class="option-card" data-value="Dashboard Only" onclick="selectWizardOption(this, 'project-scope')">
+                      <i class="fas fa-window-maximize"></i>
+                      <span class="option-card-title">Dashboard & Wheel</span>
+                      <span class="option-card-desc">Hand-wrapped leather dashboard</span>
+                    </div>
+                    <div class="option-card" data-value="Roof Only" onclick="selectWizardOption(this, 'project-scope')">
+                      <i class="fas fa-arrow-up"></i>
+                      <span class="option-card-title">Headliner (Roof)</span>
+                      <span class="option-card-desc">Alcantara or starry-sky roof</span>
+                    </div>
+                    <div class="option-card" data-value="Full Interior" onclick="selectWizardOption(this, 'project-scope')">
+                      <i class="fas fa-gem"></i>
+                      <span class="option-card-title">Full Upholstery</span>
+                      <span class="option-card-desc">Seats, dash, doors, and roof</span>
+                    </div>
+                  </div>
+                  <input type="hidden" name="project_scope" id="input-project-scope" value="" />
                 </div>
               </div>
 
-              <div class="form-group">
-                <label for="vehicle">Vehicle Information</label>
-                <input
-                  type="text"
-                  id="vehicle"
-                  name="vehicle"
-                  placeholder="Year, Make, Model"
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="message">Project Details *</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  placeholder="Tell us about your project..."
-                  required
-                ></textarea>
-              </div>
-
-              <div class="form-group">
-                <label for="file-upload">Upload Image (Optional)</label>
-                <div class="file-upload-wrapper">
-                  <input
-                    type="file"
-                    id="file-upload"
-                    name="file-upload"
-                    accept="image/*"
-                    class="file-upload-input"
-                    hidden
-                  />
-                  <label for="file-upload" class="file-upload-label">
-                    <i class="fas fa-cloud-upload-alt"></i>
-                    <span>Choose File</span>
-                  </label>
-                  <span id="file-name" class="file-name">No file chosen</span>
+              <!-- Step 3: Material Preference -->
+              <div class="wizard-step" data-step="3">
+                <div class="form-group">
+                  <label>Choose your material</label>
+                  <div class="configurator-options-grid">
+                    <div class="option-card" data-value="Italian Nappa Leather" onclick="selectWizardOption(this, 'material-type')">
+                      <i class="fas fa-ribbon"></i>
+                      <span class="option-card-title">Nappa Leather</span>
+                      <span class="option-card-desc">Premium ultra-soft grain</span>
+                    </div>
+                    <div class="option-card" data-value="Alcantara" onclick="selectWizardOption(this, 'material-type')">
+                      <i class="fas fa-feather"></i>
+                      <span class="option-card-title">Alcantara</span>
+                      <span class="option-card-desc">Sporty, high-grip suede-feel</span>
+                    </div>
+                    <div class="option-card" data-value="Automotive Vinyl" onclick="selectWizardOption(this, 'material-type')">
+                      <i class="fas fa-shield-alt"></i>
+                      <span class="option-card-title">Premium Vinyl</span>
+                      <span class="option-card-desc">High durability, easy cleaning</span>
+                    </div>
+                    <div class="option-card" data-value="Classic Fabric" onclick="selectWizardOption(this, 'material-type')">
+                      <i class="fas fa-cut"></i>
+                      <span class="option-card-title">Bespoke Fabric</span>
+                      <span class="option-card-desc">Traditional textile stitching</span>
+                    </div>
+                  </div>
+                  <input type="hidden" name="material_type" id="input-material-type" value="" />
+                </div>
+                <div class="form-group" style="margin-top: 1.5rem;">
+                  <label for="file-upload">Upload Current Interior Image (Optional)</label>
+                  <div class="file-upload-wrapper">
+                    <input
+                      type="file"
+                      id="file-upload"
+                      name="file-upload"
+                      accept="image/*"
+                      class="file-upload-input"
+                      hidden
+                    />
+                    <label for="file-upload" class="file-upload-label">
+                      <i class="fas fa-cloud-upload-alt"></i>
+                      <span>Choose File</span>
+                    </label>
+                    <span id="file-name" class="file-name">No file chosen</span>
+                  </div>
                 </div>
               </div>
 
-              <button type="submit" class="btn btn-primary btn-full">
-                <span>Send Message</span>
-                <i class="fas fa-paper-plane"></i>
-              </button>
+              <!-- Step 4: Contact & Project Details -->
+              <div class="wizard-step" data-step="4">
+                <div class="form-group">
+                  <label for="name">Full Name *</label>
+                  <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+                </div>
 
-              <div class="trust-indicators">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter phone number" />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="message">Additional Styling Requests</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    placeholder="e.g., Gold diamond stitching, carbon fiber accents..."
+                  ></textarea>
+                </div>
+              </div>
+
+              <!-- Wizard Footer -->
+              <div class="wizard-footer">
+                <button type="button" class="wizard-btn wizard-btn-prev" id="wizard-prev-btn" onclick="navigateWizard(-1)" disabled>
+                  <i class="fas fa-chevron-left"></i> Back
+                </button>
+                <button type="button" class="wizard-btn wizard-btn-next" id="wizard-next-btn" onclick="navigateWizard(1)">
+                  Next <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+
+              <div class="trust-indicators" style="margin-top: 1.5rem;">
                 <div class="trust-item">
                   <i class="fas fa-shield-alt"></i>
                   <span>Secure & Confidential</span>

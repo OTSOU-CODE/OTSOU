@@ -4,7 +4,7 @@
 const galleryData = [
   {
     id: 1,
-    src: 'images/gallery/Black-&-Orange.png',
+    src: 'images/gallery/Black-&-Orange.webp',
     title: 'Premium Black & Orange',
     code: 'B-O-001',
     price: 2500,
@@ -12,16 +12,16 @@ const galleryData = [
     description: 'Sporty two-tone upholstery with vibrant orange accents. Perfect for those who want to stand out with a custom look.',
     colorCode: 'linear-gradient(135deg, #000000 50%, #FF4500 50%)',
     variants: [
-      { src: 'images/gallery/Black-&-Orange.png', title: 'Main View' },
-      { src: 'images/misc/Black-&-Orange-1.png', title: 'Side View' },
-      { src: 'images/misc/Black-&-Orange-2.png', title: 'Detail View' },
-      { src: 'images/misc/Black-&-Orange-3.png', title: 'Back View' },
-      { src: 'images/misc/Black-&-Orange-4.png', title: 'Interior View' }
+      { src: 'images/gallery/Black-&-Orange.webp', title: 'Main View' },
+      { src: 'images/Image Variaant/Black-&-Orange-1.webp', title: 'Side View' },
+      { src: 'images/Image Variaant/Black-&-Orange-2.webp', title: 'Detail View' },
+      { src: 'images/Image Variaant/Black-&-Orange-3.webp', title: 'Back View' },
+      { src: 'images/Image Variaant/Black-&-Orange-4.webp', title: 'Interior View' }
     ]
   },
   {
     id: 2,
-    src: 'images/gallery/Blue.png',
+    src: 'images/gallery/Blue.webp',
     title: 'Elegant Blue Style',
     code: 'BL-002',
     price: 2400,
@@ -29,12 +29,12 @@ const galleryData = [
     description: 'Sophisticated blue leather design. Adds a touch of class and calm to your interior.',
     colorCode: '#1E3A8A',
     variants: [
-      { src: 'images/gallery/Blue.png', title: 'Main View' }
+      { src: 'images/gallery/Blue.webp', title: 'Main View' }
     ]
   },
   {
     id: 3,
-    src: 'images/gallery/Red.png',
+    src: 'images/gallery/Red.webp',
     title: 'Classic Red Design',
     code: 'RD-003',
     price: 2600,
@@ -42,12 +42,12 @@ const galleryData = [
     description: 'Rich red leather interior with premium stitching. A bold choice for a bold driver.',
     colorCode: '#DC2626',
     variants: [
-      { src: 'images/gallery/Red.png', title: 'Main View' }
+      { src: 'images/gallery/Red.webp', title: 'Main View' }
     ]
   },
   {
     id: 4,
-    src: 'images/gallery/Dark-blue-&-white.png',
+    src: 'images/gallery/Dark-blue-&-white.webp',
     title: 'Modern Dark Blue & White',
     code: 'BW-004',
     price: 2700,
@@ -55,16 +55,16 @@ const galleryData = [
     description: 'Bold contrast with exceptional craftsmanship. Creates a bright and airy feel inside.',
     colorCode: 'linear-gradient(135deg, #1E3A8A 50%, #FFFFFF 50%)',
     variants: [
-      { src: 'images/gallery/Dark-blue-&-white.png', title: 'Main View' },
-      { src: 'images/misc/Dark-blue-&-white-1.png', title: 'Side View' },
-      { src: 'images/misc/Dark-blue-&-white-2.png', title: 'Detail View' },
-      { src: 'images/misc/Dark-blue-&-white-2 (2).png', title: 'Back View' },
-      { src: 'images/misc/Dark-blue-&-white4.png', title: 'Interior View' }
+      { src: 'images/gallery/Dark-blue-&-white.webp', title: 'Main View' },
+      { src: 'images/Image Variaant/Dark-blue-&-white-1.webp', title: 'Side View' },
+      { src: 'images/Image Variaant/Dark-blue-&-white-2.webp', title: 'Detail View' },
+      { src: 'images/Image Variaant/Dark-blue-&-white-2 (2).webp', title: 'Back View' },
+      { src: 'images/Image Variaant/Dark-blue-&-white4.webp', title: 'Interior View' }
     ]
   },
   {
     id: 5,
-    src: 'images/gallery/Black-&-Red.png',
+    src: 'images/gallery/Black-&-Red.webp',
     title: 'Sporty Black & Red',
     code: 'BR-005',
     price: 2500,
@@ -72,11 +72,11 @@ const galleryData = [
     description: 'Dynamic black and red leather combination. Racing inspired aesthetics for your daily drive.',
     colorCode: 'linear-gradient(135deg, #000000 50%, #DC2626 50%)',
     variants: [
-      { src: 'images/gallery/Black-&-Red.png', title: 'Main View' },
-      { src: 'images/misc/Black-&-Red-1.png', title: 'Side View' },
-      { src: 'images/misc/Black-&-Red-2.png', title: 'Detail View' },
-      { src: 'images/misc/Black-&-Red-3.png', title: 'Back View' },
-      { src: 'images/misc/Black-&-Red-4.png', title: 'Interior View' }
+      { src: 'images/gallery/Black-&-Red.webp', title: 'Main View' },
+      { src: 'images/Image Variaant/Black-&-Red-1.webp', title: 'Side View' },
+      { src: 'images/Image Variaant/Black-&-Red-2.webp', title: 'Detail View' },
+      { src: 'images/Image Variaant/Black-&-Red-3.webp', title: 'Back View' },
+      { src: 'images/Image Variaant/Black-&-Red-4.webp', title: 'Interior View' }
     ]
   }
 ];
@@ -326,12 +326,11 @@ function addToCart(btn) {
   updateCartBadge();
 
   // Visual Feedback
-  const originalContent = btn.innerHTML;
   btn.innerHTML = '<i class="fas fa-check"></i> Added';
   btn.style.background = '#4CAF50'; 
   
   setTimeout(() => {
-    btn.innerHTML = originalContent;
+    btn.innerHTML = '<i class="fas fa-shopping-cart"></i> Add to Cart';
     btn.style.background = ''; 
   }, 1500);
 }

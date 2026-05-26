@@ -1,5 +1,19 @@
 // Mobile-Optimized JavaScript for SHERIF-SIEGE-AUTO Website
 
+function escapeHTML(str) {
+    if (!str) return "";
+    return String(str).replace(/[&<>'"]/g, (tag) => {
+        switch (tag) {
+            case '&': return '&amp;';
+            case '<': return '&lt;';
+            case '>': return '&gt;';
+            case "'": return '&#39;';
+            case '"': return '&quot;';
+            default: return tag;
+        }
+    });
+}
+
 // DOM Elements
 let navbar;
 let navToggle;
@@ -19,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
     setupScrollAnimations();
     setupFileUpload();
     initHeaderSearch();
+    initBeforeAfterSlider();
 });
 
 // Initialize DOM elements
@@ -283,7 +298,7 @@ function performThemeToggle() {
 
 // Load saved theme
 function loadTheme() {
-    const savedTheme = localStorage.getItem('theme') || 'light';
+    const savedTheme = localStorage.getItem('theme') || 'dark';
     document.documentElement.setAttribute('data-theme', savedTheme);
 
     if (themeToggleBtn) {
@@ -540,9 +555,14 @@ function setupContactForm() {
 
         // Show loading state
         const submitButton = contactForm.querySelector('button[type="submit"]');
-        const originalText = submitButton.innerHTML;
+        const originalChildren = Array.from(submitButton.childNodes);
 
-        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        submitButton.textContent = '';
+        const spinner = document.createElement('i');
+        spinner.className = 'fas fa-spinner fa-spin';
+        spinner.style.marginRight = '8px';
+        submitButton.appendChild(spinner);
+        submitButton.appendChild(document.createTextNode('Sending...'));
         submitButton.disabled = true;
 
         try {
@@ -574,14 +594,15 @@ function setupContactForm() {
             if (fileNameDisplay) {
                 fileNameDisplay.textContent = 'No file chosen';
                 fileNameDisplay.classList.remove('has-file');
-                if (fileWrapper) fileWrapper.classList.remove('valid');
+                if (window.resetFilePreview) window.resetFilePreview();
             }
             
         } catch (error) {
             console.error('Error sending form data:', error);
             showNotification('There was an error sending your message. Please try again or call us directly.', 'error');
         } finally {
-            submitButton.innerHTML = originalText;
+            submitButton.textContent = '';
+            originalChildren.forEach(child => submitButton.appendChild(child));
             submitButton.disabled = false;
         }
     });
@@ -596,15 +617,33 @@ function showNotification(message, type = 'info') {
     // Create notification element
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
-    notification.innerHTML = `
-        <div class="notification-content">
-            <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle'}"></i>
-            <span>${message}</span>
-        </div>
-        <button class="notification-close">
-            <i class="fas fa-times"></i>
-        </button>
-    `;
+    
+    // Notification content
+    const content = document.createElement('div');
+    content.className = 'notification-content';
+    
+    const iconClass = type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle';
+    const icon = document.createElement('i');
+    icon.className = `fas ${iconClass}`;
+    content.appendChild(icon);
+    
+    const textSpan = document.createElement('span');
+    textSpan.textContent = message; // Safe text insertion
+    content.appendChild(textSpan);
+    
+    notification.appendChild(content);
+    
+    // Close button
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'notification-close';
+    const closeIcon = document.createElement('i');
+    closeIcon.className = 'fas fa-times';
+    closeBtn.appendChild(closeIcon);
+    
+    closeBtn.addEventListener('click', () => {
+        notification.remove();
+    });
+    notification.appendChild(closeBtn);
 
     // Add styles
     notification.style.cssText = `
@@ -656,11 +695,6 @@ function showNotification(message, type = 'info') {
     // Add to document
     document.body.appendChild(notification);
 
-    // Close button functionality
-    const closeBtn = notification.querySelector('.notification-close');
-    closeBtn.addEventListener('click', () => {
-        notification.remove();
-    });
 
     // Auto remove after 5 seconds
     setTimeout(() => {
@@ -704,8 +738,32 @@ function initHeaderSearch() {
 
     // Data Loading
     let vehicleData = [];
-    const csvPath = "../DATA/vehicles.csv";
+    let vehiclesLoaded = false;
+    let loadingVehicles = false;
     
+    const loadVehiclesData = () => {
+        if (vehiclesLoaded || loadingVehicles) return;
+        loadingVehicles = true;
+        
+        import('./JS/vehicles_data.js')
+            .then((module) => {
+                if (module && module.VEHICLES_DATA) {
+                    vehicleData = Object.values(module.VEHICLES_DATA).flat();
+                    vehiclesLoaded = true;
+                    // If there is currently a query in the input, run performSearch again
+                    const currentVal = searchInput.value.trim();
+                    if (currentVal) {
+                        performSearch(currentVal);
+                    }
+                }
+                loadingVehicles = false;
+            })
+            .catch((err) => {
+                console.error("Header search data load failed:", err);
+                loadingVehicles = false;
+            });
+    };
+
     // Services Data (Hardcoded for now)
     const servicesData = [
         { name: "Leather Restoration", type: "service", url: 'category.html?q=leather' },
@@ -718,30 +776,11 @@ function initHeaderSearch() {
         { name: 'Our Work', type: 'page', url: 'gallery.html' }
     ];
 
-    fetch(csvPath)
-        .then((response) => response.ok ? response.text() : Promise.reject("Failed to load"))
-        .then((text) => {
-            const lines = text.split("\n").filter((l) => l.trim());
-            const start = lines[0].toLowerCase().includes("brand") ? 1 : 0;
-            vehicleData = lines.slice(start).map((line) => {
-                const cols = line.split(",");
-                if (cols.length >= 2) {
-                    return {
-                        brand: cols[0].trim(),
-                        model: cols[1].trim(),
-                        year: cols[2] ? cols[2].trim() : "",
-                    };
-                }
-                return null;
-            }).filter((i) => i);
-        })
-        .catch((err) => console.log("Header search data error:", err));
-
     let debounceTimer;
 
     const renderResults = (vehicleMatches, serviceMatches, isHistory = false) => {
         if (!searchResults) return;
-        searchResults.innerHTML = '';
+        searchResults.textContent = ''; // Safe clear
         
         if (isHistory && vehicleMatches.length > 0) {
              const historyHeader = document.createElement('div');
@@ -755,7 +794,18 @@ function initHeaderSearch() {
              vehicleMatches.forEach(item => {
                 const div = document.createElement('div');
                 div.className = 'search-result-item';
-                div.innerHTML = `<span><i class="fas fa-history" style="margin-right: 8px; opacity: 0.6;"></i>${item}</span>`;
+                
+                const span = document.createElement('span');
+                const historyIcon = document.createElement('i');
+                historyIcon.className = 'fas fa-history';
+                historyIcon.style.marginRight = '8px';
+                historyIcon.style.opacity = '0.6';
+                span.appendChild(historyIcon);
+                
+                const textNode = document.createTextNode(item);
+                span.appendChild(textNode);
+                
+                div.appendChild(span);
                 div.addEventListener('click', () => {
                     searchInput.value = item;
                     performSearch(item);
@@ -773,33 +823,56 @@ function initHeaderSearch() {
             return;
         }
 
-        let html = "";
-
         if (vehicleMatches.length > 0) {
-            html += `<div style="padding: 8px 12px; font-size: 0.75rem; color: var(--text-secondary); font-weight: 600;">VEHICLES</div>`;
+            const header = document.createElement('div');
+            header.style.cssText = 'padding: 8px 12px; font-size: 0.75rem; color: var(--text-secondary); font-weight: 600;';
+            header.textContent = 'VEHICLES';
+            searchResults.appendChild(header);
+
             vehicleMatches.forEach((v) => {
-                html += `
-                        <div class="search-result-item" onclick="location.href='category.html?search=${encodeURIComponent(v.brand + " " + v.model)}'">
-                                <i class="fas fa-car"></i>
-                                <span>${v.brand} ${v.model} ${v.year}</span>
-                        </div>
-                  `;
+                const div = document.createElement('div');
+                div.className = 'search-result-item';
+                div.addEventListener('click', () => {
+                    location.href = `category.html?search=${encodeURIComponent(v.brand + " " + v.model)}`;
+                });
+                
+                const icon = document.createElement('i');
+                icon.className = 'fas fa-car';
+                div.appendChild(icon);
+                
+                const span = document.createElement('span');
+                span.textContent = ` ${v.brand} ${v.model} ${v.year}`;
+                div.appendChild(span);
+                
+                searchResults.appendChild(div);
             });
         }
 
         if (serviceMatches.length > 0) {
-            html += `<div style="padding: 8px 12px; font-size: 0.75rem; color: var(--text-secondary); font-weight: 600; margin-top: 5px;">SERVICES & PAGES</div>`;
+            const header = document.createElement('div');
+            header.style.cssText = 'padding: 8px 12px; font-size: 0.75rem; color: var(--text-secondary); font-weight: 600; margin-top: 5px;';
+            header.textContent = 'SERVICES & PAGES';
+            searchResults.appendChild(header);
+
             serviceMatches.forEach((s) => {
-                html += `
-                        <div class="search-result-item" onclick="location.href='${s.url}'">
-                                <i class="fas ${s.type === 'page' ? 'fa-link' : 'fa-tools'}"></i>
-                                <span>${s.name}</span>
-                        </div>
-                  `;
+                const div = document.createElement('div');
+                div.className = 'search-result-item';
+                div.addEventListener('click', () => {
+                    location.href = s.url;
+                });
+                
+                const icon = document.createElement('i');
+                icon.className = `fas ${s.type === 'page' ? 'fa-link' : 'fa-tools'}`;
+                div.appendChild(icon);
+                
+                const span = document.createElement('span');
+                span.textContent = ` ${s.name}`;
+                div.appendChild(span);
+                
+                searchResults.appendChild(div);
             });
         }
 
-        searchResults.innerHTML = html;
         searchResults.classList.add("active");
         searchResults.style.display = 'block';
     };
@@ -829,6 +902,7 @@ function initHeaderSearch() {
         e.stopPropagation();
         searchContainer.classList.toggle('active');
         if (searchContainer.classList.contains('active')) {
+            loadVehiclesData();
             setTimeout(() => {
                 searchInput.focus();
                 performSearch(''); // Show history on open
@@ -860,6 +934,7 @@ function initHeaderSearch() {
     });
 
     searchInput.addEventListener('focus', () => {
+        loadVehiclesData();
         if (!searchInput.value) performSearch('');
     });
 
@@ -881,6 +956,7 @@ function initHeaderSearch() {
         if (e.key === '/' && document.activeElement !== searchInput && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
             e.preventDefault(); 
             searchContainer.classList.add('active');
+            loadVehiclesData();
             setTimeout(() => {
                 searchInput.focus();
                 performSearch('');
@@ -1387,11 +1463,25 @@ function initCompatibilityChecker() {
             // Count how many we have done (fake or real count from CSV)
             const count = vehicleData.filter(v => v.brand === brand && v.model === model).length;
             
+            resultDiv.textContent = ''; // Safe Clear
+            
+            const icon = document.createElement('i');
+            icon.className = 'fas fa-check-circle';
+            resultDiv.appendChild(icon);
+            
             if (count > 0) {
-                resultDiv.innerHTML = '<i class="fas fa-check-circle"></i> We have worked on <b>' + count + '</b> ' + brand + ' ' + model + '(s)!';
+                const textBefore = document.createTextNode(' We have worked on ');
+                const b = document.createElement('b');
+                b.textContent = count;
+                const textAfter = document.createTextNode(' ' + brand + ' ' + model + '(s)!');
+                
+                resultDiv.appendChild(textBefore);
+                resultDiv.appendChild(b);
+                resultDiv.appendChild(textAfter);
                 resultDiv.style.color = 'var(--success)';
             } else {
-                resultDiv.innerHTML = '<i class="fas fa-check-circle"></i> We are compatible with ' + brand + ' ' + model + '!';
+                const text = document.createTextNode(' We are compatible with ' + brand + ' ' + model + '!');
+                resultDiv.appendChild(text);
                 resultDiv.style.color = 'var(--primary)';
             }
              // Haptic
@@ -1418,3 +1508,167 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollObserver.observe(el);
     });
 });
+
+// --- Custom Before/After Slider ---
+function initBeforeAfterSlider() {
+    const slider = document.getElementById('luxury-slider');
+    const handle = document.getElementById('slider-handle');
+    const afterImageClip = document.getElementById('after-image-clip');
+    
+    if (!slider || !handle || !afterImageClip) return;
+    
+    let active = false;
+    
+    const setSliderPosition = (x) => {
+        const rect = slider.getBoundingClientRect();
+        let position = ((x - rect.left) / rect.width) * 100;
+        
+        if (position < 0) position = 0;
+        if (position > 100) position = 100;
+        
+        handle.style.left = `${position}%`;
+        afterImageClip.style.clipPath = `polygon(0 0, ${position}% 0, ${position}% 100%, 0 100%)`;
+    };
+    
+    // Mouse events
+    slider.addEventListener('mousedown', (e) => {
+        active = true;
+        setSliderPosition(e.clientX);
+    });
+    
+    window.addEventListener('mouseup', () => {
+        active = false;
+    });
+    
+    slider.addEventListener('mousemove', (e) => {
+        if (!active) return;
+        setSliderPosition(e.clientX);
+    });
+    
+    // Touch events
+    slider.addEventListener('touchstart', (e) => {
+        active = true;
+        setSliderPosition(e.touches[0].clientX);
+    }, { passive: true });
+    
+    window.addEventListener('touchend', () => {
+        active = false;
+    });
+    
+    slider.addEventListener('touchmove', (e) => {
+        if (!active) return;
+        setSliderPosition(e.touches[0].clientX);
+    }, { passive: true });
+}
+
+// --- Consultative Project Configurator Wizard ---
+let currentWizardStep = 1;
+const totalWizardSteps = 4;
+
+function navigateWizard(direction) {
+    const activeStep = document.querySelector(`.wizard-step[data-step="${currentWizardStep}"]`);
+    
+    // Validation before moving next
+    if (direction === 1) {
+        if (currentWizardStep === 1) {
+            const details = document.getElementById('wizard-vehicle-details');
+            if (details && !details.checkValidity()) {
+                details.reportValidity();
+                return;
+            }
+        }
+        if (currentWizardStep === 2) {
+            const scopeInput = document.getElementById('input-project-scope');
+            if (scopeInput && !scopeInput.value) {
+                showNotification('Please select a project scope.', 'error');
+                return;
+            }
+        }
+        if (currentWizardStep === 3) {
+            const materialInput = document.getElementById('input-material-type');
+            if (materialInput && !materialInput.value) {
+                showNotification('Please select a material preference.', 'error');
+                return;
+            }
+        }
+    }
+    
+    // Update step
+    currentWizardStep += direction;
+    if (currentWizardStep < 1) currentWizardStep = 1;
+    if (currentWizardStep > totalWizardSteps) currentWizardStep = totalWizardSteps;
+    
+    // Update active view
+    document.querySelectorAll('.wizard-step').forEach(step => {
+        step.classList.remove('active');
+    });
+    const nextStep = document.querySelector(`.wizard-step[data-step="${currentWizardStep}"]`);
+    if (nextStep) nextStep.classList.add('active');
+    
+    // Update progress bar & headers
+    const progressBar = document.getElementById('wizard-progress-bar');
+    if (progressBar) {
+        const percentage = (currentWizardStep / totalWizardSteps) * 100;
+        progressBar.style.width = `${percentage}%`;
+    }
+    
+    // Update indicator text
+    const indicator = document.getElementById('wizard-step-indicator');
+    if (indicator) {
+        indicator.textContent = `Step ${currentWizardStep} of ${totalWizardSteps}`;
+    }
+    
+    // Update step titles
+    const stepTitle = document.getElementById('wizard-step-title');
+    if (stepTitle) {
+        const titles = {
+            1: "Step 1: Select Vehicle Type",
+            2: "Step 2: Customization Scope",
+            3: "Step 3: Material Preference",
+            4: "Step 4: Contact & Project Details"
+        };
+        stepTitle.textContent = titles[currentWizardStep] || "";
+    }
+    
+    // Manage footer buttons
+    const prevBtn = document.getElementById('wizard-prev-btn');
+    const nextBtn = document.getElementById('wizard-next-btn');
+    
+    if (prevBtn) prevBtn.disabled = currentWizardStep === 1;
+    
+    if (nextBtn) {
+        if (currentWizardStep === totalWizardSteps) {
+            nextBtn.innerHTML = 'Submit Consultation <i class="fas fa-paper-plane"></i>';
+            nextBtn.type = 'submit';
+            nextBtn.onclick = null; // Let form submit normally
+        } else {
+            nextBtn.innerHTML = 'Next <i class="fas fa-chevron-right"></i>';
+            nextBtn.type = 'button';
+            nextBtn.onclick = () => navigateWizard(1);
+        }
+    }
+}
+
+function selectWizardOption(card, category) {
+    // Remove selected state from siblings
+    const siblings = card.parentNode.querySelectorAll('.option-card');
+    siblings.forEach(c => c.classList.remove('selected'));
+    
+    // Add selected state to clicked card
+    card.classList.add('selected');
+    
+    // Update hidden input
+    const val = card.dataset.value;
+    const hiddenInput = document.getElementById(`input-${category}`);
+    if (hiddenInput) {
+        hiddenInput.value = val;
+    }
+    
+    // Haptic feedback
+    if (navigator.vibrate) navigator.vibrate(20);
+}
+
+// Make them globally accessible so inline event handlers work
+window.navigateWizard = navigateWizard;
+window.selectWizardOption = selectWizardOption;
+window.initBeforeAfterSlider = initBeforeAfterSlider;

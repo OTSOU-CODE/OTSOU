@@ -1,5 +1,19 @@
 // Gallery Page JavaScript for SHERIF-SIEGE-AUTO Mobile Website
 
+function escapeHTML(str) {
+  if (!str) return "";
+  return String(str).replace(/[&<>'"]/g, (tag) => {
+    switch (tag) {
+      case '&': return '&amp;';
+      case '<': return '&lt;';
+      case '>': return '&gt;';
+      case "'": return '&#39;';
+      case '"': return '&quot;';
+      default: return tag;
+    }
+  });
+}
+
 // Gallery data
 const galleryData = [
   {
@@ -84,18 +98,6 @@ function loadGalleryImages() {
 
 // Create gallery item HTML
 
-
-function showEmptyState() {
-  const galleryGrid = document.getElementById("gallery-grid");
-  if (galleryGrid) {
-    galleryGrid.innerHTML = '<div class="error-message">No images found.</div>';
-  }
-}
-
-function setupGalleryEvents() {
-  // Any additional events
-}
-
 // Stats Animation
 function animateStats() {
   const statsSection = document.querySelector(".gallery-stats");
@@ -142,18 +144,41 @@ function createGalleryItem(item, index) {
   galleryItem.className = "gallery-item";
   galleryItem.setAttribute("data-index", index);
 
-  galleryItem.innerHTML = `
-    <div class="gallery-image">
-      <img src="${item.src}" alt="${item.title}" title="${item.title}" loading="lazy">
-      <div class="gallery-overlay">
-        <i class="fas fa-search-plus"></i>
-      </div>
-    </div>
-    <div class="gallery-content">
-      <h3 class="gallery-title">${item.title}</h3>
-      <p class="gallery-description">${item.description}</p>
-    </div>
-  `;
+  // Gallery image container
+  const galleryImage = document.createElement("div");
+  galleryImage.className = "gallery-image";
+
+  const img = document.createElement("img");
+  img.src = item.src;
+  img.alt = item.title;
+  img.title = item.title;
+  img.setAttribute("loading", "lazy");
+  galleryImage.appendChild(img);
+
+  const overlay = document.createElement("div");
+  overlay.className = "gallery-overlay";
+  const overlayIcon = document.createElement("i");
+  overlayIcon.className = "fas fa-search-plus";
+  overlay.appendChild(overlayIcon);
+  galleryImage.appendChild(overlay);
+
+  galleryItem.appendChild(galleryImage);
+
+  // Gallery content container
+  const galleryContent = document.createElement("div");
+  galleryContent.className = "gallery-content";
+
+  const title = document.createElement("h3");
+  title.className = "gallery-title";
+  title.textContent = item.title;
+  galleryContent.appendChild(title);
+
+  const desc = document.createElement("p");
+  desc.className = "gallery-description";
+  desc.textContent = item.description;
+  galleryContent.appendChild(desc);
+
+  galleryItem.appendChild(galleryContent);
 
   // Add click event - navigate to detail page
   galleryItem.addEventListener("click", () => {
@@ -187,4 +212,7 @@ function showEmptyState() {
 }
 
 // Setup gallery events
+function setupGalleryEvents() {
+  // Any additional events
+}
 
