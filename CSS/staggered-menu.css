@@ -7,7 +7,7 @@
   height: 100%;
   z-index: 9999; /* Increased Z-Index to be above everything */
   pointer-events: none;
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-primary, "Inter", sans-serif);
   display: block; /* Explicitly show */
 }
 

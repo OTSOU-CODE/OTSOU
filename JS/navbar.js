@@ -141,6 +141,13 @@ export function createTubelightNavbar({ items, target = document.body, logo = ''
     window.addEventListener('scroll', () => {
       const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
       
+      // Contract on scroll
+      if (currentScroll > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+      
       // Don't hide if we're near the top
       if (currentScroll < scrollThreshold) {
         navbar.classList.remove('navbar-hidden');

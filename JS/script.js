@@ -33,12 +33,11 @@ document.addEventListener('DOMContentLoaded', function () {
     setupScrollAnimations();
     setupFileUpload();
     initHeaderSearch();
-    initBeforeAfterSlider();
 });
 
 // Initialize DOM elements
 function initializeElements() {
-    navbar = document.getElementById('navbar');
+    navbar = document.getElementById('navbar') || document.querySelector('.tubelight-navbar');
     navToggle = document.getElementById('nav-toggle');
     navMenu = document.getElementById('nav-menu');
     backToTopBtn = document.getElementById('back-to-top');
@@ -210,7 +209,7 @@ function toggleTheme(event) {
     // Determine current and next theme
     const root = document.documentElement;
     const isDark = root.getAttribute('data-theme') === 'dark';
-    
+
     // Set a class to handle z-index stacking in CSS
     // If going Dark -> Light (isDark is true currently), we want the Old view (Dark) on top to shrink
     if (isDark) {
@@ -226,7 +225,7 @@ function toggleTheme(event) {
         // We want the OLD view (Dark) to shrink from full radius to 0 at the click point.
         // If we were Light (isDark=false), we are now going to Dark.
         // We want the NEW view (Dark) to expand from 0 to full radius.
-        
+
         if (isDark) {
             // Dark -> Light: Animate OLD view (Dark) shrinking
             document.documentElement.animate(
@@ -589,14 +588,14 @@ function setupContactForm() {
             contactForm.reset();
             // Reset validation classes
             inputs.forEach(input => input.classList.remove('valid', 'invalid'));
-            
+
             // Reset file input display
             if (fileNameDisplay) {
                 fileNameDisplay.textContent = 'No file chosen';
                 fileNameDisplay.classList.remove('has-file');
                 if (window.resetFilePreview) window.resetFilePreview();
             }
-            
+
         } catch (error) {
             console.error('Error sending form data:', error);
             showNotification('There was an error sending your message. Please try again or call us directly.', 'error');
@@ -617,29 +616,29 @@ function showNotification(message, type = 'info') {
     // Create notification element
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
-    
+
     // Notification content
     const content = document.createElement('div');
     content.className = 'notification-content';
-    
+
     const iconClass = type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle';
     const icon = document.createElement('i');
     icon.className = `fas ${iconClass}`;
     content.appendChild(icon);
-    
+
     const textSpan = document.createElement('span');
     textSpan.textContent = message; // Safe text insertion
     content.appendChild(textSpan);
-    
+
     notification.appendChild(content);
-    
+
     // Close button
     const closeBtn = document.createElement('button');
     closeBtn.className = 'notification-close';
     const closeIcon = document.createElement('i');
     closeIcon.className = 'fas fa-times';
     closeBtn.appendChild(closeIcon);
-    
+
     closeBtn.addEventListener('click', () => {
         notification.remove();
     });
@@ -710,7 +709,7 @@ function initHeaderSearch() {
     const searchContainer = document.querySelector('.search-container');
     const searchInput = document.getElementById('header-search-input');
     const searchResults = document.getElementById('header-search-results');
-    
+
     if (!searchToggle || !searchContainer || !searchInput) return;
 
     // Load History
@@ -740,11 +739,11 @@ function initHeaderSearch() {
     let vehicleData = [];
     let vehiclesLoaded = false;
     let loadingVehicles = false;
-    
+
     const loadVehiclesData = () => {
         if (vehiclesLoaded || loadingVehicles) return;
         loadingVehicles = true;
-        
+
         import('./JS/vehicles_data.js')
             .then((module) => {
                 if (module && module.VEHICLES_DATA) {
@@ -781,40 +780,40 @@ function initHeaderSearch() {
     const renderResults = (vehicleMatches, serviceMatches, isHistory = false) => {
         if (!searchResults) return;
         searchResults.textContent = ''; // Safe clear
-        
-        if (isHistory && vehicleMatches.length > 0) {
-             const historyHeader = document.createElement('div');
-             historyHeader.className = 'search-header';
-             historyHeader.textContent = 'Recent Searches';
-             historyHeader.style.padding = '8px 12px';
-             historyHeader.style.fontSize = '0.8rem';
-             historyHeader.style.color = 'var(--text-secondary)';
-             searchResults.appendChild(historyHeader);
 
-             vehicleMatches.forEach(item => {
+        if (isHistory && vehicleMatches.length > 0) {
+            const historyHeader = document.createElement('div');
+            historyHeader.className = 'search-header';
+            historyHeader.textContent = 'Recent Searches';
+            historyHeader.style.padding = '8px 12px';
+            historyHeader.style.fontSize = '0.8rem';
+            historyHeader.style.color = 'var(--text-secondary)';
+            searchResults.appendChild(historyHeader);
+
+            vehicleMatches.forEach(item => {
                 const div = document.createElement('div');
                 div.className = 'search-result-item';
-                
+
                 const span = document.createElement('span');
                 const historyIcon = document.createElement('i');
                 historyIcon.className = 'fas fa-history';
                 historyIcon.style.marginRight = '8px';
                 historyIcon.style.opacity = '0.6';
                 span.appendChild(historyIcon);
-                
+
                 const textNode = document.createTextNode(item);
                 span.appendChild(textNode);
-                
+
                 div.appendChild(span);
                 div.addEventListener('click', () => {
                     searchInput.value = item;
                     performSearch(item);
                 });
                 searchResults.appendChild(div);
-             });
-             searchResults.classList.add('active');
-             searchResults.style.display = 'block';
-             return;
+            });
+            searchResults.classList.add('active');
+            searchResults.style.display = 'block';
+            return;
         }
 
         if (vehicleMatches.length === 0 && serviceMatches.length === 0) {
@@ -835,15 +834,15 @@ function initHeaderSearch() {
                 div.addEventListener('click', () => {
                     location.href = `category.html?search=${encodeURIComponent(v.brand + " " + v.model)}`;
                 });
-                
+
                 const icon = document.createElement('i');
                 icon.className = 'fas fa-car';
                 div.appendChild(icon);
-                
+
                 const span = document.createElement('span');
                 span.textContent = ` ${v.brand} ${v.model} ${v.year}`;
                 div.appendChild(span);
-                
+
                 searchResults.appendChild(div);
             });
         }
@@ -860,15 +859,15 @@ function initHeaderSearch() {
                 div.addEventListener('click', () => {
                     location.href = s.url;
                 });
-                
+
                 const icon = document.createElement('i');
                 icon.className = `fas ${s.type === 'page' ? 'fa-link' : 'fa-tools'}`;
                 div.appendChild(icon);
-                
+
                 const span = document.createElement('span');
                 span.textContent = ` ${s.name}`;
                 div.appendChild(span);
-                
+
                 searchResults.appendChild(div);
             });
         }
@@ -882,7 +881,7 @@ function initHeaderSearch() {
             renderResults(loadHistory(), [], true);
             return;
         }
-        
+
         // Filter Vehicles
         const vehicleMatches = vehicleData.filter((v) =>
             v.brand.toLowerCase().includes(query.toLowerCase()) ||
@@ -890,10 +889,10 @@ function initHeaderSearch() {
         ).slice(0, 3);
 
         // Filter Services
-        const serviceMatches = servicesData.filter((s) => 
+        const serviceMatches = servicesData.filter((s) =>
             s.name.toLowerCase().includes(query.toLowerCase())
         ).slice(0, 3);
-        
+
         renderResults(vehicleMatches, serviceMatches);
     };
 
@@ -909,18 +908,18 @@ function initHeaderSearch() {
             }, 100);
         }
     });
-        
+
     // Close when clicking outside
     document.addEventListener('click', (e) => {
-            if (searchContainer.classList.contains('active') && !searchContainer.contains(e.target) && !searchToggle.contains(e.target)) {
-                searchContainer.classList.remove('active');
-                if (searchResults) {
-                    searchResults.classList.remove('active');
-                    searchResults.style.display = 'none';
-                }
+        if (searchContainer.classList.contains('active') && !searchContainer.contains(e.target) && !searchToggle.contains(e.target)) {
+            searchContainer.classList.remove('active');
+            if (searchResults) {
+                searchResults.classList.remove('active');
+                searchResults.style.display = 'none';
             }
+        }
     });
-    
+
     // Input Handler with Debounce
     searchInput.addEventListener('input', (e) => {
         clearTimeout(debounceTimer);
@@ -954,7 +953,7 @@ function initHeaderSearch() {
     document.addEventListener('keydown', (e) => {
         // Press '/' to focus search
         if (e.key === '/' && document.activeElement !== searchInput && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
-            e.preventDefault(); 
+            e.preventDefault();
             searchContainer.classList.add('active');
             loadVehiclesData();
             setTimeout(() => {
@@ -962,7 +961,7 @@ function initHeaderSearch() {
                 performSearch('');
             }, 100);
         }
-        
+
         // Close on Escape
         if (e.key === 'Escape' && searchContainer.classList.contains('active')) {
             searchContainer.classList.remove('active');
@@ -1176,8 +1175,10 @@ function initNewFeatures() {
         lazyImages.forEach(img => imageObserver.observe(img));
     }
 
+    initCustomCursor();
+    initHeroParallax();
 }
-    
+
 
 // Utility functions
 function debounce(func, wait) {
@@ -1235,25 +1236,82 @@ window.nextCarSeatImage = nextCarSeatImage;
 window.prevCarSeatImage = prevCarSeatImage;
 
 // Scroll Animations
-// Scroll Animations
 function setupScrollAnimations() {
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
+    if (window.gsap) {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
 
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target); // Only animate once
-            }
-        });
-    }, observerOptions);
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    
+                    // Clear CSS transitions on elements animated by GSAP to prevent clash
+                    el.style.transition = 'none';
+                    el.style.opacity = '0';
+                    
+                    const targets = el.querySelectorAll('.process-card, .advantage-card, .service-card, .swatch-card');
+                    if (targets.length > 0) {
+                        targets.forEach(t => {
+                            t.style.transition = 'none';
+                            t.style.opacity = '0';
+                        });
+                        
+                        gsap.fromTo(targets, 
+                            { opacity: 0, y: 30 },
+                            { 
+                                opacity: 1, 
+                                y: 0, 
+                                duration: 0.8, 
+                                ease: "power2.out", 
+                                stagger: 0.15,
+                                clearProps: "transition"
+                            }
+                        );
+                        // Also show the parent
+                        gsap.set(el, { opacity: 1, y: 0 });
+                    } else {
+                        gsap.fromTo(el, 
+                            { opacity: 0, y: 30 },
+                            { 
+                                opacity: 1, 
+                                y: 0, 
+                                duration: 0.8, 
+                                ease: "power2.out",
+                                clearProps: "transition"
+                            }
+                        );
+                    }
+                    observer.unobserve(el);
+                }
+            });
+        }, observerOptions);
 
-    const elements = document.querySelectorAll('.animate-on-scroll');
-    elements.forEach(el => observer.observe(el));
+        const elements = document.querySelectorAll('.animate-on-scroll');
+        elements.forEach(el => observer.observe(el));
+    } else {
+        // Fallback to CSS transitions
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const elements = document.querySelectorAll('.animate-on-scroll');
+        elements.forEach(el => observer.observe(el));
+    }
 }
 
 // File Upload Setup
@@ -1358,16 +1416,16 @@ function initVisualizer() {
             colorBtns.forEach(b => b.classList.remove('active'));
             // Add active class
             btn.classList.add('active');
-            
+
             // Update Overlay
             const color = btn.dataset.color;
             const name = btn.dataset.name;
-            
+
             overlay.style.backgroundColor = color;
-            if(nameDisplay) nameDisplay.textContent = name;
-            
+            if (nameDisplay) nameDisplay.textContent = name;
+
             // Haptic
-            if(navigator.vibrate) navigator.vibrate(30);
+            if (navigator.vibrate) navigator.vibrate(30);
         });
     });
 }
@@ -1377,7 +1435,7 @@ function initCompatibilityChecker() {
     const brandSelect = document.getElementById('heroBrandSelect');
     const modelSelect = document.getElementById('heroModelSelect');
     const resultDiv = document.getElementById('compatibilityResult');
-    
+
     if (!brandSelect || !modelSelect) return;
 
     // Use absolute path relative to domain root or relative path
@@ -1390,15 +1448,15 @@ function initCompatibilityChecker() {
     // Fetch Data
     fetch(csvPath)
         .then(res => {
-             if(!res.ok) throw new Error('Failed to load');
-             return res.text();
+            if (!res.ok) throw new Error('Failed to load');
+            return res.text();
         })
         .then(text => {
             // Simple CSV Parser
             const lines = text.split('\n').filter(l => l.trim());
             // Skip header if present
             const startIndex = lines[0].toLowerCase().includes('brand') ? 1 : 0;
-            
+
             // Parse into objects
             vehicleData = lines.slice(startIndex).map(line => {
                 const cols = line.split(',');
@@ -1411,7 +1469,7 @@ function initCompatibilityChecker() {
 
             // Populate Brands
             const brands = [...new Set(vehicleData.map(v => v.brand))].sort();
-            
+
             brands.forEach(brand => {
                 const opt = document.createElement('option');
                 opt.value = brand;
@@ -1429,7 +1487,7 @@ function initCompatibilityChecker() {
         const selectedBrand = brandSelect.value;
         modelSelect.innerHTML = '<option value="">Select Model</option>';
         resultDiv.textContent = '';
-        
+
         if (!selectedBrand) {
             modelSelect.disabled = true;
             return;
@@ -1449,32 +1507,32 @@ function initCompatibilityChecker() {
         });
 
         modelSelect.disabled = false;
-        
+
         // Haptic
-        if(navigator.vibrate) navigator.vibrate(20);
+        if (navigator.vibrate) navigator.vibrate(20);
     });
 
     // On Model Change
     modelSelect.addEventListener('change', () => {
         const brand = brandSelect.value;
         const model = modelSelect.value;
-        
+
         if (brand && model) {
             // Count how many we have done (fake or real count from CSV)
             const count = vehicleData.filter(v => v.brand === brand && v.model === model).length;
-            
+
             resultDiv.textContent = ''; // Safe Clear
-            
+
             const icon = document.createElement('i');
             icon.className = 'fas fa-check-circle';
             resultDiv.appendChild(icon);
-            
+
             if (count > 0) {
                 const textBefore = document.createTextNode(' We have worked on ');
                 const b = document.createElement('b');
                 b.textContent = count;
                 const textAfter = document.createTextNode(' ' + brand + ' ' + model + '(s)!');
-                
+
                 resultDiv.appendChild(textBefore);
                 resultDiv.appendChild(b);
                 resultDiv.appendChild(textAfter);
@@ -1484,8 +1542,8 @@ function initCompatibilityChecker() {
                 resultDiv.appendChild(text);
                 resultDiv.style.color = 'var(--primary)';
             }
-             // Haptic
-            if(navigator.vibrate) navigator.vibrate([30, 50, 30]);
+            // Haptic
+            if (navigator.vibrate) navigator.vibrate([30, 50, 30]);
         } else {
             resultDiv.textContent = '';
         }
@@ -1509,65 +1567,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// --- Custom Before/After Slider ---
-function initBeforeAfterSlider() {
-    const slider = document.getElementById('luxury-slider');
-    const handle = document.getElementById('slider-handle');
-    const afterImageClip = document.getElementById('after-image-clip');
-    
-    if (!slider || !handle || !afterImageClip) return;
-    
-    let active = false;
-    
-    const setSliderPosition = (x) => {
-        const rect = slider.getBoundingClientRect();
-        let position = ((x - rect.left) / rect.width) * 100;
-        
-        if (position < 0) position = 0;
-        if (position > 100) position = 100;
-        
-        handle.style.left = `${position}%`;
-        afterImageClip.style.clipPath = `polygon(0 0, ${position}% 0, ${position}% 100%, 0 100%)`;
-    };
-    
-    // Mouse events
-    slider.addEventListener('mousedown', (e) => {
-        active = true;
-        setSliderPosition(e.clientX);
-    });
-    
-    window.addEventListener('mouseup', () => {
-        active = false;
-    });
-    
-    slider.addEventListener('mousemove', (e) => {
-        if (!active) return;
-        setSliderPosition(e.clientX);
-    });
-    
-    // Touch events
-    slider.addEventListener('touchstart', (e) => {
-        active = true;
-        setSliderPosition(e.touches[0].clientX);
-    }, { passive: true });
-    
-    window.addEventListener('touchend', () => {
-        active = false;
-    });
-    
-    slider.addEventListener('touchmove', (e) => {
-        if (!active) return;
-        setSliderPosition(e.touches[0].clientX);
-    }, { passive: true });
-}
-
 // --- Consultative Project Configurator Wizard ---
 let currentWizardStep = 1;
 const totalWizardSteps = 4;
 
 function navigateWizard(direction) {
     const activeStep = document.querySelector(`.wizard-step[data-step="${currentWizardStep}"]`);
-    
+
     // Validation before moving next
     if (direction === 1) {
         if (currentWizardStep === 1) {
@@ -1592,32 +1598,32 @@ function navigateWizard(direction) {
             }
         }
     }
-    
+
     // Update step
     currentWizardStep += direction;
     if (currentWizardStep < 1) currentWizardStep = 1;
     if (currentWizardStep > totalWizardSteps) currentWizardStep = totalWizardSteps;
-    
+
     // Update active view
     document.querySelectorAll('.wizard-step').forEach(step => {
         step.classList.remove('active');
     });
     const nextStep = document.querySelector(`.wizard-step[data-step="${currentWizardStep}"]`);
     if (nextStep) nextStep.classList.add('active');
-    
+
     // Update progress bar & headers
     const progressBar = document.getElementById('wizard-progress-bar');
     if (progressBar) {
         const percentage = (currentWizardStep / totalWizardSteps) * 100;
         progressBar.style.width = `${percentage}%`;
     }
-    
+
     // Update indicator text
     const indicator = document.getElementById('wizard-step-indicator');
     if (indicator) {
         indicator.textContent = `Step ${currentWizardStep} of ${totalWizardSteps}`;
     }
-    
+
     // Update step titles
     const stepTitle = document.getElementById('wizard-step-title');
     if (stepTitle) {
@@ -1629,13 +1635,13 @@ function navigateWizard(direction) {
         };
         stepTitle.textContent = titles[currentWizardStep] || "";
     }
-    
+
     // Manage footer buttons
     const prevBtn = document.getElementById('wizard-prev-btn');
     const nextBtn = document.getElementById('wizard-next-btn');
-    
+
     if (prevBtn) prevBtn.disabled = currentWizardStep === 1;
-    
+
     if (nextBtn) {
         if (currentWizardStep === totalWizardSteps) {
             nextBtn.innerHTML = 'Submit Consultation <i class="fas fa-paper-plane"></i>';
@@ -1653,22 +1659,248 @@ function selectWizardOption(card, category) {
     // Remove selected state from siblings
     const siblings = card.parentNode.querySelectorAll('.option-card');
     siblings.forEach(c => c.classList.remove('selected'));
-    
+
     // Add selected state to clicked card
     card.classList.add('selected');
-    
+
     // Update hidden input
     const val = card.dataset.value;
     const hiddenInput = document.getElementById(`input-${category}`);
     if (hiddenInput) {
         hiddenInput.value = val;
     }
-    
+
     // Haptic feedback
     if (navigator.vibrate) navigator.vibrate(20);
 }
 
-// Make them globally accessible so inline event handlers work
+// --- Bento-Style Material Showroom Interactivity ---
+const SHOWROOM_MATERIALS = {
+    nappa: {
+        badge: "Heritage",
+        title: "Full-Grain Nappa",
+        desc: "Certified Grade-A, ultra-soft German bovine hides with a flawless natural grain, drum-dyed through for enduring color and elasticity.",
+        provenance: "Southern Germany",
+        durability: "120,000 Double Rubs",
+        aroma: "Rich oak-tanned leather",
+        tactility: "Buttery-smooth, elastic",
+        image: "images/material_nappa.png"
+    },
+    alcantara: {
+        badge: "Performance",
+        title: "Italian Alcantara",
+        desc: "Genuine luxury synthetic suede offering unmatched wear resistance, high grip, and glare-reduction for dashboards and sport seats.",
+        provenance: "Nera Montoro, Italy",
+        durability: "150,000 Double Rubs",
+        aroma: "Neutral, clean studio profile",
+        tactility: "Velvety suede, high grip",
+        image: "images/material_alcantara.png"
+    },
+    perforated: {
+        badge: "Aero Sport",
+        title: "Perforated Sport",
+        desc: "Aero-precision ventilated leather pattern designed for optimized air flow and heat dissipation in sports vehicle models.",
+        provenance: "Stuttgart, Germany",
+        durability: "100,000 Double Rubs",
+        aroma: "Sporty, premium fresh leather",
+        tactility: "Breathable, textured grip",
+        image: "images/material_perforated.png"
+    },
+    stitching: {
+        badge: "Signature Craft",
+        title: "Diamond Stitch",
+        desc: "Meticulously handcrafted raised geometric diamonds with double-reinforced stitching using UV-resistant bonded nylon thread.",
+        provenance: "Sherif-Auto Atelier",
+        durability: "Reinforced tensile seams",
+        aroma: "Heritage leather & craftsmanship",
+        tactility: "Plush geometric cushioning",
+        image: "images/material_stitching.png"
+    }
+};
+
+function selectShowroomMaterial(card) {
+    const matKey = card.dataset.material;
+    const data = SHOWROOM_MATERIALS[matKey];
+    if (!data) return;
+
+    // Toggle active classes
+    const siblings = card.parentNode.querySelectorAll('.swatch-card');
+    siblings.forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+
+    const panel = document.getElementById('showroom-detail-panel');
+    if (!panel) return;
+
+    // Direct change if GSAP is not available
+    const updatePanel = () => {
+        const imgEl = document.getElementById('detail-macro-image');
+        const badgeEl = document.getElementById('detail-badge');
+        const titleEl = document.getElementById('detail-title');
+        const descEl = document.getElementById('detail-desc');
+        const provEl = document.getElementById('detail-provenance');
+        const durEl = document.getElementById('detail-durability');
+        const aromaEl = document.getElementById('detail-aroma');
+        const tactEl = document.getElementById('detail-tactility');
+
+        if (imgEl) {
+            imgEl.src = data.image;
+            imgEl.alt = `${data.title} Close-up`;
+        }
+        if (badgeEl) badgeEl.textContent = data.badge;
+        if (titleEl) titleEl.textContent = data.title;
+        if (descEl) descEl.textContent = data.desc;
+        if (provEl) provEl.textContent = data.provenance;
+        if (durEl) durEl.textContent = data.durability;
+        if (aromaEl) aromaEl.textContent = data.aroma;
+        if (tactEl) tactEl.textContent = data.tactility;
+    };
+
+    if (window.gsap) {
+        gsap.to(panel, {
+            opacity: 0,
+            y: 10,
+            duration: 0.25,
+            ease: "power2.in",
+            onComplete: () => {
+                updatePanel();
+                gsap.to(panel, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.35,
+                    ease: "power2.out"
+                });
+            }
+        });
+    } else {
+        updatePanel();
+    }
+}
+
 window.navigateWizard = navigateWizard;
 window.selectWizardOption = selectWizardOption;
-window.initBeforeAfterSlider = initBeforeAfterSlider;
+window.selectShowroomMaterial = selectShowroomMaterial;
+
+// --- Custom Cursor Follower Logic ---
+function initCustomCursor() {
+    const ring = document.getElementById('cursor-ring');
+    const dot = document.getElementById('cursor-dot');
+    
+    if (!ring || !dot) return;
+    
+    // Check if device supports hover and pointer fine (like desktop mouse)
+    const isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!isDesktop) {
+        ring.style.display = 'none';
+        dot.style.display = 'none';
+        return;
+    }
+    
+    let mouseX = 0;
+    let mouseY = 0;
+    let ringX = 0;
+    let ringY = 0;
+    
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        
+        // Move dot instantly
+        dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+    });
+    
+    // Smooth frame loop for the ring (lerp)
+    function updateRing() {
+        const lerpFactor = 0.15;
+        ringX += (mouseX - ringX) * lerpFactor;
+        ringY += (mouseY - ringY) * lerpFactor;
+        
+        ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
+        
+        requestAnimationFrame(updateRing);
+    }
+    requestAnimationFrame(updateRing);
+    
+    // Hover expansions on interactive elements
+    const interactiveSelectors = 'a, button, select, input, textarea, [role="button"], .swatch-card, .option-card, .nav-link, .tubelight-nav-item, .hero-actions .btn';
+    
+    document.addEventListener('mouseover', (e) => {
+        const target = e.target.closest(interactiveSelectors);
+        if (target) {
+            ring.classList.add('hovered');
+            dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%) scale(1.5)`;
+        }
+    });
+    
+    document.addEventListener('mouseout', (e) => {
+        const target = e.target.closest(interactiveSelectors);
+        if (target) {
+            ring.classList.remove('hovered');
+            dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%) scale(1)`;
+        }
+    });
+}
+
+// --- Hero Mouse Parallax Logic ---
+function initHeroParallax() {
+    const hero = document.getElementById('home');
+    const leftVisual = document.querySelector('.hero-left-visual');
+    const rightVisual = document.querySelector('.hero-right-visual');
+    const videoContainer = document.querySelector('.hero-video-container');
+    
+    if (!hero) return;
+    
+    // Check if device supports hover and pointer fine (like desktop mouse)
+    const isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!isDesktop) return;
+    
+    hero.addEventListener('mousemove', (e) => {
+        const rect = hero.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left - rect.width / 2;
+        const mouseY = e.clientY - rect.top - rect.height / 2;
+        
+        // Calculate normalized values (-0.5 to 0.5)
+        const xPercent = mouseX / (rect.width / 2);
+        const yPercent = mouseY / (rect.height / 2);
+        
+        // Parallax values
+        const leftMoveX = xPercent * 15;
+        const leftMoveY = yPercent * 15;
+        const rightMoveX = -xPercent * 15;
+        const rightMoveY = -yPercent * 15;
+        const videoMoveX = xPercent * 5;
+        const videoMoveY = yPercent * 5;
+        
+        if (leftVisual) {
+            leftVisual.style.transform = `translate3d(${leftMoveX}px, ${leftMoveY}px, 0)`;
+        }
+        if (rightVisual) {
+            rightVisual.style.transform = `translate3d(${rightMoveX}px, ${rightMoveY}px, 0)`;
+        }
+        if (videoContainer) {
+            videoContainer.style.transform = `translate3d(${videoMoveX}px, ${videoMoveY}px, 0) scale(1.05)`;
+        }
+    });
+    
+    // Reset on mouse leave
+    hero.addEventListener('mouseleave', () => {
+        if (leftVisual) {
+            leftVisual.style.transform = 'translate3d(0, 0, 0)';
+            leftVisual.style.transition = 'transform 0.5s ease-out';
+        }
+        if (rightVisual) {
+            rightVisual.style.transform = 'translate3d(0, 0, 0)';
+            rightVisual.style.transition = 'transform 0.5s ease-out';
+        }
+        if (videoContainer) {
+            videoContainer.style.transform = 'translate3d(0, 0, 0) scale(1)';
+            videoContainer.style.transition = 'transform 0.5s ease-out';
+        }
+        
+        // Remove transitions after they finish so mousemove remains fluid
+        setTimeout(() => {
+            if (leftVisual) leftVisual.style.transition = '';
+            if (rightVisual) rightVisual.style.transition = '';
+            if (videoContainer) videoContainer.style.transition = '';
+        }, 500);
+    });
+}
