@@ -1,0 +1,36 @@
+# Tasks
+
+- [x] Generate luxury image assets for the About page
+- [x] Create `CSS/about.css` containing custom layouts, timeline, and stitch visualizer styling
+- [x] Create `about.html` containing sections, layouts, and interactive script for the stitch visualizer
+- [x] Update Navbar links and mobile staggered menu links in all existing pages:
+  - [x] `Index.html`
+  - [x] `category.html`
+  - [x] `gallery.html`
+  - [x] `privacy-policy.html`
+  - [x] `terms-of-service.html`
+- [x] Verify responsive styling and interactive features
+- [x] Improve Our Values section in `about.html` with custom animated SVGs:
+  - [x] Define inline SVG vector markup for all 4 value cards
+  - [x] Implement keyframe animations in `CSS/about.css` for scissor cuts, safety waves, map radar ripples, and sparkles
+  - [x] Add an ambient grid mesh overlay to the section background for extra design depth
+  - [x] Validate responsive styling and verify animations
+- [x] Integrate ScrollStack component for the process timeline:
+  - [x] Create Vanilla JS port of React Bits ScrollStack component at `JS/scroll-stack.js`
+  - [x] Setup scroller container, inner stacking list, and cards in `about.html`
+  - [x] Implement perspective, scaling, translations, and Lenis scroll listening in `CSS/about.css`
+  - [x] Validate mobile stack offsets and verify responsiveness
+- [x] Optimize ScrollStack performance:
+  - [x] Implement caching of card absolute tops and end element offsets
+  - [x] Add event listeners to handle window resizing and recalculate cached offsets
+  - [x] Remove forced synchronous layout DOM reads from scroll loops in `JS/scroll-stack.js`
+- [x] Upgrade Our Values SVG logos to gradient-mapped luxury emblems:
+  - [x] Define gold metallic `<linearGradient>` profiles inside SVG blocks
+  - [x] Implement 6 unique, highly detailed vector icons (Hide/Crown, Needles/Grid, Seat/Spine, Safety Shield, UV Drop, Compass/Pin) in `about.html`
+  - [x] Add glassmorphic styles and warm shadows to `.pillar-icon-box` in `CSS/about.css`
+  - [x] Verify cross-platform styling and confirm responsive layouts
+- [x] Upgrade Interactive Design Stitch Visualizer:
+  - [x] Implement leather background color swatches (Charcoal, Cognac, Burgundy, Forest Green) in `about.html`
+  - [x] Add 3D needle puncture shadows and gradients in `CSS/about.css`
+  - [x] Rewrite visualizer controls to use glassmorphic panels and segmented grids
+  - [x] Program dynamic JS listeners for leather switching and coordinate contrast updates
