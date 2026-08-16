@@ -1,0 +1,218 @@
+/* Vehicle Card Redesign - Dark/Gold Theme */
+
+:root {
+  /* Map to global variables for consistency */
+  --card-bg: var(--surface, #1e1e1e); 
+  --card-border: var(--border-light, #333);
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.15);
+  --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  
+  --text-brand: var(--primary, #D4AF37); /* Gold */
+  --text-model: var(--text-primary, #ffffff);
+  --text-type: var(--text-secondary, #a0a0a0);
+  --text-meta: var(--text-secondary, #9ca3af);
+  
+  --border-radius-card: 12px;
+}
+
+.vehicle-card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius-card);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--card-border);
+}
+
+.vehicle-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--primary, #D4AF37); /* Gold border on hover */
+}
+
+.vehicle-image-container {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background-color: #121212; /* Darker placeholder bg */
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.vehicle-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+}
+
+.vehicle-card:hover .vehicle-image-container img {
+  transform: scale(1.05);
+}
+
+.vehicle-info {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.vehicle-brand {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--text-brand);
+  margin-bottom: 0.25rem;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.2); /* Subtle gold glow */
+}
+
+.vehicle-model {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-model);
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+}
+
+.vehicle-type {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-type);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.vehicle-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.spec-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-meta);
+  font-size: 0.9rem;
+}
+
+.spec-row i {
+  width: 16px;
+  text-align: center;
+  color: var(--primary, #D4AF37); /* Gold icons */
+}
+
+.vehicle-divider {
+  height: 1px;
+  background-color: var(--card-border);
+  margin-top: auto;
+  margin-bottom: 1rem;
+}
+
+.vehicle-price {
+  font-size: 0.875rem;
+  color: var(--text-meta);
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.price-amount {
+  display: block;
+  font-weight: 700;
+  color: var(--text-model); /* White */
+  font-size: 1.1rem;
+}
+
+/* Skeleton Loading Support */
+.skeleton-card {
+  pointer-events: none;
+  border-color: var(--card-border);
+}
+
+.skeleton-image,
+.skeleton-text {
+  background-color: rgba(0, 0, 0, 0.05); /* Low opacity black for light mode */
+  border-radius: 4px;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+[data-theme="dark"] .skeleton-image,
+[data-theme="dark"] .skeleton-text {
+  background-color: rgba(255, 255, 255, 0.05); /* Low opacity white for dark mode */
+}
+
+.skeleton-image {
+  aspect-ratio: 4/3;
+  width: 100%;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* Pagination Styles */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--card-border);
+}
+
+.page-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--card-border);
+  background-color: var(--card-bg);
+  color: var(--text-model);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.page-btn:hover:not(.disabled) {
+  border-color: var(--primary);
+  color: var(--primary);
+  background-color: rgba(212, 175, 55, 0.1);
+  transform: translateY(-2px);
+}
+
+.page-btn.active {
+  background-color: var(--primary);
+  color: #000; /* Contrast on gold */
+  border-color: var(--primary);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.page-btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.page-dots {
+  color: var(--text-meta);
+  font-weight: 700;
+  letter-spacing: 2px;
+}
